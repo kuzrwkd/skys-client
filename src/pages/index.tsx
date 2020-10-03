@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
 import { NextPage } from 'next'
-import Button from '@material-ui/core/Button'
 import DefaultLayout from '@/layout/default'
 
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'

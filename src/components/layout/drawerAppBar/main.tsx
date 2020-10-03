@@ -89,7 +89,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-const Header: FC = ({ children }) => {
+const DrawerAppBar: FC = ({ children }) => {
   const classes = useStyles()
   const theme = useTheme()
   const [open, setOpen] = React.useState(false)
@@ -180,8 +180,8 @@ const Header: FC = ({ children }) => {
   )
 }
 
-Header.propTypes = {
+DrawerAppBar.propTypes = {
   children: PropTypes.element.isRequired,
 }
 
-export default Header
+export default DrawerAppBar
