@@ -2,10 +2,8 @@ import React, { FC } from 'react'
 import { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 import Head from 'next/head'
-import { setupStore } from '@/store'
+import store from '@/redux/store'
 import CssBaseline from '@material-ui/core/CssBaseline'
-
-const store = setupStore()
 
 const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   React.useEffect(() => {
