@@ -51,24 +51,6 @@ const Page: NextPage = () => {
                 <button onClick={() => countDown()}>DECREMENT</button>
               </Paper>
             </Grid>
-            <Grid item xs={6}>
-              <Paper className={classes.paper}>xs=6</Paper>
-            </Grid>
-            <Grid item xs={6}>
-              <Paper className={classes.paper}>xs=6</Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
           </Grid>
         </div>
       </React.Fragment>
