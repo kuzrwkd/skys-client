@@ -7,7 +7,8 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { increment, decrement } from '@/redux/counter/reducer'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -27,13 +28,13 @@ const Page: NextPage = () => {
 
   const dispatch = useDispatch()
   const { counter } = useSelector((state) => state)
-
+  console.log(counter)
   const countUp = () => {
-    dispatch({ type: 'INCREMENT', payload: 2 })
+    dispatch(increment(1))
   }
 
   const countDown = () => {
-    dispatch({ type: 'DECREMENT', payload: 2 })
+    dispatch(decrement(1))
   }
 
   return (

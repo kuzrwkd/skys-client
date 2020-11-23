@@ -1,31 +1,20 @@
-import { DECREMENT, INCREMENT } from './actionTypes'
+import { createSlice } from '@reduxjs/toolkit'
 import initialState from './state'
-import { State, Actions } from './types'
+import { State } from './types'
 
-const reducer = (state = initialState, action: Actions): State => {
-  switch (action.type) {
-    case INCREMENT: {
-      let newNum = { ...state }.num
-      newNum = newNum + action.payload
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState,
+  reducers: {
+    increment: (state, action): State => ({
+      num: state.num + action.payload,
+    }),
+    decrement: (state, action): State => ({
+      num: state.num - action.payload,
+    }),
+  },
+})
 
-      return {
-        ...state,
-        num: newNum,
-      }
-    }
-    case DECREMENT: {
-      let newNum = { ...state }.num
-      newNum = newNum - action.payload
+export const { increment, decrement } = counterSlice.actions
 
-      return {
-        ...state,
-        num: newNum,
-      }
-    }
-    default: {
-      return state
-    }
-  }
-}
-
-export default reducer
+export default counterSlice

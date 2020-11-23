@@ -1,5 +1,5 @@
-const state = {
+const initialState = {
   num: 0,
 }
 
-export default state
+export default initialState

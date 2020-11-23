@@ -1,5 +1,9 @@
-import { createStore } from 'redux'
 import rootReducer from './rootReducers'
-import { devToolsEnhancer } from 'redux-devtools-extension'
+import { configureStore } from '@reduxjs/toolkit'
+import logger from 'redux-logger'
 
-export default createStore(rootReducer, devToolsEnhancer({}))
+export default configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  devTools: true,
+})
