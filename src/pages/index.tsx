@@ -24,17 +24,18 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 const Page: NextPage = () => {
+  const PAYLOAD_COUNT = 1
   const classes = useStyles()
 
   const dispatch = useDispatch()
   const { counter } = useSelector((state) => state)
 
   const countUp = () => {
-    dispatch(increment(1))
+    dispatch(increment(PAYLOAD_COUNT))
   }
 
   const countDown = () => {
-    dispatch(decrement(1))
+    dispatch(decrement(PAYLOAD_COUNT))
   }
 
   return (
