@@ -28,7 +28,7 @@ const Page: NextPage = () => {
 
   const dispatch = useDispatch()
   const { counter } = useSelector((state) => state)
-  console.log(counter)
+
   const countUp = () => {
     dispatch(increment(1))
   }
