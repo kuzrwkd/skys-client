@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { increment, decrement } from '@/redux/counter/reducer'
+import Link from '@/components/atoms/Link/main'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -52,12 +53,17 @@ const Page: NextPage = () => {
                 <button onClick={() => countUp()}>INCREMENT</button>
                 <button onClick={() => countDown()}>DECREMENT</button>
               </Paper>
+              <Link page="http://www.facebook.com">Facebook</Link>
             </Grid>
           </Grid>
         </div>
       </React.Fragment>
     </DefaultLayout>
   )
+}
+
+Page.getInitialProps = async () => {
+  return { title: 'TOP' }
 }
 
 export default Page
