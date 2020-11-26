@@ -1,4 +1,3 @@
-// Link.react.test.js
 import React from 'react'
 import renderer from 'react-test-renderer'
 import Link from '../main'
@@ -9,12 +8,4 @@ test('Link changes the class when hovered', () => {
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
-
-  // tree.props.onMouseEnter()
-  // tree = component.toJSON()
-  // expect(tree).toMatchSnapshot()
-  //
-  // tree.props.onMouseLeave()
-  // tree = component.toJSON()
-  // expect(tree).toMatchSnapshot()
 })
