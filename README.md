@@ -1,3 +1,3 @@
 # investment-support-for-nuxtjs
 
-![logo](./brand/nextjs.svg "ロゴ")
+![logo](./brand/nextjs.jpg "ロゴ")
