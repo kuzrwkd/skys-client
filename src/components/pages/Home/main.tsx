@@ -52,14 +52,14 @@ const Main: NextPage = () => {
         <div className={classes.root}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <div>
-                <input type="text" value={form.keyword} onChange={onChange} />
-                <button onClick={onReset}>リセット</button>
-              </div>
               <Paper className={classes.paper}>
                 <p>You clicked {counter.num} times</p>
                 <button onClick={countUp}>INCREMENT</button>
                 <button onClick={countDown}>DECREMENT</button>
+              </Paper>
+              <Paper className={classes.paper}>
+                <input type="text" value={form.keyword} onChange={onChange} />
+                <button onClick={onReset}>リセット</button>
               </Paper>
             </Grid>
           </Grid>
