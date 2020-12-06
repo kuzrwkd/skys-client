@@ -1,5 +1,4 @@
-import React from 'react'
-import { NextPage } from 'next'
+import React, { FC } from 'react'
 import DefaultLayout from '@/components/templates/default'
 
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
@@ -9,6 +8,7 @@ import Grid from '@material-ui/core/Grid'
 import { useSelector, useDispatch } from 'react-redux'
 import { increment, decrement } from '@/redux/counter/reducer'
 import { update, reset } from '@/redux/form/reducer'
+import { fetchHello } from '@/redux/Http/hello/reducer'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,12 +23,15 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-const Main: NextPage = () => {
+const Main: FC = () => {
   const PAYLOAD_COUNT = 1
   const classes = useStyles()
 
   const dispatch = useDispatch()
-  const { counter, form } = useSelector((state) => state)
+  const { counter, form, hello } = useSelector((state) => state)
+
+  dispatch(fetchHello())
+
   const countUp = () => {
     dispatch(increment(PAYLOAD_COUNT))
   }
@@ -52,6 +55,9 @@ const Main: NextPage = () => {
         <div className={classes.root}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
+              <Paper className={classes.paper}>
+                <p>hello!, {hello.getResponse.name}</p>
+              </Paper>
               <Paper className={classes.paper}>
                 <p>You clicked {counter.num} times</p>
                 <button onClick={countUp}>INCREMENT</button>
