@@ -30,8 +30,6 @@ const Main: FC = () => {
   const dispatch = useDispatch()
   const { counter, form, hello } = useSelector((state) => state)
 
-  dispatch(fetchHello())
-
   const countUp = () => {
     dispatch(increment(PAYLOAD_COUNT))
   }
@@ -49,15 +47,16 @@ const Main: FC = () => {
     dispatch(reset())
   }
 
+  const asyncHandler = () => {
+    dispatch(fetchHello())
+  }
+
   return (
     <DefaultLayout>
       <React.Fragment>
         <div className={classes.root}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <p>hello!, {hello.getResponse.name}</p>
-              </Paper>
               <Paper className={classes.paper}>
                 <p>You clicked {counter.num} times</p>
                 <button onClick={countUp}>INCREMENT</button>
@@ -66,6 +65,10 @@ const Main: FC = () => {
               <Paper className={classes.paper}>
                 <input type="text" value={form.keyword} onChange={onChange} />
                 <button onClick={onReset}>リセット</button>
+              </Paper>
+              <Paper className={classes.paper}>
+                <p>{hello.getResponse.name}</p>
+                <button onClick={asyncHandler}>名前を表示</button>
               </Paper>
             </Grid>
           </Grid>
