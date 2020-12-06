@@ -1,5 +1,5 @@
 export type HelloState = {
-  getResponseState: HelloGetResponse
+  getResponse: HelloGetResponse
 }
 
 export type HelloGetResponse = {

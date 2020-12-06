@@ -8,7 +8,6 @@ import Grid from '@material-ui/core/Grid'
 import { useSelector, useDispatch } from 'react-redux'
 import { increment, decrement } from '@/redux/counter/reducer'
 import { update, reset } from '@/redux/form/reducer'
-import { fetchHello } from '@/redux/Http/hello/reducer'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -47,10 +46,6 @@ const Main: FC = () => {
     dispatch(reset())
   }
 
-  const asyncHandler = () => {
-    dispatch(fetchHello())
-  }
-
   return (
     <DefaultLayout>
       <React.Fragment>
@@ -68,7 +63,6 @@ const Main: FC = () => {
               </Paper>
               <Paper className={classes.paper}>
                 <p>{hello.getResponse.name}</p>
-                <button onClick={asyncHandler}>名前を表示</button>
               </Paper>
             </Grid>
           </Grid>

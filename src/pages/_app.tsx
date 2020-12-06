@@ -1,8 +1,7 @@
 import React, { FC } from 'react'
 import { AppProps } from 'next/app'
-import { Provider } from 'react-redux'
 import Head from 'next/head'
-import store from '@/redux/store'
+import { wrapper } from '@/redux/store'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
 const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
@@ -22,12 +21,10 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <Provider store={store}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </Provider>
+      <CssBaseline />
+      <Component {...pageProps} />
     </React.Fragment>
   )
 }
 
-export default App
+export default wrapper.withRedux(App)
