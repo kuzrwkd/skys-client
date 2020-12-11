@@ -1,7 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit'
 import counter from './counter/reducer'
 import form from './form/reducer'
-import hello from './Http/hello/reducer'
+import hello from './hello/reducer'
 
 export const rootReducer = combineReducers({
   counter: counter.reducer,
@@ -9,5 +9,4 @@ export const rootReducer = combineReducers({
   hello: hello.reducer,
 })
 
-export type RootReducerType = ReturnType<typeof rootReducer>
 export default rootReducer

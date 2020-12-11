@@ -9,5 +9,5 @@ const makeStore = () =>
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
     devTools: process.env.NODE_ENV === 'development',
   })
-
 export const wrapper = createWrapper(makeStore)
+export type AppDispatch = ReturnType<typeof makeStore>['dispatch']

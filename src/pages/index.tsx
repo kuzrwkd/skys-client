@@ -4,12 +4,14 @@ import { NextPage } from 'next'
 import HomePage from '@/components/pages/Home/main'
 import PropsType from 'prop-types'
 import { wrapper } from '@/redux/store'
-import { fetchHello, update } from '@/redux/Http/hello/reducer'
+import { update } from '@/redux/hello/reducer'
+import { fetchHello } from '@/redux/Http/hello/main'
 import { useDispatch } from 'react-redux'
+import { AppDispatch } from '@/redux/store'
 
 type Props = {
   title: string
-  hello: any
+  hello: { getResponse: { name: string } }
 }
 
 const Page: NextPage<Props> = ({ title, hello }) => {
@@ -33,8 +35,11 @@ Page.propTypes = {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }) => {
-    await store.dispatch<any>(fetchHello())
-    const { hello } = await store.getState()
+    const dispatch = store.dispatch as AppDispatch
+
+    // TODO: next-redux-wrapperのバージョンが7になったら型が付く
+    await dispatch(fetchHello() as never)
+    const { hello } = store.getState()
 
     return {
       props: {

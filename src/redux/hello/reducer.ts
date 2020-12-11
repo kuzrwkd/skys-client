@@ -1,21 +1,7 @@
-import {
-  createSlice,
-  createAsyncThunk,
-  PayloadAction,
-  Draft,
-} from '@reduxjs/toolkit'
+import { createSlice, PayloadAction, Draft } from '@reduxjs/toolkit'
 import initialState from './state'
 import { HelloGetResponse, HelloState } from './types'
-import axios from 'axios'
-
-export const fetchHello = createAsyncThunk(
-  'hello',
-  async (): Promise<HelloGetResponse> => {
-    return await axios
-      .get<HelloGetResponse>('http://localhost:3000/api/hello')
-      .then((res) => res.data)
-  }
-)
+import { fetchHello } from '@/redux/Http/hello/main'
 
 const helloSlice = createSlice({
   name: 'hello',
@@ -32,7 +18,6 @@ const helloSlice = createSlice({
     builder.addCase(
       fetchHello.fulfilled,
       (state: Draft<HelloState>, action: PayloadAction<HelloGetResponse>) => {
-        console.log('extraReducers', action.payload)
         state.getResponse = action.payload
       }
     )
