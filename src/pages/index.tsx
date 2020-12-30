@@ -33,21 +33,20 @@ Page.propTypes = {
   hello: PropsType.any,
 }
 
-export const getServerSideProps = wrapper.getServerSideProps(
-  async ({ store }) => {
-    const dispatch = store.dispatch as AppDispatch
+export const getStaticProps = wrapper.getServerSideProps(async ({ store }) => {
+  const dispatch = store.dispatch as AppDispatch
 
-    // TODO: next-redux-wrapperのバージョンが7になったら型が付く
-    await dispatch(fetchHello() as never)
-    const { hello } = store.getState()
+  // TODO: next-redux-wrapperのバージョンが7になったら型が付く
+  await dispatch(fetchHello() as never)
+  const { hello } = store.getState()
 
-    return {
-      props: {
-        title: 'TOP',
-        hello,
-      },
-    }
+  return {
+    props: {
+      title: 'TOP',
+      hello,
+    },
+    revalidate: 1,
   }
-)
+})
 
 export default Page
