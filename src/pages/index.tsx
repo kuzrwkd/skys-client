@@ -1,23 +1,27 @@
 import Head from 'next/head'
 import React from 'react'
 import { NextPage } from 'next'
-import HomePage from '@/components/pages/Home'
+import HomePage from '@/interfaces/ui/components/pages/Home'
 import PropsType from 'prop-types'
-import { wrapper } from '@/redux/store'
-import { set } from '@/redux/reducers/nikkei/news'
-import { fetchNikkeiNews } from '@/redux/fetch/nikkei/news'
+import { wrapper } from '@/interfaces/presenters/redux/store'
+import { dataSet as dataSetForNikkeiNews } from '@/interfaces/presenters/redux/reducers/nikkei/news'
+import { dataSet as dataSetForNikkeiMarkets } from '@/interfaces/presenters/redux/reducers/nikkei/markets'
+import { fetchNikkeiNews } from '@/infrastructures/localAPI/rssFeed/nikkei/news'
+import { fetchNikkeiMarkets } from '@/infrastructures/localAPI/rssFeed/nikkei/markets'
 import { useDispatch } from 'react-redux'
-import { AppDispatch } from '@/redux/store'
+import { AppDispatch } from '@/interfaces/presenters/redux/store'
 import FeedParser from 'feedparser'
 
 type Props = {
   title: string
-  nikkei: { data: FeedParser.Item[] }
+  nikkeiNews: { data: FeedParser.Item[] }
+  nikkeiMarkets: { data: FeedParser.Item[] }
 }
 
-const Page: NextPage<Props> = ({ title, nikkei }) => {
+const Page: NextPage<Props> = ({ title, nikkeiNews, nikkeiMarkets }) => {
   const dispatch = useDispatch()
-  dispatch(set(nikkei.data))
+  dispatch(dataSetForNikkeiNews(nikkeiNews.data))
+  dispatch(dataSetForNikkeiMarkets(nikkeiMarkets.data))
 
   return (
     <React.Fragment>
@@ -31,7 +35,8 @@ const Page: NextPage<Props> = ({ title, nikkei }) => {
 
 Page.propTypes = {
   title: PropsType.string.isRequired,
-  nikkei: PropsType.any.isRequired,
+  nikkeiNews: PropsType.any.isRequired,
+  nikkeiMarkets: PropsType.any.isRequired,
 }
 
 export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
@@ -39,12 +44,14 @@ export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
 
   // TODO: next-redux-wrapperのバージョンが7になったら型が付く
   await dispatch(fetchNikkeiNews() as never)
-  const { nikkei } = store.getState()
+  await dispatch(fetchNikkeiMarkets() as never)
+  const { nikkeiNews, nikkeiMarkets } = store.getState()
 
   return {
     props: {
       title: 'TOP',
-      nikkei,
+      nikkeiNews,
+      nikkeiMarkets,
     },
     revalidate: 1,
   }

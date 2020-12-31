@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import { wrapper } from '@/redux/store'
+import { wrapper } from '@/interfaces/presenters/redux/store'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
 const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
