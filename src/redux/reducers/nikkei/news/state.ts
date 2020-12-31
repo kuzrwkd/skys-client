@@ -1,7 +1,5 @@
 const initialState = {
-  getResponse: {
-    name: '',
-  },
+  data: [],
 }
 
 export default initialState

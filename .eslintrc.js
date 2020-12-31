@@ -38,6 +38,8 @@ module.exports = {
     // ループ以外で++を利用した場合の警告を解除
     'no-plusplus': 'off',
 
+    'consistent-this': ['error', 'self'],
+
     /**
      * typescript-eslint
      */
@@ -50,6 +52,14 @@ module.exports = {
 
         // 未使用の引数の警告を解除
         args: 'none',
+      },
+    ],
+
+    '@typescript-eslint/no-this-alias': [
+      'error',
+      {
+        allowDestructuring: true, // Allow `const { props, state } = this`; false by default
+        allowedNames: ['self'], // Allow `const self = this`; `[]` by default
       },
     ],
 
