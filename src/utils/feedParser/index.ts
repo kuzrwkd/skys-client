@@ -1,7 +1,7 @@
 import FeedParser from 'feedparser'
 import type { NextApiResponse } from 'next'
 
-export default (res: NextApiResponse, rdf: any): void => {
+export default (res: NextApiResponse, rdf: any, categories: string[]): void => {
   const feedparser = new FeedParser({})
 
   const items: FeedParser.Item[] = []
@@ -24,9 +24,10 @@ export default (res: NextApiResponse, rdf: any): void => {
   })
 
   feedparser.on('readable', function (this: typeof feedparser) {
-    let item
+    let item: FeedParser.Item
 
     while ((item = this.read())) {
+      item.categories = categories
       items.push(item)
     }
   })

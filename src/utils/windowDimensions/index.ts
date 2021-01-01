@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 
-export const useWindowDimensions = () => {
+export const useWindowDimensions = (): { width: number; height: number } => {
   const isClient = typeof window === 'object'
   const getWindowDimensions = useCallback(() => {
     return {

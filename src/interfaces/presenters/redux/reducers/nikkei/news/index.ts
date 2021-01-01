@@ -8,7 +8,7 @@ const NikkeiNewsSlice = createSlice({
   name: 'reducers/nikkei/news',
   initialState,
   reducers: {
-    dataSet: (
+    set: (
       state: Draft<StateType>,
       action: PayloadAction<FeedParser.Item[]>
     ) => {
@@ -25,6 +25,6 @@ const NikkeiNewsSlice = createSlice({
   },
 })
 
-export const { dataSet } = NikkeiNewsSlice.actions
+export const { set } = NikkeiNewsSlice.actions
 
 export default NikkeiNewsSlice
