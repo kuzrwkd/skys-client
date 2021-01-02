@@ -2,7 +2,7 @@ const jestConfig = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   roots: ['<rootDir>/src'],
-  setupFilesAfterEnv: ['<rootDir>/test/setupTests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/src/config/test/setupTests.ts'],
   testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
   transform: {
@@ -15,7 +15,7 @@ const jestConfig = {
     // to transform jsx into js rather than leaving it jsx such as the next build requires. you
     // can see this setting in tsconfig.jest.json -> "jsx": "react"
     'ts-jest': {
-      tsconfig: '<rootDir>/test/tsconfig.jest.json',
+      tsconfig: '<rootDir>/src/config/test/tsconfig.jest.json',
     },
   },
 }
