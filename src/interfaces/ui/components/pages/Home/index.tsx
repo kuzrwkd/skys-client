@@ -21,6 +21,7 @@ import ReutersLogo from '../../../images/logo/reuters.svg'
 
 const LOGO_HEIGHT = 40
 const ARTICLE_TITLE_TOTAL_PADDING = 16
+const ARTICLE_TITLE_BORDER = 1
 const ITEM_SIZE = 112
 
 dayjs.locale('ja')
@@ -67,7 +68,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Page: FC = () => {
   let { height } = useWindowDimensions()
-  height = height - (LOGO_HEIGHT + ARTICLE_TITLE_TOTAL_PADDING)
+  height =
+    height - (LOGO_HEIGHT + ARTICLE_TITLE_TOTAL_PADDING + ARTICLE_TITLE_BORDER)
 
   const classes = useStyles()
 
