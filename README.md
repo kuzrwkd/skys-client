@@ -10,11 +10,15 @@ NEXT_PUBLIC_RSS_BASE_URL='https://assets.wor.jp/rss/rdf/'
 NEXT_PUBLIC_API_BASE_URL='http://localhost:3000/api/'
 ```
 
+&nbsp;
+
 `.env.local` を作成後にローカルdev環境を起動します
 
 ```bash
 yarn dev
 ```
+
+&nbsp;
 
 ブラウザを開いて `localhost:3000` へアクセスしてください
 
