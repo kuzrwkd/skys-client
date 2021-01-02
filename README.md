@@ -17,3 +17,7 @@ yarn dev
 ```
 
 ブラウザを開いて `localhost:3000` へアクセスしてください
+
+下記画面を表示できれば完了です
+
+![screenshot](./brand/screen.png "スクリーンショット")
