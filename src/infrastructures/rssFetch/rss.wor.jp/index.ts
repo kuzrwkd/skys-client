@@ -9,7 +9,7 @@ export default (
 ): void => {
   feedparser(
     res,
-    fetch(`${process.env.NEXT_PUBLIC_RSS_BASE_URL}${path}`),
+    fetch(`${process.env.NEXT_PUBLIC_RSS_SERVICE_BASE_URL}${path}`),
     categories
   )
 }
