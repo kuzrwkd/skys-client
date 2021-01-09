@@ -1,7 +1,6 @@
-import rootReducer from './reducers/rootReducers'
+import rootReducer from './reducers/rss/rootReducers'
 import { configureStore } from '@reduxjs/toolkit'
 import { createWrapper } from 'next-redux-wrapper'
-// import logger from 'redux-logger'
 
 const isDev = process.env.NODE_ENV === 'development'
 

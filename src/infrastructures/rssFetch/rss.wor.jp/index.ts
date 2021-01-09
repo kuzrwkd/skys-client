@@ -1,6 +1,6 @@
 import fetch from 'node-fetch'
 import type { NextApiResponse } from 'next'
-import feedparser from '@/utils/feedParser'
+import feedparser from '@/applications/usecases/stateless/feedParser'
 
 export default (
   res: NextApiResponse,
