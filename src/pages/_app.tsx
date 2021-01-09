@@ -2,7 +2,13 @@ import React, { FC } from 'react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { wrapper } from '@/interfaces/presenters/redux/store'
+import {
+  ThemeProvider as MaterialUIThemeProvider,
+  StylesProvider,
+} from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
+
+import theme from '@/interfaces/ui/styles/theme/default'
 
 const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   React.useEffect(() => {
@@ -21,8 +27,12 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <CssBaseline />
-      <Component {...pageProps} />
+      <StylesProvider injectFirst>
+        <MaterialUIThemeProvider theme={theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </MaterialUIThemeProvider>
+      </StylesProvider>
     </React.Fragment>
   )
 }
