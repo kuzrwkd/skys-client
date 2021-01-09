@@ -1,13 +1,17 @@
 import React, { ReactElement } from 'react'
-import Document, { Html, Head, Main, NextScript } from 'next/document'
-import { ServerStyleSheets } from '@material-ui/core/styles'
+import NextDocument, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+  DocumentInitialProps,
+} from 'next/document'
+import { RenderPageResult } from 'next/dist/next-server/lib/utils'
+import { ServerStyleSheet } from 'styled-components'
+import { ServerStyleSheets as MaterialServerStyleSheets } from '@material-ui/core'
 
-class AppDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps }
-  }
-
+class AppDocument extends NextDocument {
   render(): ReactElement {
     return (
       <Html lang="ja-JP">
@@ -28,25 +32,41 @@ class AppDocument extends Document {
 
 // `getInitialProps` belongs to `_document` (instead of `_app`),
 // it's compatible with server-side generation (SSG).
-AppDocument.getInitialProps = async (ctx) => {
+AppDocument.getInitialProps = async (
+  ctx: DocumentContext
+): Promise<DocumentInitialProps> => {
   // Render app and page and get the context of the page with collected side effects.
-  const sheets = new ServerStyleSheets()
+  const styledComponentsSheet = new ServerStyleSheet()
+  const materialUiSheets = new MaterialServerStyleSheets()
   const originalRenderPage = ctx.renderPage
 
-  ctx.renderPage = () =>
-    originalRenderPage({
-      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
-    })
+  try {
+    ctx.renderPage = (): RenderPageResult | Promise<RenderPageResult> =>
+      originalRenderPage({
+        enhanceApp: (App) => (
+          props
+        ): React.ReactElement<{
+          sheet: ServerStyleSheet
+        }> =>
+          styledComponentsSheet.collectStyles(
+            materialUiSheets.collect(<App {...props} />)
+          ),
+      })
 
-  const initialProps = await Document.getInitialProps(ctx)
-
-  return {
-    ...initialProps,
-    // Styles fragment is rendered after the app and page rendering finish.
-    styles: [
-      ...React.Children.toArray(initialProps.styles),
-      sheets.getStyleElement(),
-    ],
+    const initialProps = await NextDocument.getInitialProps(ctx)
+    return {
+      ...initialProps,
+      // Styles fragment is rendered after the app and page rendering finish.
+      styles: [
+        <React.Fragment key="styles">
+          {initialProps.styles}
+          {styledComponentsSheet.getStyleElement()}
+          {materialUiSheets.getStyleElement()}
+        </React.Fragment>,
+      ],
+    }
+  } finally {
+    styledComponentsSheet.seal()
   }
 }
 
