@@ -12,10 +12,12 @@ NEXT_PUBLIC_API_BASE_URL='http://localhost:3000/api/'
 
 &nbsp;
 
-`.env.local` を作成後にローカルdev環境を起動します
+`.env.local` を作成後にローカル環境を起動します
 
 ```bash
-yarn dev
+yarn build
+↓
+yarn start
 ```
 
 &nbsp;
