@@ -17,9 +17,7 @@ NEXT_PUBLIC_API_BASE_URL='http://localhost:3000/api/'
 `.env.local` を作成後にローカル環境を起動します
 
 ```bash
-yarn build
-↓
-yarn start
+yarn dev
 ```
 
 &nbsp;
