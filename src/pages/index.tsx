@@ -3,9 +3,9 @@ import React from 'react'
 import { NextPage } from 'next'
 import Home from '@/interfaces/ui/components/pages/Home'
 import PropsType from 'prop-types'
-import { wrapper } from '@/interfaces/presenters/redux/store'
+import { wrapper } from '@/interfaces/controllers/redux/store'
 import { useDispatch } from 'react-redux'
-import { AppDispatch } from '@/interfaces/presenters/redux/store'
+import { AppDispatch } from '@/interfaces/controllers/redux/store'
 import FeedParser from 'feedparser'
 import { set as dataSetForNikkeiNews } from '@/interfaces/presenters/redux/reducers/rss/nikkei/news'
 import { set as dataSetForNikkeiMarkets } from '@/interfaces/presenters/redux/reducers/rss/nikkei/markets'
@@ -27,26 +27,28 @@ import { set as dataSetBloombergEconomy } from '@/interfaces/presenters/redux/re
 import { set as dataSetBloombergMarkets } from '@/interfaces/presenters/redux/reducers/rss/bloomberg/markets'
 import { set as dataSetBloombergOverseas } from '@/interfaces/presenters/redux/reducers/rss/bloomberg/overseas'
 import { set as dataSetBloombergTop } from '@/interfaces/presenters/redux/reducers/rss/bloomberg/top'
-import { fetchNikkeiNews } from '@/infrastructures/localAPI/rssFeed/nikkei/news'
-import { fetchNikkeiMarkets } from '@/infrastructures/localAPI/rssFeed/nikkei/markets'
-import { fetchNikkeiTechnology } from '@/infrastructures/localAPI/rssFeed/nikkei/technology'
-import { fetchNikkeiBusiness } from '@/infrastructures/localAPI/rssFeed/nikkei/business'
-import { fetchNikkeiEconomy } from '@/infrastructures/localAPI/rssFeed/nikkei/economy'
-import { fetchReutersBusiness } from '@/infrastructures/localAPI/rssFeed/reuters/business'
-import { fetchReutersEconomy } from '@/infrastructures/localAPI/rssFeed/reuters/economy'
-import { fetchReutersForex } from '@/infrastructures/localAPI/rssFeed/reuters/forex'
-import { fetchReutersOddlynough } from '@/infrastructures/localAPI/rssFeed/reuters/oddlynough'
-import { fetchReutersOil } from '@/infrastructures/localAPI/rssFeed/reuters/oil'
-import { fetchReutersStock } from '@/infrastructures/localAPI/rssFeed/reuters/stock'
-import { fetchReutersTechnology } from '@/infrastructures/localAPI/rssFeed/reuters/technology'
-import { fetchReutersTop } from '@/infrastructures/localAPI/rssFeed/reuters/top'
-import { fetchReutersWorld } from '@/infrastructures/localAPI/rssFeed/reuters/world'
-import { fetchBloombergCommentary } from '@/infrastructures/localAPI/rssFeed/bloomberg/commentary'
-import { fetchBloombergDomestic } from '@/infrastructures/localAPI/rssFeed/bloomberg/domestic'
-import { fetchBloombergEconomy } from '@/infrastructures/localAPI/rssFeed/bloomberg/economy'
-import { fetchBloombergMarkets } from '@/infrastructures/localAPI/rssFeed/bloomberg/markets'
-import { fetchBloombergOverseas } from '@/infrastructures/localAPI/rssFeed/bloomberg/overseas'
-import { fetchBloombergTop } from '@/infrastructures/localAPI/rssFeed/bloomberg/top'
+import { set as dataSetCoinTelegraph } from '@/interfaces/presenters/redux/reducers/rss/cointelegraph'
+import { fetchNikkeiNews } from '@/infrastructures/local/rssFeed/nikkei/news'
+import { fetchNikkeiMarkets } from '@/infrastructures/local/rssFeed/nikkei/markets'
+import { fetchNikkeiTechnology } from '@/infrastructures/local/rssFeed/nikkei/technology'
+import { fetchNikkeiBusiness } from '@/infrastructures/local/rssFeed/nikkei/business'
+import { fetchNikkeiEconomy } from '@/infrastructures/local/rssFeed/nikkei/economy'
+import { fetchReutersBusiness } from '@/infrastructures/local/rssFeed/reuters/business'
+import { fetchReutersEconomy } from '@/infrastructures/local/rssFeed/reuters/economy'
+import { fetchReutersForex } from '@/infrastructures/local/rssFeed/reuters/forex'
+import { fetchReutersOddlynough } from '@/infrastructures/local/rssFeed/reuters/oddlynough'
+import { fetchReutersOil } from '@/infrastructures/local/rssFeed/reuters/oil'
+import { fetchReutersStock } from '@/infrastructures/local/rssFeed/reuters/stock'
+import { fetchReutersTechnology } from '@/infrastructures/local/rssFeed/reuters/technology'
+import { fetchReutersTop } from '@/infrastructures/local/rssFeed/reuters/top'
+import { fetchReutersWorld } from '@/infrastructures/local/rssFeed/reuters/world'
+import { fetchBloombergCommentary } from '@/infrastructures/local/rssFeed/bloomberg/commentary'
+import { fetchBloombergDomestic } from '@/infrastructures/local/rssFeed/bloomberg/domestic'
+import { fetchBloombergEconomy } from '@/infrastructures/local/rssFeed/bloomberg/economy'
+import { fetchBloombergMarkets } from '@/infrastructures/local/rssFeed/bloomberg/markets'
+import { fetchBloombergOverseas } from '@/infrastructures/local/rssFeed/bloomberg/overseas'
+import { fetchBloombergTop } from '@/infrastructures/local/rssFeed/bloomberg/top'
+import { fetchCoinTelegraph } from '@/infrastructures/local/rssFeed/cointelegraph'
 
 type Props = {
   title: string
@@ -70,6 +72,7 @@ type Props = {
   bloombergMarkets: { data: FeedParser.Item[] }
   bloombergOverseas: { data: FeedParser.Item[] }
   bloombergTop: { data: FeedParser.Item[] }
+  cointelegraphAll: { data: FeedParser.Item[] }
 }
 
 const Page: NextPage<Props> = ({
@@ -94,6 +97,7 @@ const Page: NextPage<Props> = ({
   bloombergMarkets,
   bloombergOverseas,
   bloombergTop,
+  cointelegraphAll,
 }) => {
   const dispatch = useDispatch()
   dispatch(dataSetForNikkeiNews(nikkeiNews.data))
@@ -117,6 +121,7 @@ const Page: NextPage<Props> = ({
   dispatch(dataSetBloombergMarkets(bloombergMarkets.data))
   dispatch(dataSetBloombergOverseas(bloombergOverseas.data))
   dispatch(dataSetBloombergTop(bloombergTop.data))
+  dispatch(dataSetCoinTelegraph(cointelegraphAll.data))
 
   return (
     <React.Fragment>
@@ -150,6 +155,7 @@ Page.propTypes = {
   bloombergMarkets: PropsType.any.isRequired,
   bloombergOverseas: PropsType.any.isRequired,
   bloombergTop: PropsType.any.isRequired,
+  cointelegraphAll: PropsType.any.isRequired,
 }
 
 export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
@@ -177,6 +183,7 @@ export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
     dispatch(fetchBloombergMarkets() as never),
     dispatch(fetchBloombergOverseas() as never),
     dispatch(fetchBloombergTop() as never),
+    dispatch(fetchCoinTelegraph() as never),
   ])
 
   const {
@@ -200,6 +207,7 @@ export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
     bloombergMarkets,
     bloombergOverseas,
     bloombergTop,
+    cointelegraphAll,
   } = store.getState()
 
   return {
@@ -225,6 +233,7 @@ export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
       bloombergMarkets,
       bloombergOverseas,
       bloombergTop,
+      cointelegraphAll,
     },
     revalidate: 1,
   }

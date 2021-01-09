@@ -18,6 +18,7 @@ import { useWindowDimensions } from '@/applications/usecases/stateful/windowDime
 import NikkeiLogo from '../../../images/logo/nikkei.svg'
 import BloombergLogo from '../../../images/logo/bloomberg.svg'
 import ReutersLogo from '../../../images/logo/reuters.svg'
+import CointelegraphLogo from '../../../images/logo/cointelegraph.svg'
 
 const LOGO_HEIGHT = 40
 const ARTICLE_TITLE_TOTAL_PADDING = 16
@@ -60,8 +61,8 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       alignItems: 'center',
     },
-    listItemRelativeTime: {
-      marginLeft: 8,
+    listItemTime: {
+      marginRight: 8,
     },
   })
 )
@@ -94,6 +95,7 @@ const Page: FC = () => {
     bloombergMarkets,
     bloombergOverseas,
     bloombergTop,
+    cointelegraphAll,
   } = useSelector((state) => state)
 
   const nikkei = [
@@ -146,6 +148,15 @@ const Page: FC = () => {
     )
     .sort((a, b) => (dayjs(a.date).isAfter(dayjs(b.date)) ? -1 : 1))
 
+  const cointelegraph = [...cointelegraphAll.data]
+    .filter(
+      (element, index, self) =>
+        self.findIndex(
+          (e) => e.title === element.title || e.link === element.link
+        ) === index
+    )
+    .sort((a, b) => (dayjs(a.date).isAfter(dayjs(b.date)) ? -1 : 1))
+
   const nikkeiRenderRow = (props: ListChildComponentProps) => {
     const { index, style } = props
     const item = nikkei[index]
@@ -163,8 +174,13 @@ const Page: FC = () => {
             </Link>
           </div>
           <div className={classes.listItemMetaBox}>
-            <Chip variant="outlined" size="small" label={category} />
-            <div className={classes.listItemRelativeTime}>{relativeTime}</div>
+            <Chip
+              variant="outlined"
+              size="small"
+              label={category}
+              className={classes.listItemTime}
+            />
+            <div>{relativeTime}</div>
           </div>
         </div>
       </ListItem>
@@ -188,8 +204,13 @@ const Page: FC = () => {
             </Link>
           </div>
           <div className={classes.listItemMetaBox}>
-            <Chip variant="outlined" size="small" label={category} />
-            <div className={classes.listItemRelativeTime}>{relativeTime}</div>
+            <Chip
+              variant="outlined"
+              size="small"
+              label={category}
+              className={classes.listItemTime}
+            />
+            <div>{relativeTime}</div>
           </div>
         </div>
       </ListItem>
@@ -213,8 +234,45 @@ const Page: FC = () => {
             </Link>
           </div>
           <div className={classes.listItemMetaBox}>
-            <Chip variant="outlined" size="small" label={category} />
-            <div className={classes.listItemRelativeTime}>{relativeTime}</div>
+            <Chip
+              variant="outlined"
+              size="small"
+              label={category}
+              className={classes.listItemTime}
+            />
+            <div>{relativeTime}</div>
+          </div>
+        </div>
+      </ListItem>
+    )
+  }
+
+  const cointelegraphRenderRow = (props: ListChildComponentProps) => {
+    const { index, style } = props
+    const item = cointelegraph[index]
+    const title = item.title
+    const url = item.link
+    const relativeTime = dayjs().to(dayjs(item.date))
+    const category = item.categories[0]
+
+    return (
+      <ListItem className={classes.listItem} style={style} key={index}>
+        <div>
+          <div className={classes.listItemTitle}>
+            <Link href={url} target="_blank" rel="noopener noreferrer">
+              <ListItemText primary={title} />
+            </Link>
+          </div>
+          <div className={classes.listItemMetaBox}>
+            {category !== '' && (
+              <Chip
+                variant="outlined"
+                size="small"
+                label={category}
+                className={classes.listItemTime}
+              />
+            )}
+            <div>{relativeTime}</div>
           </div>
         </div>
       </ListItem>
@@ -225,8 +283,8 @@ const Page: FC = () => {
     <DefaultLayout>
       <React.Fragment>
         <Container maxWidth="xl" className={classes.container}>
-          <Grid container spacing={3}>
-            <Grid item xs={4}>
+          <Grid container spacing={1}>
+            <Grid item xs={3}>
               <article className={classes.root}>
                 <header>
                   <h2 className={classes.articleTitle}>
@@ -251,7 +309,7 @@ const Page: FC = () => {
                 </NoSsr>
               </article>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={3}>
               <article className={classes.root}>
                 <header>
                   <h2 className={classes.articleTitle}>
@@ -276,7 +334,7 @@ const Page: FC = () => {
                 </NoSsr>
               </article>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={3}>
               <article className={classes.root}>
                 <header>
                   <h2 className={classes.articleTitle}>
@@ -294,6 +352,31 @@ const Page: FC = () => {
                           itemCount={bloomberg.length}
                         >
                           {bloombergRenderRow}
+                        </List>
+                      )}
+                    </AutoSizer>
+                  </div>
+                </NoSsr>
+              </article>
+            </Grid>
+            <Grid item xs={3}>
+              <article className={classes.root}>
+                <header>
+                  <h2 className={classes.articleTitle}>
+                    <CointelegraphLogo className={classes.logo} />
+                  </h2>
+                </header>
+                <NoSsr>
+                  <div style={{ height }}>
+                    <AutoSizer>
+                      {({ height, width }) => (
+                        <List
+                          height={height}
+                          width={width}
+                          itemSize={ITEM_SIZE}
+                          itemCount={cointelegraph.length}
+                        >
+                          {cointelegraphRenderRow}
                         </List>
                       )}
                     </AutoSizer>

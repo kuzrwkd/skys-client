@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction, Draft } from '@reduxjs/toolkit'
 import initialState from './state'
 import { StateType } from './types'
-import { fetchReutersTechnology } from '@/infrastructures/localAPI/rssFeed/reuters/technology'
+import { fetchReutersTechnology } from '@/infrastructures/local/rssFeed/reuters/technology'
 import FeedParser from 'feedparser'
 
 const ReutersTechnologySlice = createSlice({

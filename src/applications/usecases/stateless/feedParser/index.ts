@@ -1,12 +1,12 @@
 import FeedParser from 'feedparser'
 import type { NextApiResponse } from 'next'
 
-export default (res: NextApiResponse, rdf: any, categories: string[]): void => {
+export default (res: NextApiResponse, rss: any, categories: string[]): void => {
   const feedparser = new FeedParser({})
 
   const items: FeedParser.Item[] = []
 
-  rdf.then(
+  rss.then(
     function (res) {
       if (res.status !== 200) {
         throw new Error('Bad status code')

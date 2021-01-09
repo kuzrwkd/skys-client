@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction, Draft } from '@reduxjs/toolkit'
 import initialState from './state'
 import { StateType } from './types'
-import { fetchBloombergEconomy } from '@/infrastructures/localAPI/rssFeed/bloomberg/economy'
+import { fetchBloombergEconomy } from '@/infrastructures/local/rssFeed/bloomberg/economy'
 import FeedParser from 'feedparser'
 
 const BloombergEconomySlice = createSlice({

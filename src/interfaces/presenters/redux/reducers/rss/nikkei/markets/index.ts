@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction, Draft } from '@reduxjs/toolkit'
 import initialState from './state'
 import { StateType } from './types'
-import { fetchNikkeiMarkets } from '@/infrastructures/localAPI/rssFeed/nikkei/markets'
+import { fetchNikkeiMarkets } from '@/infrastructures/local/rssFeed/nikkei/markets'
 import FeedParser from 'feedparser'
 
 const NikkeiMarketsSlice = createSlice({

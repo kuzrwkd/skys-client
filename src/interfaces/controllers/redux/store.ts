@@ -1,4 +1,4 @@
-import rootReducer from './reducers/rss/rootReducers'
+import rootReducer from '@/interfaces/presenters/redux/reducers/rss/rootReducers'
 import { configureStore } from '@reduxjs/toolkit'
 import { createWrapper } from 'next-redux-wrapper'
 

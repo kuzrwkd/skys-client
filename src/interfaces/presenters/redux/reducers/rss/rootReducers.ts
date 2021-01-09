@@ -19,6 +19,7 @@ import bloombergEconomy from './bloomberg/economy'
 import bloombergMarkets from './bloomberg/markets'
 import bloombergOverseas from './bloomberg/overseas'
 import bloombergTop from './bloomberg/top'
+import cointelegraph from './cointelegraph'
 
 export const rootReducer = combineReducers({
   nikkeiNews: nikkeiNews.reducer,
@@ -41,6 +42,7 @@ export const rootReducer = combineReducers({
   bloombergMarkets: bloombergMarkets.reducer,
   bloombergOverseas: bloombergOverseas.reducer,
   bloombergTop: bloombergTop.reducer,
+  cointelegraphAll: cointelegraph.reducer,
 })
 
 export default rootReducer
