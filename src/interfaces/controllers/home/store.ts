@@ -3,7 +3,6 @@ import { configureStore } from '@reduxjs/toolkit'
 import { createWrapper } from 'next-redux-wrapper'
 
 const isDev = process.env.NODE_ENV === 'development'
-
 const makeStore = () =>
   configureStore({
     reducer: rootReducer,
