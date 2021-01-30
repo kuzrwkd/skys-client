@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "outDir": "dist",
+    "noEmit": false // Next.jsはBebelを使用してTypeScriptをコンパイルするので、TSコンパイラはjsを出力しない。設定を上書きする。
+  },
+  "include": ["src/applications/usecases/server"]
+}
