@@ -1,38 +1,15 @@
+import { UseCase } from '@/applications/usecases/base'
+import { FeedParserServices } from '@/domains/services/feedParser'
+import { RssWorJpRepository } from '@/domains/repositories/external/http/rss.wor.jp'
 import FeedParser from 'feedparser'
-import type { NextApiResponse } from 'next'
 
-export default (res: NextApiResponse, rss: any, categories: string[]): void => {
-  const feedparser = new FeedParser({})
-
-  const items: FeedParser.Item[] = []
-
-  rss.then(
-    function (res) {
-      if (res.status !== 200) {
-        throw new Error('Bad status code')
-      } else {
-        res.body.pipe(feedparser)
-      }
-    },
-    function (error) {
-      console.log(error)
-    }
-  )
-
-  feedparser.on('error', function (error) {
-    console.log(error)
-  })
-
-  feedparser.on('readable', function (this: typeof feedparser) {
-    let item: FeedParser.Item
-
-    while ((item = this.read())) {
-      item.categories = categories
-      items.push(item)
-    }
-  })
-
-  feedparser.on('end', () => {
-    res.json(items)
-  })
+export class FeedParserUseCase extends UseCase {
+  public static feedParser(
+    url: string,
+    categories: string[]
+  ): FeedParser.Item[] {
+    const res = RssWorJpRepository.readRss(`${url}`)
+    FeedParserServices.feedParser(res, categories)
+    return FeedParserServices.rssItem
+  }
 }

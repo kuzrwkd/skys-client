@@ -1,6 +1,8 @@
+import { RssFetchController } from '@/interfaces/controllers/api/rss'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import rssFetch from '@/infrastructures/rssFetch/rss.wor.jp'
 
 export default (_: NextApiRequest, res: NextApiResponse): void => {
-  rssFetch(res, 'reuters/stock.rdf', ['株式市場'])
+  const controller = new RssFetchController('reuters/stock.rdf', ['株式市場'])
+  const data = controller.rssFetch()
+  res.json(data)
 }
