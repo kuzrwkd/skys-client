@@ -28,7 +28,7 @@ import { set as dataSetBloombergEconomy } from '@/interfaces/presenters/redux/re
 import { set as dataSetBloombergMarkets } from '@/interfaces/presenters/redux/reducers/rss/bloomberg/markets'
 import { set as dataSetBloombergOverseas } from '@/interfaces/presenters/redux/reducers/rss/bloomberg/overseas'
 import { set as dataSetBloombergTop } from '@/interfaces/presenters/redux/reducers/rss/bloomberg/top'
-import { set as dataSetCoinTelegraph } from '@/interfaces/presenters/redux/reducers/rss/cointelegraph'
+// import { set as dataSetCoinTelegraph } from '@/interfaces/presenters/redux/reducers/rss/cointelegraph'
 
 type Props = {
   title: string
@@ -77,7 +77,7 @@ const Page: NextPage<Props> = ({
   bloombergMarkets,
   bloombergOverseas,
   bloombergTop,
-  cointelegraphAll,
+  // cointelegraphAll,
 }) => {
   const dispatch = useDispatch()
   dispatch(dataSetForNikkeiNews(nikkeiNews.data))
@@ -101,7 +101,7 @@ const Page: NextPage<Props> = ({
   dispatch(dataSetBloombergMarkets(bloombergMarkets.data))
   dispatch(dataSetBloombergOverseas(bloombergOverseas.data))
   dispatch(dataSetBloombergTop(bloombergTop.data))
-  dispatch(dataSetCoinTelegraph(cointelegraphAll.data))
+  // dispatch(dataSetCoinTelegraph(cointelegraphAll.data))
 
   return (
     <React.Fragment>
@@ -135,7 +135,7 @@ Page.propTypes = {
   bloombergMarkets: PropsType.any.isRequired,
   bloombergOverseas: PropsType.any.isRequired,
   bloombergTop: PropsType.any.isRequired,
-  cointelegraphAll: PropsType.any.isRequired,
+  // cointelegraphAll: PropsType.any.isRequired,
 }
 
 export const getStaticProps = homeGetStaticProps
