@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import { wrapper } from '@/interfaces/controllers/redux/store'
 import { ThemeProvider as StyledComponentsThemeProvider } from 'styled-components'
 import {
   ThemeProvider as MaterialUIThemeProvider,
@@ -40,4 +39,4 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   )
 }
 
-export default wrapper.withRedux(App)
+export default App
