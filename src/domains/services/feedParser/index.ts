@@ -1,15 +1,21 @@
 import FeedParser from 'feedparser'
 import { Services } from '@/domains/services/base'
+import type { NextApiResponse } from 'next'
 
 export class FeedParserServices extends Services {
   static rssItem: FeedParser.Item[]
 
   /**
    *
+   * @param res
    * @param rss
    * @param categories
    */
-  public static feedParser(rss: any, categories: string[]): void {
+  public static feedParser(
+    res: NextApiResponse,
+    rss: any,
+    categories: string[]
+  ): void {
     const feedparser: FeedParser = new FeedParser({})
 
     const items: FeedParser.Item[] = []
@@ -41,7 +47,7 @@ export class FeedParserServices extends Services {
     })
 
     feedparser.on('end', () => {
-      this.rssItem = items
+      res.json(items)
     })
   }
 }

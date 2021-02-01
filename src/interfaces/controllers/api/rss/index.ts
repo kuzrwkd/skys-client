@@ -1,19 +1,22 @@
 import { Controller } from '@/interfaces/controllers/base'
 import { FeedParserUseCase } from '@/applications/usecases/stateless/feedParser'
-import FeedParser from 'feedparser'
+import type { NextApiResponse } from 'next'
 
-export class RssFetchController extends Controller {
+export class RssWorJpFetchController extends Controller {
   public url: string
 
-  constructor(public path: string, public categories: string[]) {
+  constructor(
+    public res: NextApiResponse,
+    public path: string,
+    public categories: string[]
+  ) {
     super()
     this.url = `${this.rssWorJpBaseURL}${this.path}`
   }
 
-  rssFetch(): FeedParser.Item[] | undefined {
+  rssFetch(): void {
     if (typeof this.url !== 'undefined') {
-      return FeedParserUseCase.feedParser(this.url, this.categories)
+      FeedParserUseCase.feedParser(this.res, this.url, this.categories)
     }
-    return undefined
   }
 }

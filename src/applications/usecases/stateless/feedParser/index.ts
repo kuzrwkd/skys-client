@@ -1,15 +1,15 @@
 import { UseCase } from '@/applications/usecases/base'
 import { FeedParserServices } from '@/domains/services/feedParser'
 import { RssWorJpRepository } from '@/domains/repositories/external/http/rss.wor.jp'
-import FeedParser from 'feedparser'
+import type { NextApiResponse } from 'next'
 
 export class FeedParserUseCase extends UseCase {
   public static feedParser(
+    res: NextApiResponse,
     url: string,
     categories: string[]
-  ): FeedParser.Item[] {
-    const res = RssWorJpRepository.readRss(`${url}`)
-    FeedParserServices.feedParser(res, categories)
-    return FeedParserServices.rssItem
+  ): void {
+    const rss = RssWorJpRepository.readRss(`${url}`)
+    FeedParserServices.feedParser(res, rss, categories)
   }
 }
