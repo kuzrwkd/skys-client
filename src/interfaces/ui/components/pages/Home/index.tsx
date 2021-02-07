@@ -27,60 +27,9 @@ const useStyles = makeStyles(() =>
 const Page: FC = () => {
   const classes = useStyles()
 
-  const {
-    nikkeiNews,
-    nikkeiMarkets,
-    nikkeiTechnology,
-    nikkeiBusiness,
-    nikkeiEconomy,
-    reutersBusiness,
-    reutersEconomy,
-    reutersForex,
-    reutersOddlynough,
-    reutersOil,
-    reutersStock,
-    reutersTechnology,
-    reutersTop,
-    reutersWorld,
-    bloombergCommentary,
-    bloombergDomestic,
-    bloombergEconomy,
-    bloombergMarkets,
-    bloombergOverseas,
-    bloombergTop,
-    cointelegraphAll,
-  } = useSelector((state) => state)
-
-  const nikkei = [
-    ...nikkeiNews.data,
-    ...nikkeiMarkets.data,
-    ...nikkeiTechnology.data,
-    ...nikkeiBusiness.data,
-    ...nikkeiEconomy.data,
-  ]
-
-  const reuters = [
-    ...reutersBusiness.data,
-    ...reutersEconomy.data,
-    ...reutersForex.data,
-    ...reutersOddlynough.data,
-    ...reutersOil.data,
-    ...reutersStock.data,
-    ...reutersTechnology.data,
-    ...reutersTop.data,
-    ...reutersWorld.data,
-  ]
-
-  const bloomberg = [
-    ...bloombergCommentary.data,
-    ...bloombergDomestic.data,
-    ...bloombergEconomy.data,
-    ...bloombergMarkets.data,
-    ...bloombergOverseas.data,
-    ...bloombergTop.data,
-  ]
-
-  const cointelegraph = [...cointelegraphAll.data]
+  const { nikkei, reuters, bloomberg, coinTelegraph } = useSelector(
+    (state) => state
+  )
 
   return (
     <DefaultLayout>
@@ -88,22 +37,22 @@ const Page: FC = () => {
         <Container maxWidth="xl" className={classes.container}>
           <Grid container spacing={1}>
             <Grid item xs={3}>
-              <RssList data={nikkei} logoHeight={LOGO_HEIGHT}>
+              <RssList data={nikkei.data} logoHeight={LOGO_HEIGHT}>
                 <NikkeiLogo className={classes.logo} />
               </RssList>
             </Grid>
             <Grid item xs={3}>
-              <RssList data={reuters} logoHeight={LOGO_HEIGHT}>
+              <RssList data={reuters.data} logoHeight={LOGO_HEIGHT}>
                 <ReutersLogo className={classes.logo} />
               </RssList>
             </Grid>
             <Grid item xs={3}>
-              <RssList data={bloomberg} logoHeight={LOGO_HEIGHT}>
+              <RssList data={bloomberg.data} logoHeight={LOGO_HEIGHT}>
                 <BloombergLogo className={classes.logo} />
               </RssList>
             </Grid>
             <Grid item xs={3}>
-              <RssList data={cointelegraph} logoHeight={LOGO_HEIGHT}>
+              <RssList data={coinTelegraph.data} logoHeight={LOGO_HEIGHT}>
                 <CointelegraphLogo className={classes.logo} />
               </RssList>
             </Grid>

@@ -1,15 +1,24 @@
 import { UseCase } from '@/applications/usecases/base'
 import { FeedParserServices } from '@/domains/services/feedParser'
 import { RssWorJpRepository } from '@/domains/repositories/external/http/rss.wor.jp'
-import type { NextApiResponse } from 'next'
+import { RssData } from '@/domains/services/feedParser/types'
 
 export class FeedParserUseCase extends UseCase {
   public static feedParser(
-    res: NextApiResponse,
     url: string,
     categories: string[]
-  ): void {
-    const rss = RssWorJpRepository.readRss(`${url}`)
-    FeedParserServices.feedParser(res, rss, categories)
+  ): Promise<RssData[]> {
+    const promise = new Promise((resolve): void => {
+      const rss = RssWorJpRepository.readRss(`${url}`)
+      FeedParserServices.feedParser(rss, categories, (value): void => {
+        resolve(value)
+      })
+    })
+
+    return promise.then((result: any) => result)
+  }
+
+  public static squeezeFeed(data: RssData[]): RssData[] {
+    return FeedParserServices.squeezeFeed(data)
   }
 }

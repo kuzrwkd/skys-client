@@ -1,53 +1,68 @@
 import FeedParser from 'feedparser'
 import { Services } from '@/domains/services/base'
-import type { NextApiResponse } from 'next'
+import { Response } from 'node-fetch'
+import { RssData } from './types'
+import dayjs from 'dayjs'
 
 export class FeedParserServices extends Services {
-  static rssItem: FeedParser.Item[]
+  static rssItem: RssData[] = []
 
   /**
-   *
-   * @param res
+   * rssフィードのパース
    * @param rss
    * @param categories
+   * @param callback
    */
   public static feedParser(
-    res: NextApiResponse,
-    rss: any,
-    categories: string[]
+    rss: Promise<Response>,
+    categories: string[],
+    callback: (value: RssData[]) => void
   ): void {
     const feedparser: FeedParser = new FeedParser({})
+    const items: RssData[] = []
 
-    const items: FeedParser.Item[] = []
-
-    rss.then(
-      function (res) {
+    rss
+      .then(async (res) => {
         if (res.status !== 200) {
-          throw new Error('Bad status code')
+          throw new Error(`Bad status code. status code is "${res.status}"`)
         } else {
-          res.body.pipe(feedparser)
+          res.body
+            .pipe(feedparser)
+            .on('readable', () => {
+              let item: FeedParser.Item
+
+              while ((item = feedparser.read())) {
+                items.push({
+                  title: item.title,
+                  date: item.date,
+                  link: item.link,
+                  author: item.author,
+                  categories: categories,
+                })
+              }
+            })
+            .on('error', (error) => {
+              console.error(error)
+            })
+            .on('end', () => {
+              this.rssItem = items
+              callback(this.rssItem)
+            })
         }
-      },
-      function (error) {
-        console.log(error)
-      }
-    )
+      })
+      .catch((error) => console.error(error))
+  }
 
-    feedparser.on('error', function (error) {
-      console.log(error)
-    })
-
-    feedparser.on('readable', function (this: typeof feedparser) {
-      let item: FeedParser.Item
-
-      while ((item = this.read())) {
-        item.categories = categories
-        items.push(item)
-      }
-    })
-
-    feedparser.on('end', () => {
-      res.json(items)
-    })
+  public static squeezeFeed(data: RssData[]): RssData[] {
+    return data
+      .filter(
+        (element, index, self) =>
+          self.findIndex(
+            (e) => e.title === element.title || e.link === element.link
+          ) === index
+      )
+      .sort((a, b) =>
+        dayjs(String(a.date)).isAfter(dayjs(String(b.date))) ? -1 : 1
+      )
   }
 }

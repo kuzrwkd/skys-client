@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction, Draft } from '@reduxjs/toolkit'
 import initialState from './state'
 import { StateType } from './types'
-import { fetchCoinTelegraph } from '@/infrastructures/local/rssFeed/cointelegraph'
+import { fetchNikkei } from '@/infrastructures/local/rssFeed/nikkei'
 import FeedParser from 'feedparser'
 
-const CoinTelegraphSlice = createSlice({
-  name: 'reducers/coinTelegraph',
+const fetchNikkeiSlice = createSlice({
+  name: 'reducers/nikkei',
   initialState,
   reducers: {
     set: (
@@ -17,7 +17,7 @@ const CoinTelegraphSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(
-      fetchCoinTelegraph.fulfilled,
+      fetchNikkei.fulfilled,
       (state: Draft<StateType>, action: PayloadAction<FeedParser.Item[]>) => {
         state.data = action.payload
       }
@@ -25,6 +25,6 @@ const CoinTelegraphSlice = createSlice({
   },
 })
 
-export const { set } = CoinTelegraphSlice.actions
+export const { set } = fetchNikkeiSlice.actions
 
-export default CoinTelegraphSlice
+export default fetchNikkeiSlice

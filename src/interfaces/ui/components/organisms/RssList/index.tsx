@@ -60,20 +60,9 @@ const component: FC<Props> = ({ children, data, logoHeight }) => {
 
   const classes = useStyles()
 
-  const feedData = data
-    .filter(
-      (element, index, self) =>
-        self.findIndex(
-          (e) => e.title === element.title || e.link === element.link
-        ) === index
-    )
-    .sort((a, b) =>
-      dayjs(String(a.date)).isAfter(dayjs(String(b.date))) ? -1 : 1
-    )
-
   const row = (props: ListChildComponentProps) => {
     const { index, style } = props
-    const item = feedData[index]
+    const item = data[index]
     const title = item.title
     const url = item.link
     const relativeTime = dayjs().to(dayjs(String(item.date)))
@@ -117,7 +106,7 @@ const component: FC<Props> = ({ children, data, logoHeight }) => {
                   height={height}
                   width={width}
                   itemSize={ITEM_SIZE}
-                  itemCount={feedData.length}
+                  itemCount={data.length}
                 >
                   {row}
                 </List>
