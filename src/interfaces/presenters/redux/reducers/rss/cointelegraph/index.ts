@@ -5,7 +5,7 @@ import { fetchCoinTelegraph } from '@/infrastructures/local/rssFeed/cointelegrap
 import FeedParser from 'feedparser'
 
 const CoinTelegraphSlice = createSlice({
-  name: 'reducers/cointelegraph',
+  name: 'reducers/coinTelegraph',
   initialState,
   reducers: {
     set: (

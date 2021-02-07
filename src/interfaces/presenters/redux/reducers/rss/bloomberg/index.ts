@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction, Draft } from '@reduxjs/toolkit'
 import initialState from './state'
 import { StateType } from './types'
-import { fetchBloombergTop } from '@/infrastructures/local/rssFeed/bloomberg/top'
+import { fetchBloomberg } from '@/infrastructures/local/rssFeed/bloomberg'
 import FeedParser from 'feedparser'
 
-const BloombergTopSlice = createSlice({
-  name: 'reducers/bloomberg/top',
+const BloombergSlice = createSlice({
+  name: 'reducers/bloomberg',
   initialState,
   reducers: {
     set: (
@@ -17,7 +17,7 @@ const BloombergTopSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(
-      fetchBloombergTop.fulfilled,
+      fetchBloomberg.fulfilled,
       (state: Draft<StateType>, action: PayloadAction<FeedParser.Item[]>) => {
         state.data = action.payload
       }
@@ -25,6 +25,6 @@ const BloombergTopSlice = createSlice({
   },
 })
 
-export const { set } = BloombergTopSlice.actions
+export const { set } = BloombergSlice.actions
 
-export default BloombergTopSlice
+export default BloombergSlice

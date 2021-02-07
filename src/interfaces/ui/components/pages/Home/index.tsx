@@ -27,28 +27,9 @@ const useStyles = makeStyles(() =>
 const Page: FC = () => {
   const classes = useStyles()
 
-  const {
-    nikkei,
-    reuters,
-    bloombergCommentary,
-    bloombergDomestic,
-    bloombergEconomy,
-    bloombergMarkets,
-    bloombergOverseas,
-    bloombergTop,
-    cointelegraphAll,
-  } = useSelector((state) => state)
-
-  const bloomberg = [
-    ...bloombergCommentary.data,
-    ...bloombergDomestic.data,
-    ...bloombergEconomy.data,
-    ...bloombergMarkets.data,
-    ...bloombergOverseas.data,
-    ...bloombergTop.data,
-  ]
-
-  const cointelegraph = [...cointelegraphAll.data]
+  const { nikkei, reuters, bloomberg, coinTelegraph } = useSelector(
+    (state) => state
+  )
 
   return (
     <DefaultLayout>
@@ -66,12 +47,12 @@ const Page: FC = () => {
               </RssList>
             </Grid>
             <Grid item xs={3}>
-              <RssList data={bloomberg} logoHeight={LOGO_HEIGHT}>
+              <RssList data={bloomberg.data} logoHeight={LOGO_HEIGHT}>
                 <BloombergLogo className={classes.logo} />
               </RssList>
             </Grid>
             <Grid item xs={3}>
-              <RssList data={cointelegraph} logoHeight={LOGO_HEIGHT}>
+              <RssList data={coinTelegraph.data} logoHeight={LOGO_HEIGHT}>
                 <CointelegraphLogo className={classes.logo} />
               </RssList>
             </Grid>
