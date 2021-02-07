@@ -5,8 +5,6 @@ import { RssData } from './types'
 import dayjs from 'dayjs'
 
 export class FeedParserServices extends Services {
-  static rssItem: RssData[] = []
-
   /**
    * rssフィードのパース
    * @param rss
@@ -24,7 +22,7 @@ export class FeedParserServices extends Services {
     rss
       .then(async (res) => {
         if (res.status !== 200) {
-          throw new Error(`Bad status code. status code is "${res.status}"`)
+          throw new Error(`Bad status code. "${res.status}" url: ${res.url}`)
         } else {
           res.body
             .pipe(feedparser)
@@ -45,12 +43,14 @@ export class FeedParserServices extends Services {
               console.error(error)
             })
             .on('end', () => {
-              this.rssItem = items
-              callback(this.rssItem)
+              callback(items)
             })
         }
       })
-      .catch((error) => console.error(error))
+      .catch((error) => {
+        console.error(error)
+        callback(items)
+      })
   }
 
   public static squeezeFeed(data: RssData[]): RssData[] {
