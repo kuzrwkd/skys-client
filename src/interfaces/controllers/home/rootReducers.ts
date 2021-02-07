@@ -4,15 +4,7 @@ import nikkeiMarkets from '@/interfaces/presenters/redux/reducers/rss/nikkei/mar
 import nikkeiTechnology from '@/interfaces/presenters/redux/reducers/rss/nikkei/technology'
 import nikkeiBusiness from '@/interfaces/presenters/redux/reducers/rss/nikkei/business'
 import nikkeiEconomy from '@/interfaces/presenters/redux/reducers/rss/nikkei/economy'
-import reutersBusiness from '@/interfaces/presenters/redux/reducers/rss/reuters/business'
-import reutersEconomy from '@/interfaces/presenters/redux/reducers/rss/reuters/economy'
-import reutersForex from '@/interfaces/presenters/redux/reducers/rss/reuters/forex'
-import reutersOddlynough from '@/interfaces/presenters/redux/reducers/rss/reuters/oddlynough'
-import reutersOil from '@/interfaces/presenters/redux/reducers/rss/reuters/oil'
-import reutersStock from '@/interfaces/presenters/redux/reducers/rss/reuters/stock'
-import reutersTechnology from '@/interfaces/presenters/redux/reducers/rss/reuters/technology'
-import reutersTop from '@/interfaces/presenters/redux/reducers/rss/reuters/top'
-import reutersWorld from '@/interfaces/presenters/redux/reducers/rss/reuters/world'
+import reuters from '@/interfaces/presenters/redux/reducers/rss/reuters'
 import bloombergCommentary from '@/interfaces/presenters/redux/reducers/rss/bloomberg/commentary'
 import bloombergDomestic from '@/interfaces/presenters/redux/reducers/rss/bloomberg/domestic'
 import bloombergEconomy from '@/interfaces/presenters/redux/reducers/rss/bloomberg/economy'
@@ -27,15 +19,7 @@ export const rootReducer = combineReducers({
   nikkeiTechnology: nikkeiTechnology.reducer,
   nikkeiBusiness: nikkeiBusiness.reducer,
   nikkeiEconomy: nikkeiEconomy.reducer,
-  reutersBusiness: reutersBusiness.reducer,
-  reutersEconomy: reutersEconomy.reducer,
-  reutersForex: reutersForex.reducer,
-  reutersOddlynough: reutersOddlynough.reducer,
-  reutersOil: reutersOil.reducer,
-  reutersStock: reutersStock.reducer,
-  reutersTechnology: reutersTechnology.reducer,
-  reutersTop: reutersTop.reducer,
-  reutersWorld: reutersWorld.reducer,
+  reuters: reuters.reducer,
   bloombergCommentary: bloombergCommentary.reducer,
   bloombergDomestic: bloombergDomestic.reducer,
   bloombergEconomy: bloombergEconomy.reducer,

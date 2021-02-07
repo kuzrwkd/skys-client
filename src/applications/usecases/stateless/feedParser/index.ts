@@ -17,4 +17,8 @@ export class FeedParserUseCase extends UseCase {
 
     return promise.then((result: any) => result)
   }
+
+  public static squeezeFeed(data: RssData[]): RssData[] {
+    return FeedParserServices.squeezeFeed(data)
+  }
 }

@@ -33,15 +33,7 @@ const Page: FC = () => {
     nikkeiTechnology,
     nikkeiBusiness,
     nikkeiEconomy,
-    reutersBusiness,
-    reutersEconomy,
-    reutersForex,
-    reutersOddlynough,
-    reutersOil,
-    reutersStock,
-    reutersTechnology,
-    reutersTop,
-    reutersWorld,
+    reuters,
     bloombergCommentary,
     bloombergDomestic,
     bloombergEconomy,
@@ -57,18 +49,6 @@ const Page: FC = () => {
     ...nikkeiTechnology.data,
     ...nikkeiBusiness.data,
     ...nikkeiEconomy.data,
-  ]
-
-  const reuters = [
-    ...reutersBusiness.data,
-    ...reutersEconomy.data,
-    ...reutersForex.data,
-    ...reutersOddlynough.data,
-    ...reutersOil.data,
-    ...reutersStock.data,
-    ...reutersTechnology.data,
-    ...reutersTop.data,
-    ...reutersWorld.data,
   ]
 
   const bloomberg = [
@@ -93,7 +73,7 @@ const Page: FC = () => {
               </RssList>
             </Grid>
             <Grid item xs={3}>
-              <RssList data={reuters} logoHeight={LOGO_HEIGHT}>
+              <RssList data={reuters.data} logoHeight={LOGO_HEIGHT}>
                 <ReutersLogo className={classes.logo} />
               </RssList>
             </Grid>

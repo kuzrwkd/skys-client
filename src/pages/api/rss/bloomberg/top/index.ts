@@ -1,4 +1,4 @@
-import { RssWorJpFetchController } from '@/interfaces/controllers/api/rss'
+import { RssWorJpFetchController } from '@/interfaces/controllers/api/rssWorJp'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default (_: NextApiRequest, res: NextApiResponse): void => {

@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction, Draft } from '@reduxjs/toolkit'
 import initialState from './state'
 import { StateType } from './types'
-import { fetchReutersBusiness } from '@/infrastructures/local/rssFeed/reuters/business'
+import { fetchReuters } from '@/infrastructures/local/rssFeed/reuters'
 import FeedParser from 'feedparser'
 
-const ReutersBusinessSlice = createSlice({
-  name: 'reducers/reuters/business',
+const ReutersSlice = createSlice({
+  name: 'reducers/reuters',
   initialState,
   reducers: {
     set: (
@@ -17,7 +17,7 @@ const ReutersBusinessSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(
-      fetchReutersBusiness.fulfilled,
+      fetchReuters.fulfilled,
       (state: Draft<StateType>, action: PayloadAction<FeedParser.Item[]>) => {
         state.data = action.payload
       }
@@ -25,6 +25,6 @@ const ReutersBusinessSlice = createSlice({
   },
 })
 
-export const { set } = ReutersBusinessSlice.actions
+export const { set } = ReutersSlice.actions
 
-export default ReutersBusinessSlice
+export default ReutersSlice

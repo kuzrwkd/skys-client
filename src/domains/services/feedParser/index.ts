@@ -2,6 +2,7 @@ import FeedParser from 'feedparser'
 import { Services } from '@/domains/services/base'
 import { Response } from 'node-fetch'
 import { RssData } from './types'
+import dayjs from 'dayjs'
 
 export class FeedParserServices extends Services {
   static rssItem: RssData[] = []
@@ -50,5 +51,18 @@ export class FeedParserServices extends Services {
         }
       })
       .catch((error) => console.error(error))
+  }
+
+  public static squeezeFeed(data: RssData[]): RssData[] {
+    return data
+      .filter(
+        (element, index, self) =>
+          self.findIndex(
+            (e) => e.title === element.title || e.link === element.link
+          ) === index
+      )
+      .sort((a, b) =>
+        dayjs(String(a.date)).isAfter(dayjs(String(b.date))) ? -1 : 1
+      )
   }
 }
