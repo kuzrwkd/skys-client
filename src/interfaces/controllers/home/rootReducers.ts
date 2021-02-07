@@ -1,9 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import nikkeiNews from '@/interfaces/presenters/redux/reducers/rss/nikkei/news'
-import nikkeiMarkets from '@/interfaces/presenters/redux/reducers/rss/nikkei/markets'
-import nikkeiTechnology from '@/interfaces/presenters/redux/reducers/rss/nikkei/technology'
-import nikkeiBusiness from '@/interfaces/presenters/redux/reducers/rss/nikkei/business'
-import nikkeiEconomy from '@/interfaces/presenters/redux/reducers/rss/nikkei/economy'
+import nikkei from '@/interfaces/presenters/redux/reducers/rss/nikkei'
 import reuters from '@/interfaces/presenters/redux/reducers/rss/reuters'
 import bloombergCommentary from '@/interfaces/presenters/redux/reducers/rss/bloomberg/commentary'
 import bloombergDomestic from '@/interfaces/presenters/redux/reducers/rss/bloomberg/domestic'
@@ -14,11 +10,7 @@ import bloombergTop from '@/interfaces/presenters/redux/reducers/rss/bloomberg/t
 import cointelegraph from '@/interfaces/presenters/redux/reducers/rss/cointelegraph'
 
 export const rootReducer = combineReducers({
-  nikkeiNews: nikkeiNews.reducer,
-  nikkeiMarkets: nikkeiMarkets.reducer,
-  nikkeiTechnology: nikkeiTechnology.reducer,
-  nikkeiBusiness: nikkeiBusiness.reducer,
-  nikkeiEconomy: nikkeiEconomy.reducer,
+  nikkei: nikkei.reducer,
   reuters: reuters.reducer,
   bloombergCommentary: bloombergCommentary.reducer,
   bloombergDomestic: bloombergDomestic.reducer,

@@ -8,11 +8,7 @@ import { wrapper } from '@/interfaces/controllers/home/store'
 import { useDispatch } from 'react-redux'
 import FeedParser from 'feedparser'
 
-import { set as dataSetForNikkeiNews } from '@/interfaces/presenters/redux/reducers/rss/nikkei/news'
-import { set as dataSetForNikkeiMarkets } from '@/interfaces/presenters/redux/reducers/rss/nikkei/markets'
-import { set as dataSetForNikkeiTechnology } from '@/interfaces/presenters/redux/reducers/rss/nikkei/technology'
-import { set as dataSetForNikkeiBusiness } from '@/interfaces/presenters/redux/reducers/rss/nikkei/business'
-import { set as dataSetForNikkeiEconomy } from '@/interfaces/presenters/redux/reducers/rss/nikkei/economy'
+import { set as dataSetForNikkei } from '@/interfaces/presenters/redux/reducers/rss/nikkei'
 import { set as dataSetForReuters } from '@/interfaces/presenters/redux/reducers/rss/reuters'
 import { set as dataSetBloombergCommentary } from '@/interfaces/presenters/redux/reducers/rss/bloomberg/commentary'
 import { set as dataSetBloombergDomestic } from '@/interfaces/presenters/redux/reducers/rss/bloomberg/domestic'
@@ -24,11 +20,7 @@ import { set as dataSetBloombergTop } from '@/interfaces/presenters/redux/reduce
 
 type Props = {
   title: string
-  nikkeiNews: { data: FeedParser.Item[] }
-  nikkeiMarkets: { data: FeedParser.Item[] }
-  nikkeiTechnology: { data: FeedParser.Item[] }
-  nikkeiBusiness: { data: FeedParser.Item[] }
-  nikkeiEconomy: { data: FeedParser.Item[] }
+  nikkei: { data: FeedParser.Item[] }
   reuters: { data: FeedParser.Item[] }
   bloombergCommentary: { data: FeedParser.Item[] }
   bloombergDomestic: { data: FeedParser.Item[] }
@@ -41,11 +33,7 @@ type Props = {
 
 const Page: NextPage<Props> = ({
   title,
-  nikkeiNews,
-  nikkeiMarkets,
-  nikkeiTechnology,
-  nikkeiBusiness,
-  nikkeiEconomy,
+  nikkei,
   reuters,
   bloombergCommentary,
   bloombergDomestic,
@@ -56,11 +44,7 @@ const Page: NextPage<Props> = ({
   // cointelegraphAll,
 }) => {
   const dispatch = useDispatch()
-  dispatch(dataSetForNikkeiNews(nikkeiNews.data))
-  dispatch(dataSetForNikkeiMarkets(nikkeiMarkets.data))
-  dispatch(dataSetForNikkeiTechnology(nikkeiTechnology.data))
-  dispatch(dataSetForNikkeiBusiness(nikkeiBusiness.data))
-  dispatch(dataSetForNikkeiEconomy(nikkeiEconomy.data))
+  dispatch(dataSetForNikkei(nikkei.data))
   dispatch(dataSetForReuters(reuters.data))
   dispatch(dataSetBloombergCommentary(bloombergCommentary.data))
   dispatch(dataSetBloombergDomestic(bloombergDomestic.data))
@@ -82,11 +66,7 @@ const Page: NextPage<Props> = ({
 
 Page.propTypes = {
   title: PropsType.string.isRequired,
-  nikkeiNews: PropsType.any.isRequired,
-  nikkeiMarkets: PropsType.any.isRequired,
-  nikkeiTechnology: PropsType.any.isRequired,
-  nikkeiBusiness: PropsType.any.isRequired,
-  nikkeiEconomy: PropsType.any.isRequired,
+  nikkei: PropsType.any.isRequired,
   reuters: PropsType.any.isRequired,
   bloombergCommentary: PropsType.any.isRequired,
   bloombergDomestic: PropsType.any.isRequired,

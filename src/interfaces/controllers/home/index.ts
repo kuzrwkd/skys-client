@@ -1,9 +1,5 @@
 import { AppDispatch, wrapper } from './store'
-import { fetchNikkeiNews } from '@/infrastructures/local/rssFeed/nikkei/news'
-import { fetchNikkeiMarkets } from '@/infrastructures/local/rssFeed/nikkei/markets'
-import { fetchNikkeiTechnology } from '@/infrastructures/local/rssFeed/nikkei/technology'
-import { fetchNikkeiBusiness } from '@/infrastructures/local/rssFeed/nikkei/business'
-import { fetchNikkeiEconomy } from '@/infrastructures/local/rssFeed/nikkei/economy'
+import { fetchNikkei } from '@/infrastructures/local/rssFeed/nikkei'
 import { fetchReuters } from '@/infrastructures/local/rssFeed/reuters'
 import { fetchBloombergCommentary } from '@/infrastructures/local/rssFeed/bloomberg/commentary'
 import { fetchBloombergDomestic } from '@/infrastructures/local/rssFeed/bloomberg/domestic'
@@ -18,11 +14,7 @@ const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
 
   // TODO: next-redux-wrapperのバージョンが7になったら型が付く
   await Promise.all([
-    dispatch(fetchNikkeiNews() as never),
-    dispatch(fetchNikkeiMarkets() as never),
-    dispatch(fetchNikkeiTechnology() as never),
-    dispatch(fetchNikkeiBusiness() as never),
-    dispatch(fetchNikkeiEconomy() as never),
+    dispatch(fetchNikkei() as never),
     dispatch(fetchReuters() as never),
     dispatch(fetchBloombergCommentary() as never),
     dispatch(fetchBloombergDomestic() as never),
@@ -34,11 +26,7 @@ const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
   ])
 
   const {
-    nikkeiNews,
-    nikkeiMarkets,
-    nikkeiTechnology,
-    nikkeiBusiness,
-    nikkeiEconomy,
+    nikkei,
     reuters,
     bloombergCommentary,
     bloombergDomestic,
@@ -52,11 +40,7 @@ const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
   return {
     props: {
       title: 'TOP',
-      nikkeiNews,
-      nikkeiMarkets,
-      nikkeiTechnology,
-      nikkeiBusiness,
-      nikkeiEconomy,
+      nikkei,
       reuters,
       bloombergCommentary,
       bloombergDomestic,

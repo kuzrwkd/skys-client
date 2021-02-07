@@ -28,11 +28,7 @@ const Page: FC = () => {
   const classes = useStyles()
 
   const {
-    nikkeiNews,
-    nikkeiMarkets,
-    nikkeiTechnology,
-    nikkeiBusiness,
-    nikkeiEconomy,
+    nikkei,
     reuters,
     bloombergCommentary,
     bloombergDomestic,
@@ -42,14 +38,6 @@ const Page: FC = () => {
     bloombergTop,
     cointelegraphAll,
   } = useSelector((state) => state)
-
-  const nikkei = [
-    ...nikkeiNews.data,
-    ...nikkeiMarkets.data,
-    ...nikkeiTechnology.data,
-    ...nikkeiBusiness.data,
-    ...nikkeiEconomy.data,
-  ]
 
   const bloomberg = [
     ...bloombergCommentary.data,
@@ -68,7 +56,7 @@ const Page: FC = () => {
         <Container maxWidth="xl" className={classes.container}>
           <Grid container spacing={1}>
             <Grid item xs={3}>
-              <RssList data={nikkei} logoHeight={LOGO_HEIGHT}>
+              <RssList data={nikkei.data} logoHeight={LOGO_HEIGHT}>
                 <NikkeiLogo className={classes.logo} />
               </RssList>
             </Grid>
