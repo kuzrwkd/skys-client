@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { rssFetch } from '@/config/axios'
-import FeedParser from 'feedparser'
+import { RssData } from '@/domains/services/feedParser/types'
 
 export const fetchBloomberg = createAsyncThunk(
   'fetch/bloomberg',
-  async (): Promise<FeedParser.Item[]> => {
+  async (): Promise<RssData[]> => {
     return await rssFetch.get('rss/bloomberg').then((res) => res.data)
   }
 )
