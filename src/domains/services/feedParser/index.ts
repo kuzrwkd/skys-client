@@ -23,7 +23,6 @@ export class FeedParserServices extends Services {
     rss
       .then(async (res) => {
         if (res.status !== 200) {
-          console.log(res)
           throw new Error(`Bad status code. status code is "${res.status}"`)
         } else {
           res.body
