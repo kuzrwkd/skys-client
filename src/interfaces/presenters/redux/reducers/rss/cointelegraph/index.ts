@@ -1,30 +1,43 @@
-import { createSlice, PayloadAction, Draft } from '@reduxjs/toolkit'
+import {
+  createSlice,
+  PayloadAction,
+  Draft,
+  createAction,
+} from '@reduxjs/toolkit'
 import initialState from './state'
 import { StateType } from './types'
+import { HYDRATE } from 'next-redux-wrapper'
 import { fetchCoinTelegraph } from '@/infrastructures/local/rssFeed/cointelegraph'
-import FeedParser from 'feedparser'
+import { RssData } from '@/domains/services/feedParser/types'
 
-const CoinTelegraphSlice = createSlice({
+const hydrate = createAction(HYDRATE)
+
+export const coinTelegraphSlice = createSlice({
   name: 'reducers/coinTelegraph',
   initialState,
   reducers: {
-    set: (
-      state: Draft<StateType>,
-      action: PayloadAction<FeedParser.Item[]>
-    ) => {
+    set: (state: Draft<StateType>, action: PayloadAction<RssData[]>) => {
       state.data = action.payload
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(
-      fetchCoinTelegraph.fulfilled,
-      (state: Draft<StateType>, action: PayloadAction<FeedParser.Item[]>) => {
-        state.data = action.payload
-      }
-    )
+    builder
+      .addCase(hydrate, (state: Draft<StateType>, action) => {
+        return {
+          ...state,
+          data: (action.payload as any)[coinTelegraphSlice.name],
+        }
+      })
+      .addCase(
+        fetchCoinTelegraph.fulfilled,
+        (state: Draft<StateType>, action: PayloadAction<RssData[]>) => {
+          return {
+            ...state,
+            data: action.payload,
+          }
+        }
+      )
   },
 })
 
-export const { set } = CoinTelegraphSlice.actions
-
-export default CoinTelegraphSlice
+export const { set } = coinTelegraphSlice.actions

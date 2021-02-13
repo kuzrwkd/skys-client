@@ -1,4 +1,6 @@
-const initialState = {
+import { StateType } from './types'
+
+const initialState: StateType = {
   data: [],
 }
 

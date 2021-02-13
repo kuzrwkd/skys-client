@@ -1,5 +1,5 @@
-import FeedParser from 'feedparser'
+import { RssData } from '@/domains/services/feedParser/types'
 
 export type StateType = {
-  data: FeedParser.Item[] | []
+  data: RssData[] | []
 }

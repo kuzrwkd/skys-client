@@ -1,8 +1,8 @@
 import React from 'react'
-import FeedParser from 'feedparser'
+import { RssData } from '@/domains/services/feedParser/types'
 
 export type Props = {
   children?: React.ReactNode
-  data: FeedParser.Item[]
+  data: RssData[]
   logoHeight: number
 }

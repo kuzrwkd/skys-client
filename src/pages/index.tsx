@@ -5,51 +5,77 @@ import Home from '@/interfaces/ui/components/pages/Home'
 import PropsType from 'prop-types'
 import homeGetStaticProps from '@/interfaces/controllers/home'
 import { wrapper } from '@/interfaces/controllers/home/store'
-import { useDispatch } from 'react-redux'
-import FeedParser from 'feedparser'
-
-import { set as dataSetForNikkei } from '@/interfaces/presenters/redux/reducers/rss/nikkei'
-import { set as dataSetForReuters } from '@/interfaces/presenters/redux/reducers/rss/reuters'
-import { set as dataSetBloomberg } from '@/interfaces/presenters/redux/reducers/rss/bloomberg'
-import { set as dataSetCoinTelegraph } from '@/interfaces/presenters/redux/reducers/rss/cointelegraph'
+import { RssData } from '@/domains/services/feedParser/types'
 
 type Props = {
   title: string
-  nikkei: { data: FeedParser.Item[] }
-  reuters: { data: FeedParser.Item[] }
-  bloomberg: { data: FeedParser.Item[] }
-  coinTelegraph: { data: FeedParser.Item[] }
+  fetchData: {
+    nikkei: { data: RssData[] }
+    reuters: { data: RssData[] }
+    bloomberg: { data: RssData[] }
+    coinTelegraph: { data: RssData[] }
+  }
 }
 
-const Page: NextPage<Props> = ({
-  title,
-  nikkei,
-  reuters,
-  bloomberg,
-  coinTelegraph,
-}) => {
-  const dispatch = useDispatch()
-  dispatch(dataSetForNikkei(nikkei.data))
-  dispatch(dataSetForReuters(reuters.data))
-  dispatch(dataSetBloomberg(bloomberg.data))
-  dispatch(dataSetCoinTelegraph(coinTelegraph.data))
-
+const Page: NextPage<Props> = ({ title, fetchData }) => {
   return (
     <React.Fragment>
       <Head>
         <title>{title}</title>
       </Head>
-      <Home />
+      <Home fetchData={fetchData} />
     </React.Fragment>
   )
 }
 
 Page.propTypes = {
   title: PropsType.string.isRequired,
-  nikkei: PropsType.any.isRequired,
-  reuters: PropsType.any.isRequired,
-  bloomberg: PropsType.any.isRequired,
-  coinTelegraph: PropsType.any.isRequired,
+  fetchData: PropsType.shape({
+    nikkei: PropsType.shape({
+      data: PropsType.arrayOf(
+        PropsType.shape({
+          title: PropsType.string.isRequired,
+          date: PropsType.instanceOf(Date).isRequired,
+          link: PropsType.string.isRequired,
+          author: PropsType.string.isRequired,
+          categories: PropsType.arrayOf(PropsType.string.isRequired).isRequired,
+        }).isRequired
+      ).isRequired,
+    }).isRequired,
+    reuters: PropsType.shape({
+      data: PropsType.arrayOf(
+        PropsType.shape({
+          title: PropsType.string.isRequired,
+          date: PropsType.instanceOf(Date).isRequired,
+          link: PropsType.string.isRequired,
+          author: PropsType.string.isRequired,
+          categories: PropsType.arrayOf(PropsType.string.isRequired).isRequired,
+        }).isRequired
+      ).isRequired,
+    }).isRequired,
+    bloomberg: PropsType.shape({
+      data: PropsType.arrayOf(
+        PropsType.shape({
+          title: PropsType.string.isRequired,
+          date: PropsType.instanceOf(Date).isRequired,
+          link: PropsType.string.isRequired,
+          author: PropsType.string.isRequired,
+          categories: PropsType.arrayOf(PropsType.string.isRequired).isRequired,
+        }).isRequired
+      ).isRequired,
+    }).isRequired,
+    coinTelegraph: PropsType.shape({
+      data: PropsType.arrayOf(
+        PropsType.shape({
+          title: PropsType.string.isRequired,
+          date: PropsType.instanceOf(Date).isRequired,
+          link: PropsType.string.isRequired,
+          author: PropsType.string.isRequired,
+          categories: PropsType.arrayOf(PropsType.string.isRequired).isRequired,
+        }).isRequired
+      ).isRequired,
+    }).isRequired,
+  }).isRequired,
 }
 
 export const getStaticProps = homeGetStaticProps

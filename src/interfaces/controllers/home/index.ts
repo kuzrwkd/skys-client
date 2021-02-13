@@ -1,32 +1,39 @@
-import { AppDispatch, wrapper } from './store'
+import { wrapper } from './store'
+import { GetStaticProps } from 'next'
 import { fetchNikkei } from '@/infrastructures/local/rssFeed/nikkei'
 import { fetchReuters } from '@/infrastructures/local/rssFeed/reuters'
 import { fetchBloomberg } from '@/infrastructures/local/rssFeed/bloomberg'
 import { fetchCoinTelegraph } from '@/infrastructures/local/rssFeed/cointelegraph'
+import { nikkeiSlice } from '@/interfaces/presenters/redux/reducers/rss/nikkei'
+import { reutersSlice } from '@/interfaces/presenters/redux/reducers/rss/reuters'
+import { bloombergSlice } from '@/interfaces/presenters/redux/reducers/rss/bloomberg'
+import { coinTelegraphSlice } from '@/interfaces/presenters/redux/reducers/rss/cointelegraph'
 
-const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
-  const dispatch = store.dispatch as AppDispatch
+const getStaticProps: GetStaticProps = wrapper.getStaticProps(
+  (store) => async () => {
+    await Promise.all([
+      store.dispatch(fetchNikkei() as never),
+      store.dispatch(fetchReuters() as never),
+      store.dispatch(fetchBloomberg() as never),
+      store.dispatch(fetchCoinTelegraph() as never),
+    ])
 
-  // TODO: next-redux-wrapperのバージョンが7になったら型が付く
-  await Promise.all([
-    dispatch(fetchNikkei() as never),
-    dispatch(fetchReuters() as never),
-    dispatch(fetchBloomberg() as never),
-    dispatch(fetchCoinTelegraph() as never),
-  ])
+    const state = store.getState()
+    const fetchData = {
+      nikkei: state[nikkeiSlice.name],
+      reuters: state[reutersSlice.name],
+      bloomberg: state[bloombergSlice.name],
+      coinTelegraph: state[coinTelegraphSlice.name],
+    }
 
-  const { nikkei, reuters, bloomberg, coinTelegraph } = store.getState()
-
-  return {
-    props: {
-      title: 'TOP',
-      nikkei,
-      reuters,
-      bloomberg,
-      coinTelegraph,
-    },
-    revalidate: 1,
+    return {
+      props: {
+        title: 'TOP',
+        fetchData,
+      },
+      revalidate: 1,
+    }
   }
-})
+)
 
 export default getStaticProps
