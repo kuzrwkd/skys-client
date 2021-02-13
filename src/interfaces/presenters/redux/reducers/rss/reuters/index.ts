@@ -12,7 +12,7 @@ import { RssData } from '@/domains/services/feedParser/types'
 
 const hydrate = createAction(HYDRATE)
 
-const ReutersSlice = createSlice({
+export const reutersSlice = createSlice({
   name: 'reducers/reuters',
   initialState,
   reducers: {
@@ -21,15 +21,23 @@ const ReutersSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(hydrate, (state: Draft<StateType>, action) => {
-      return {
-        ...state,
-        ...(action.payload as any)[fetchReuters.name],
-      }
-    })
+    builder
+      .addCase(hydrate, (state: Draft<StateType>, action) => {
+        return {
+          ...state,
+          data: (action.payload as any)[reutersSlice.name],
+        }
+      })
+      .addCase(
+        fetchReuters.fulfilled,
+        (state: Draft<StateType>, action: PayloadAction<RssData[]>) => {
+          return {
+            ...state,
+            data: action.payload,
+          }
+        }
+      )
   },
 })
 
-export const { set } = ReutersSlice.actions
-
-export default ReutersSlice
+export const { set } = reutersSlice.actions

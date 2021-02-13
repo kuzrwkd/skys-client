@@ -12,7 +12,7 @@ import { RssData } from '@/domains/services/feedParser/types'
 
 const hydrate = createAction(HYDRATE)
 
-const CoinTelegraphSlice = createSlice({
+export const coinTelegraphSlice = createSlice({
   name: 'reducers/coinTelegraph',
   initialState,
   reducers: {
@@ -21,15 +21,23 @@ const CoinTelegraphSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(hydrate, (state: Draft<StateType>, action) => {
-      return {
-        ...state,
-        ...(action.payload as any)[fetchCoinTelegraph.name],
-      }
-    })
+    builder
+      .addCase(hydrate, (state: Draft<StateType>, action) => {
+        return {
+          ...state,
+          data: (action.payload as any)[coinTelegraphSlice.name],
+        }
+      })
+      .addCase(
+        fetchCoinTelegraph.fulfilled,
+        (state: Draft<StateType>, action: PayloadAction<RssData[]>) => {
+          return {
+            ...state,
+            data: action.payload,
+          }
+        }
+      )
   },
 })
 
-export const { set } = CoinTelegraphSlice.actions
-
-export default CoinTelegraphSlice
+export const { set } = coinTelegraphSlice.actions

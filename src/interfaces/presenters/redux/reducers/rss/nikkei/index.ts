@@ -12,7 +12,7 @@ import { RssData } from '@/domains/services/feedParser/types'
 
 const hydrate = createAction(HYDRATE)
 
-const fetchNikkeiSlice = createSlice({
+export const nikkeiSlice = createSlice({
   name: 'reducers/nikkei',
   initialState,
   reducers: {
@@ -21,15 +21,23 @@ const fetchNikkeiSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(hydrate, (state: Draft<StateType>, action) => {
-      return {
-        ...state,
-        ...(action.payload as any)[fetchNikkei.name],
-      }
-    })
+    builder
+      .addCase(hydrate, (state: Draft<StateType>, action) => {
+        return {
+          ...state,
+          data: (action.payload as any)[nikkeiSlice.name],
+        }
+      })
+      .addCase(
+        fetchNikkei.fulfilled,
+        (state: Draft<StateType>, action: PayloadAction<RssData[]>) => {
+          return {
+            ...state,
+            data: action.payload,
+          }
+        }
+      )
   },
 })
 
-export const { set } = fetchNikkeiSlice.actions
-
-export default fetchNikkeiSlice
+export const { set } = nikkeiSlice.actions

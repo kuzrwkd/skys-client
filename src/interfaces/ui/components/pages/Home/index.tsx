@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
 import DefaultLayout from '@/interfaces/ui/components/templates/default'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
-import { useSelector } from 'react-redux'
 import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
 import RssList from '@/interfaces/ui/components/organisms/RssList'
@@ -9,6 +8,8 @@ import NikkeiLogo from '../../../images/logo/nikkei.svg'
 import BloombergLogo from '../../../images/logo/bloomberg.svg'
 import ReutersLogo from '../../../images/logo/reuters.svg'
 import CointelegraphLogo from '../../../images/logo/cointelegraph.svg'
+import PropsType from 'prop-types'
+import { Props } from './types'
 
 const LOGO_HEIGHT = 40
 
@@ -24,12 +25,10 @@ const useStyles = makeStyles(() =>
   })
 )
 
-const Page: FC = () => {
+const Home: FC<Props> = ({ fetchData }) => {
   const classes = useStyles()
 
-  const { nikkei, reuters, bloomberg, coinTelegraph } = useSelector(
-    (state) => state
-  )
+  const { nikkei, reuters, bloomberg, coinTelegraph } = fetchData
 
   return (
     <DefaultLayout>
@@ -63,4 +62,8 @@ const Page: FC = () => {
   )
 }
 
-export default Page
+Home.propTypes = {
+  fetchData: PropsType.any.isRequired,
+}
+
+export default Home
