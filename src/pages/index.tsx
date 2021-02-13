@@ -7,8 +7,8 @@ import homeGetStaticProps from '@/interfaces/controllers/home'
 import { wrapper } from '@/interfaces/controllers/home/store'
 import { RssData } from '@/domains/services/feedParser/types'
 
-type Props = {
-  title: string
+export type Props = {
+  title?: string
   fetchData: {
     nikkei: { data: RssData[] }
     reuters: { data: RssData[] }
@@ -35,9 +35,16 @@ Page.propTypes = {
       data: PropsType.arrayOf(
         PropsType.shape({
           title: PropsType.string.isRequired,
-          date: PropsType.instanceOf(Date).isRequired,
+          date: PropsType.oneOfType([
+            PropsType.instanceOf(Date),
+            PropsType.oneOf([null]),
+            PropsType.string,
+          ]).isRequired,
           link: PropsType.string.isRequired,
-          author: PropsType.string.isRequired,
+          author: PropsType.oneOfType([
+            PropsType.string,
+            PropsType.oneOf([null]),
+          ]),
           categories: PropsType.arrayOf(PropsType.string.isRequired).isRequired,
         }).isRequired
       ).isRequired,
@@ -46,9 +53,16 @@ Page.propTypes = {
       data: PropsType.arrayOf(
         PropsType.shape({
           title: PropsType.string.isRequired,
-          date: PropsType.instanceOf(Date).isRequired,
+          date: PropsType.oneOfType([
+            PropsType.instanceOf(Date),
+            PropsType.oneOf([null]),
+            PropsType.string,
+          ]).isRequired,
           link: PropsType.string.isRequired,
-          author: PropsType.string.isRequired,
+          author: PropsType.oneOfType([
+            PropsType.string,
+            PropsType.oneOf([null]),
+          ]),
           categories: PropsType.arrayOf(PropsType.string.isRequired).isRequired,
         }).isRequired
       ).isRequired,
@@ -57,9 +71,16 @@ Page.propTypes = {
       data: PropsType.arrayOf(
         PropsType.shape({
           title: PropsType.string.isRequired,
-          date: PropsType.instanceOf(Date).isRequired,
+          date: PropsType.oneOfType([
+            PropsType.instanceOf(Date),
+            PropsType.oneOf([null]),
+            PropsType.string,
+          ]).isRequired,
           link: PropsType.string.isRequired,
-          author: PropsType.string.isRequired,
+          author: PropsType.oneOfType([
+            PropsType.string,
+            PropsType.oneOf([null]),
+          ]),
           categories: PropsType.arrayOf(PropsType.string.isRequired).isRequired,
         }).isRequired
       ).isRequired,
@@ -68,9 +89,16 @@ Page.propTypes = {
       data: PropsType.arrayOf(
         PropsType.shape({
           title: PropsType.string.isRequired,
-          date: PropsType.instanceOf(Date).isRequired,
+          date: PropsType.oneOfType([
+            PropsType.instanceOf(Date),
+            PropsType.oneOf([null]),
+            PropsType.string,
+          ]).isRequired,
           link: PropsType.string.isRequired,
-          author: PropsType.string.isRequired,
+          author: PropsType.oneOfType([
+            PropsType.string,
+            PropsType.oneOf([null]),
+          ]),
           categories: PropsType.arrayOf(PropsType.string.isRequired).isRequired,
         }).isRequired
       ).isRequired,

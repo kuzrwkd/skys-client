@@ -9,7 +9,7 @@ import BloombergLogo from '../../../images/logo/bloomberg.svg'
 import ReutersLogo from '../../../images/logo/reuters.svg'
 import CointelegraphLogo from '../../../images/logo/cointelegraph.svg'
 import PropsType from 'prop-types'
-import { Props } from './types'
+import { Props } from '@/pages'
 
 const LOGO_HEIGHT = 40
 
