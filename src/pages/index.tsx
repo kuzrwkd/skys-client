@@ -30,7 +30,52 @@ const Page: NextPage<Props> = ({ title, fetchData }) => {
 
 Page.propTypes = {
   title: PropsType.string.isRequired,
-  fetchData: PropsType.any.isRequired,
+  fetchData: PropsType.shape({
+    nikkei: PropsType.shape({
+      data: PropsType.arrayOf(
+        PropsType.shape({
+          title: PropsType.string.isRequired,
+          date: PropsType.instanceOf(Date).isRequired,
+          link: PropsType.string.isRequired,
+          author: PropsType.string.isRequired,
+          categories: PropsType.arrayOf(PropsType.string.isRequired).isRequired,
+        }).isRequired
+      ).isRequired,
+    }).isRequired,
+    reuters: PropsType.shape({
+      data: PropsType.arrayOf(
+        PropsType.shape({
+          title: PropsType.string.isRequired,
+          date: PropsType.instanceOf(Date).isRequired,
+          link: PropsType.string.isRequired,
+          author: PropsType.string.isRequired,
+          categories: PropsType.arrayOf(PropsType.string.isRequired).isRequired,
+        }).isRequired
+      ).isRequired,
+    }).isRequired,
+    bloomberg: PropsType.shape({
+      data: PropsType.arrayOf(
+        PropsType.shape({
+          title: PropsType.string.isRequired,
+          date: PropsType.instanceOf(Date).isRequired,
+          link: PropsType.string.isRequired,
+          author: PropsType.string.isRequired,
+          categories: PropsType.arrayOf(PropsType.string.isRequired).isRequired,
+        }).isRequired
+      ).isRequired,
+    }).isRequired,
+    coinTelegraph: PropsType.shape({
+      data: PropsType.arrayOf(
+        PropsType.shape({
+          title: PropsType.string.isRequired,
+          date: PropsType.instanceOf(Date).isRequired,
+          link: PropsType.string.isRequired,
+          author: PropsType.string.isRequired,
+          categories: PropsType.arrayOf(PropsType.string.isRequired).isRequired,
+        }).isRequired
+      ).isRequired,
+    }).isRequired,
+  }).isRequired,
 }
 
 export const getStaticProps = homeGetStaticProps
