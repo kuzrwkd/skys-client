@@ -19,6 +19,7 @@ dayjs.extend(relativeTime)
 
 const ARTICLE_TITLE_TOTAL_PADDING = 16
 const ARTICLE_TITLE_BORDER = 1
+const ARTICLE_OUTER_PADDING = 4
 const ITEM_SIZE = 112
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -41,6 +42,10 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     listItemTitle: {
+      display: '-webkit-box',
+      '-webkit-box-orient': 'vertical',
+      '-webkit-line-clamp': 2,
+      overflow: 'hidden',
       marginBottom: 8,
     },
     listItemMetaBox: {
@@ -50,13 +55,20 @@ const useStyles = makeStyles((theme: Theme) =>
     listItemTime: {
       marginRight: 8,
     },
+    listItemText: {
+      color: theme.palette.primary.contrastText,
+    },
   })
 )
 
 const component: FC<Props> = ({ children, data, logoHeight }) => {
   let { height } = useWindowDimensions()
   height =
-    height - (logoHeight + ARTICLE_TITLE_TOTAL_PADDING + ARTICLE_TITLE_BORDER)
+    (height -
+      (logoHeight * 2 +
+        (ARTICLE_TITLE_TOTAL_PADDING + ARTICLE_TITLE_BORDER) * 2 +
+        ARTICLE_OUTER_PADDING * 2)) /
+    2
 
   const classes = useStyles()
 
@@ -73,7 +85,7 @@ const component: FC<Props> = ({ children, data, logoHeight }) => {
         <div>
           <div className={classes.listItemTitle}>
             <Link href={url} target="_blank" rel="noopener noreferrer">
-              <ListItemText primary={title} />
+              <ListItemText primary={title} className={classes.listItemText} />
             </Link>
           </div>
           <div className={classes.listItemMetaBox}>

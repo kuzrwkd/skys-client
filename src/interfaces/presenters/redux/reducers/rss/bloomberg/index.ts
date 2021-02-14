@@ -25,7 +25,7 @@ export const bloombergSlice = createSlice({
       .addCase(hydrate, (state: Draft<StateType>, action) => {
         return {
           ...state,
-          data: (action.payload as any)[bloombergSlice.name],
+          ...(action.payload as any)[bloombergSlice.name],
         }
       })
       .addCase(

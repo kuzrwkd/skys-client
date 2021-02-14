@@ -25,7 +25,7 @@ export const nikkeiSlice = createSlice({
       .addCase(hydrate, (state: Draft<StateType>, action) => {
         return {
           ...state,
-          data: (action.payload as any)[nikkeiSlice.name],
+          ...(action.payload as any)[nikkeiSlice.name],
         }
       })
       .addCase(

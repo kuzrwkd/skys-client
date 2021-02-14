@@ -25,7 +25,7 @@ export const coinTelegraphSlice = createSlice({
       .addCase(hydrate, (state: Draft<StateType>, action) => {
         return {
           ...state,
-          data: (action.payload as any)[coinTelegraphSlice.name],
+          ...(action.payload as any)[coinTelegraphSlice.name],
         }
       })
       .addCase(

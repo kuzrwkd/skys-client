@@ -25,7 +25,7 @@ export const reutersSlice = createSlice({
       .addCase(hydrate, (state: Draft<StateType>, action) => {
         return {
           ...state,
-          data: (action.payload as any)[reutersSlice.name],
+          ...(action.payload as any)[reutersSlice.name],
         }
       })
       .addCase(
