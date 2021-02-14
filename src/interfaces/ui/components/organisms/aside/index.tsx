@@ -2,16 +2,19 @@ import React, { FC } from 'react'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
-import DynamicFeedTwoToneIcon from '@material-ui/icons/DynamicFeedTwoTone'
-import SubscriptionsTwoToneIcon from '@material-ui/icons/SubscriptionsTwoTone'
-import AssignmentTurnedInTwoToneIcon from '@material-ui/icons/AssignmentTurnedInTwoTone'
+import DynamicFeedOutlinedIcon from '@material-ui/icons/DynamicFeedOutlined'
+import SubscriptionsOutlinedIcon from '@material-ui/icons/SubscriptionsOutlined'
+import AssignmentTurnedInOutlinedIcon from '@material-ui/icons/AssignmentTurnedInOutlined'
+import EventOutlinedIcon from '@material-ui/icons/EventOutlined'
+import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined'
 import { useStyles } from './style'
 import PropTypes from 'prop-types'
 import { Props } from './types'
 import { useSelector } from 'react-redux'
 import { newsSlice } from '@/interfaces/presenters/redux/reducers/news'
-import NewsFeed from '@/interfaces/ui/components/organisms/newsFeed'
+import NewsFeed from '@/interfaces/ui/components/molecules/newsFeed'
 import clsx from 'clsx'
+import { ASIDE_MENU_ID } from '@/utils/constants/ids'
 
 const component: FC<Props> = ({ handleDrawer, drawer }) => {
   const classes = useStyles()
@@ -23,47 +26,78 @@ const component: FC<Props> = ({ handleDrawer, drawer }) => {
   }
 
   const { news } = fetchData
+  const {
+    asideNewsId,
+    asideYoutubeId,
+    asideTodoId,
+    asideEventsId,
+    asideSettingsId,
+  } = ASIDE_MENU_ID
 
   return (
     <aside className={classes.drawerMenu}>
       <List className={classes.drawerNav}>
-        <ListItem onClick={() => handleDrawer('News')}>
+        <ListItem onClick={() => handleDrawer('ニュース', asideNewsId)}>
           <ListItemIcon className={classes.listItemIcon}>
-            <DynamicFeedTwoToneIcon />
+            <DynamicFeedOutlinedIcon className={classes.icon} />
           </ListItemIcon>
         </ListItem>
-        <ListItem onClick={() => handleDrawer('YouTube')}>
+        <ListItem onClick={() => handleDrawer('YouTube', asideYoutubeId)}>
           <ListItemIcon className={classes.listItemIcon}>
-            <SubscriptionsTwoToneIcon />
+            <SubscriptionsOutlinedIcon className={classes.icon} />
           </ListItemIcon>
         </ListItem>
-        <ListItem onClick={() => handleDrawer('ToDo')}>
+        <ListItem onClick={() => handleDrawer('タスク管理', asideTodoId)}>
           <ListItemIcon className={classes.listItemIcon}>
-            <AssignmentTurnedInTwoToneIcon />
+            <AssignmentTurnedInOutlinedIcon className={classes.icon} />
+          </ListItemIcon>
+        </ListItem>
+        <ListItem onClick={() => handleDrawer('イベント', asideEventsId)}>
+          <ListItemIcon className={classes.listItemIcon}>
+            <EventOutlinedIcon className={classes.icon} />
+          </ListItemIcon>
+        </ListItem>
+        <ListItem onClick={() => handleDrawer('設定', asideSettingsId)}>
+          <ListItemIcon className={classes.listItemIcon}>
+            <SettingsOutlinedIcon className={classes.icon} />
           </ListItemIcon>
         </ListItem>
       </List>
       <div className={classes.drawerContents}>
         <div
           className={clsx(classes.drawerMenu, {
-            [classes.drawerMenuHide]: drawer.contents !== 'News',
+            [classes.drawerMenuHide]: drawer.menuId !== asideNewsId,
           })}
         >
           <NewsFeed data={news.data} />
         </div>
         <div
           className={clsx(classes.drawerMenu, {
-            [classes.drawerMenuHide]: drawer.contents !== 'YouTube',
+            [classes.drawerMenuHide]: drawer.menuId !== asideYoutubeId,
           })}
         >
           YouTube
         </div>
         <div
           className={clsx(classes.drawerMenu, {
-            [classes.drawerMenuHide]: drawer.contents !== 'ToDo',
+            [classes.drawerMenuHide]: drawer.menuId !== asideTodoId,
           })}
         >
-          ToDo
+          タスク管理
+        </div>
+        <div
+          className={clsx(classes.drawerMenu, {
+            [classes.drawerMenuHide]: drawer.menuId !== asideEventsId,
+          })}
+        >
+          イベント
+        </div>
+        <div
+          className={clsx(classes.drawerMenu, {
+            [classes.drawerMenuHide]: drawer.menuId !== asideSettingsId,
+          })}
+        >
+          設定
         </div>
       </div>
     </aside>
