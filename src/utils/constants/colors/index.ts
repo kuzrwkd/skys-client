@@ -1,1 +1,3 @@
-export const COLOR = {}
+export const COLOR = {
+  darkblue: '#115293',
+}

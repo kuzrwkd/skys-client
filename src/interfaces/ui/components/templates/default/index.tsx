@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import PropTypes from 'prop-types'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import clsx from 'clsx'
@@ -11,14 +11,22 @@ import { useStyles } from './style'
 
 const DefaultLayout: FC = ({ children }) => {
   const classes = useStyles()
-  const [drawer, setDrawer] = React.useState({ isOpen: false, contents: '' })
+  const [drawer, setDrawer] = useState<{
+    isOpen: boolean
+    contents: string
+    menuId: null | number
+  }>({
+    isOpen: false,
+    contents: '',
+    menuId: null,
+  })
 
-  const handleDrawer = (contents: string) => {
+  const handleDrawer = (contents: string, menuId: number) => {
     if (drawer.isOpen && contents === drawer.contents) {
-      return setDrawer({ isOpen: false, contents })
+      return setDrawer({ isOpen: false, contents, menuId })
     }
 
-    return setDrawer({ isOpen: true, contents })
+    return setDrawer({ isOpen: true, contents, menuId })
   }
 
   return (
