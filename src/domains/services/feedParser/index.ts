@@ -8,12 +8,12 @@ export class FeedParserServices extends Services {
   /**
    * rssフィードのパース
    * @param rss
-   * @param categories
+   * @param organization
    * @param callback
    */
   public static feedParser(
     rss: Promise<Response>,
-    categories: string[],
+    organization: string,
     callback: (value: RssData[]) => void
   ): void {
     const feedparser: FeedParser = new FeedParser({})
@@ -35,7 +35,7 @@ export class FeedParserServices extends Services {
                   date: item.date,
                   link: item.link,
                   author: item.author,
-                  categories: categories,
+                  organization,
                 })
               }
             })

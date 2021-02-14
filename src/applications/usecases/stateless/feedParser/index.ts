@@ -6,11 +6,11 @@ import { RssData } from '@/domains/services/feedParser/types'
 export class FeedParserUseCase extends UseCase {
   public static feedParser(
     url: string,
-    categories: string[]
+    organization: string
   ): Promise<RssData[]> {
     const promise = new Promise((resolve): void => {
       const rss = RssWorJpRepository.readRss(`${url}`)
-      FeedParserServices.feedParser(rss, categories, (value): void => {
+      FeedParserServices.feedParser(rss, organization, (value): void => {
         resolve(value)
       })
     })
