@@ -3,6 +3,9 @@ import { Services } from '@/domains/services/base'
 import { Response } from 'node-fetch'
 import { RssData } from './types'
 import dayjs from 'dayjs'
+import 'dayjs/locale/ja'
+
+dayjs.locale('ja')
 
 export class FeedParserServices extends Services {
   /**
@@ -32,7 +35,7 @@ export class FeedParserServices extends Services {
               while ((item = feedparser.read())) {
                 items.push({
                   title: item.title,
-                  date: item.date,
+                  date: dayjs(`${item.date}`).format(),
                   link: item.link,
                   author: item.author,
                   organization,
