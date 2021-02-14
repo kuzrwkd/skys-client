@@ -55,7 +55,7 @@ const DefaultLayout: FC = ({ children }) => {
       >
         <div className={classes.toolbar}>{drawer.contents}</div>
         <Divider />
-        <Aside handleDrawer={handleDrawer} />
+        <Aside handleDrawer={handleDrawer} drawer={drawer} />
       </Drawer>
     </div>
   )

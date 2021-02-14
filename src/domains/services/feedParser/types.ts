@@ -3,5 +3,5 @@ export type RssData = {
   date: Date | null | string
   link: string
   author?: string | null
-  categories: string[]
+  organization: string
 }

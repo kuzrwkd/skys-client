@@ -7,29 +7,25 @@ import {
 import initialState from './state'
 import { StateType } from './types'
 import { HYDRATE } from 'next-redux-wrapper'
-import { fetchReuters } from '@/infrastructures/local/rssFeed/reuters'
+import { fetchNews } from '@/infrastructures/local/news'
 import { RssData } from '@/domains/services/feedParser/types'
 
 const hydrate = createAction(HYDRATE)
 
-export const reutersSlice = createSlice({
-  name: 'reducers/reuters',
+export const newsSlice = createSlice({
+  name: 'reducers/news',
   initialState,
-  reducers: {
-    set: (state: Draft<StateType>, action: PayloadAction<RssData[]>) => {
-      state.data = action.payload
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(hydrate, (state: Draft<StateType>, action) => {
         return {
           ...state,
-          ...(action.payload as any)[reutersSlice.name],
+          ...(action.payload as any)[newsSlice.name],
         }
       })
       .addCase(
-        fetchReuters.fulfilled,
+        fetchNews.fulfilled,
         (state: Draft<StateType>, action: PayloadAction<RssData[]>) => {
           return {
             ...state,
@@ -39,5 +35,3 @@ export const reutersSlice = createSlice({
       )
   },
 })
-
-export const { set } = reutersSlice.actions

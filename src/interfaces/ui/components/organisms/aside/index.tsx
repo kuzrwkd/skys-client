@@ -4,30 +4,26 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import DynamicFeedTwoToneIcon from '@material-ui/icons/DynamicFeedTwoTone'
 import SubscriptionsTwoToneIcon from '@material-ui/icons/SubscriptionsTwoTone'
+import AssignmentTurnedInTwoToneIcon from '@material-ui/icons/AssignmentTurnedInTwoTone'
 import { useStyles } from './style'
 import PropTypes from 'prop-types'
 import { Props } from './types'
 import { useSelector } from 'react-redux'
-import { nikkeiSlice } from '@/interfaces/presenters/redux/reducers/rss/nikkei'
-import { reutersSlice } from '@/interfaces/presenters/redux/reducers/rss/reuters'
-import { bloombergSlice } from '@/interfaces/presenters/redux/reducers/rss/bloomberg'
-import { coinTelegraphSlice } from '@/interfaces/presenters/redux/reducers/rss/cointelegraph'
+import { newsSlice } from '@/interfaces/presenters/redux/reducers/news'
 import NewsFeed from '@/interfaces/ui/components/organisms/newsFeed'
+import clsx from 'clsx'
 
-const component: FC<Props> = ({ handleDrawer }) => {
+const component: FC<Props> = ({ handleDrawer, drawer }) => {
   const classes = useStyles()
 
   const state = useSelector((state) => state)
-  console.log(state)
+
   const fetchData = {
-    nikkei: state[nikkeiSlice.name],
-    reuters: state[reutersSlice.name],
-    bloomberg: state[bloombergSlice.name],
-    coinTelegraph: state[coinTelegraphSlice.name],
+    news: state[newsSlice.name],
   }
 
-  const { nikkei, reuters, bloomberg, coinTelegraph } = fetchData
-  const LOGO_HEIGHT = 40
+  const { news } = fetchData
+
   return (
     <aside className={classes.drawerMenu}>
       <List className={classes.drawerNav}>
@@ -41,21 +37,34 @@ const component: FC<Props> = ({ handleDrawer }) => {
             <SubscriptionsTwoToneIcon />
           </ListItemIcon>
         </ListItem>
+        <ListItem onClick={() => handleDrawer('ToDo')}>
+          <ListItemIcon className={classes.listItemIcon}>
+            <AssignmentTurnedInTwoToneIcon />
+          </ListItemIcon>
+        </ListItem>
       </List>
       <div className={classes.drawerContents}>
-        <ul>
-          <li>
-            <NewsFeed data={nikkei.data} logoHeight={LOGO_HEIGHT}>
-              <div>aaa</div>
-            </NewsFeed>
-          </li>
-          <li>lasd</li>
-          <li>lasd</li>
-          <li>lasd</li>
-          <li>lasd</li>
-          <li>lasd</li>
-          <li>lasd</li>
-        </ul>
+        <div
+          className={clsx(classes.drawerMenu, {
+            [classes.drawerMenuHide]: drawer.contents !== 'News',
+          })}
+        >
+          <NewsFeed data={news.data} />
+        </div>
+        <div
+          className={clsx(classes.drawerMenu, {
+            [classes.drawerMenuHide]: drawer.contents !== 'YouTube',
+          })}
+        >
+          YouTube
+        </div>
+        <div
+          className={clsx(classes.drawerMenu, {
+            [classes.drawerMenuHide]: drawer.contents !== 'ToDo',
+          })}
+        >
+          ToDo
+        </div>
       </div>
     </aside>
   )

@@ -6,6 +6,9 @@ export const useStyles = makeStyles(() =>
       display: 'flex',
       flexFlow: 'row-reverse',
     },
+    drawerMenuHide: {
+      display: 'none',
+    },
     drawerNav: {
       width: 57,
       minHeight: 'calc(100vh - 65px)',
