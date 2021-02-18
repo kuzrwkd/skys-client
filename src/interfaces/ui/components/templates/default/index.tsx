@@ -61,7 +61,9 @@ const DefaultLayout: FC = ({ children }) => {
         }}
         anchor={'right'}
       >
-        <div className={classes.toolbar}>{drawer.contents}</div>
+        <div className={classes.toolbar}>
+          <b>{drawer.contents}</b>
+        </div>
         <Divider />
         <Aside handleDrawer={handleDrawer} drawer={drawer} />
       </Drawer>

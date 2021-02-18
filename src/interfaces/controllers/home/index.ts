@@ -10,7 +10,7 @@ const getStaticProps: GetStaticProps = wrapper.getStaticProps(
       props: {
         title: 'TOP',
       },
-      revalidate: 1,
+      revalidate: 300,
     }
   }
 )
