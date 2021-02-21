@@ -5,7 +5,6 @@ import Drawer from '@material-ui/core/Drawer'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Divider from '@material-ui/core/Divider'
-import BottomNavigation from '@material-ui/core/BottomNavigation'
 import Button from '@material-ui/core/Button'
 import Aside from '@/interfaces/ui/components/organisms/aside'
 import { useStyles } from './style'
@@ -41,11 +40,7 @@ const DefaultLayout: FC = ({ children }) => {
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar />
-        <BottomNavigation
-          value={value}
-          onChange={handleChange}
-          className={classes.root}
-        >
+        <div className={classes.nav}>
           <Button color="primary" className={classes.appBarButton}>
             Nikkei225
           </Button>
@@ -61,7 +56,7 @@ const DefaultLayout: FC = ({ children }) => {
           <Button color="primary" className={classes.appBarButton}>
             S&P 500
           </Button>
-        </BottomNavigation>
+        </div>
       </AppBar>
       <main className={classes.content}>
         <div className={classes.toolbar} />
