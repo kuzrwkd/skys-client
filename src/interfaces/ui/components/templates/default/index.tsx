@@ -1,43 +1,37 @@
 import React, { FC, useState } from 'react'
 import PropTypes from 'prop-types'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import clsx from 'clsx'
 import Drawer from '@material-ui/core/Drawer'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Divider from '@material-ui/core/Divider'
 import Aside from '@/interfaces/ui/components/organisms/aside'
 import { useStyles } from './style'
+import { ASIDE_MENU_ID } from '@/utils/constants/ids'
 
 const DefaultLayout: FC = ({ children }) => {
+  const { asideNewsId } = ASIDE_MENU_ID
   const classes = useStyles()
   const [drawer, setDrawer] = useState<{
-    isOpen: boolean
     contents: string
     menuId: null | number
   }>({
-    isOpen: false,
-    contents: '',
-    menuId: null,
+    contents: 'ニュース',
+    menuId: asideNewsId,
   })
 
   const handleDrawer = (contents: string, menuId: number) => {
-    if (drawer.isOpen && contents === drawer.contents) {
-      return setDrawer({ isOpen: false, contents, menuId })
+    if (menuId === drawer.menuId) {
+      return setDrawer({ contents, menuId })
     }
 
-    return setDrawer({ isOpen: true, contents, menuId })
+    return setDrawer({ contents, menuId })
   }
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: drawer.isOpen,
-        })}
-      >
+      <AppBar position="fixed" className={classes.appBar}>
         <Toolbar />
       </AppBar>
       <main className={classes.content}>
@@ -48,16 +42,10 @@ const DefaultLayout: FC = ({ children }) => {
         </React.Fragment>
       </main>
       <Drawer
+        className={classes.drawer}
         variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: drawer.isOpen,
-          [classes.drawerClose]: !drawer.isOpen,
-        })}
         classes={{
-          paper: clsx({
-            [classes.drawerOpen]: drawer.isOpen,
-            [classes.drawerClose]: !drawer.isOpen,
-          }),
+          paper: classes.drawerPaper,
         }}
         anchor={'right'}
       >

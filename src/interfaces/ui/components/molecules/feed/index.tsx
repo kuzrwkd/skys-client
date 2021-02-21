@@ -102,6 +102,9 @@ const component: FC<Props> = ({ data, itemSize, thumbnail }) => {
             </React.Fragment>
           ) : (
             <React.Fragment>
+              <div className={classes.listItemAuthor}>
+                <b>{author}</b>
+              </div>
               {renderFigure()}
               <div
                 className={clsx(
@@ -110,9 +113,6 @@ const component: FC<Props> = ({ data, itemSize, thumbnail }) => {
                 )}
               >
                 <div>{relativeTime}</div>
-                <div>
-                  <b>{author}</b>
-                </div>
               </div>
             </React.Fragment>
           )}

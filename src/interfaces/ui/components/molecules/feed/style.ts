@@ -16,7 +16,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       },
     },
     listItemInnerWrapper: {
-      width: 236,
+      width: '100%',
     },
     listItemFigure: {
       margin: 0,
@@ -25,6 +25,10 @@ export const useStyles = makeStyles((theme: Theme) =>
       height: 132,
       marginBottom: 8,
       position: 'relative',
+      overflow: 'hidden',
+    },
+    listItemAuthor: {
+      marginBottom: 8,
       overflow: 'hidden',
     },
     listItemThumbnail: {
