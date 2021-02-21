@@ -12,30 +12,23 @@ export class NewsController extends Controller {
    */
   async rssFetchNikkei(): Promise<RssData[]> {
     const organization = '日本経済新聞'
-    const [business, economy, markets, news, technology] = await Promise.all([
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}nikkei/business.rdf`,
-        organization
-      ),
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}nikkei/economy.rdf`,
-        organization
-      ),
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}nikkei/markets.rdf`,
-        organization
-      ),
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}nikkei/news.rdf`,
-        organization
-      ),
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}nikkei/technology.rdf`,
-        organization
-      ),
-    ])
+    const channel = [
+      'nikkei/business.rdf',
+      'nikkei/economy.rdf',
+      'nikkei/markets.rdf',
+      'nikkei/news.rdf',
+      'nikkei/technology.rdf',
+    ]
 
-    return [...business, ...economy, ...markets, ...news, ...technology]
+    const res = await Promise.all(
+      channel.map((channelId) =>
+        FeedParserUseCase.feedParser(
+          `${this.rssWorJpBaseURL}${channelId}`,
+          organization
+        )
+      )
+    )
+    return res.flat()
   }
 
   /**
@@ -43,66 +36,27 @@ export class NewsController extends Controller {
    */
   async rssFetchReuters(): Promise<RssData[]> {
     const organization = 'ロイター通信'
-    const [
-      business,
-      economy,
-      forex,
-      oddlyenough,
-      oil,
-      stock,
-      technology,
-      top,
-      world,
-    ] = await Promise.all([
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}reuters/business.rdf`,
-        organization
-      ),
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}reuters/economy.rdf`,
-        organization
-      ),
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}reuters/forex.rdf`,
-        organization
-      ),
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}reuters/oddlyenough.rdf`,
-        organization
-      ),
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}reuters/oil.rdf`,
-        organization
-      ),
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}reuters/stock.rdf`,
-        organization
-      ),
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}reuters/technology.rdf`,
-        organization
-      ),
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}reuters/top.rdf`,
-        organization
-      ),
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}reuters/world.rdf`,
-        organization
-      ),
-    ])
-
-    return [
-      ...business,
-      ...economy,
-      ...forex,
-      ...oddlyenough,
-      ...oil,
-      ...stock,
-      ...technology,
-      ...top,
-      ...world,
+    const channel = [
+      'reuters/business.rdf',
+      'reuters/economy.rdf',
+      'reuters/forex.rdf',
+      'reuters/oddlyenough.rdf',
+      'reuters/oil.rdf',
+      'reuters/stock.rdf',
+      'reuters/technology.rdf',
+      'reuters/top.rdf',
+      'reuters/world.rdf',
     ]
+
+    const res = await Promise.all(
+      channel.map((channelId) =>
+        FeedParserUseCase.feedParser(
+          `${this.rssWorJpBaseURL}${channelId}`,
+          organization
+        )
+      )
+    )
+    return res.flat()
   }
 
   /**
@@ -110,48 +64,24 @@ export class NewsController extends Controller {
    */
   async rssFetchBloomberg(): Promise<RssData[]> {
     const organization = 'bloomberg'
-    const [
-      commentary,
-      domestic,
-      economy,
-      markets,
-      overseas,
-      top,
-    ] = await Promise.all([
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}bloomberg/commentary.rdf`,
-        organization
-      ),
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}bloomberg/domestic.rdf`,
-        organization
-      ),
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}bloomberg/economy.rdf`,
-        organization
-      ),
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}bloomberg/markets.rdf`,
-        organization
-      ),
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}bloomberg/overseas.rdf`,
-        organization
-      ),
-      FeedParserUseCase.feedParser(
-        `${this.rssWorJpBaseURL}reuters/top.rdf`,
-        organization
-      ),
-    ])
-
-    return [
-      ...commentary,
-      ...domestic,
-      ...economy,
-      ...markets,
-      ...overseas,
-      ...top,
+    const channel = [
+      'bloomberg/commentary.rdf',
+      'bloomberg/domestic.rdf',
+      'bloomberg/economy.rdf',
+      'bloomberg/markets.rdf',
+      'bloomberg/overseas.rdf',
+      'bloomberg/top.rdf',
     ]
+
+    const res = await Promise.all(
+      channel.map((channelId) =>
+        FeedParserUseCase.feedParser(
+          `${this.rssWorJpBaseURL}${channelId}`,
+          organization
+        )
+      )
+    )
+    return res.flat()
   }
 
   /**
@@ -159,18 +89,17 @@ export class NewsController extends Controller {
    */
   async rssFetchCoinTelegraph(): Promise<RssData[]> {
     const organization = 'コインテレグラフ'
-    const [all, editorsPickRss] = await Promise.all([
-      FeedParserUseCase.feedParser(
-        `${this.coinTelegraphBaseURL}rss`,
-        organization
-      ),
-      FeedParserUseCase.feedParser(
-        `${this.coinTelegraphBaseURL}editors_pick_rss`,
-        organization
-      ),
-    ])
+    const channel = ['rss', 'editors_pick_rss']
 
-    return [...all, ...editorsPickRss]
+    const res = await Promise.all(
+      channel.map((channelId) =>
+        FeedParserUseCase.feedParser(
+          `${this.rssWorJpBaseURL}${channelId}`,
+          organization
+        )
+      )
+    )
+    return res.flat()
   }
 
   async squeezeFeed(): Promise<RssData[]> {

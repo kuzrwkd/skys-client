@@ -4,7 +4,7 @@ import { NextPage } from 'next'
 import Home from '@/interfaces/ui/components/pages/Home'
 import PropsType from 'prop-types'
 import homeGetStaticProps from '@/interfaces/controllers/home'
-import { wrapper } from '@/interfaces/controllers/home/store'
+
 import DefaultLayout from '@/interfaces/ui/components/templates/default'
 
 export type Props = {
@@ -30,4 +30,4 @@ Page.propTypes = {
 
 export const getStaticProps = homeGetStaticProps
 
-export default wrapper.withRedux(Page)
+export default Page

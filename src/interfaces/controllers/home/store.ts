@@ -2,12 +2,14 @@ import { configureStore, ThunkAction, EnhancedStore } from '@reduxjs/toolkit'
 import { Action } from 'redux'
 import { createWrapper, MakeStore } from 'next-redux-wrapper'
 import { newsSlice } from '@/interfaces/presenters/redux/reducers/news'
+import { youtubeSlice } from '@/interfaces/presenters/redux/reducers/youtube'
 
 const isDev = process.env.NODE_ENV === 'development'
 const makeStore: MakeStore<EnhancedStore> = () =>
   configureStore({
     reducer: {
       [newsSlice.name]: newsSlice.reducer,
+      [youtubeSlice.name]: youtubeSlice.reducer,
     },
     middleware: (getDefaultMiddleware) => {
       const options = {}

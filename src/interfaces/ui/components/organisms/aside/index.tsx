@@ -12,7 +12,8 @@ import PropTypes from 'prop-types'
 import { Props } from './types'
 import { useSelector } from 'react-redux'
 import { newsSlice } from '@/interfaces/presenters/redux/reducers/news'
-import NewsFeed from '@/interfaces/ui/components/molecules/newsFeed'
+import { youtubeSlice } from '@/interfaces/presenters/redux/reducers/youtube'
+import Feed from '@/interfaces/ui/components/molecules/feed'
 import clsx from 'clsx'
 import { ASIDE_MENU_ID } from '@/utils/constants/ids'
 
@@ -23,9 +24,10 @@ const component: FC<Props> = ({ handleDrawer, drawer }) => {
 
   const fetchData = {
     news: state[newsSlice.name],
+    youtube: state[youtubeSlice.name],
   }
 
-  const { news } = fetchData
+  const { news, youtube } = fetchData
   const {
     asideNewsId,
     asideYoutubeId,
@@ -69,14 +71,14 @@ const component: FC<Props> = ({ handleDrawer, drawer }) => {
             [classes.drawerMenuHide]: drawer.menuId !== asideNewsId,
           })}
         >
-          <NewsFeed data={news.data} />
+          <Feed data={news.data} />
         </div>
         <div
           className={clsx(classes.drawerMenu, {
             [classes.drawerMenuHide]: drawer.menuId !== asideYoutubeId,
           })}
         >
-          YouTube
+          <Feed data={youtube.data} itemSize={240} thumbnail={'middle'} />
         </div>
         <div
           className={clsx(classes.drawerMenu, {

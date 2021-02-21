@@ -14,14 +14,14 @@ import { $axios } from '@/config/axios'
 const hydrate = createAction(HYDRATE)
 
 export const fetch = createAsyncThunk(
-  'api/news',
+  'api/youtube',
   async (): Promise<RssData[]> => {
-    return await $axios.get('news').then((res) => res.data)
+    return await $axios.get('youtube').then((res) => res.data)
   }
 )
 
-export const newsSlice = createSlice({
-  name: 'reducers/news',
+export const youtubeSlice = createSlice({
+  name: 'reducers/youtube',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -29,7 +29,7 @@ export const newsSlice = createSlice({
       .addCase(hydrate, (state: Draft<StateType>, action) => {
         return {
           ...state,
-          ...(action.payload as any)[newsSlice.name],
+          ...(action.payload as any)[youtubeSlice.name],
         }
       })
       .addCase(

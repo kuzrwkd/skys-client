@@ -38,6 +38,7 @@ export class FeedParserServices extends Services {
                   date: dayjs(`${item.date}`).format(),
                   link: item.link,
                   author: item.author,
+                  thumbnail: item.image,
                   organization,
                 })
               }

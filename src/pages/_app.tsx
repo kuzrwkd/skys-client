@@ -8,6 +8,7 @@ import {
 } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from '@/interfaces/ui/styles/theme'
+import { wrapper } from '@/interfaces/controllers/home/store'
 
 const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   React.useEffect(() => {
@@ -38,4 +39,4 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   )
 }
 
-export default App
+export default wrapper.withRedux(App)

@@ -7,7 +7,8 @@
 
 ```.dotenv
 NEXT_PUBLIC_WORJP_SERVICE_BASE_URL='https://assets.wor.jp/rss/rdf/'
-NEXT_PUBLIC_COINTELEGRAPH_URL='https://jp.cointelegraph.com/'
+NEXT_PUBLIC_COINTELEGRAPH_BASE_URL='https://jp.cointelegraph.com/'
+NEXT_PUBLIC_YOUTUBE_BASE_URL='https://www.youtube.com/feeds/videos.xml?channel_id='
 NEXT_PUBLIC_API_PORT=4001
 NEXT_PUBLIC_API_BASE_URL='http://localhost:4001/api/'
 ```

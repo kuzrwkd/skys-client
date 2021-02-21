@@ -16,7 +16,22 @@ export const useStyles = makeStyles((theme: Theme) =>
       },
     },
     listItemInnerWrapper: {
+      width: 236,
+    },
+    listItemFigure: {
+      margin: 0,
+    },
+    listItemThumbnailWrapper: {
+      height: 132,
+      marginBottom: 8,
+      position: 'relative',
+      overflow: 'hidden',
+    },
+    listItemThumbnail: {
+      display: 'block',
       width: '100%',
+      position: 'absolute',
+      top: -22,
     },
     listItemTitle: {
       display: '-webkit-box',
@@ -26,10 +41,19 @@ export const useStyles = makeStyles((theme: Theme) =>
       marginBottom: 8,
       height: 40,
     },
+    listItemTitleYoutube: {
+      height: 34,
+    },
     listItemMetaBox: {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
+    },
+    listItemMetaBoxColumnLayout: {
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      '-webkit-line-clamp': 1,
+      overflow: 'hidden',
     },
     listItemTime: {
       marginRight: 8,

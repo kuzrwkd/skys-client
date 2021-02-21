@@ -1,16 +1,16 @@
 import { UseCase } from '@/applications/usecases/base'
 import { FeedParserServices } from '@/domains/services/feedParser'
-import { RssWorJpRepository } from '@/domains/repositories/external/http/rss.wor.jp'
+import { ReadRssRepository } from '@/domains/repositories/external/http'
 import { RssData } from '@/domains/services/feedParser/types'
 
 export class FeedParserUseCase extends UseCase {
   public static feedParser(
     url: string,
-    organization: string
+    organization?: string
   ): Promise<RssData[]> {
     const promise = new Promise((resolve): void => {
-      const rss = RssWorJpRepository.readRss(`${url}`)
-      FeedParserServices.feedParser(rss, organization, (value): void => {
+      const rss = ReadRssRepository.readRss(`${url}`)
+      FeedParserServices.feedParser(rss, organization ?? '', (value): void => {
         resolve(value)
       })
     })
