@@ -3,7 +3,7 @@ import React from 'react'
 import { NextPage } from 'next'
 import Home from '@/interfaces/ui/components/pages/Home'
 import PropsType from 'prop-types'
-import homeGetStaticProps from '@/interfaces/controllers/home'
+import homeGetStaticProps from '@/interfaces/controllers/page/home'
 
 import DefaultLayout from '@/interfaces/ui/components/templates/default'
 

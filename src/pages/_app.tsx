@@ -8,7 +8,7 @@ import {
 } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from '@/interfaces/ui/styles/theme'
-import { wrapper } from '@/interfaces/controllers/home/store'
+import { wrapper } from '@/interfaces/controllers/page/all/store'
 
 const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   React.useEffect(() => {

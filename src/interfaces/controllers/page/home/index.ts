@@ -1,4 +1,4 @@
-import { wrapper } from './store'
+import { wrapper } from '@/interfaces/controllers/page/all/store'
 import { GetStaticProps } from 'next'
 import { fetch as fetchNews } from '@/interfaces/presenters/redux/reducers/news'
 import { fetch as fetchYoutube } from '@/interfaces/presenters/redux/reducers/youtube'
@@ -14,7 +14,7 @@ const getStaticProps: GetStaticProps = wrapper.getStaticProps(
       props: {
         title: 'TOP',
       },
-      revalidate: 300,
+      revalidate: 60,
     }
   }
 )
