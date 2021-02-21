@@ -2,11 +2,11 @@ import React, { FC } from 'react'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
-import DynamicFeedOutlinedIcon from '@material-ui/icons/DynamicFeedOutlined'
-import SubscriptionsOutlinedIcon from '@material-ui/icons/SubscriptionsOutlined'
-import AssignmentTurnedInOutlinedIcon from '@material-ui/icons/AssignmentTurnedInOutlined'
-import EventOutlinedIcon from '@material-ui/icons/EventOutlined'
-import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined'
+import DynamicFeedSharpIcon from '@material-ui/icons/DynamicFeedSharp'
+import SubscriptionsSharpIcon from '@material-ui/icons/SubscriptionsSharp'
+import AssignmentTurnedInSharpIcon from '@material-ui/icons/AssignmentTurnedInSharp'
+import EventSharpIcon from '@material-ui/icons/EventSharp'
+import TuneSharpIcon from '@material-ui/icons/TuneSharp'
 import { useStyles } from './style'
 import PropTypes from 'prop-types'
 import { Props } from './types'
@@ -41,27 +41,27 @@ const component: FC<Props> = ({ handleDrawer, drawer }) => {
       <List className={classes.drawerNav}>
         <ListItem onClick={() => handleDrawer('ニュース', asideNewsId)}>
           <ListItemIcon className={classes.listItemIcon}>
-            <DynamicFeedOutlinedIcon className={classes.icon} />
+            <DynamicFeedSharpIcon className={classes.icon} />
           </ListItemIcon>
         </ListItem>
         <ListItem onClick={() => handleDrawer('YouTube', asideYoutubeId)}>
           <ListItemIcon className={classes.listItemIcon}>
-            <SubscriptionsOutlinedIcon className={classes.icon} />
+            <SubscriptionsSharpIcon className={classes.icon} />
           </ListItemIcon>
         </ListItem>
         <ListItem onClick={() => handleDrawer('タスク管理', asideTodoId)}>
           <ListItemIcon className={classes.listItemIcon}>
-            <AssignmentTurnedInOutlinedIcon className={classes.icon} />
+            <AssignmentTurnedInSharpIcon className={classes.icon} />
           </ListItemIcon>
         </ListItem>
         <ListItem onClick={() => handleDrawer('イベント', asideEventsId)}>
           <ListItemIcon className={classes.listItemIcon}>
-            <EventOutlinedIcon className={classes.icon} />
+            <EventSharpIcon className={classes.icon} />
           </ListItemIcon>
         </ListItem>
         <ListItem onClick={() => handleDrawer('設定', asideSettingsId)}>
           <ListItemIcon className={classes.listItemIcon}>
-            <SettingsOutlinedIcon className={classes.icon} />
+            <TuneSharpIcon className={classes.icon} />
           </ListItemIcon>
         </ListItem>
       </List>

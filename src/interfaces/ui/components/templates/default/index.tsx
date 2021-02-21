@@ -5,6 +5,8 @@ import Drawer from '@material-ui/core/Drawer'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Divider from '@material-ui/core/Divider'
+import BottomNavigation from '@material-ui/core/BottomNavigation'
+import Button from '@material-ui/core/Button'
 import Aside from '@/interfaces/ui/components/organisms/aside'
 import { useStyles } from './style'
 import { ASIDE_MENU_ID } from '@/utils/constants/ids'
@@ -20,6 +22,12 @@ const DefaultLayout: FC = ({ children }) => {
     menuId: asideNewsId,
   })
 
+  const [value, setValue] = React.useState('recents')
+
+  const handleChange = (_event: React.ChangeEvent<{}>, newValue: string) => {
+    setValue(newValue)
+  }
+
   const handleDrawer = (contents: string, menuId: number) => {
     if (menuId === drawer.menuId) {
       return setDrawer({ contents, menuId })
@@ -33,6 +41,27 @@ const DefaultLayout: FC = ({ children }) => {
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar />
+        <BottomNavigation
+          value={value}
+          onChange={handleChange}
+          className={classes.root}
+        >
+          <Button color="primary" className={classes.appBarButton}>
+            Nikkei225
+          </Button>
+          <Button color="primary" className={classes.appBarButton}>
+            Topix
+          </Button>
+          <Button color="primary" className={classes.appBarButton}>
+            Mothers
+          </Button>
+          <Button color="primary" className={classes.appBarButton}>
+            NY Dow
+          </Button>
+          <Button color="primary" className={classes.appBarButton}>
+            S&P 500
+          </Button>
+        </BottomNavigation>
       </AppBar>
       <main className={classes.content}>
         <div className={classes.toolbar} />
