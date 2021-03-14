@@ -21,12 +21,6 @@ const DefaultLayout: FC = ({ children }) => {
     menuId: asideNewsId,
   })
 
-  const [value, setValue] = React.useState('recents')
-
-  const handleChange = (_event: React.ChangeEvent<{}>, newValue: string) => {
-    setValue(newValue)
-  }
-
   const handleDrawer = (contents: string, menuId: number) => {
     if (menuId === drawer.menuId) {
       return setDrawer({ contents, menuId })
