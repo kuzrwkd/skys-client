@@ -1,4 +1,4 @@
-# investment-support-for-nuxtjs
+# SKY CLIENT
 
 ![logo](./brand/nextjs.jpg "ロゴ")
 
