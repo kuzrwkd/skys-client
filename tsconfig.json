@@ -3,6 +3,7 @@
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "declaration": true,
+    "sourceMap": true,
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -24,7 +25,8 @@
     "typeRoots" : [
       "./node_modules/@types",
       "./src/Tools/@types"
-    ]
+    ],
+    "incremental": true,
   },
   "ts-node": {
     "files": true // ts-nodeでtypeRootsの型を読み込む
