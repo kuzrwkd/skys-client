@@ -1,7 +1,7 @@
 /**
  * Expressjs core
  */
-import express from 'express';
+import { Request, Response } from 'express';
 
 /**
  * Nextjs core
@@ -12,6 +12,7 @@ import next from 'next';
  * Lib
  */
 import 'reflect-metadata';
+import { Controller, createExpressServer, Get } from 'routing-controllers';
 
 /**
  * NewsFeed
@@ -23,30 +24,21 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-const router = express.Router();
-
-router.get('/', async (req, res, next) => {
-  const newsFeedController = container.resolve<NewsFeed.INewsFeedController>('NewsFeedController');
-  const result = await newsFeedController.handle();
-  res.json(`GET OK! query is ${result}`);
-  next();
-});
-
-router.get('/:id', (req, res, next) => {
-  res.json(`GET OK! params is ${req.params.id}`);
-  next();
-});
-
-router.post('/', (req, res, next) => {
-  res.json(`POST OK! params is ${req.body}`);
-  next();
-});
+@Controller('/v1')
+class Demo {
+  @Get('/demo')
+  async getDemo() {
+    const newsFeedController = container.resolve<NewsFeed.INewsFeedController>('NewsFeedController');
+    return JSON.stringify(await newsFeedController.handle());
+  }
+}
 
 app.prepare().then(() => {
-  const server = express();
+  const server = createExpressServer({
+    controllers: [Demo],
+  });
 
-  server.use('/demo', router);
-  server.all('*', (req, res) => {
+  server.all('*', (req: Request, res: Response) => {
     return handle(req, res);
   });
 
