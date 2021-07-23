@@ -5,10 +5,11 @@ import { injectable, inject } from 'tsyringe';
 
 @injectable()
 export class NewsFeedInteract {
-  constructor(@inject('NewsFeedWebApi') private newsFeedWebApi: NewsFeed.INewsFeedWebApi) {}
+  constructor(@inject('NewsFeedWebApi') private newsFeedWebApi: any) {}
 
-  async handle() {
+  async handle(): Promise<NewsFeed.NewsFeedReadApi> {
     const api = await this.newsFeedWebApi.getNewsFeed();
+    console.log(api);
     return api;
   }
 }

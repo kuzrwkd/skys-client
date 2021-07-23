@@ -4,7 +4,7 @@
 import { container } from 'tsyringe';
 
 /**
- * Core
+ * UseCase
  */
 import { NewsFeedInteract } from '@/Products/Core/UseCase/NewsFeed/NewsFeedInteract';
 

@@ -24,13 +24,18 @@ import type {
   Organization as _Organization,
   Contents as _Contents,
 } from '@/Tools/@types/Products/Core/Entity/NewsFeed';
-import type { INewsFeedWebApi as _INewsFeedWebApi } from '@/Tools/@types/Products/Driver/Web/NewsFeed';
+import type {
+  INewsFeedWebApi as _INewsFeedWebApi,
+  NewsFeedReadApi as _NewsFeedReadApi,
+} from '@/Tools/@types/Products/Driver/Web/NewsFeed';
+import type { INewsFeedInteract as _INewsFeedInteract } from '@/Tools/@types/Products/Core/UseCase/NewsFeed';
+import type { INewsFeedController as _INewsFeedController } from '@/Tools/@types/Products/Adapter/Controller/NewsFeed';
 
 declare global {
   /**
    * Nextjs
    */
-  namespace Next {
+  export namespace Next {
     export type DocumentContext = _DocumentContext;
     export type NextApiRequest = _NextApiRequest;
     export type NextApiResponse<T = any> = _NextApiResponse<T>;
@@ -42,18 +47,21 @@ declare global {
   /**
    * Tools
    */
-  namespace Tools {
+  export namespace Tools {
     export type IDayJs = _IDayJs;
   }
 
   /**
    * NewsFeed
    */
-  namespace NewsFeed {
+  export namespace NewsFeed {
     export type INewsFeedEntity = _INewsFeedEntity;
     export type Entity = _Entity;
     export type Organization = _Organization;
     export type Contents = _Contents;
     export type INewsFeedWebApi = _INewsFeedWebApi;
+    export type NewsFeedReadApi = _NewsFeedReadApi;
+    export type INewsFeedInteract = _INewsFeedInteract;
+    export type INewsFeedController = _INewsFeedController;
   }
 }

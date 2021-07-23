@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2020",
+    "outDir": "./dist",
+    "isolatedModules": false,
+    "noEmit": false,
+  },
+  "exclude": [
+    "node_modules",
+    "test",
+    "dist",
+    "prisma",
+    "**/*spec.ts",
+    "jest.setup.ts",
+    "src/pages"
+  ],
+  "include": [
+    "src/Products/**/*.ts",
+    "src/Tools/**/*.ts",
+  ]
+}

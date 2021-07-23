@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
+    "declaration": true,
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -24,6 +25,9 @@
       "./node_modules/@types",
       "./src/Tools/@types"
     ]
+  },
+  "ts-node": {
+    "files": true // ts-nodeでtypeRootsの型を読み込む
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
