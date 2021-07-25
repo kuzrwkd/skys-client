@@ -27,7 +27,9 @@ const Home: Next.NextPage = () => {
       </Head>
       <div>
         <h3>state</h3>
-        <pre>id: {content[0].id}</pre>
+        <pre>
+          id: {content[0].id}, title: {content[0].title}, url: {content[0].url}
+        </pre>
       </div>
     </div>
   );
