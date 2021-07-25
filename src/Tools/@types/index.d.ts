@@ -1,5 +1,5 @@
 /**
- * Next core
+ * Next
  */
 import type {
   NextApiRequest as _NextApiRequest,
@@ -33,7 +33,7 @@ import type { INewsFeedController as _INewsFeedController } from '@/Tools/@types
 
 declare global {
   /**
-   * Nextjs
+   * Next
    */
   export namespace Next {
     export type DocumentContext = _DocumentContext;

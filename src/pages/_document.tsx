@@ -1,5 +1,5 @@
 /**
- * Next core
+ * Next
  */
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 

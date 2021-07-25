@@ -4,7 +4,7 @@
 import { Request, Response } from 'express';
 
 /**
- * Nextjs core
+ * Next
  */
 import next from 'next';
 
@@ -12,30 +12,20 @@ import next from 'next';
  * Lib
  */
 import 'reflect-metadata';
-import { Controller, createExpressServer, Get } from 'routing-controllers';
+import { createExpressServer } from 'routing-controllers';
 
 /**
- * NewsFeed
+ * Controller
  */
-import { container } from '@/Tools/Containers/Products/NewsFeed';
+import { NewsFeed } from '@/Products/Driver/Server/newsfeed.controller';
 
 const port = parseInt(process.env.PORT ?? '3000', 10);
-const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dev });
+const app = next({ dev: process.env.NODE_ENV === 'development' });
 const handle = app.getRequestHandler();
-
-@Controller('/v1')
-class Demo {
-  @Get('/demo')
-  async getDemo() {
-    const newsFeedController = container.resolve<NewsFeed.INewsFeedController>('NewsFeedController');
-    return JSON.stringify(await newsFeedController.handle());
-  }
-}
 
 app.prepare().then(() => {
   const server = createExpressServer({
-    controllers: [Demo],
+    controllers: [NewsFeed],
   });
 
   server.all('*', (req: Request, res: Response) => {
