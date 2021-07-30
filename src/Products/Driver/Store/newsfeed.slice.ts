@@ -5,15 +5,13 @@ import { createSlice } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
 
 /**
- * Store
- */
-import { AppState, AppThunk } from '@/Products/Driver/Store/main';
-
-/**
  * Tools
  */
 import axios from '@/Tools/Utility/Axios';
 
+/**
+ * Create Slice
+ */
 export const newsfeedSlice = createSlice({
   name: 'newsfeed',
   initialState: {} as any,
@@ -32,8 +30,14 @@ export const newsfeedSlice = createSlice({
   },
 });
 
-export const fetchNewsFeed = (): AppThunk => async (dispatch) => {
+/**
+ * Api fetch
+ */
+export const fetchNewsFeed = (): Store.AppThunk => async (dispatch) => {
   await axios.get('newsfeed').then((res) => dispatch(newsfeedSlice.actions.setResponse(res.data)));
 };
 
-export const selectNewsFeed = () => (state: AppState) => state?.[newsfeedSlice.name]?.['newsfeed'];
+/**
+ * State Selector
+ */
+export const selectNewsFeed = () => (state: Store.AppState) => state?.[newsfeedSlice.name]?.['newsfeed'];

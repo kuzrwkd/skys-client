@@ -1,4 +1,4 @@
-export interface IDayJs {
+export interface IDateTool {
   getUtc(): string;
   processStartTime(): number;
   processEndTime(startTime: number): string;

@@ -29,7 +29,7 @@ const Home: Next.NextPage = () => {
         className="contenair bg-cover min-h-screen w-full flex justify-center items-center"
         style={{
           backgroundImage:
-            'url("https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1124&q=100");',
+            'url("https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1124&q=100")',
         }}
       >
         <div className="w-1/2 bg-white p-5 rounded-xl bg-opacity-60 backdrop-filter backdrop-blur-lg">
@@ -55,7 +55,7 @@ const Home: Next.NextPage = () => {
                 <div className="card-name-user text-xs">
                   <h3 className="font-semibold">Chris Wood</h3>
                   <div className=" flex items-center gap-x-1">
-                    <span className="h-3 w-3 rounded-full bg-green-500"></span>
+                    <span className="h-3 w-3 rounded-full bg-green-500" />
                     <span>Online</span>
                   </div>
                 </div>
@@ -75,7 +75,7 @@ const Home: Next.NextPage = () => {
                       strokeLinejoin="round"
                       strokeWidth="2"
                       d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
-                    ></path>
+                    />
                   </svg>
                   <span className="">Invite</span>
                 </button>
@@ -92,7 +92,7 @@ const Home: Next.NextPage = () => {
                 <div className="card-name-user text-xs">
                   <h3 className="font-semibold">Jose Leos</h3>
                   <div className=" flex items-center gap-x-1">
-                    <span className="h-3 w-3 rounded-full bg-yellow-500"></span>
+                    <span className="h-3 w-3 rounded-full bg-yellow-500" />
                     <span>Busy</span>
                   </div>
                 </div>
@@ -112,7 +112,7 @@ const Home: Next.NextPage = () => {
                       strokeLinejoin="round"
                       strokeWidth="2"
                       d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-                    ></path>
+                    />
                   </svg>
                   <span className="">Invite</span>
                 </button>
@@ -129,7 +129,7 @@ const Home: Next.NextPage = () => {
                 <div className="card-name-user text-xs">
                   <h3 className="font-semibold">Jeny Green</h3>
                   <div className=" flex items-center gap-x-1">
-                    <span className="h-3 w-3 rounded-full bg-red-500"></span>
+                    <span className="h-3 w-3 rounded-full bg-red-500" />
                     <span>Offline</span>
                   </div>
                 </div>
@@ -149,7 +149,7 @@ const Home: Next.NextPage = () => {
                       strokeLinejoin="round"
                       strokeWidth="2"
                       d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-                    ></path>
+                    />
                   </svg>
                   <span className="">Invite</span>
                 </button>
@@ -166,7 +166,7 @@ const Home: Next.NextPage = () => {
                 <div className="card-name-user text-xs">
                   <h3 className="font-semibold">Neil Sims</h3>
                   <div className=" flex items-center gap-x-1">
-                    <span className="h-3 w-3 rounded-full bg-green-500"></span>
+                    <span className="h-3 w-3 rounded-full bg-green-500" />
                     <span>Online</span>
                   </div>
                 </div>
@@ -186,7 +186,7 @@ const Home: Next.NextPage = () => {
                       strokeLinejoin="round"
                       strokeWidth="2"
                       d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-                    ></path>
+                    />
                   </svg>
                   <span className="">Invite</span>
                 </button>
@@ -207,6 +207,7 @@ const Home: Next.NextPage = () => {
               <img
                 className="object-cover object-center w-full h-full rounded-full"
                 src="https://i.pinimg.com/originals/60/fd/e8/60fde811b6be57094e0abc69d9c2622a.jpg"
+                alt={''}
               />
             </a>
           </div>

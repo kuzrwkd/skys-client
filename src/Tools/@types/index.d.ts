@@ -11,9 +11,23 @@ import type {
 } from 'next';
 
 /**
+ * Lib
+ */
+import {
+  AxiosError as _AxiosError,
+  AxiosRequestConfig as _AxiosRequestConfig,
+  AxiosResponse as _AxiosResponse,
+} from 'axios';
+
+/**
  * Tools
  */
-import type { IDayJs as _IDayJs } from '@/Tools/@types/Tools/Utility/Date/';
+import type { IDateTool as _IDateTool } from '@/Tools/@types/Tools/Utility/Date/';
+
+/**
+ * Store
+ */
+import { AppStore as _AppStore, AppState as _AppState, AppThunk as _AppThunk } from '@/Products/Driver/Store/main';
 
 /**
  * NewsFeed
@@ -45,10 +59,28 @@ declare global {
   }
 
   /**
+   * Lib
+   */
+  export namespace Lib {
+    export type AxiosRequestConfig = _AxiosRequestConfig;
+    export type AxiosResponse<T = any> = _AxiosResponse<T>;
+    export type AxiosError<T = any> = _AxiosError<T>;
+  }
+
+  /**
    * Tools
    */
   export namespace Tools {
-    export type IDayJs = _IDayJs;
+    export type IDateTool = _IDateTool;
+  }
+
+  /**
+   * Store
+   */
+  export namespace Store {
+    export type AppStore = _AppStore;
+    export type AppState = _AppState;
+    export type AppThunk = _AppThunk;
   }
 
   /**

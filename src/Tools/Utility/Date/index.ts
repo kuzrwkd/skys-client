@@ -8,7 +8,7 @@ import { injectable } from 'tsyringe';
 export const utcDayJs = dayjs.extend(utc);
 
 @injectable()
-export class DayJs {
+export class DateTool {
   getUtc() {
     return utcDayJs.utc().format();
   }
