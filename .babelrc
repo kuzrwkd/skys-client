@@ -1,8 +1,11 @@
 {
   "presets": [
-    "next/babel"
+    [
+      "next/babel",
+      {
+        "inline-react-svg": {}
+      }
+    ]
   ],
-  "plugins": [
-    "inline-react-svg"
-  ]
+  "plugins": []
 }

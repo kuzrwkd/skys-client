@@ -25,6 +25,7 @@ const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
   const server = createExpressServer({
+    routePrefix: '/v1',
     controllers: [NewsFeed],
   });
 
