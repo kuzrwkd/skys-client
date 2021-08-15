@@ -1,7 +1,7 @@
-export interface INewsFeedWebApi {
+export interface INewsFeedWeb {
   getNewsFeed(): Promise<any>;
 }
 
-export type NewsFeedReadApi = {
+export type NewsFeedRead = {
   newsfeed: NewsFeed.Entity[];
 };

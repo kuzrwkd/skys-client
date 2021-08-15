@@ -6,25 +6,25 @@ import { container } from 'tsyringe';
 /**
  * UseCase
  */
-import { NewsFeedInteract } from '@/Products/Core/UseCase/NewsFeed/NewsFeedInteract';
+import { NewsfeedInteract } from '@/Products/Core/UseCase/newsfeed.interact';
 
 /**
  * Adapter
  */
-import { NewsFeedController } from '@/Products/Adapter/Controller/NewsFeedController';
-import { NewsFeedPresenter } from '@/Products/Adapter/Presenter/NewsFeedPresenter';
+import { NewsfeedController } from '@/Products/Adapter/Controller/newsfeed.controller';
+import { NewsfeedPresenter } from '@/Products/Adapter/Presenter/newsfeed.presenter';
 
 /**
  * Driver
  */
-import { NewsFeedWebApi } from '@/Products/Driver/Web/NewsFeedWebApi';
+import { NewsfeedWeb } from '@/Products/Driver/Web/newsfeed.web';
 
 /**
  * Inject
  */
-container.register<NewsFeedInteract>('NewsFeedInteract', { useClass: NewsFeedInteract });
-container.register<NewsFeedWebApi>('NewsFeedWebApi', { useClass: NewsFeedWebApi });
-container.register<NewsFeedController>('NewsFeedController', { useClass: NewsFeedController });
-container.register<NewsFeedPresenter>('NewsFeedPresenter', { useClass: NewsFeedPresenter });
+container.register<NewsfeedInteract>('NewsFeedInteract', { useClass: NewsfeedInteract });
+container.register<NewsfeedWeb>('NewsFeedWebApi', { useClass: NewsfeedWeb });
+container.register<NewsfeedController>('NewsFeedController', { useClass: NewsfeedController });
+container.register<NewsfeedPresenter>('NewsFeedPresenter', { useClass: NewsfeedPresenter });
 
 export { container };

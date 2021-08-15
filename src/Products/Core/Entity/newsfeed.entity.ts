@@ -1,7 +1,7 @@
 import { injectable } from 'tsyringe';
 
 @injectable()
-export class NewsFeedEntity {
+export class NewsfeedEntity {
   private entity!: NewsFeed.Entity[];
 
   /**
