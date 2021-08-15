@@ -1,6 +1,6 @@
 module.exports = {
   mode: "jit",
-  purge: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/Products/Driver/Ui/Components/**/*.{js,ts,jsx,tsx}'],
+  purge: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/Products/Driver/Ui/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
