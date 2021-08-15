@@ -7,7 +7,7 @@ import Image from 'next/image';
  * Lib
  */
 import PropTypes from 'prop-types';
-import DefaultMeta from '@/Products/Driver/UI/Components/Meta/default.meta';
+import DefaultMeta from '@/Products/Driver/UI/Meta/default.meta';
 
 /**
  * Component

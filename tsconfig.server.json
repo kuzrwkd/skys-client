@@ -9,10 +9,8 @@
   },
   "exclude": [
     "node_modules",
-    "test",
     "dist",
-    "prisma",
-    "**/*spec.ts",
+    "**/*spec.ts|tsx",
     "jest.setup.ts",
     "src/pages"
   ],
