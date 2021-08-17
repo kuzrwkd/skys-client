@@ -13,7 +13,7 @@ import { fetchNewsFeed, selectNewsFeed } from '@/Products/Driver/Store/newsfeed.
 /**
  * Components
  */
-import DefaultLayout from '@/Products/Driver/UI/Layout/default.layout';
+import DefaultLayout from '@/Products/Driver/UI/Components/Layout/default.layout';
 
 /**
  * Page
