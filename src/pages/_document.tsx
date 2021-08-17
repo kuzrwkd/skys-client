@@ -13,6 +13,7 @@ class AppDocument extends Document {
     return (
       <Html>
         <Head>
+          <link rel="icon" href="/logo.svg" type="image/svg+xml" />
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
         </Head>
         <body>
