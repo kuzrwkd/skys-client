@@ -14,6 +14,11 @@ import { wrapper } from '@/Products/Driver/Store/main';
 import 'tailwindcss/tailwind.css';
 
 /**
+ * Components
+ */
+import DefaultLayout from '@/Products/Driver/UI/Components/Layout/default.layout';
+
+/**
  * Application Component
  * @param Component
  * @param pageProps
@@ -21,7 +26,18 @@ import 'tailwindcss/tailwind.css';
  */
 const App = ({ Component, pageProps }: AppProps) => {
   console.log('-----------------___APP', { pageProps });
-  return <Component {...pageProps} />;
+  switch (pageProps.layout) {
+    case 'auth': {
+      return <p>準備中</p>;
+    }
+    default: {
+      return (
+        <DefaultLayout title={pageProps.title} description={pageProps.description}>
+          <Component {...pageProps} />
+        </DefaultLayout>
+      );
+    }
+  }
 };
 
 export default wrapper.withRedux(App);
