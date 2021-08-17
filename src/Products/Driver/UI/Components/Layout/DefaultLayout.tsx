@@ -1,7 +1,7 @@
 /**
  * React
  */
-import React, { useState } from 'react';
+import React, { useState, createElement } from 'react';
 
 /**
  * Next
@@ -25,8 +25,11 @@ import SearchBox from '@/Products/Driver/UI/Components/Module/SearchBox';
  */
 import LogoIcon from '@/Products/Driver/UI/Icon/logo.svg';
 import MenuIcon from '@/Products/Driver/UI/Icon/menu.svg';
-import DashboardIcon from '@/Products/Driver/UI/Icon/dashboard.svg';
-import MessageIcon from '@/Products/Driver/UI/Icon/message.svg';
+
+/**
+ * Constants
+ */
+import { MENU } from '@/Tools/Constants/mainMenu';
 
 /**
  * Component
@@ -40,6 +43,27 @@ const DefaultLayout: React.FC<Props> = ({ children, title, description }) => {
     isMenuOpen: true,
     isSearchActive: false,
   });
+
+  const dom = {
+    renderMenu() {
+      return (
+        <ul className="overflow-y-scroll mt-5 ml-5">
+          {MENU.map(({ name, href, icon }, i) => {
+            return (
+              <li className="mt-4" key={i}>
+                <Link href={href}>
+                  <a className="inline-flex items-center">
+                    <div className="flex-none mr-5">{createElement(icon)}</div>
+                    <span>{name}</span>
+                  </a>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      );
+    },
+  };
 
   const method = {
     menuIconHandler() {
@@ -73,24 +97,7 @@ const DefaultLayout: React.FC<Props> = ({ children, title, description }) => {
             </div>
             <h1 className="flex-1 text-lg font-bold font-mono from-gray-200">SKYS</h1>
           </div>
-          <ul className="overflow-y-scroll mt-5 ml-5">
-            <li className="mt-4">
-              <Link href="/">
-                <a className="inline-flex items-center">
-                  <DashboardIcon className="flex-none mr-5" width="24" height="24" />
-                  <span>Dashboard</span>
-                </a>
-              </Link>
-            </li>
-            <li className="mt-4">
-              <Link href="/message">
-                <a className="inline-flex items-center">
-                  <MessageIcon className="flex-none mr-5" width="24" height="24" />
-                  <span>Message</span>
-                </a>
-              </Link>
-            </li>
-          </ul>
+          {dom.renderMenu()}
         </aside>
         <div
           className={classNames('flex', 'flex-col', 'flex-1', 'h-screen', 'pl-72', 'transition-all', {
