@@ -17,15 +17,14 @@ import classNames from 'tailwindcss-classnames';
 /**
  * Components
  */
-import DefaultMeta from '@/Products/Driver/UI/Components/Meta/default.meta';
-import SearchBox from '@/Products/Driver/UI/Components/Module/searchBox';
+import DefaultMeta from '@/Products/Driver/UI/Components/Meta/DefaultMeta';
+import SearchBox from '@/Products/Driver/UI/Components/Module/SearchBox';
 
 /**
  * Svg
  */
 import LogoIcon from '@/Products/Driver/UI/Icon/logo.svg';
 import MenuIcon from '@/Products/Driver/UI/Icon/menu.svg';
-import SearchIcon from '@/Products/Driver/UI/Icon/search.svg';
 import DashboardIcon from '@/Products/Driver/UI/Icon/dashboard.svg';
 import MessageIcon from '@/Products/Driver/UI/Icon/message.svg';
 
@@ -42,16 +41,13 @@ const DefaultLayout: React.FC<Props> = ({ children, title, description }) => {
     isSearchActive: false,
   });
 
-  const menuIconHandler = (): void => {
-    const newState = { ...state };
-    newState.isMenuOpen = !newState.isMenuOpen;
-    setState(newState);
-  };
-
-  const searchIconHandler = (): void => {
-    const newState = { ...state };
-    newState.isSearchActive = !newState.isSearchActive;
-    setState(newState);
+  const method = {
+    menuIconHandler() {
+      setState({ ...state, isMenuOpen: !state.isMenuOpen });
+    },
+    searchIconHandler() {
+      setState({ ...state, isSearchActive: !state.isSearchActive });
+    },
   };
 
   return (
@@ -75,7 +71,7 @@ const DefaultLayout: React.FC<Props> = ({ children, title, description }) => {
             <div className="flex-none w-[63px]">
               <LogoIcon width={63} height={58} />
             </div>
-            <h1 className="flex-1 text-lg font-bold font-mono from-gray-200">Adminator</h1>
+            <h1 className="flex-1 text-lg font-bold font-mono from-gray-200">SKYS</h1>
           </div>
           <ul className="overflow-y-scroll mt-5 ml-5">
             <li className="mt-4">
@@ -103,16 +99,8 @@ const DefaultLayout: React.FC<Props> = ({ children, title, description }) => {
         >
           <header className="border-b w-full h-16 bg-white">
             <div className="flex items-center h-full">
-              <MenuIcon className="ml-4" onClick={menuIconHandler} width="24" height="24" />
-              <div className={classNames('ml-4', { ['hidden']: state.isSearchActive })} onClick={searchIconHandler}>
-                <SearchIcon />
-              </div>
-              <SearchBox
-                action="/"
-                method="get"
-                searchIconHandler={searchIconHandler}
-                isSearchActive={state.isSearchActive}
-              />
+              <MenuIcon className="cursor-pointer ml-4" onClick={method.menuIconHandler} width="24" height="24" />
+              <SearchBox searchIconHandler={method.searchIconHandler} isSearchActive={state.isSearchActive} />
             </div>
           </header>
           <main className="flex flex-col flex-1 overflow-y-scroll">

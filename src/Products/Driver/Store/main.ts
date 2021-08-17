@@ -8,7 +8,7 @@ import { createWrapper } from 'next-redux-wrapper';
 /**
  * Redux Slice
  */
-import { newsfeedSlice } from '@/Products/Driver/Store/newsfeed.slice';
+import { newsfeedSlice } from '@/Products/Driver/Store/NewsfeedSlice';
 
 const makeStore = () =>
   configureStore({

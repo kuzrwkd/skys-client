@@ -6,18 +6,18 @@ import { container } from 'tsyringe';
 /**
  * UseCase
  */
-import { NewsfeedInteract } from '@/Products/Core/UseCase/newsfeed.interact';
+import { NewsfeedInteract } from '@/Products/Core/UseCase/NewsfeedInteract';
 
 /**
  * Adapter
  */
-import { NewsfeedController } from '@/Products/Adapter/Controller/newsfeed.controller';
-import { NewsfeedPresenter } from '@/Products/Adapter/Presenter/newsfeed.presenter';
+import { NewsfeedController } from '@/Products/Adapter/Controller/NewsfeedController';
+import { NewsfeedPresenter } from '@/Products/Adapter/Presenter/NewsfeedPresenter';
 
 /**
  * Driver
  */
-import { NewsfeedWeb } from '@/Products/Driver/Web/newsfeed.web';
+import { NewsfeedWeb } from '@/Products/Driver/Web/NewsfeedWeb';
 
 /**
  * Inject

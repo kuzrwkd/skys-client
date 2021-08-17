@@ -17,7 +17,7 @@ import { createExpressServer } from 'routing-controllers';
 /**
  * Controller
  */
-import { NewsFeed } from '@/Products/Driver/Server/newsfeed.controller';
+import { NewsFeed } from '@/Products/Driver/Server/NewsfeedController';
 
 /**
  * Server

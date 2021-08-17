@@ -8,7 +8,7 @@ import { NextPage } from 'next';
  */
 import { useSelector } from 'react-redux';
 import { wrapper } from '@/Products/Driver/Store/main';
-import { fetchNewsFeed, selectNewsFeed } from '@/Products/Driver/Store/newsfeed.slice';
+import { fetchNewsFeed, selectNewsFeed } from '@/Products/Driver/Store/NewsfeedSlice';
 
 /**
  * Page

@@ -16,7 +16,7 @@ import 'tailwindcss/tailwind.css';
 /**
  * Components
  */
-import DefaultLayout from '@/Products/Driver/UI/Components/Layout/default.layout';
+import DefaultLayout from '@/Products/Driver/UI/Components/Layout/DefaultLayout';
 
 /**
  * Application Component
