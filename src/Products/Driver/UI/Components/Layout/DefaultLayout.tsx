@@ -48,12 +48,12 @@ const DefaultLayout: React.FC<Props> = ({ children, title, description }) => {
     renderMenu() {
       return (
         <ul className="overflow-y-scroll mt-5 ml-5">
-          {MENU.map(({ name, href, icon }, i) => {
+          {MENU.map(({ name, href, icon, className }, i) => {
             return (
               <li className="mt-4" key={i}>
                 <Link href={href}>
                   <a className="inline-flex items-center">
-                    <div className="flex-none mr-5">{createElement(icon)}</div>
+                    <div className="flex-none mr-5">{createElement(icon, { width: 24, height: 24, className })}</div>
                     <span>{name}</span>
                   </a>
                 </Link>
