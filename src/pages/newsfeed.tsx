@@ -31,7 +31,7 @@ const NewsFeed: NextPage = () => {
   const node = useRef<HTMLTableSectionElement>(null);
 
   useEffect(() => {
-    const data = JSON.parse(node.current?.dataset.newsfeed as string);
+    const data = JSON.parse(node.current?.dataset['newsfeed'] as string);
 
     if (Array.isArray(data) && data.length > 0) {
       setState(data);
@@ -42,7 +42,7 @@ const NewsFeed: NextPage = () => {
     <div className="flex">
       <div className="w-full">
         <Card title="NewsFeed">
-          <div className="mt-4">
+          <div className="mt-8">
             <DataTable
               ref={node}
               rows={['organization', 'title', 'contents', 'articleCreatedAt', 'articleUpdatedAt']}
@@ -50,7 +50,7 @@ const NewsFeed: NextPage = () => {
             >
               {state.map(({ title, url, organization, contents, articleCreatedAt, articleUpdatedAt }, i: number) => {
                 return (
-                  <tr className="odd:bg-gray-100" key={i}>
+                  <tr className="text-sm odd:bg-gray-100" key={i}>
                     <td className="border-l border-r-2 border-gray-200 p-2">{organization.name}</td>
                     <td className="border-r-2 border-gray-200 p-2">
                       <a
