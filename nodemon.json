@@ -1,5 +1,6 @@
 {
   "watch": ["src/Products/Driver/Server", "src/Products/Driver/Web", "src/Products/Core", "src/Products/Adapter", "src/Tools"],
+  "ignore": ["src/Tools/Constants/UI"],
   "exec": "NODE_ENV=development ts-node -r tsconfig-paths/register --project tsconfig.server.json src/Products/Driver/Server/main.ts",
   "ext": "js ts"
 }
