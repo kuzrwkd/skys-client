@@ -9,11 +9,22 @@ import { NextPage } from 'next';
 import { wrapper } from '@/Products/Driver/Store/main';
 
 /**
+ * Components
+ */
+import Card from '@/Products/Driver/UI/Components/Module/Card';
+
+/**
  * Page
  * @constructor
  */
-const Message: NextPage = () => {
-  return <p className="text-5xl">Message</p>;
+const Customer: NextPage = () => {
+  return (
+    <div className="flex">
+      <Card>
+        <p className="text-5xl">Customer</p>
+      </Card>
+    </div>
+  );
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(() => async () => {
@@ -25,4 +36,4 @@ export const getServerSideProps = wrapper.getServerSideProps(() => async () => {
   };
 });
 
-export default Message;
+export default Customer;
