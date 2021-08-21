@@ -14,7 +14,7 @@ import axios from '@/Tools/Utility/Axios';
  */
 export const newsfeedSlice = createSlice({
   name: 'newsfeed',
-  initialState: {} as any,
+  initialState: { newsfeed: [] } as { newsfeed: NewsFeed.Entity[] },
   reducers: {
     setResponse(_state, action) {
       return action.payload;

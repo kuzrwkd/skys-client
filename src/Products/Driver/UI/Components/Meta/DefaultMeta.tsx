@@ -9,11 +9,6 @@ import Head from 'next/head';
 import { FC } from 'react';
 
 /**
- * Lib
- */
-import PropTypes from 'prop-types';
-
-/**
  * Component
  * @param title
  * @param description
@@ -35,11 +30,6 @@ const DefaultMeta: FC<Props> = ({ title, description }) => {
 type Props = {
   title: string;
   description: string;
-};
-
-DefaultMeta.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
 };
 
 export default DefaultMeta;

@@ -1,7 +1,7 @@
 /**
  * React
  */
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 
 /**
  * Next
@@ -11,7 +11,6 @@ import { useRouter } from 'next/router';
 /**
  * Lib
  */
-import PropTypes from 'prop-types';
 import classNames from 'tailwindcss-classnames';
 
 /**
@@ -40,19 +39,19 @@ const SearchBox: FC<Props> = ({ isSearchActive, searchIconHandler }) => {
 
   return (
     <>
-      <div className={classNames('ml-4', { ['hidden']: isSearchActive })} onClick={searchIconHandler}>
-        <SearchIcon className="cursor-pointer" />
+      <div className={classNames({ ['hidden']: isSearchActive })} onClick={searchIconHandler}>
+        <SearchIcon className="text-gray-500 cursor-pointer" />
       </div>
-      <form onSubmit={method.submit} className={classNames('flex', 'ml-4', { ['hidden']: !isSearchActive })}>
+      <form onSubmit={method.submit} className={classNames('flex', { ['hidden']: !isSearchActive })}>
         <CrossIcon
-          className="cursor-pointer mr-1"
+          className="text-gray-500 cursor-pointer mr-1"
           onClick={() => {
             searchIconHandler();
             method.reset();
           }}
         />
         <input
-          className="w-72 border-b"
+          className="w-72 border-b border-gray-300"
           type="text"
           placeholder="Search..."
           value={state.q}
@@ -72,11 +71,6 @@ const SearchBox: FC<Props> = ({ isSearchActive, searchIconHandler }) => {
 type Props = {
   isSearchActive: boolean;
   searchIconHandler: () => void;
-};
-
-SearchBox.propTypes = {
-  isSearchActive: PropTypes.bool.isRequired,
-  searchIconHandler: PropTypes.func.isRequired,
 };
 
 export default SearchBox;
