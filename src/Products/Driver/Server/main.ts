@@ -25,14 +25,638 @@ const handle = app.getRequestHandler();
 import { ApolloServer, gql } from 'apollo-server-express';
 
 const typeDefs = gql`
+  type Organization {
+    id: Int
+    name: String
+  }
+
+  type Contents {
+    id: Int
+    name: String
+  }
+
+  type NewsFeed {
+    id: Int
+    title: String
+    url: String
+    organization: Organization
+    contents: Contents
+    articleCreatedAt: String
+    articleUpdatedAt: String
+  }
+
   type Query {
     hello: String
+    newsfeed: [NewsFeed]
   }
 `;
 
 const resolvers = {
   Query: {
     hello: () => 'Hello world!',
+    newsfeed: () => [
+      {
+        id: 1,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 1,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+
+      {
+        id: 1,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 1,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+      {
+        id: 2,
+        title: '景気先行き巡り見方対立　株・商品強気、金利は慎重',
+        url: 'https://www.nikkei.com/article/DGXZQOUB2417Y0U1A720C2000000/',
+        organization: {
+          id: 1,
+          name: '日本経済新聞',
+        },
+        contents: {
+          id: 1,
+          name: 'Text',
+        },
+        articleCreatedAt: '2021-07-25T03:00:00.000Z',
+        articleUpdatedAt: '',
+      },
+    ],
   },
 };
 
@@ -56,7 +680,7 @@ async function bootstrap() {
   });
 
   server.listen(port, () => {
-    console.log(`GraphQL API @ http://localhost:${port}${apolloServer.graphqlPath}`);
+    console.log(`GraphQL API @ ${process.env.NEXT_PUBLIC_LOCAL_API_BASE_URL}${apolloServer.graphqlPath}`);
   });
 }
 

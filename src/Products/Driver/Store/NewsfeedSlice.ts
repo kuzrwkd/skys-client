@@ -5,9 +5,14 @@ import { createSlice } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
 
 /**
+ * Apollo
+ */
+import { gql } from '@apollo/client';
+
+/**
  * Tools
  */
-import axios from '@/Tools/Utility/Axios';
+import client from '@/Tools/Utility/Apollo';
 
 /**
  * Create Slice
@@ -16,7 +21,7 @@ export const newsfeedSlice = createSlice({
   name: 'newsfeed',
   initialState: { newsfeed: [] } as { newsfeed: NewsFeed.Entity[] },
   reducers: {
-    setResponse(_state, action) {
+    setResponse(state, action) {
       return action.payload;
     },
   },
@@ -34,7 +39,28 @@ export const newsfeedSlice = createSlice({
  * Api fetch
  */
 export const fetchNewsFeed = (): Store.AppThunk => async (dispatch) => {
-  await axios.get('newsfeed').then((res) => dispatch(newsfeedSlice.actions.setResponse(res.data)));
+  const { data } = await client.query({
+    query: gql`
+      query {
+        newsfeed {
+          id
+          title
+          url
+          organization {
+            id
+            name
+          }
+          contents {
+            id
+            name
+          }
+          articleCreatedAt
+          articleUpdatedAt
+        }
+      }
+    `,
+  });
+  dispatch(newsfeedSlice.actions.setResponse(data));
 };
 
 /**

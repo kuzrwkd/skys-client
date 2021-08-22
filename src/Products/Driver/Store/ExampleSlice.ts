@@ -19,9 +19,9 @@ import client from '@/Tools/Utility/Apollo';
  */
 export const exampleSlice = createSlice({
   name: 'example',
-  initialState: { example: '' } as { example: string },
+  initialState: { hello: '' } as { hello: string },
   reducers: {
-    setResponse(_state, action) {
+    setResponse(state, action) {
       return action.payload;
     },
   },
@@ -29,7 +29,7 @@ export const exampleSlice = createSlice({
     [HYDRATE]: (state, action) => {
       return {
         ...state,
-        ...action.payload,
+        ...action.payload.example,
       };
     },
   },
@@ -41,7 +41,7 @@ export const exampleSlice = createSlice({
 export const fetchExample = (): Store.AppThunk => async (dispatch) => {
   const { data } = await client.query({
     query: gql`
-      query ExampleQuery {
+      query {
         hello
       }
     `,
@@ -52,4 +52,4 @@ export const fetchExample = (): Store.AppThunk => async (dispatch) => {
 /**
  * State Selector
  */
-export const selectExample = () => (state: Store.AppState) => state?.[exampleSlice.name]?.['example'];
+export const selectExample = () => (state: Store.AppState) => state?.[exampleSlice.name]?.['hello'];

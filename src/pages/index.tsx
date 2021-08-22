@@ -33,6 +33,7 @@ const Home: NextPage = () => {
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async () => {
   await store.dispatch(fetchExample());
+
   return {
     props: {
       title: 'Home',
