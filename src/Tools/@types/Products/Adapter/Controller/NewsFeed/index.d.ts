@@ -1,3 +1,3 @@
 export interface INewsFeedController {
-  handle(): Promise<NewsFeed.NewsFeedReadApi>;
+  handle(): Promise<NewsFeed.NewsFeedRead>;
 }

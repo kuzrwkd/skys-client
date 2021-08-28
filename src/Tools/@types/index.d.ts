@@ -32,6 +32,7 @@ import type {
 } from '@/Tools/@types/Products/Driver/Web/NewsFeed';
 import type { INewsFeedInteract as _INewsFeedInteract } from '@/Tools/@types/Products/Core/UseCase/NewsFeed';
 import type { INewsFeedController as _INewsFeedController } from '@/Tools/@types/Products/Adapter/Controller/NewsFeed';
+import type { INewsFeedPresenter as _INewsFeedPresenter } from '@/Tools/@types/Products/Adapter/Presenter/NewsFeed';
 
 declare global {
   /**
@@ -71,5 +72,6 @@ declare global {
     export type NewsFeedRead = _NewsFeedRead;
     export type INewsFeedInteract = _INewsFeedInteract;
     export type INewsFeedController = _INewsFeedController;
+    export type INewsFeedPresenter = _INewsFeedPresenter;
   }
 }

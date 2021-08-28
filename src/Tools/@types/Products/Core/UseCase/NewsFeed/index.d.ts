@@ -1,3 +1,3 @@
 export interface INewsFeedInteract {
-  handle(): Promise<NewsFeed.NewsFeedReadApi>;
+  handle(): Promise<NewsFeed.NewsFeedRead>;
 }
