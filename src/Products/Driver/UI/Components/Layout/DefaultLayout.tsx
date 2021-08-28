@@ -45,10 +45,16 @@ const DefaultLayout: React.FC<Props> = ({ children, title, description }) => {
     isSearchActive: false,
   });
 
-  const dom = {
+  const method = {
+    mainMenuIconHandler() {
+      setState({ ...state, isMainMenuOpen: !state.isMainMenuOpen });
+    },
+    searchIconHandler() {
+      setState({ ...state, isSearchActive: !state.isSearchActive });
+    },
     renderMainMenu() {
       return (
-        <ul className="overflow-y-scroll pt-5 ml-5">
+        <ul className="pt-5 ml-5">
           {MAIN_MENU.map(({ name, href, icon }, i) => {
             return (
               <li className="mt-4" key={i}>
@@ -72,15 +78,6 @@ const DefaultLayout: React.FC<Props> = ({ children, title, description }) => {
     },
   };
 
-  const method = {
-    mainMenuIconHandler() {
-      setState({ ...state, isMainMenuOpen: !state.isMainMenuOpen });
-    },
-    searchIconHandler() {
-      setState({ ...state, isSearchActive: !state.isSearchActive });
-    },
-  };
-
   return (
     <>
       <DefaultMeta title={title} description={description} />
@@ -99,7 +96,7 @@ const DefaultLayout: React.FC<Props> = ({ children, title, description }) => {
           )}
         >
           <div className="h-16 border-b border-gray-300">
-            <Link href="/dashboard">
+            <Link href="/">
               <a className="inline-flex items-center">
                 <div className="flex-none w-[63px]">
                   <LogoIcon width={63} height={58} />
@@ -108,7 +105,7 @@ const DefaultLayout: React.FC<Props> = ({ children, title, description }) => {
               </a>
             </Link>
           </div>
-          {dom.renderMainMenu()}
+          {method.renderMainMenu()}
         </aside>
         <div className={classNames('flex', 'flex-col', 'flex-1', 'h-screen', 'transition-all')}>
           <header className="flex justify-between border-b border-gray-300 w-full h-16 bg-white">

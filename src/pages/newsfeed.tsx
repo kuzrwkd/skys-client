@@ -46,7 +46,7 @@ const NewsFeed: NextPage = () => {
             <DataTable
               ref={node}
               rows={['organization', 'title', 'contents', 'articleCreatedAt', 'articleUpdatedAt']}
-              data={contents}
+              col={contents}
             >
               {state.map(({ title, url, organization, contents, articleCreatedAt, articleUpdatedAt }, i: number) => {
                 return (
