@@ -85,16 +85,17 @@ const DataTable: FC<DataTableProps> = ({ children, col, redirect }) => {
     <>
       <div className="flex justify-between items-center">
         <div className="flex items-center">
-          <span>Show</span>
-          <select name="example">
+          <span className="text-sm">Show&nbsp;</span>
+          <select className="text-sm" name="example">
             <option value="10">10</option>
             <option value="50">50</option>
             <option value="100">100</option>
           </select>
-          <span>entries</span>
+          <span className="text-sm">&nbsp;entries</span>
         </div>
-
-        <SearchBox redirect={redirect} />
+        <div className="h-[25px]">
+          <SearchBox redirect={redirect} displayForm={true} />
+        </div>
       </div>
       <table className="w-full mt-8">
         <thead>
@@ -110,7 +111,7 @@ const DataTable: FC<DataTableProps> = ({ children, col, redirect }) => {
         <div>
           <Link href="/newsfeed?p=1">
             <a className="text-sm transition-all border border-transparent hover:bg-indigo-500 hover:text-white hover:rounded-sm hover:border-black px-4 py-2 mr-2 mr-4">
-              Previous
+              &laquo;
             </a>
           </Link>
           <span>
@@ -132,7 +133,7 @@ const DataTable: FC<DataTableProps> = ({ children, col, redirect }) => {
           </span>
           <Link href="/newsfeed?p=2">
             <a className="text-sm transition-all border border-transparent hover:bg-indigo-500 hover:text-white hover:rounded-sm hover:border-black px-4 py-2 mr-2   ml-4">
-              Next
+              &raquo;
             </a>
           </Link>
         </div>

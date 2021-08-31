@@ -19,12 +19,12 @@ import classNames from 'tailwindcss-classnames';
 import CrossIcon from '@/Products/Driver/UI/Icon/cross.svg';
 import SearchIcon from '@/Products/Driver/UI/Icon/search.svg';
 
-const SearchBox: FC<Props> = ({ redirect }) => {
+const SearchBox: FC<Props> = ({ redirect, displayForm = false }) => {
   const router = useRouter();
-  const [state, setState] = useState({ q: '', isSearchActive: false });
+  const [state, setState] = useState({ q: '', isSearchActive: displayForm });
 
-  const searchIconHandler = () => {
-    setState({ ...state, isSearchActive: !state.isSearchActive });
+  const searchActiveHandler = () => {
+    setState({ ...state, isSearchActive: true });
   };
 
   const changeHandler = (e: any) => {
@@ -43,11 +43,15 @@ const SearchBox: FC<Props> = ({ redirect }) => {
 
   return (
     <>
-      <div className={classNames({ ['hidden']: state.isSearchActive })} onClick={searchIconHandler}>
-        <SearchIcon className="text-gray-500 cursor-pointer" />
-      </div>
+      {displayForm ? (
+        ''
+      ) : (
+        <div className={classNames({ ['hidden']: state.isSearchActive })}>
+          <SearchIcon className="text-gray-500 cursor-pointer" onClick={searchActiveHandler} />
+        </div>
+      )}
       <form onSubmit={submitHandler} className={classNames('flex', { ['hidden']: !state.isSearchActive })}>
-        <CrossIcon className="text-gray-500 cursor-pointer mr-1" onClick={resetHandler} />
+        {displayForm ? '' : <CrossIcon className="text-gray-500 cursor-pointer mr-1" onClick={resetHandler} />}
         <input
           className="w-72 border-b border-gray-300"
           type="text"
@@ -65,6 +69,7 @@ const SearchBox: FC<Props> = ({ redirect }) => {
 
 type Props = {
   redirect: string;
+  displayForm?: boolean;
 };
 
 export default SearchBox;
