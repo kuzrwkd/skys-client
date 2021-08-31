@@ -1,7 +1,7 @@
 /**
  * React
  */
-import React, { useState, createElement } from 'react';
+import React, { useState, createElement, FC } from 'react';
 
 /**
  * Next
@@ -32,6 +32,34 @@ import UserIcon from '@/Products/Driver/UI/Icon/user.svg';
  */
 import { MAIN_MENU } from '@/Tools/Constants/UI/mainMenu';
 
+/*****************************************************
+ * MainMenu
+ *****************************************************/
+const MainMenu: FC = () => {
+  return (
+    <ul className="pt-5 ml-5">
+      {MAIN_MENU.map(({ name, href, icon }, i) => {
+        return (
+          <li className="mt-4" key={i}>
+            <Link href={href}>
+              <a className="inline-flex items-center">
+                <div className="flex-none mr-5">
+                  {createElement(icon, {
+                    width: 24,
+                    height: 24,
+                    className: 'text-indigo-700',
+                  })}
+                </div>
+                <span className="flex-none text-gray-500 hover:text-gray-900">{name}</span>
+              </a>
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
+
 /**
  * Component
  * @param children
@@ -42,40 +70,10 @@ import { MAIN_MENU } from '@/Tools/Constants/UI/mainMenu';
 const DefaultLayout: React.FC<Props> = ({ children, title, description }) => {
   const [state, setState] = useState({
     isMainMenuOpen: true,
-    isSearchActive: false,
   });
 
-  const method = {
-    mainMenuIconHandler() {
-      setState({ ...state, isMainMenuOpen: !state.isMainMenuOpen });
-    },
-    searchIconHandler() {
-      setState({ ...state, isSearchActive: !state.isSearchActive });
-    },
-    renderMainMenu() {
-      return (
-        <ul className="pt-5 ml-5">
-          {MAIN_MENU.map(({ name, href, icon }, i) => {
-            return (
-              <li className="mt-4" key={i}>
-                <Link href={href}>
-                  <a className="inline-flex items-center">
-                    <div className="flex-none mr-5">
-                      {createElement(icon, {
-                        width: 24,
-                        height: 24,
-                        className: 'text-indigo-700',
-                      })}
-                    </div>
-                    <span className="flex-none text-gray-500 hover:text-gray-900">{name}</span>
-                  </a>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      );
-    },
+  const mainMenuIconHandler = () => {
+    setState({ ...state, isMainMenuOpen: !state.isMainMenuOpen });
   };
 
   return (
@@ -105,19 +103,19 @@ const DefaultLayout: React.FC<Props> = ({ children, title, description }) => {
               </a>
             </Link>
           </div>
-          {method.renderMainMenu()}
+          <MainMenu />
         </aside>
         <div className={classNames('flex', 'flex-col', 'flex-1', 'h-screen', 'transition-all')}>
           <header className="flex justify-between border-b border-gray-300 w-full h-16 bg-white">
             <div className="flex items-center h-full">
               <MenuLeftIcon
                 className="text-gray-500 cursor-pointer ml-4"
-                onClick={method.mainMenuIconHandler}
+                onClick={mainMenuIconHandler}
                 width="24"
                 height="24"
               />
               <div className="ml-4">
-                <SearchBox searchIconHandler={method.searchIconHandler} isSearchActive={state.isSearchActive} />
+                <SearchBox redirect="search" />
               </div>
             </div>
             <div className="flex items-center h-full">

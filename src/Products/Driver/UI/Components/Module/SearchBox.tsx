@@ -19,43 +19,45 @@ import classNames from 'tailwindcss-classnames';
 import CrossIcon from '@/Products/Driver/UI/Icon/cross.svg';
 import SearchIcon from '@/Products/Driver/UI/Icon/search.svg';
 
-const SearchBox: FC<Props> = ({ isSearchActive, searchIconHandler }) => {
+const SearchBox: FC<Props> = ({ redirect, displayForm = false }) => {
   const router = useRouter();
-  const [state, setState] = useState({ q: '' });
+  const [state, setState] = useState({ q: '', isSearchActive: displayForm });
 
-  const method = {
-    changeHandler(e: any) {
-      const query = e.target.value;
-      setState({ ...state, q: query });
-    },
-    reset() {
-      setState({ q: '' });
-    },
-    submit(e: any): void {
-      e.preventDefault();
-      router.push(`/search?q=${state.q}`);
-    },
+  const searchActiveHandler = () => {
+    setState({ ...state, isSearchActive: true });
+  };
+
+  const changeHandler = (e: any) => {
+    const query = e.target.value;
+    setState({ ...state, q: query });
+  };
+
+  const resetHandler = () => {
+    setState({ ...state, q: '', isSearchActive: false });
+  };
+
+  const submitHandler = (e: any): void => {
+    e.preventDefault();
+    router.push(`/${redirect}?q=${state.q}`);
   };
 
   return (
     <>
-      <div className={classNames({ ['hidden']: isSearchActive })} onClick={searchIconHandler}>
-        <SearchIcon className="text-gray-500 cursor-pointer" />
-      </div>
-      <form onSubmit={method.submit} className={classNames('flex', { ['hidden']: !isSearchActive })}>
-        <CrossIcon
-          className="text-gray-500 cursor-pointer mr-1"
-          onClick={() => {
-            searchIconHandler();
-            method.reset();
-          }}
-        />
+      {displayForm ? (
+        ''
+      ) : (
+        <div className={classNames({ ['hidden']: state.isSearchActive })}>
+          <SearchIcon className="text-gray-500 cursor-pointer" onClick={searchActiveHandler} />
+        </div>
+      )}
+      <form onSubmit={submitHandler} className={classNames('flex', { ['hidden']: !state.isSearchActive })}>
+        {displayForm ? '' : <CrossIcon className="text-gray-500 cursor-pointer mr-1" onClick={resetHandler} />}
         <input
           className="w-72 border-b border-gray-300"
           type="text"
           placeholder="Search..."
           value={state.q}
-          onChange={method.changeHandler}
+          onChange={changeHandler}
         />
         <button className="bg-blue-800 text-white rounded-md px-2 ml-2" type="submit">
           検索
@@ -65,12 +67,9 @@ const SearchBox: FC<Props> = ({ isSearchActive, searchIconHandler }) => {
   );
 };
 
-/**
- * Types
- */
 type Props = {
-  isSearchActive: boolean;
-  searchIconHandler: () => void;
+  redirect: string;
+  displayForm?: boolean;
 };
 
 export default SearchBox;
