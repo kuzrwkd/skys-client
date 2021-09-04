@@ -26,14 +26,18 @@ import DataTable from '@/Products/Driver/UI/Components/Module/DataTable';
  * @param data
  * @constructor
  *****************************************************/
+type RowsProps = {
+  data: NewsFeed.Entity[];
+};
+
 const Rows: FC<RowsProps> = ({ data }) => {
   return (
     <>
       {data.map(({ title, url, organization, contents, articleCreatedAt, articleUpdatedAt }, i: number) => {
         return (
           <tr className="text-sm odd:bg-gray-100" key={i}>
-            <td className="border-l border-r-2 border-gray-200 p-2">{organization.name}</td>
-            <td className="border-r-2 border-gray-200 p-2">
+            <td className="border-l border-r-2 border-gray-300 p-2">{organization.name}</td>
+            <td className="border-r-2 border-gray-300 p-2">
               <a
                 className="text-indigo-700 underline link:text-indigo-900 visited:text-indigo-900 hover:text-indigo-900 active:text-indigo-900"
                 href={url}
@@ -43,18 +47,14 @@ const Rows: FC<RowsProps> = ({ data }) => {
                 {title}
               </a>
             </td>
-            <td className="border-r-2 border-gray-200 p-2">{contents.name}</td>
-            <td className="border-r-2 border-gray-200 p-2">{articleCreatedAt}</td>
-            <td className="border-r border-gray-200 p-2">{articleUpdatedAt}</td>
+            <td className="border-r-2 border-gray-300 p-2">{contents.name}</td>
+            <td className="border-r-2 border-gray-300 p-2">{articleCreatedAt}</td>
+            <td className="border-r border-gray-300 p-2">{articleUpdatedAt}</td>
           </tr>
         );
       })}
     </>
   );
-};
-
-type RowsProps = {
-  data: NewsFeed.Entity[];
 };
 
 /*****************************************************

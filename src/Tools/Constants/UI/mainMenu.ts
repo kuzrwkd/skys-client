@@ -4,7 +4,6 @@
 import DashboardIcon from '@/Products/Driver/UI/Icon/dashboard.svg';
 import NewsIcon from '@/Products/Driver/UI/Icon/news.svg';
 import CustomerIcon from '@/Products/Driver/UI/Icon/message.svg';
-import profitAndLossIcon from '@/Products/Driver/UI/Icon/coin.svg';
 import MarketIcon from '@/Products/Driver/UI/Icon/lineChart.svg';
 
 export const MAIN_MENU = [
@@ -22,11 +21,6 @@ export const MAIN_MENU = [
     name: 'Market',
     href: '/market',
     icon: MarketIcon,
-  },
-  {
-    name: 'Profit and loss',
-    href: '/profitAndLoss',
-    icon: profitAndLossIcon,
   },
   {
     name: 'Customer',

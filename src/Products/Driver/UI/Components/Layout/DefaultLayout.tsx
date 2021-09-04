@@ -34,6 +34,7 @@ import { MAIN_MENU } from '@/Tools/Constants/UI/mainMenu';
 
 /*****************************************************
  * MainMenu
+ * @constructor
  *****************************************************/
 const MainMenu: FC = () => {
   return (
@@ -60,14 +61,22 @@ const MainMenu: FC = () => {
   );
 };
 
-/**
- * Component
+/*****************************************************
+ * DefaultLayout
  * @param children
  * @param title
  * @param description
  * @constructor
+ *****************************************************/
+/**
+ * Type
  */
-const DefaultLayout: React.FC<Props> = ({ children, title, description }) => {
+type DefaultLayoutProps = {
+  title: string;
+  description: string;
+};
+
+const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children, title, description }) => {
   const [state, setState] = useState({
     isMainMenuOpen: true,
   });
@@ -150,14 +159,6 @@ const DefaultLayout: React.FC<Props> = ({ children, title, description }) => {
       </div>
     </>
   );
-};
-
-/**
- * Type
- */
-type Props = {
-  title: string;
-  description: string;
 };
 
 export default DefaultLayout;

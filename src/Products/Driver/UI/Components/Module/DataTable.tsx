@@ -27,15 +27,15 @@ const HeaderCol: FC<HeaderColProps> = ({ col }) => {
   };
 
   return (
-    <tr className="border-b border-gray-600">
+    <tr className="border-b border-gray-300">
       {col.map((name, i) => {
         return (
-          <th className="text-sm border-r-2 border-gray-200 last:border-r first:border-l text-left p-2" key={i}>
+          <th className="text-sm border-r-2 border-gray-300 last:border-r first:border-l text-left p-2" key={i}>
             <div className="flex items-center justify-between cursor-pointer" onClick={() => handleSort(name)}>
               <div>{name}</div>
               <div className="flex flex-col">
-                <IsoscelesIcon className="fill-current text-gray-200 mb-0.5" />
-                <IsoscelesIcon className="transform rotate-180 fill-current text-gray-200" />
+                <IsoscelesIcon className="fill-current text-gray-300 mb-0.5" />
+                <IsoscelesIcon className="transform rotate-180 fill-current text-gray-300" />
               </div>
             </div>
           </th>
@@ -57,10 +57,10 @@ type HeaderColProps = {
  *****************************************************/
 const FooterCol: FC<FooterColProps> = ({ col }) => {
   return (
-    <tr className="text-sm border-t border-gray-200">
+    <tr className="text-sm border-t border-gray-300">
       {col.map((name, i) => {
         return (
-          <th className="border-r-2 border-gray-200 last:border-r first:border-l text-left p-2" key={i}>
+          <th className="border-r-2 border-gray-300 last:border-r first:border-l text-left p-2" key={i}>
             {name}
           </th>
         );
@@ -84,18 +84,17 @@ const DataTable: FC<DataTableProps> = ({ children, col, redirect }) => {
   return (
     <>
       <div className="flex justify-between items-center">
-        <div className="flex items-center">
+        <div className="flex items-end">
           <span className="text-sm">Show&nbsp;</span>
-          <select className="text-sm" name="example">
+          <select className="text-sm border border-gray-300 p-1" name="example">
             <option value="10">10</option>
             <option value="50">50</option>
             <option value="100">100</option>
+            <option value="1000">1000</option>
           </select>
           <span className="text-sm">&nbsp;entries</span>
         </div>
-        <div className="h-[25px]">
-          <SearchBox redirect={redirect} displayForm={true} />
-        </div>
+        <SearchBox redirect={redirect} displayForm={true} />
       </div>
       <table className="w-full mt-8">
         <thead>
