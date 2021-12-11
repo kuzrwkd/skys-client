@@ -39,14 +39,18 @@ export const exampleSlice = createSlice({
  * Api fetch
  */
 export const fetchExample = (): Store.AppThunk => async (dispatch) => {
-  const { data } = await client.query({
-    query: gql`
-      query {
-        hello
-      }
-    `,
-  });
-  dispatch(exampleSlice.actions.setResponse(data));
+  try {
+    const { data } = await client.query({
+      query: gql`
+        query {
+          hello
+        }
+      `,
+    });
+    dispatch(exampleSlice.actions.setResponse(data));
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 /**

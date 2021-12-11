@@ -39,28 +39,32 @@ export const newsfeedSlice = createSlice({
  * Api fetch
  */
 export const fetchNewsFeed = (): Store.AppThunk => async (dispatch) => {
-  const { data } = await client.query({
-    query: gql`
-      query {
-        newsfeed {
-          id
-          title
-          url
-          organization {
+  try {
+    const { data } = await client.query({
+      query: gql`
+        query {
+          newsfeed {
             id
-            name
+            title
+            url
+            organization {
+              id
+              name
+            }
+            contents {
+              id
+              name
+            }
+            articleCreatedAt
+            articleUpdatedAt
           }
-          contents {
-            id
-            name
-          }
-          articleCreatedAt
-          articleUpdatedAt
         }
-      }
-    `,
-  });
-  dispatch(newsfeedSlice.actions.setResponse(data));
+      `,
+    });
+    dispatch(newsfeedSlice.actions.setResponse(data));
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 /**
