@@ -11,7 +11,7 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
-    'plugin:react/recommended',
+    'plugin:@next/next/recommended',
     'next', 'next/core-web-vitals'
   ],
   root: true,

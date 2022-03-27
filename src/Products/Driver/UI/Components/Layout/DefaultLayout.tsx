@@ -11,7 +11,18 @@ import Link from 'next/link';
 /**
  * Lib
  */
-import classNames from 'tailwindcss-classnames';
+import {
+  classnames,
+  display,
+  flexDirection,
+  height,
+  borderWidth,
+  borderColor,
+  overflow,
+  transitionProperty,
+  width,
+  flex,
+} from 'tailwindcss-classnames';
 
 /**
  * Components
@@ -90,16 +101,15 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children, title, descript
       <DefaultMeta title={title} description={description} />
       <div className="flex">
         <aside
-          className={classNames(
-            'flex',
-            'flex-col',
-            'h-screen',
-            'w-72',
-            'border-r',
-            'border-gray-300',
-            'overflow-hidden',
-            'transition-all',
-            { ['w-16']: !state.isMainMenuOpen },
+          className={classnames(
+            display('flex'),
+            flexDirection('flex-col'),
+            height('h-screen'),
+            width('w-72', { ['w-16']: !state.isMainMenuOpen }),
+            borderWidth('border-r'),
+            borderColor('border-gray-300'),
+            overflow('overflow-hidden'),
+            transitionProperty('transition-all'),
           )}
         >
           <div className="h-16 border-b border-gray-300">
@@ -114,7 +124,15 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children, title, descript
           </div>
           <MainMenu />
         </aside>
-        <div className={classNames('flex', 'flex-col', 'flex-1', 'h-screen', 'transition-all')}>
+        <div
+          className={classnames(
+            display('flex'),
+            flexDirection('flex-col'),
+            flex('flex-1'),
+            height('h-screen'),
+            transitionProperty('transition-all'),
+          )}
+        >
           <header className="flex justify-between border-b border-gray-300 w-full h-16 bg-white">
             <div className="flex items-center h-full">
               <MenuLeftIcon
@@ -141,15 +159,15 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children, title, descript
           </main>
         </div>
         <aside
-          className={classNames(
-            'flex',
-            'flex-col',
-            'h-screen',
-            'border-l',
-            'border-gray-300',
-            'overflow-hidden',
-            'transition-all',
-            'w-16',
+          className={classnames(
+            display('flex'),
+            flexDirection('flex-col'),
+            height('h-screen'),
+            borderWidth('border-l'),
+            borderColor('border-gray-300'),
+            overflow('overflow-hidden'),
+            transitionProperty('transition-all'),
+            width('w-16'),
           )}
         >
           <div className="inline-flex items-center justify-center h-16 w-full border-b border-gray-300">

@@ -11,7 +11,7 @@ import { useRouter } from 'next/router';
 /**
  * Lib
  */
-import classNames from 'tailwindcss-classnames';
+import { classnames, display } from 'tailwindcss-classnames';
 
 /**
  * Svg
@@ -46,11 +46,11 @@ const SearchBox: FC<Props> = ({ redirect, displayForm = false }) => {
       {displayForm ? (
         ''
       ) : (
-        <div className={classNames({ ['hidden']: state.isSearchActive })}>
+        <div className={classnames(display({ ['hidden']: state.isSearchActive }))}>
           <SearchIcon className="text-gray-500 cursor-pointer" onClick={searchActiveHandler} />
         </div>
       )}
-      <form onSubmit={submitHandler} className={classNames('flex', { ['hidden']: !state.isSearchActive })}>
+      <form onSubmit={submitHandler} className={classnames(display('flex', { ['hidden']: !state.isSearchActive }))}>
         {displayForm ? '' : <CrossIcon className="text-gray-500 cursor-pointer mr-1" onClick={resetHandler} />}
         <input
           className="w-72 border-b border-gray-300"
