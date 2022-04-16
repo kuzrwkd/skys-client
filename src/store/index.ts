@@ -9,13 +9,11 @@ import { createWrapper } from 'next-redux-wrapper';
  * Redux Slice
  */
 import { newsfeedSlice } from '@/store/newsfeedSlice';
-import { exampleSlice } from '@/store/exampleSlice';
 
 const makeStore = () =>
   configureStore({
     reducer: {
       [newsfeedSlice.name]: newsfeedSlice.reducer,
-      [exampleSlice.name]: exampleSlice.reducer,
     },
     devTools: true,
   });

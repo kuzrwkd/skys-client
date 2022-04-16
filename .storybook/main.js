@@ -1,7 +1,7 @@
 module.exports = {
   "stories": [
-    "../src/Products/Driver/UI/Components/**/*.stories.mdx",
-    "../src/Products/Driver/UI/Components/**/*.stories.@(js|jsx|ts|tsx)"
+    "../src/components/**/*.stories.mdx",
+    "../src/components/**/*.stories.@(js|jsx|ts|tsx)"
   ],
   "addons": [
     "@storybook/addon-links",

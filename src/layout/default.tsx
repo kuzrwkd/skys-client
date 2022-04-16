@@ -102,7 +102,7 @@ const DefaultLayout: React.FC = ({ children }) => {
           )}
         >
           <div className="h-16 border-b border-gray-300">
-            <Link href="/src/pages">
+            <Link href="/">
               <a className="inline-flex items-center">
                 <div className="flex-none w-[63px]">
                   <LogoIcon width={63} height={58} />

@@ -42,7 +42,7 @@ export const fetchNewsFeed = (): Store.AppThunk => async (dispatch) => {
   try {
     const { data } = await client.query({
       query: gql`
-        query {
+        {
           newsfeed {
             id
             title
@@ -51,12 +51,8 @@ export const fetchNewsFeed = (): Store.AppThunk => async (dispatch) => {
               id
               name
             }
-            contents {
-              id
-              name
-            }
-            articleCreatedAt
-            articleUpdatedAt
+            article_created_at
+            article_updated_at
           }
         }
       `,
