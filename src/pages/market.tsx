@@ -6,12 +6,12 @@ import { NextPage } from 'next';
 /**
  * Redux
  */
-import { wrapper } from '@/Products/Driver/Store/main';
+import { wrapper } from '@/store';
 
 /**
  * Components
  */
-import Card from '@/Products/Driver/UI/Components/Module/Card';
+import Card from '@/components/card';
 
 /**
  * Page

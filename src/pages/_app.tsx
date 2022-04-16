@@ -2,11 +2,12 @@
  * Next
  */
 import { AppProps } from 'next/app';
+import Head from 'next/head';
 
 /**
  * Store
  */
-import { wrapper } from '@/Products/Driver/Store/main';
+import { wrapper } from '@/store';
 
 /**
  * Lib
@@ -16,7 +17,7 @@ import 'tailwindcss/tailwind.css';
 /**
  * Components
  */
-import DefaultLayout from '@/Products/Driver/UI/Components/Layout/DefaultLayout';
+import DefaultLayout from '@/layout/default';
 
 /**
  * Application Component
@@ -32,9 +33,16 @@ const App = ({ Component, pageProps }: AppProps) => {
     }
     default: {
       return (
-        <DefaultLayout title={pageProps.title} description={pageProps.description}>
-          <Component {...pageProps} />
-        </DefaultLayout>
+        <>
+          <Head>
+            <title>{pageProps.title}&nbsp;|&nbsp;Create Next App</title>
+            <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+            <meta name="description" content={pageProps.description} />
+          </Head>
+          <DefaultLayout>
+            <Component {...pageProps} />
+          </DefaultLayout>
+        </>
       );
     }
   }

@@ -7,13 +7,13 @@ import { NextPage } from 'next';
  * Redux
  */
 import { useSelector } from 'react-redux';
-import { wrapper } from '@/Products/Driver/Store/main';
-import { fetchNewsFeed, selectNewsFeed } from '@/Products/Driver/Store/NewsfeedSlice';
+import { wrapper } from '@/store';
+import { fetchNewsFeed, selectNewsFeed } from '@/store/newsfeedSlice';
 
 /**
  * Components
  */
-import Card from '@/Products/Driver/UI/Components/Module/Card';
+import Card from '@/components/card';
 
 /**
  * Page

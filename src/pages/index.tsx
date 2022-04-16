@@ -6,14 +6,14 @@ import { NextPage } from 'next';
 /**
  * Redux
  */
-import { wrapper } from '@/Products/Driver/Store/main';
+import { wrapper } from '@/store';
 import { useSelector } from 'react-redux';
 
 /**
  * Components
  */
-import Card from '@/Products/Driver/UI/Components/Module/Card';
-import { fetchExample, selectExample } from '@/Products/Driver/Store/ExampleSlice';
+import Card from '@/components/card';
+import { fetchExample, selectExample } from '@/store/exampleSlice';
 
 /**
  * Page

@@ -1,6 +1,3 @@
-/**
- * Next
- */
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
 
 class AppDocument extends Document {
