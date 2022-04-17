@@ -94,7 +94,7 @@ const DefaultLayout: React.FC = ({ children }) => {
             display('flex'),
             flexDirection('flex-col'),
             height('h-screen'),
-            width('w-72', { ['w-16']: !state.isMainMenuOpen }),
+            width('w-48', { ['w-16']: !state.isMainMenuOpen }),
             borderWidth('border-r'),
             borderColor('border-gray-300'),
             overflow('overflow-hidden'),
