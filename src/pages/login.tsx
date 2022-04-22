@@ -1,17 +1,7 @@
-/**
- * Next
- */
 import { NextPage } from 'next';
 
-/**
- * Redux
- */
 import { wrapper } from '@/store';
 
-/**
- * Page
- * @constructor
- */
 const Login: NextPage = () => {
   return <p className="text-5xl">Message</p>;
 };

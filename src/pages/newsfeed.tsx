@@ -1,31 +1,12 @@
-/**
- * React
- */
-import { FC } from 'react';
-
-/**
- * Next
- */
 import { NextPage } from 'next';
-
-/**
- * Redux
- */
-import { wrapper } from '@/store';
+import { FC } from 'react';
 import { useSelector } from 'react-redux';
-import { fetchNewsFeed, selectNewsFeed } from '@/store/newsfeedSlice';
 
-/**
- * Components
- */
 import Card from '@/components/card';
 import DataTable from '@/components/dataTable';
+import { wrapper } from '@/store';
+import { fetchNewsFeed, selectNewsFeed } from '@/store/newsfeedSlice';
 
-/*****************************************************
- * DataTable Rows
- * @param data
- * @constructor
- *****************************************************/
 type RowsProps = {
   data: NewsFeed.Entity[];
 };
@@ -56,10 +37,6 @@ const Rows: FC<RowsProps> = ({ data }) => {
   );
 };
 
-/*****************************************************
- * Page
- * @constructor
- *****************************************************/
 const NewsFeed: NextPage = () => {
   const contents = useSelector(selectNewsFeed());
   return (

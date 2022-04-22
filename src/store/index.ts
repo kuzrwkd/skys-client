@@ -1,13 +1,7 @@
-/**
- * Redux
- */
 import { configureStore, ThunkAction } from '@reduxjs/toolkit';
-import { Action } from 'redux';
 import { createWrapper } from 'next-redux-wrapper';
+import { Action } from 'redux';
 
-/**
- * Redux Slice
- */
 import { newsfeedSlice } from '@/store/newsfeedSlice';
 
 const makeStore = () =>

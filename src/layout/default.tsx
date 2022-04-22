@@ -1,16 +1,5 @@
-/**
- * React
- */
-import React, { useState, createElement, FC, ReactNode } from 'react';
-
-/**
- * Next
- */
 import Link from 'next/link';
-
-/**
- * Lib
- */
+import React, { useState, createElement, FC, ReactNode } from 'react';
 import {
   classnames,
   display,
@@ -24,32 +13,17 @@ import {
   flex,
 } from 'tailwindcss-classnames';
 
-/**
- * Components
- */
 import SearchBox from '@/components/searchBox';
-
-/**
- * Svg
- */
 import LogoIcon from '@/static/icon/logo.svg';
 import MenuLeftIcon from '@/static/icon/menuLeft.svg';
 import MenuRightIcon from '@/static/icon/menuRight.svg';
 import UserIcon from '@/static/icon/user.svg';
-
-/**
- * Constants
- */
 import { MAIN_MENU } from '@/types/meinMenu';
 
 type DefaultLayoutProps = {
   children: ReactNode;
 };
 
-/*****************************************************
- * MainMenu
- * @constructor
- *****************************************************/
 const MainMenu: FC = () => {
   return (
     <ul className="pt-5 ml-5">
@@ -74,12 +48,6 @@ const MainMenu: FC = () => {
     </ul>
   );
 };
-
-/*****************************************************
- * DefaultLayout
- * @param children
- * @constructor
- *****************************************************/
 
 const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
   const [state, setState] = useState({

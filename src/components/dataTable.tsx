@@ -1,26 +1,9 @@
-/**
- * React
- */
+import Link from 'next/link';
 import { FC, ReactNode } from 'react';
 
-/**
- * Next
- */
-import Link from 'next/link';
-
-/**
- * SVG
- */
+import SearchBox from '@/components/searchBox';
 import IsoscelesIcon from '@/static/icon/isosceles.svg';
 
-/**
- * Components
- */
-import SearchBox from '@/components/searchBox';
-
-/*****************************************************
- * Header
- *****************************************************/
 const HeaderCol: FC<HeaderColProps> = ({ col }) => {
   const handleSort = async (name: string) => {
     await console.log(name);
@@ -45,16 +28,10 @@ const HeaderCol: FC<HeaderColProps> = ({ col }) => {
   );
 };
 
-/**
- * Type
- */
 type HeaderColProps = {
   col: string[];
 };
 
-/*****************************************************
- * Footer
- *****************************************************/
 const FooterCol: FC<FooterColProps> = ({ col }) => {
   return (
     <tr className="text-sm border-t border-gray-300">
@@ -69,17 +46,10 @@ const FooterCol: FC<FooterColProps> = ({ col }) => {
   );
 };
 
-/**
- * Type
- */
 type FooterColProps = {
   col: string[];
 };
 
-/******************************************************
- * DataTable
- * @constructor
- *****************************************************/
 const DataTable: FC<DataTableProps> = ({ children, col, redirect }) => {
   return (
     <>
@@ -141,9 +111,6 @@ const DataTable: FC<DataTableProps> = ({ children, col, redirect }) => {
   );
 };
 
-/**
- * Type
- */
 type DataTableProps = {
   children: ReactNode;
   col: string[];

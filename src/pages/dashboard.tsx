@@ -1,24 +1,10 @@
-/**
- * Next
- */
 import { NextPage } from 'next';
-
-/**
- * Redux
- */
 import { useSelector } from 'react-redux';
+
+import Card from '@/components/card';
 import { wrapper } from '@/store';
 import { fetchNewsFeed, selectNewsFeed } from '@/store/newsfeedSlice';
 
-/**
- * Components
- */
-import Card from '@/components/card';
-
-/**
- * Page
- * @constructor
- */
 const Home: NextPage = () => {
   const content = useSelector(selectNewsFeed());
 

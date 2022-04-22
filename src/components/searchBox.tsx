@@ -1,21 +1,7 @@
-/**
- * React
- */
-import { FC, useState } from 'react';
-
-/**
- * Next
- */
 import { useRouter } from 'next/router';
-
-/**
- * Lib
- */
+import { FC, useState } from 'react';
 import { classnames, display } from 'tailwindcss-classnames';
 
-/**
- * Svg
- */
 import CrossIcon from '@/static/icon/cross.svg';
 import SearchIcon from '@/static/icon/search.svg';
 

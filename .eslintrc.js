@@ -7,12 +7,16 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['@typescript-eslint/eslint-plugin'],
+  plugins: ['@typescript-eslint/eslint-plugin', 'import', 'unused-imports'],
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'plugin:@next/next/recommended',
-    'next', 'next/core-web-vitals'
+    'plugin:import/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'next',
+    'next/core-web-vitals',
   ],
   root: true,
   env: {
@@ -26,7 +30,18 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-namespace': 'off',
-    '@typescript-eslint/ban-types': 'off'
+    '@typescript-eslint/ban-types': 'off',
+    'unused-imports/no-unused-imports': 'warn',
+    'import/order': [
+      'error',
+      {
+        groups: ['builtin', 'external', 'parent', 'sibling', 'index', 'object', 'type'],
+        alphabetize: {
+          order: 'asc',
+        },
+        'newlines-between': 'always',
+      },
+    ],
   },
   settings: {
     react: {

@@ -1,22 +1,9 @@
-/**
- * Redux
- */
+import { gql } from '@apollo/client';
 import { createSlice } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
 
-/**
- * Apollo
- */
-import { gql } from '@apollo/client';
-
-/**
- * Tools
- */
 import client from '@/util/apollo';
 
-/**
- * Create Slice
- */
 export const newsfeedSlice = createSlice({
   name: 'newsfeed',
   initialState: { newsfeed: [] } as { newsfeed: NewsFeed.Entity[] },
@@ -63,7 +50,4 @@ export const fetchNewsFeed = (): Store.AppThunk => async (dispatch) => {
   }
 };
 
-/**
- * State Selector
- */
 export const selectNewsFeed = () => (state: Store.AppState) => state?.[newsfeedSlice.name]?.['newsfeed'];

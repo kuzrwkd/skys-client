@@ -1,22 +1,8 @@
-/**
- * Next
- */
 import { NextPage } from 'next';
 
-/**
- * Redux
- */
+import Card from '@/components/card';
 import { wrapper } from '@/store';
 
-/**
- * Components
- */
-import Card from '@/components/card';
-
-/**
- * Page
- * @constructor
- */
 const Search: NextPage = () => {
   return (
     <div className="flex">

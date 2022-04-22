@@ -1,30 +1,10 @@
-/**
- * Next
- */
+import 'tailwindcss/tailwind.css';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 
-/**
- * Store
- */
+import DefaultLayout from '@/layout/default';
 import { wrapper } from '@/store';
 
-/**
- * Lib
- */
-import 'tailwindcss/tailwind.css';
-
-/**
- * Components
- */
-import DefaultLayout from '@/layout/default';
-
-/**
- * Application Component
- * @param Component
- * @param pageProps
- * @constructor
- */
 const App = ({ Component, pageProps }: AppProps) => {
   console.log('-----------------___APP', { pageProps });
   switch (pageProps.layout) {
