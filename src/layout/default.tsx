@@ -1,7 +1,7 @@
 /**
  * React
  */
-import React, { useState, createElement, FC } from 'react';
+import React, { useState, createElement, FC, ReactNode } from 'react';
 
 /**
  * Next
@@ -42,6 +42,10 @@ import UserIcon from '@/static/icon/user.svg';
  */
 import { MAIN_MENU } from '@/types/meinMenu';
 
+type DefaultLayoutProps = {
+  children: ReactNode;
+};
+
 /*****************************************************
  * MainMenu
  * @constructor
@@ -77,7 +81,7 @@ const MainMenu: FC = () => {
  * @constructor
  *****************************************************/
 
-const DefaultLayout: React.FC = ({ children }) => {
+const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
   const [state, setState] = useState({
     isMainMenuOpen: true,
   });

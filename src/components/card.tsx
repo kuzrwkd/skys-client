@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
 const Card: FC<Props> = ({ children, title = 'unknown' }) => {
   return (
@@ -10,6 +10,7 @@ const Card: FC<Props> = ({ children, title = 'unknown' }) => {
 };
 
 type Props = {
+  children: ReactNode;
   title?: string;
 };
 

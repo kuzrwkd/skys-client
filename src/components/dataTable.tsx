@@ -1,7 +1,7 @@
 /**
  * React
  */
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
 /**
  * Next
@@ -145,6 +145,7 @@ const DataTable: FC<DataTableProps> = ({ children, col, redirect }) => {
  * Type
  */
 type DataTableProps = {
+  children: ReactNode;
   col: string[];
   redirect: string;
 };
