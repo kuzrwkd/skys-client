@@ -10,7 +10,7 @@
     "test": "jest --env=jsdom --verbose"
   },
   "dependencies": {
-    "@apollo/client": "^3.5.10",
+    "@apollo/client": "^3.6.2",
     "@reduxjs/toolkit": "^1.8.1",
     "next": "^12.1.6",
     "next-redux-wrapper": "^7.0.5",
