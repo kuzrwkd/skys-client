@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --env=jsdom --verbose"
+    "test": "jest --verbose"
   },
   "dependencies": {
     "@apollo/client": "^3.6.2",
@@ -29,8 +29,6 @@
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
     "autoprefixer": "^10.4.7",
-    "babel-jest": "^28.0.3",
-    "babel-loader": "^8.2.5",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^8.14.0",

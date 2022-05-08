@@ -12,7 +12,7 @@ const Home: NextPage = () => {
   );
 };
 
-export const getServerSideProps = () => async () => {
+export const getServerSideProps = async () => {
   return {
     props: {
       title: 'Home',
