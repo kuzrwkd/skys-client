@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "declaration": true,
     "sourceMap": true,
     "allowJs": true,
@@ -17,21 +21,27 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"],
+      "@/*": [
+        "src/*"
+      ]
     },
-    "typeRoots" : [
+    "typeRoots": [
       "./node_modules/@types",
       "./src/types"
     ],
-    "incremental": true,
-  },
-  "ts-node": {
-    "files": true // ts-nodeでtypeRootsの型を読み込む
+    "incremental": true
   },
   "skipLibCheck": true,
-  "include": ["next-env.d.ts", "src/Tools/@types/images.d.ts","**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "src/Tools/@types/images.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
