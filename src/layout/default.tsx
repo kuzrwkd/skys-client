@@ -13,11 +13,12 @@ import {
   flex,
 } from 'tailwindcss-classnames';
 
+import LogoIcon from '../static/icon/logo.svg';
+import MenuLeftIcon from '../static/icon/menuLeft.svg';
+import MenuRightIcon from '../static/icon/menuRight.svg';
+import UserIcon from '../static/icon/user.svg';
+
 import SearchBox from '@/components/searchBox';
-import LogoIcon from '@/static/icon/logo.svg';
-import MenuLeftIcon from '@/static/icon/menuLeft.svg';
-import MenuRightIcon from '@/static/icon/menuRight.svg';
-import UserIcon from '@/static/icon/user.svg';
 import { MAIN_MENU } from '@/types/meinMenu';
 
 type DefaultLayoutProps = {

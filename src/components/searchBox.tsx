@@ -2,8 +2,8 @@ import { useRouter } from 'next/router';
 import { FC, useState } from 'react';
 import { classnames, display } from 'tailwindcss-classnames';
 
-import CrossIcon from '@/static/icon/cross.svg';
-import SearchIcon from '@/static/icon/search.svg';
+import CrossIcon from '../static/icon/cross.svg';
+import SearchIcon from '../static/icon/search.svg';
 
 const SearchBox: FC<Props> = ({ redirect, displayForm = false }) => {
   const router = useRouter();

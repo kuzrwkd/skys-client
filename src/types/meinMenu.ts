@@ -1,7 +1,7 @@
-import DashboardIcon from '@/static/icon/dashboard.svg';
-import MarketIcon from '@/static/icon/lineChart.svg';
-import CustomerIcon from '@/static/icon/message.svg';
-import NewsIcon from '@/static/icon/news.svg';
+import DashboardIcon from '../static/icon/dashboard.svg';
+import MarketIcon from '../static/icon/lineChart.svg';
+import CustomerIcon from '../static/icon/message.svg';
+import NewsIcon from '../static/icon/news.svg';
 
 export const MAIN_MENU = [
   {

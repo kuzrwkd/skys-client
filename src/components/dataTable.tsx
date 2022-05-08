@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { FC, ReactNode } from 'react';
 
+import IsoscelesIcon from '../static/icon/isosceles.svg';
+
 import SearchBox from '@/components/searchBox';
-import IsoscelesIcon from '@/static/icon/isosceles.svg';
 
 const HeaderCol: FC<HeaderColProps> = ({ col }) => {
   const handleSort = async (name: string) => {
