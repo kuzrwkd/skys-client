@@ -1,7 +1,6 @@
 import { NextPage } from 'next';
 
 import Card from '@/components/card';
-import { wrapper } from '@/store';
 
 const Home: NextPage = () => {
   return (
@@ -13,13 +12,13 @@ const Home: NextPage = () => {
   );
 };
 
-export const getServerSideProps = wrapper.getServerSideProps(() => async () => {
+export const getServerSideProps = () => async () => {
   return {
     props: {
       title: 'Home',
       description: '',
     },
   };
-});
+};
 
 export default Home;

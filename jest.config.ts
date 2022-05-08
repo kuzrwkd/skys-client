@@ -13,7 +13,7 @@ const jestConfig = {
   },
   collectCoverageFrom: ['**/*.(t|j)s'],
   setupFilesAfterEnv: ['<rootDir>../jest.setup.ts'],
-  modulePathIgnorePatterns: ['<rootDir>/Tools/@types'],
+  modulePathIgnorePatterns: ['<rootDir>/__test__/__mock__'],
   coverageDirectory: '<rootDir>../coverage',
   testEnvironment: 'node',
   // https://github.com/zeit/next.js/issues/8663#issue-490553899
