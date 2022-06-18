@@ -5,8 +5,9 @@ import Head from 'next/head';
 import DefaultLayout from '@/layout/default';
 import { wrapper } from '@/store';
 
-const App = ({ Component, pageProps }: AppProps) => {
-  console.log('-----------------___APP', { pageProps });
+const App = (props: AppProps) => {
+  const { Component, pageProps } = props;
+
   switch (pageProps.layout) {
     case 'auth': {
       return <p>準備中</p>;

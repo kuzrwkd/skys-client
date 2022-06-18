@@ -8,7 +8,7 @@ export const newsfeedSlice = createSlice({
   name: 'newsfeed',
   initialState: { newsfeed: [] } as { newsfeed: NewsFeed.Entity[] },
   reducers: {
-    setResponse(state, action) {
+    set(state, action) {
       return action.payload;
     },
   },
@@ -44,7 +44,7 @@ export const fetchNewsFeed = (): Store.AppThunk => async (dispatch) => {
         }
       `,
     });
-    dispatch(newsfeedSlice.actions.setResponse(data));
+    dispatch(newsfeedSlice.actions.set(data));
   } catch (e) {
     console.error(e);
   }
