@@ -16,7 +16,7 @@ const App = (props: AppProps) => {
       return (
         <>
           <Head>
-            <title>{pageProps.title}&nbsp;|&nbsp;Create Next App</title>
+            <title>{`${pageProps.title} | SKYS`}</title>
             <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
             <meta name="description" content={pageProps.description} />
           </Head>
