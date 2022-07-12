@@ -44,7 +44,10 @@ const NewsFeed: NextPage = () => {
       <div className="w-full">
         <Card title="NewsFeed">
           <div className="mt-8">
-            <DataTable col={['organization', 'title', 'article_created_at', 'article_updated_at']} redirect="newsfeed">
+            <DataTable
+              cells={['organization', 'title', 'article_created_at', 'article_updated_at']}
+              redirect="newsfeed"
+            >
               <Rows data={contents} />
             </DataTable>
           </div>
