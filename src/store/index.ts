@@ -1,6 +1,6 @@
-import { configureStore, ThunkAction } from '@reduxjs/toolkit';
+import { configureStore, type ThunkAction } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
-import { Action } from 'redux';
+import { type Action } from 'redux';
 
 import { newsfeedSlice } from '@/store/newsfeedSlice';
 
