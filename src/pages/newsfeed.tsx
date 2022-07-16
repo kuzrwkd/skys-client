@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
+import { fontSize, borderWidth, padding, textColor, classnames, textDecoration, width } from 'tailwindcss-classnames';
 
 import Card from '@/components/card';
 import DataTable from '@/components/dataTable';
@@ -11,25 +12,29 @@ type RowsProps = {
   data: NewsFeed.Entity[];
 };
 
+const classesRows = {
+  tr: classnames(fontSize('text-sm'), borderWidth('border-b', 'last:border-b-0')),
+  td: classnames(padding('p-2')),
+  link: classnames(
+    textColor('text-indigo-700', 'hover:text-indigo-900', 'visited:text-indigo-900', 'active:text-indigo-900'),
+    textDecoration('underline'),
+  ),
+};
+
 const Rows: FC<RowsProps> = ({ data }) => {
   return (
     <>
       {data.map(({ title, url, organization, article_created_at, article_updated_at }, i: number) => {
         return (
-          <tr className="text-sm odd:bg-gray-100" key={i}>
-            <td className="border-l border-r-2 border-gray-300 p-2">{organization.name}</td>
-            <td className="border-r-2 border-gray-300 p-2">
-              <a
-                className="text-indigo-700 underline link:text-indigo-900 visited:text-indigo-900 hover:text-indigo-900 active:text-indigo-900"
-                href={url}
-                target="_blank"
-                rel="noreferrer"
-              >
+          <tr className={classesRows.tr} key={i}>
+            <td className={classesRows.td}>{organization.name}</td>
+            <td className={classesRows.td}>
+              <a className={classesRows.link} href={url} target="_blank" rel="noreferrer">
                 {title}
               </a>
             </td>
-            <td className="border-r-2 border-gray-300 p-2">{article_created_at}</td>
-            <td className="border-r border-gray-300 p-2">{article_updated_at}</td>
+            <td className={classesRows.td}>{article_created_at}</td>
+            <td className={classesRows.td}>{article_updated_at}</td>
           </tr>
         );
       })}
@@ -37,22 +42,19 @@ const Rows: FC<RowsProps> = ({ data }) => {
   );
 };
 
+const classesNewsFeed = {
+  wrap: classnames(width('w-full')),
+};
+
 const NewsFeed: NextPage = () => {
   const contents = useSelector(selectNewsFeed());
   return (
-    <div className="flex">
-      <div className="w-full">
-        <Card title="NewsFeed">
-          <div className="mt-8">
-            <DataTable
-              cells={['organization', 'title', 'article_created_at', 'article_updated_at']}
-              redirect="newsfeed"
-            >
-              <Rows data={contents} />
-            </DataTable>
-          </div>
-        </Card>
-      </div>
+    <div className={classesNewsFeed.wrap}>
+      <Card title="NewsFeed">
+        <DataTable cells={['organization', 'title', 'article_created_at', 'article_updated_at']} redirect="newsfeed">
+          <Rows data={contents} />
+        </DataTable>
+      </Card>
     </div>
   );
 };

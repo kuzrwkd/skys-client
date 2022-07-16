@@ -9,6 +9,9 @@ import {
   backgroundColor,
   borderRadius,
   padding,
+  width,
+  borderWidth,
+  borderColor,
 } from 'tailwindcss-classnames';
 
 import CrossIcon from '../static/icon/cross.svg';
@@ -18,6 +21,7 @@ const classes = {
   searchIconWrap: (value: boolean) => classnames(display({ ['hidden']: value })),
   searchIcon: classnames(textColor('text-gray-500'), cursor('cursor-pointer')),
   searchForm: (value: boolean) => classnames(display('flex', { ['hidden']: !value })),
+  searchInput: classnames(width('w-72'), borderWidth('border-b'), borderColor('border-gray-300')),
   closeIcon: classnames(textColor('text-gray-500', cursor('cursor-pointer')), margin('mr-1')),
   submitButton: classnames(
     backgroundColor('bg-blue-800'),
@@ -62,7 +66,7 @@ const SearchBox: FC<Props> = ({ redirect, displayForm = false }) => {
       <form onSubmit={submitHandler} className={classes.searchForm(state.isSearchActive)}>
         {displayForm ? '' : <CrossIcon className={classes.closeIcon} onClick={resetHandler} />}
         <input
-          className="w-72 border-b border-gray-300"
+          className={classes.searchInput}
           type="text"
           placeholder="Search..."
           value={state.q}

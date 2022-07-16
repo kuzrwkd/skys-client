@@ -12,14 +12,14 @@ const Home: NextPage = () => {
     return <div>RENDERED WITHOUT CONTENT FROM STORE!!!???</div>;
   }
   return (
-    <div className="flex">
+    <>
       <Card title="NewsFeed">
         <p className="text-5xl">Dashboard</p>
       </Card>
       <Card title="NewsFeed">
         <p className="text-5xl">Dashboard</p>
       </Card>
-    </div>
+    </>
   );
 };
 

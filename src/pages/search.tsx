@@ -5,11 +5,9 @@ import { wrapper } from '@/store';
 
 const Search: NextPage = () => {
   return (
-    <div className="flex">
-      <Card>
-        <p className="text-5xl">Search</p>
-      </Card>
-    </div>
+    <Card>
+      <p className="text-5xl">Search</p>
+    </Card>
   );
 };
 

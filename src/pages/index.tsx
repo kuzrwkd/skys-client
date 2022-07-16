@@ -4,11 +4,9 @@ import Card from '@/components/card';
 
 const Home: NextPage = () => {
   return (
-    <div className="flex">
-      <Card>
-        <p className="text-5xl">Home</p>
-      </Card>
-    </div>
+    <Card>
+      <p className="text-5xl">Home</p>
+    </Card>
   );
 };
 
