@@ -4,9 +4,13 @@ import { HYDRATE } from 'next-redux-wrapper';
 
 import client from '@/util/apollo';
 
+type State = {
+  newsfeed: NewsFeed.Entity[];
+};
+
 export const newsfeedSlice = createSlice({
   name: 'newsfeed',
-  initialState: { newsfeed: [] } as { newsfeed: NewsFeed.Entity[] },
+  initialState: { newsfeed: [] } as State,
   reducers: {
     set(state, action) {
       return action.payload;
