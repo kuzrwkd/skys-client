@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache, DefaultOptions } from '@apollo/client';
+import { ApolloClient, InMemoryCache, type DefaultOptions } from '@apollo/client';
 
 const defaultOptions: DefaultOptions = {
   watchQuery: {

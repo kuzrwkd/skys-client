@@ -1,3 +1,5 @@
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import Link from 'next/link';
 import React, { useState, createElement, FC, ReactNode } from 'react';
 import {
@@ -29,9 +31,7 @@ import {
 import LogoIcon from '../static/icon/logo.svg';
 import MenuLeftIcon from '../static/icon/menuLeft.svg';
 import MenuRightIcon from '../static/icon/menuRight.svg';
-import UserIcon from '../static/icon/user.svg';
 
-import SearchBox from '@/components/searchBox';
 import { MAIN_MENU } from '@/types/meinMenu';
 
 type DefaultLayoutProps = {
@@ -39,36 +39,27 @@ type DefaultLayoutProps = {
 };
 
 const classesMenu = {
-  menu: classnames(padding('pt-5'), margin('ml-5')),
-  item: classnames(margin('mt-4')),
-  link: classnames(display('inline-flex'), alignItems('items-center')),
-  iconWrap: classnames(flex('flex-none'), margin('mr-5')),
   icon: classnames(textColor('text-indigo-700')),
-  text: classnames(flex('flex-none'), textColor('text-gray-500', 'hover:text-gray-900')),
 };
 
 const Menu: FC = () => {
   return (
-    <ul className={classesMenu.menu}>
+    <List>
       {MAIN_MENU.map(({ name, href, icon }, i) => {
         return (
-          <li className={classesMenu.item} key={i}>
-            <Link href={href}>
-              <a className={classesMenu.link}>
-                <div className={classesMenu.iconWrap}>
-                  {createElement(icon, {
-                    width: 24,
-                    height: 24,
-                    className: classesMenu.icon,
-                  })}
-                </div>
-                <span className={classesMenu.text}>{name}</span>
-              </a>
-            </Link>
-          </li>
+          <ListItemButton key={i}>
+            <ListItemIcon>
+              {createElement(icon, {
+                width: 24,
+                height: 24,
+                className: classesMenu.icon,
+              })}
+            </ListItemIcon>
+            <ListItemText primary={name} />
+          </ListItemButton>
         );
       })}
-    </ul>
+    </List>
   );
 };
 
@@ -113,12 +104,11 @@ const classesDefaultLayout = {
   ),
   headerLeftContentsWrap: classnames(display('flex'), alignItems('items-center'), height('h-full')),
   toggleMenuIcon: classnames(textColor('text-gray-500'), cursor('cursor-pointer'), margin('ml-4')),
-  searchBoxWrap: classnames(margin('ml-4')),
   userIconWrap: classnames(display('flex'), alignItems('items-center'), height('h-full')),
   userIcon: classnames(textColor('text-gray-500'), cursor('cursor-pointer'), margin('mr-4')),
   main: classnames(display('flex'), flexDirection('flex-col'), flex('flex-1'), overflow('overflow-y-scroll')),
   contents: classnames(flexGrow('grow'), backgroundColor('bg-gray-50'), padding('p-4')),
-  contentsLayout: classnames(display('flex')),
+  contentsLayout: classnames(display('flex'), width('w-full')),
   footer: classnames(borderWidth('border-t'), borderColor('border-gray-300')),
   copyWrap: classnames(textAlign('text-right'), padding('px-4')),
   rightAside: classnames(
@@ -177,12 +167,9 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
                 width="24"
                 height="24"
               />
-              <div className={classesDefaultLayout.searchBoxWrap}>
-                <SearchBox redirect="search" />
-              </div>
             </div>
             <div className={classesDefaultLayout.userIconWrap}>
-              <UserIcon className={classesDefaultLayout.userIcon} width="24" height="24" />
+              <AccountCircleIcon className={classesDefaultLayout.userIcon} width="24" height="24" />
             </div>
           </header>
           <main className={classesDefaultLayout.main}>

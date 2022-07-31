@@ -54,4 +54,7 @@ export const fetchNewsFeed = (): Store.AppThunk => async (dispatch) => {
   }
 };
 
-export const selectNewsFeed = () => (state: Store.AppState) => state?.[newsfeedSlice.name]?.['newsfeed'];
+export const selectNewsFeed =
+  () =>
+  (state: Store.AppState): NewsFeed.Entity[] =>
+    state?.[newsfeedSlice.name]?.['newsfeed'];

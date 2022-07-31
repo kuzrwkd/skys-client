@@ -1,7 +1,7 @@
-import DashboardIcon from '../static/icon/dashboard.svg';
-import MarketIcon from '../static/icon/lineChart.svg';
-import CustomerIcon from '../static/icon/message.svg';
-import NewsIcon from '../static/icon/news.svg';
+import CandlestickChartIcon from '@mui/icons-material/CandlestickChart';
+import ChatIcon from '@mui/icons-material/Chat';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
 
 export const MAIN_MENU = [
   {
@@ -12,16 +12,16 @@ export const MAIN_MENU = [
   {
     name: 'NewsFeed',
     href: '/newsfeed',
-    icon: NewsIcon,
+    icon: NewspaperIcon,
   },
   {
-    name: 'Market',
-    href: '/market',
-    icon: MarketIcon,
+    name: 'Chart',
+    href: '/chart',
+    icon: CandlestickChartIcon,
   },
   {
     name: 'Customer',
     href: '/customer',
-    icon: CustomerIcon,
+    icon: ChatIcon,
   },
 ] as const;

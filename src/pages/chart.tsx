@@ -3,10 +3,10 @@ import { NextPage } from 'next';
 import Card from '@/components/card';
 import { wrapper } from '@/store';
 
-const Market: NextPage = () => {
+const Chart: NextPage = () => {
   return (
     <Card>
-      <p className="text-5xl">Market</p>
+      <p className="text-5xl">Chart</p>
     </Card>
   );
 };
@@ -14,10 +14,10 @@ const Market: NextPage = () => {
 export const getServerSideProps = wrapper.getServerSideProps(() => async () => {
   return {
     props: {
-      title: 'Market',
+      title: 'Chart',
       description: '',
     },
   };
 });
 
-export default Market;
+export default Chart;
