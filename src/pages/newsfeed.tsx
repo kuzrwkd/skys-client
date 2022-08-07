@@ -19,7 +19,7 @@ const NewsFeed: NextPage = () => {
   const rows = contents.map((item) => ({ ...item, media: item.organization.name }));
   return (
     <>
-      <Card title="NewsFeed" fullWidth>
+      <Card title="ニュースフィード" fullWidth>
         <DataGrid
           style={{ height: 500, width: '100%' }}
           rows={rows}

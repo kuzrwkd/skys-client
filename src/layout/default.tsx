@@ -1,7 +1,6 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import Link from 'next/link';
-import React, { useState, createElement, FC, ReactNode } from 'react';
+import NuxtLink from 'next/link';
+import React, { useState, ReactNode } from 'react';
 import {
   classnames,
   display,
@@ -32,35 +31,10 @@ import LogoIcon from '../static/icon/logo.svg';
 import MenuLeftIcon from '../static/icon/menuLeft.svg';
 import MenuRightIcon from '../static/icon/menuRight.svg';
 
-import { MAIN_MENU } from '@/types/meinMenu';
+import LeftSideMenu from './leftSideMenu';
 
 type DefaultLayoutProps = {
   children: ReactNode;
-};
-
-const classesMenu = {
-  icon: classnames(textColor('text-indigo-700')),
-};
-
-const Menu: FC = () => {
-  return (
-    <List>
-      {MAIN_MENU.map(({ name, href, icon }, i) => {
-        return (
-          <ListItemButton key={i}>
-            <ListItemIcon>
-              {createElement(icon, {
-                width: 24,
-                height: 24,
-                className: classesMenu.icon,
-              })}
-            </ListItemIcon>
-            <ListItemText primary={name} />
-          </ListItemButton>
-        );
-      })}
-    </List>
-  );
 };
 
 const classesDefaultLayout = {
@@ -70,7 +44,7 @@ const classesDefaultLayout = {
       display('flex'),
       flexDirection('flex-col'),
       height('h-screen'),
-      width('w-48', { ['w-16']: !isMenuOpen }),
+      width('w-16', { ['w-52']: isMenuOpen }),
       borderWidth('border-r'),
       borderColor('border-gray-300'),
       overflow('overflow-hidden'),
@@ -133,30 +107,29 @@ const classesDefaultLayout = {
   rightAsideIcon: classnames(textColor('text-gray-500'), cursor('cursor-pointer')),
 };
 
-const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
-  const [state, setState] = useState({
-    isMainMenuOpen: true,
-  });
+const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
+  const { children } = props;
+  const [isLeftMenuOpen, setLeftMenuOpen] = useState(true);
 
   const mainMenuIconHandler = () => {
-    setState({ ...state, isMainMenuOpen: !state.isMainMenuOpen });
+    setLeftMenuOpen(!isLeftMenuOpen);
   };
 
   return (
     <>
       <div className={classesDefaultLayout.root}>
-        <aside className={classesDefaultLayout.leftAside(state.isMainMenuOpen)}>
+        <aside className={classesDefaultLayout.leftAside(isLeftMenuOpen)}>
           <div className={classesDefaultLayout.linkWrap}>
-            <Link href="/">
+            <NuxtLink href="/">
               <a className={classesDefaultLayout.link}>
                 <div className={classesDefaultLayout.logoWrap}>
                   <LogoIcon width={64} height={58} />
                 </div>
                 <h1 className={classesDefaultLayout.logoTitle}>SKYS</h1>
               </a>
-            </Link>
+            </NuxtLink>
           </div>
-          <Menu />
+          <LeftSideMenu open={isLeftMenuOpen} />
         </aside>
         <div className={classesDefaultLayout.contentsRoot}>
           <header className={classesDefaultLayout.header}>
