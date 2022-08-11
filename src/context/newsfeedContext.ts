@@ -58,7 +58,7 @@ export const fetchNewsFeed = (): Store.AppThunk => async (dispatch) => {
   }
 };
 
-export const useNewsFeedContext =
+export const selectNewsFeedContext =
   () =>
   (state: Store.AppState): NewsFeedContextProps =>
     state?.[newsfeedContext.name];

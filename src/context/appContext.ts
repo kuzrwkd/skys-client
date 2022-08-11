@@ -30,7 +30,7 @@ export const appContext = createSlice({
   },
 });
 
-export const useAppContext =
+export const selectAppContext =
   () =>
   (state: Store.AppState): AppContextProps =>
     state?.[appContext.name];

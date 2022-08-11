@@ -7,7 +7,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { wrapper } from '@/context';
-import { appContext, useAppContext } from '@/context/appContext';
+import { appContext, selectAppContext } from '@/context/appContext';
 import DefaultLayout from '@/layout/default';
 import createEmotionCache from '@/util/createEmotionCache';
 import { theme } from '@/util/muiTheme';
@@ -20,7 +20,7 @@ const clientSideEmotionCache = createEmotionCache();
 
 const App: React.FC<AppWithEmotionCacheProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps, router } = props;
-  const { route } = useSelector(useAppContext());
+  const { route } = useSelector(selectAppContext());
   const dispatch = useDispatch();
 
   const switchLayout = (layout: string) => {

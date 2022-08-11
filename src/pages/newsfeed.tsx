@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import Card from '@/components/card';
 import { wrapper } from '@/context';
-import { fetchNewsFeed, useNewsFeedContext } from '@/context/newsfeedContext';
+import { fetchNewsFeed, selectNewsFeedContext } from '@/context/newsfeedContext';
 
 const columns: GridColDef[] = [
   { field: 'media', headerName: 'メディア', width: 200 },
@@ -15,7 +15,7 @@ const columns: GridColDef[] = [
 ];
 
 const NewsFeed: NextPage = () => {
-  const { newsfeed } = useSelector(useNewsFeedContext());
+  const { newsfeed } = useSelector(selectNewsFeedContext());
   const rows = newsfeed.map((item) => ({ ...item, media: item.media.name }));
   return (
     <>
