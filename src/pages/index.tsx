@@ -1,4 +1,4 @@
-import { NextPage } from 'next';
+import { NextPage, GetServerSidePropsContext } from 'next';
 
 import Card from '@/components/card';
 
@@ -10,12 +10,9 @@ const Home: NextPage = () => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   return {
-    props: {
-      title: 'Home',
-      description: '',
-    },
+    props: {},
   };
 };
 

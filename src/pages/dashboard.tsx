@@ -1,12 +1,11 @@
-import { NextPage } from 'next';
+import { GetServerSidePropsContext, NextPage } from 'next';
 import { useSelector } from 'react-redux';
 
 import Card from '@/components/card';
-import { wrapper } from '@/store';
-import { fetchNewsFeed, selectNewsFeed } from '@/store/newsfeedSlice';
+import { selectNewsFeedContext } from '@/store/newsfeedContextSlice';
 
 const Home: NextPage = () => {
-  const content = useSelector(selectNewsFeed());
+  const content = useSelector(selectNewsFeedContext());
 
   if (!content) {
     return <div>RENDERED WITHOUT CONTENT FROM STORE!!!???</div>;
@@ -23,15 +22,10 @@ const Home: NextPage = () => {
   );
 };
 
-export const getServerSideProps = wrapper.getServerSideProps((store) => async () => {
-  await store.dispatch(fetchNewsFeed());
-
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   return {
-    props: {
-      title: 'Dashboard',
-      description: '',
-    },
+    props: {},
   };
-});
+};
 
 export default Home;

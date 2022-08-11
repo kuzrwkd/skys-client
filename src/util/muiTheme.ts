@@ -10,7 +10,7 @@ const defaultPaletteColorOptions: SimplePaletteColorOptions = {
 };
 
 let appPaletteOptions: AppPaletteOptions = {
-  greenDark: { main: '#3AC7BD' },
+  pureWhite: { main: '#FFF' },
 };
 
 appPaletteOptions = Object.keys(appPaletteOptions).reduce((acc: any, key: any) => {

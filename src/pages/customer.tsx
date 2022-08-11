@@ -1,7 +1,6 @@
-import { NextPage } from 'next';
+import { GetServerSidePropsContext, NextPage } from 'next';
 
 import Card from '@/components/card';
-import { wrapper } from '@/store';
 
 const Customer: NextPage = () => {
   return (
@@ -11,13 +10,10 @@ const Customer: NextPage = () => {
   );
 };
 
-export const getServerSideProps = wrapper.getServerSideProps(() => async () => {
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   return {
-    props: {
-      title: 'Message',
-      description: '',
-    },
+    props: {},
   };
-});
+};
 
 export default Customer;

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import Card from '@/components/card';
 import { wrapper } from '@/store';
-import { fetchNewsFeed, selectNewsFeed } from '@/store/newsfeedSlice';
+import { fetchNewsFeed, selectNewsFeedContext } from '@/store/newsfeedContextSlice';
 
 const columns: GridColDef[] = [
   { field: 'media', headerName: 'メディア', width: 200 },
@@ -15,7 +15,7 @@ const columns: GridColDef[] = [
 ];
 
 const NewsFeed: NextPage = () => {
-  const contents = useSelector(selectNewsFeed());
+  const contents = useSelector(selectNewsFeedContext());
   const rows = contents.map((item) => ({ ...item, media: item.organization.name }));
   return (
     <>
@@ -37,10 +37,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ()
   await store.dispatch(fetchNewsFeed());
 
   return {
-    props: {
-      title: 'NewsFeed',
-      description: '',
-    },
+    props: {},
   };
 });
 

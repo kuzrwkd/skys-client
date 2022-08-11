@@ -5,6 +5,9 @@ import NewspaperIcon from '@mui/icons-material/Newspaper';
 import { Box, IconButton, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import NuxtLink from 'next/link';
 import React from 'react';
+import { useSelector } from 'react-redux';
+
+import { selectAppContext } from '@/store/appContextSlice';
 
 export const MAIN_MENU = [
   {
@@ -39,11 +42,18 @@ const classes = {
   openMenuListItem: (value: boolean) => ({
     whiteSpace: 'nowrap',
     borderRadius: 2,
-    color: value ? 'primary.main' : 'text.primary',
+    color: value ? 'primary.main' : 'inherit',
     '&:not(last-child)': {
       mb: 0.5,
     },
   }),
+  openIconWrap: {
+    minWidth: 24,
+    mr: 1,
+  },
+  icon: {
+    color: 'primary.main',
+  },
   closeMenuIconWrap: {
     display: 'flex',
     justifyContent: 'flex-start',
@@ -54,13 +64,6 @@ const classes = {
       mb: 0.5,
     },
   },
-  iconWrap: {
-    minWidth: 24,
-    mr: 1,
-  },
-  icon: {
-    color: 'primary.main',
-  },
 };
 
 type LeftSideMenuProps = {
@@ -69,14 +72,13 @@ type LeftSideMenuProps = {
 
 const LeftSideMenu: React.FC<LeftSideMenuProps> = (props) => {
   const { open } = props;
-
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
-
-  const handleListItemClick = (index: number) => setSelectedIndex(index);
+  const { route } = useSelector(selectAppContext());
 
   return (
     <List>
-      {MAIN_MENU.map(({ name, href, icon: Icon }, i) => {
+      {MAIN_MENU.map((item, i) => {
+        const { name, href, icon: Icon } = item;
+
         return (
           <li key={i}>
             {!open ? (
@@ -91,13 +93,12 @@ const LeftSideMenu: React.FC<LeftSideMenuProps> = (props) => {
               <Box sx={classes.openMenuListItemWrap}>
                 <NuxtLink href={href}>
                   <ListItemButton
-                    sx={classes.openMenuListItem(selectedIndex === i)}
+                    sx={classes.openMenuListItem(href === route)}
                     component="a"
-                    selected={selectedIndex === i}
-                    onClick={() => handleListItemClick(i)}
+                    selected={href === route}
                     disableRipple
                   >
-                    <ListItemIcon sx={classes.iconWrap}>
+                    <ListItemIcon sx={classes.openIconWrap}>
                       <Icon sx={classes.icon} />
                     </ListItemIcon>
                     <ListItemText primary={name} />

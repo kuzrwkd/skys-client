@@ -1,7 +1,6 @@
-import { NextPage } from 'next';
+import { GetServerSidePropsContext, NextPage } from 'next';
 
 import Card from '@/components/card';
-import { wrapper } from '@/store';
 
 const Search: NextPage = () => {
   return (
@@ -11,13 +10,10 @@ const Search: NextPage = () => {
   );
 };
 
-export const getServerSideProps = wrapper.getServerSideProps(() => async () => {
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   return {
-    props: {
-      title: 'Search',
-      description: '',
-    },
+    props: {},
   };
-});
+};
 
 export default Search;

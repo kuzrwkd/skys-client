@@ -2,12 +2,14 @@ import { configureStore, type ThunkAction } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
 import { type Action } from 'redux';
 
-import { newsfeedSlice } from '@/store/newsfeedSlice';
+import { appContextSlice } from '@/store/appContextSlice';
+import { newsfeedContextSlice } from '@/store/newsfeedContextSlice';
 
 const makeStore = () =>
   configureStore({
     reducer: {
-      [newsfeedSlice.name]: newsfeedSlice.reducer,
+      [newsfeedContextSlice.name]: newsfeedContextSlice.reducer,
+      [appContextSlice.name]: appContextSlice.reducer,
     },
     devTools: true,
   });

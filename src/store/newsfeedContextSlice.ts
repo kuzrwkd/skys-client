@@ -8,9 +8,13 @@ type State = {
   newsfeed: NewsFeed.Entity[];
 };
 
-export const newsfeedSlice = createSlice({
+const initialState: State = {
+  newsfeed: [],
+};
+
+export const newsfeedContextSlice = createSlice({
   name: 'newsfeed',
-  initialState: { newsfeed: [] } as State,
+  initialState,
   reducers: {
     set(state, action) {
       return action.payload;
@@ -48,13 +52,13 @@ export const fetchNewsFeed = (): Store.AppThunk => async (dispatch) => {
         }
       `,
     });
-    dispatch(newsfeedSlice.actions.set(data));
+    dispatch(newsfeedContextSlice.actions.set(data));
   } catch (e) {
     console.error(e);
   }
 };
 
-export const selectNewsFeed =
+export const selectNewsFeedContext =
   () =>
   (state: Store.AppState): NewsFeed.Entity[] =>
-    state?.[newsfeedSlice.name]?.['newsfeed'];
+    state?.[newsfeedContextSlice.name]?.['newsfeed'];

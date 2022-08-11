@@ -37,7 +37,7 @@ type DefaultLayoutProps = {
   children: ReactNode;
 };
 
-const classesDefaultLayout = {
+const classes = {
   root: classnames(display('flex')),
   leftAside: (isMenuOpen: boolean) =>
     classnames(
@@ -116,53 +116,46 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
   };
 
   return (
-    <>
-      <div className={classesDefaultLayout.root}>
-        <aside className={classesDefaultLayout.leftAside(isLeftMenuOpen)}>
-          <div className={classesDefaultLayout.linkWrap}>
-            <NuxtLink href="/">
-              <a className={classesDefaultLayout.link}>
-                <div className={classesDefaultLayout.logoWrap}>
-                  <LogoIcon width={64} height={58} />
-                </div>
-                <h1 className={classesDefaultLayout.logoTitle}>SKYS</h1>
-              </a>
-            </NuxtLink>
-          </div>
-          <LeftSideMenu open={isLeftMenuOpen} />
-        </aside>
-        <div className={classesDefaultLayout.contentsRoot}>
-          <header className={classesDefaultLayout.header}>
-            <div className={classesDefaultLayout.headerLeftContentsWrap}>
-              <MenuLeftIcon
-                className={classesDefaultLayout.toggleMenuIcon}
-                onClick={mainMenuIconHandler}
-                width="24"
-                height="24"
-              />
-            </div>
-            <div className={classesDefaultLayout.userIconWrap}>
-              <AccountCircleIcon className={classesDefaultLayout.userIcon} width="24" height="24" />
-            </div>
-          </header>
-          <main className={classesDefaultLayout.main}>
-            <div className={classesDefaultLayout.contents}>
-              <div className={classesDefaultLayout.contentsLayout}>{children}</div>
-            </div>
-            <footer className={classesDefaultLayout.footer}>
-              <div className={classesDefaultLayout.copyWrap}>
-                <small>&copy; Masudaya inc.</small>
+    <div className={classes.root}>
+      <aside className={classes.leftAside(isLeftMenuOpen)}>
+        <div className={classes.linkWrap}>
+          <NuxtLink href="/">
+            <a className={classes.link}>
+              <div className={classes.logoWrap}>
+                <LogoIcon width={64} height={58} />
               </div>
-            </footer>
-          </main>
+              <h1 className={classes.logoTitle}>SKYS</h1>
+            </a>
+          </NuxtLink>
         </div>
-        <aside className={classesDefaultLayout.rightAside}>
-          <div className={classesDefaultLayout.rightAsideIconWrap}>
-            <MenuRightIcon className={classesDefaultLayout.rightAsideIcon} width="24" height="24" />
+        <LeftSideMenu open={isLeftMenuOpen} />
+      </aside>
+      <div className={classes.contentsRoot}>
+        <header className={classes.header}>
+          <div className={classes.headerLeftContentsWrap}>
+            <MenuLeftIcon className={classes.toggleMenuIcon} onClick={mainMenuIconHandler} width="24" height="24" />
           </div>
-        </aside>
+          <div className={classes.userIconWrap}>
+            <AccountCircleIcon className={classes.userIcon} width="24" height="24" />
+          </div>
+        </header>
+        <main className={classes.main}>
+          <div className={classes.contents}>
+            <div className={classes.contentsLayout}>{children}</div>
+          </div>
+          <footer className={classes.footer}>
+            <div className={classes.copyWrap}>
+              <small>&copy; Masudaya inc.</small>
+            </div>
+          </footer>
+        </main>
       </div>
-    </>
+      <aside className={classes.rightAside}>
+        <div className={classes.rightAsideIconWrap}>
+          <MenuRightIcon className={classes.rightAsideIcon} width="24" height="24" />
+        </div>
+      </aside>
+    </div>
   );
 };
 

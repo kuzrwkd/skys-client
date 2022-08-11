@@ -1,4 +1,4 @@
-export const colors = ['greenDark'] as const;
+export const colors = ['pureWhite'] as const;
 
 type Keys = typeof colors[number];
 
