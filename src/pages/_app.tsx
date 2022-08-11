@@ -1,6 +1,7 @@
 import 'tailwindcss/tailwind.css';
 import { CacheProvider, type EmotionCache } from '@emotion/react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
+import { LicenseInfo } from '@mui/x-license-pro';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import React from 'react';
@@ -11,6 +12,8 @@ import { appContext, selectAppContext } from '@/context/appContext';
 import DefaultLayout from '@/layout/default';
 import createEmotionCache from '@/util/createEmotionCache';
 import { theme } from '@/util/muiTheme';
+
+LicenseInfo.setLicenseKey(process.env.LICENSE_KEY || '');
 
 interface AppWithEmotionCacheProps extends AppProps {
   emotionCache?: EmotionCache;

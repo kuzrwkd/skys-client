@@ -19,6 +19,12 @@ export const appContext = createSlice({
         route: action.payload,
       };
     },
+    setWindowSize(state, action) {
+      return {
+        ...state,
+        windowSize: action.payload,
+      };
+    },
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {

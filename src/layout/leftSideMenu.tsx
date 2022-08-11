@@ -16,7 +16,7 @@ export const MAIN_MENU = [
     icon: DashboardIcon,
   },
   {
-    name: 'ニュースフィード',
+    name: 'ニュース',
     href: '/newsfeed',
     icon: NewspaperIcon,
   },
