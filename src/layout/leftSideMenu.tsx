@@ -43,6 +43,7 @@ const classes = {
     whiteSpace: 'nowrap',
     borderRadius: 2,
     color: value ? 'primary.main' : 'inherit',
+    mt: 0.25,
     '&:not(last-child)': {
       mb: 0.5,
     },
@@ -60,9 +61,6 @@ const classes = {
     alignItems: 'center',
     minHeight: 48,
     ml: 1.5,
-    '&:not(last-child)': {
-      mb: 0.5,
-    },
   },
 };
 
@@ -101,12 +99,17 @@ const LeftSideMenu: React.FC<LeftSideMenuProps> = (props) => {
                     sx={classes.openMenuListItem(href === useRoute)}
                     component="a"
                     selected={href === useRoute}
-                    disableRipple
                   >
                     <ListItemIcon sx={classes.openIconWrap}>
                       <Icon sx={classes.icon} />
                     </ListItemIcon>
-                    <ListItemText primary={name} />
+                    <ListItemText
+                      primary={name}
+                      primaryTypographyProps={{
+                        fontWeight: 'bold',
+                        variant: 'body2',
+                      }}
+                    />
                   </ListItemButton>
                 </NuxtLink>
               </Box>

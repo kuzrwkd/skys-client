@@ -1,11 +1,12 @@
+import { Typography } from '@mui/material';
 import { NextPage, GetServerSidePropsContext } from 'next';
 
 import Card from '@/components/card';
 
 const Home: NextPage = () => {
   return (
-    <Card>
-      <p className="text-5xl">Home</p>
+    <Card title="Home">
+      <Typography variant="body1">Home</Typography>
     </Card>
   );
 };

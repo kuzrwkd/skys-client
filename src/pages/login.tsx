@@ -1,9 +1,10 @@
+import { Typography } from '@mui/material';
 import { NextPage } from 'next';
 
 import { wrapper } from '@/context';
 
 const Login: NextPage = () => {
-  return <p className="text-5xl">Message</p>;
+  return <Typography variant="body1">Login</Typography>;
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(() => async () => {

@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import { GetServerSidePropsContext, NextPage } from 'next';
 
 import Card from '@/components/card';
@@ -5,7 +6,7 @@ import Card from '@/components/card';
 const Search: NextPage = () => {
   return (
     <Card>
-      <p className="text-5xl">Search</p>
+      <Typography variant="body1">Search</Typography>
     </Card>
   );
 };

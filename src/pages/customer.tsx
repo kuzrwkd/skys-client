@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import { GetServerSidePropsContext, NextPage } from 'next';
 
 import Card from '@/components/card';
@@ -5,7 +6,7 @@ import Card from '@/components/card';
 const Customer: NextPage = () => {
   return (
     <Card title="お問い合わせ">
-      <p className="text-5xl">Customer</p>
+      <Typography variant="body1">Customer</Typography>
     </Card>
   );
 };

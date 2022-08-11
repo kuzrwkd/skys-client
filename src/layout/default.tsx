@@ -1,3 +1,4 @@
+import { IconButton } from '@mui/material';
 import NuxtLink from 'next/link';
 import React from 'react';
 import {
@@ -12,16 +13,13 @@ import {
   width,
   flex,
   padding,
-  margin,
   alignItems,
-  textColor,
   fontSize,
   fontWeight,
   fontFamily,
   gradientColorStops,
   justifyContent,
   backgroundColor,
-  cursor,
   flexGrow,
   textAlign,
 } from 'tailwindcss-classnames';
@@ -77,7 +75,6 @@ const classes = {
     backgroundColor('bg-white'),
   ),
   headerLeftContentsWrap: classnames(display('flex'), alignItems('items-center'), height('h-full')),
-  toggleMenuIcon: classnames(textColor('text-gray-500'), cursor('cursor-pointer'), margin('ml-4')),
   userIconWrap: classnames(display('flex'), alignItems('items-center'), height('h-full')),
   main: classnames(display('flex'), flexDirection('flex-col'), flex('flex-1'), overflow('overflow-y-scroll')),
   contents: classnames(flexGrow('grow'), backgroundColor('bg-gray-50'), padding('p-4')),
@@ -103,7 +100,6 @@ const classes = {
     borderWidth('border-b'),
     borderColor('border-gray-300'),
   ),
-  rightAsideIcon: classnames(textColor('text-gray-500'), cursor('cursor-pointer')),
 };
 
 const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
@@ -132,7 +128,9 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
       <div className={classes.contentsRoot}>
         <header className={classes.header}>
           <div className={classes.headerLeftContentsWrap}>
-            <MenuLeftIcon className={classes.toggleMenuIcon} onClick={mainMenuIconHandler} width="24" height="24" />
+            <IconButton sx={{ ml: 2 }} onClick={mainMenuIconHandler}>
+              <MenuLeftIcon />
+            </IconButton>
           </div>
           <div className={classes.userIconWrap}>
             <UserMenu />
@@ -151,7 +149,9 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
       </div>
       <aside className={classes.rightAside}>
         <div className={classes.rightAsideIconWrap}>
-          <MenuRightIcon className={classes.rightAsideIcon} width="24" height="24" />
+          <IconButton>
+            <MenuRightIcon width="24" height="24" />
+          </IconButton>
         </div>
       </aside>
     </div>

@@ -24,8 +24,8 @@ const Card: React.FC<CardProps> = (props) => {
       {!title ? (
         ''
       ) : (
-        <Typography sx={classes.title} variant="h4">
-          {title}
+        <Typography sx={classes.title} variant="h5">
+          <b>{title}</b>
         </Typography>
       )}
       {children}
