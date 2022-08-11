@@ -4,7 +4,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import { Box, IconButton, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import NuxtLink from 'next/link';
-import React, { FC } from 'react';
+import React from 'react';
 
 export const MAIN_MENU = [
   {
@@ -23,22 +23,36 @@ export const MAIN_MENU = [
     icon: CandlestickChartIcon,
   },
   {
-    name: 'コンタクト',
+    name: 'お問い合わせ',
     href: '/customer',
     icon: ChatIcon,
   },
 ] as const;
 
 const classes = {
-  openMenuListItem: {
-    whiteSpace: 'nowrap',
-    ml: 0.5,
+  openMenuListItemWrap: {
+    px: 1.5,
+    '& a': {
+      px: 1,
+    },
   },
+  openMenuListItem: (value: boolean) => ({
+    whiteSpace: 'nowrap',
+    borderRadius: 2,
+    color: value ? 'primary.main' : 'text.primary',
+    '&:not(last-child)': {
+      mb: 0.5,
+    },
+  }),
   closeMenuIconWrap: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     minHeight: 48,
+    ml: 1.5,
+    '&:not(last-child)': {
+      mb: 0.5,
+    },
   },
   iconWrap: {
     minWidth: 24,
@@ -49,40 +63,49 @@ const classes = {
   },
 };
 
-type MenuProps = {
+type LeftSideMenuProps = {
   open: boolean;
 };
 
-const LeftSideMenu: FC<MenuProps> = (props) => {
+const LeftSideMenu: React.FC<LeftSideMenuProps> = (props) => {
   const { open } = props;
+
+  const [selectedIndex, setSelectedIndex] = React.useState(1);
+
+  const handleListItemClick = (index: number) => setSelectedIndex(index);
+
   return (
     <List>
       {MAIN_MENU.map(({ name, href, icon: Icon }, i) => {
         return (
-          <>
+          <li key={i}>
             {!open ? (
-              <li key={i}>
-                <Box sx={classes.closeMenuIconWrap}>
-                  <NuxtLink href={href}>
-                    <IconButton color="primary">
-                      <Icon />
-                    </IconButton>
-                  </NuxtLink>
-                </Box>
-              </li>
-            ) : (
-              <li key={i}>
+              <Box sx={classes.closeMenuIconWrap}>
                 <NuxtLink href={href}>
-                  <ListItemButton sx={classes.openMenuListItem} component="a">
+                  <IconButton color="primary">
+                    <Icon />
+                  </IconButton>
+                </NuxtLink>
+              </Box>
+            ) : (
+              <Box sx={classes.openMenuListItemWrap}>
+                <NuxtLink href={href}>
+                  <ListItemButton
+                    sx={classes.openMenuListItem(selectedIndex === i)}
+                    component="a"
+                    selected={selectedIndex === i}
+                    onClick={() => handleListItemClick(i)}
+                    disableRipple
+                  >
                     <ListItemIcon sx={classes.iconWrap}>
                       <Icon sx={classes.icon} />
                     </ListItemIcon>
                     <ListItemText primary={name} />
                   </ListItemButton>
                 </NuxtLink>
-              </li>
+              </Box>
             )}
-          </>
+          </li>
         );
       })}
     </List>

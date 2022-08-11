@@ -5,7 +5,7 @@ import { wrapper } from '@/store';
 
 const Customer: NextPage = () => {
   return (
-    <Card>
+    <Card title="お問い合わせ">
       <p className="text-5xl">Customer</p>
     </Card>
   );

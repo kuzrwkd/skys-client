@@ -13,10 +13,10 @@ const Home: NextPage = () => {
   }
   return (
     <>
-      <Card title="Dashboard">
+      <Card title="ダッシュボード">
         <p className="text-5xl">contents</p>
       </Card>
-      <Card title="Dashboard">
+      <Card title="ダッシュボード">
         <p className="text-5xl">contents</p>
       </Card>
     </>

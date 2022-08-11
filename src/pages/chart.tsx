@@ -5,7 +5,7 @@ import { wrapper } from '@/store';
 
 const Chart: NextPage = () => {
   return (
-    <Card>
+    <Card title="チャート">
       <p className="text-5xl">Chart</p>
     </Card>
   );

@@ -1,6 +1,6 @@
 import 'tailwindcss/tailwind.css';
 import { CacheProvider, type EmotionCache } from '@emotion/react';
-import { ThemeProvider } from '@mui/material';
+import { ThemeProvider, CssBaseline } from '@mui/material';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 
@@ -27,11 +27,12 @@ const App = (props: AppWithEmotionCacheProps) => {
         <>
           <CacheProvider value={emotionCache}>
             <Head>
-              <title>{`${pageProps.title} | SKYS`}</title>
+              <title>相場観測予想システム｜SKYS</title>
               <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
               <meta name="description" content={pageProps.description} />
             </Head>
             <ThemeProvider theme={theme}>
+              <CssBaseline />
               <DefaultLayout>
                 <Component {...pageProps} />
               </DefaultLayout>
