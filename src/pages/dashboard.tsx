@@ -1,15 +1,8 @@
 import { GetServerSidePropsContext, NextPage } from 'next';
-import { useSelector } from 'react-redux';
 
 import Card from '@/components/card';
-import { selectNewsFeedContext } from '@/context/newsfeedContext';
 
 const Home: NextPage = () => {
-  const content = useSelector(selectNewsFeedContext());
-
-  if (!content) {
-    return <div>RENDERED WITHOUT CONTENT FROM STORE!!!???</div>;
-  }
   return (
     <>
       <Card title="ダッシュボード">

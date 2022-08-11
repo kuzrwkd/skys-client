@@ -1,11 +1,10 @@
 import { DataGrid, type GridColDef } from '@mui/x-data-grid';
 import { NextPage } from 'next';
 import React from 'react';
-import { useSelector } from 'react-redux';
 
+import { getNewsFeed, getRunningOperationPromises, useGetNewsFeedQuery } from '@/api/newsFeedApi';
 import Card from '@/components/card';
 import { wrapper } from '@/context';
-import { fetchNewsFeed, selectNewsFeedContext } from '@/context/newsfeedContext';
 
 const columns: GridColDef[] = [
   { field: 'media', headerName: 'メディア', width: 200 },
@@ -15,8 +14,11 @@ const columns: GridColDef[] = [
 ];
 
 const NewsFeed: NextPage = () => {
-  const { newsfeed } = useSelector(selectNewsFeedContext());
-  const rows = newsfeed.map((item) => ({ ...item, media: item.media.name }));
+  const {
+    data: { newsfeed },
+  } = useGetNewsFeedQuery();
+  const rows = newsfeed.map((item: any) => ({ ...item, media: item.media?.name }));
+
   return (
     <>
       <Card title="ニュースフィード" fullWidth>
@@ -34,7 +36,8 @@ const NewsFeed: NextPage = () => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async () => {
-  await store.dispatch(fetchNewsFeed());
+  store.dispatch(getNewsFeed.initiate());
+  await Promise.all(getRunningOperationPromises());
 
   return {
     props: {},
