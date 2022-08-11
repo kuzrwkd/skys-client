@@ -1,8 +1,8 @@
 import { Paper, Typography, type PaperProps } from '@mui/material';
-import { FC, ReactNode } from 'react';
+import React from 'react';
 
 type CardProps = {
-  children: ReactNode;
+  children: React.ReactNode;
   title?: string;
   fullWidth?: boolean;
 } & PaperProps;
@@ -17,7 +17,7 @@ const classes = {
   },
 };
 
-const Card: FC<CardProps> = (props) => {
+const Card: React.FC<CardProps> = (props) => {
   const { children, title = undefined, fullWidth = false, ...rest } = props;
   return (
     <Paper {...rest} sx={classes.paper(fullWidth)}>

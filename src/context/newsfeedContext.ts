@@ -4,16 +4,16 @@ import { HYDRATE } from 'next-redux-wrapper';
 
 import client from '@/util/apollo';
 
-type State = {
-  newsfeed: NewsFeed.Entity[];
+type NewsFeedContextProps = {
+  newsfeed: Entity.NewsFeed[];
 };
 
-const initialState: State = {
+const initialState: NewsFeedContextProps = {
   newsfeed: [],
 };
 
-export const newsfeedContextSlice = createSlice({
-  name: 'newsfeed',
+export const newsfeedContext = createSlice({
+  name: 'newsfeedContext',
   initialState,
   reducers: {
     set(state, action) {
@@ -52,13 +52,13 @@ export const fetchNewsFeed = (): Store.AppThunk => async (dispatch) => {
         }
       `,
     });
-    dispatch(newsfeedContextSlice.actions.set(data));
+    dispatch(newsfeedContext.actions.set(data));
   } catch (e) {
     console.error(e);
   }
 };
 
-export const selectNewsFeedContext =
+export const useNewsFeedContext =
   () =>
-  (state: Store.AppState): NewsFeed.Entity[] =>
-    state?.[newsfeedContextSlice.name]?.['newsfeed'];
+  (state: Store.AppState): NewsFeedContextProps =>
+    state?.[newsfeedContext.name];

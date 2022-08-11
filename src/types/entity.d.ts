@@ -1,14 +1,14 @@
-declare namespace NewsFeed {
-  type Entity = {
+declare namespace Entity {
+  type NewsFeed = {
     id: string;
     title: string;
     url: string;
-    organization: Organization;
+    media: Media;
     article_created_at: string;
     article_updated_at?: string;
   };
 
-  type Organization = {
+  type Media = {
     id: number;
     name?: string;
   };

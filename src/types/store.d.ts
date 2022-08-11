@@ -1,5 +1,5 @@
 declare namespace Store {
-  type AppStore = import('@/store').AppStore;
-  type AppState = import('@/store').AppState;
-  type AppThunk = import('@/store').AppThunk;
+  type AppStore = import('@/context').AppStore;
+  type AppState = import('@/context').AppState;
+  type AppThunk = import('@/context').AppThunk;
 }

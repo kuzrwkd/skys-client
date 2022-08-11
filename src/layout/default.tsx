@@ -1,5 +1,5 @@
 import NuxtLink from 'next/link';
-import React, { useState, ReactNode } from 'react';
+import React from 'react';
 import {
   classnames,
   display,
@@ -34,7 +34,7 @@ import LeftSideMenu from './leftSideMenu';
 import UserMenu from './userMenu';
 
 type DefaultLayoutProps = {
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
 const classes = {
@@ -108,7 +108,7 @@ const classes = {
 
 const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
   const { children } = props;
-  const [isLeftMenuOpen, setLeftMenuOpen] = useState(true);
+  const [isLeftMenuOpen, setLeftMenuOpen] = React.useState(true);
 
   const mainMenuIconHandler = () => {
     setLeftMenuOpen(!isLeftMenuOpen);

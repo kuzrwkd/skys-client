@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 
-import { wrapper } from '@/store';
+import { wrapper } from '@/context';
 
 const Login: NextPage = () => {
   return <p className="text-5xl">Message</p>;

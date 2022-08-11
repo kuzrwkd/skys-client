@@ -4,11 +4,11 @@ import { ThemeProvider, CssBaseline } from '@mui/material';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { wrapper } from '@/context';
+import { appContext, useAppContext } from '@/context/appContext';
 import DefaultLayout from '@/layout/default';
-import { wrapper } from '@/store';
-import { appContextSlice } from '@/store/appContextSlice';
 import createEmotionCache from '@/util/createEmotionCache';
 import { theme } from '@/util/muiTheme';
 
@@ -20,9 +20,8 @@ const clientSideEmotionCache = createEmotionCache();
 
 const App: React.FC<AppWithEmotionCacheProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps, router } = props;
+  const { route } = useSelector(useAppContext());
   const dispatch = useDispatch();
-
-  dispatch(appContextSlice.actions.set({ route: router.pathname }));
 
   const switchLayout = (layout: string) => {
     switch (layout) {
@@ -39,6 +38,10 @@ const App: React.FC<AppWithEmotionCacheProps> = (props) => {
     }
   };
 
+  React.useEffect(() => {
+    dispatch(appContext.actions.setRoute(router.pathname));
+  }, [dispatch, router.pathname]);
+
   return (
     <CacheProvider value={emotionCache}>
       <Head>
@@ -48,7 +51,7 @@ const App: React.FC<AppWithEmotionCacheProps> = (props) => {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {switchLayout(pageProps.layout)}
+        {route ? switchLayout(pageProps.layout) : null}
       </ThemeProvider>
     </CacheProvider>
   );

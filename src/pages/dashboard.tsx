@@ -2,10 +2,10 @@ import { GetServerSidePropsContext, NextPage } from 'next';
 import { useSelector } from 'react-redux';
 
 import Card from '@/components/card';
-import { selectNewsFeedContext } from '@/store/newsfeedContextSlice';
+import { useNewsFeedContext } from '@/context/newsfeedContext';
 
 const Home: NextPage = () => {
-  const content = useSelector(selectNewsFeedContext());
+  const content = useSelector(useNewsFeedContext());
 
   if (!content) {
     return <div>RENDERED WITHOUT CONTENT FROM STORE!!!???</div>;

@@ -7,7 +7,7 @@ import NuxtLink from 'next/link';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { selectAppContext } from '@/store/appContextSlice';
+import { useAppContext } from '@/context/appContext';
 
 export const MAIN_MENU = [
   {
@@ -72,7 +72,12 @@ type LeftSideMenuProps = {
 
 const LeftSideMenu: React.FC<LeftSideMenuProps> = (props) => {
   const { open } = props;
-  const { route } = useSelector(selectAppContext());
+  const { route } = useSelector(useAppContext());
+  const [useRoute, setRoute] = React.useState(route);
+
+  React.useEffect(() => {
+    setRoute(route);
+  }, [route]);
 
   return (
     <List>
@@ -93,9 +98,9 @@ const LeftSideMenu: React.FC<LeftSideMenuProps> = (props) => {
               <Box sx={classes.openMenuListItemWrap}>
                 <NuxtLink href={href}>
                   <ListItemButton
-                    sx={classes.openMenuListItem(href === route)}
+                    sx={classes.openMenuListItem(href === useRoute)}
                     component="a"
-                    selected={href === route}
+                    selected={href === useRoute}
                     disableRipple
                   >
                     <ListItemIcon sx={classes.openIconWrap}>

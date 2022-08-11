@@ -4,8 +4,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import Card from '@/components/card';
-import { wrapper } from '@/store';
-import { fetchNewsFeed, selectNewsFeedContext } from '@/store/newsfeedContextSlice';
+import { wrapper } from '@/context';
+import { fetchNewsFeed, useNewsFeedContext } from '@/context/newsfeedContext';
 
 const columns: GridColDef[] = [
   { field: 'media', headerName: 'メディア', width: 200 },
@@ -15,8 +15,8 @@ const columns: GridColDef[] = [
 ];
 
 const NewsFeed: NextPage = () => {
-  const contents = useSelector(selectNewsFeedContext());
-  const rows = contents.map((item) => ({ ...item, media: item.organization.name }));
+  const { newsfeed } = useSelector(useNewsFeedContext());
+  const rows = newsfeed.map((item) => ({ ...item, media: item.media.name }));
   return (
     <>
       <Card title="ニュースフィード" fullWidth>
