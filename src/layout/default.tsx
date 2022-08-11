@@ -1,4 +1,3 @@
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import NuxtLink from 'next/link';
 import React, { useState, ReactNode } from 'react';
 import {
@@ -32,6 +31,7 @@ import MenuLeftIcon from '../static/icon/menuLeft.svg';
 import MenuRightIcon from '../static/icon/menuRight.svg';
 
 import LeftSideMenu from './leftSideMenu';
+import UserMenu from './userMenu';
 
 type DefaultLayoutProps = {
   children: ReactNode;
@@ -79,7 +79,6 @@ const classes = {
   headerLeftContentsWrap: classnames(display('flex'), alignItems('items-center'), height('h-full')),
   toggleMenuIcon: classnames(textColor('text-gray-500'), cursor('cursor-pointer'), margin('ml-4')),
   userIconWrap: classnames(display('flex'), alignItems('items-center'), height('h-full')),
-  userIcon: classnames(textColor('text-gray-500'), cursor('cursor-pointer'), margin('mr-4')),
   main: classnames(display('flex'), flexDirection('flex-col'), flex('flex-1'), overflow('overflow-y-scroll')),
   contents: classnames(flexGrow('grow'), backgroundColor('bg-gray-50'), padding('p-4')),
   contentsLayout: classnames(display('flex'), width('w-full')),
@@ -136,7 +135,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
             <MenuLeftIcon className={classes.toggleMenuIcon} onClick={mainMenuIconHandler} width="24" height="24" />
           </div>
           <div className={classes.userIconWrap}>
-            <AccountCircleIcon className={classes.userIcon} width="24" height="24" />
+            <UserMenu />
           </div>
         </header>
         <main className={classes.main}>
