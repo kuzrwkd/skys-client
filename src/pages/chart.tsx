@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import { GetServerSidePropsContext, NextPage } from 'next';
+import { NextPage } from 'next';
 
 import Card from '@/components/card';
 
@@ -11,7 +11,7 @@ const Chart: NextPage = () => {
   );
 };
 
-export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+export const getServerSideProps = async () => {
   return {
     props: {},
   };

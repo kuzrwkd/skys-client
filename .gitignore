@@ -43,3 +43,6 @@ yarn-error.log*
 
 # log
 logs
+
+# npm
+.npmrc
