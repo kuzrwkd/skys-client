@@ -7,7 +7,7 @@ import NuxtLink from 'next/link';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { selectAppContext } from '@/context/appContext';
+import { selectAppReducer } from '@/redux/appReducer';
 
 export const MAIN_MENU = [
   {
@@ -70,7 +70,7 @@ type LeftSideMenuProps = {
 
 const LeftSideMenu: React.FC<LeftSideMenuProps> = (props) => {
   const { open } = props;
-  const { route } = useSelector(selectAppContext());
+  const { route } = useSelector(selectAppReducer());
   const [useRoute, setRoute] = React.useState(route);
 
   React.useEffect(() => {

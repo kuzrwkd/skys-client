@@ -1,28 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
 
-type AppContextProps = {
+type AppReducerProps = {
   route: string | null;
 };
 
-const initialState: AppContextProps = {
+const initialState: AppReducerProps = {
   route: null,
 };
 
-export const appContext = createSlice({
-  name: 'appContext',
+export const appReducer = createSlice({
+  name: 'appReducer',
   initialState,
   reducers: {
     setRoute(state, action) {
       return {
         ...state,
         route: action.payload,
-      };
-    },
-    setWindowSize(state, action) {
-      return {
-        ...state,
-        windowSize: action.payload,
       };
     },
   },
@@ -36,7 +30,7 @@ export const appContext = createSlice({
   },
 });
 
-export const selectAppContext =
+export const selectAppReducer =
   () =>
-  (state: Store.AppState): AppContextProps =>
-    state?.[appContext.name];
+  (state: Store.AppState): AppReducerProps =>
+    state?.[appReducer.name];

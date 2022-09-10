@@ -7,9 +7,9 @@ import Head from 'next/head';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { wrapper } from '@/context';
-import { appContext, selectAppContext } from '@/context/appContext';
 import DefaultLayout from '@/layout/default';
+import { wrapper } from '@/redux';
+import { appReducer, selectAppReducer } from '@/redux/appReducer';
 import createEmotionCache from '@/util/createEmotionCache';
 import { theme } from '@/util/muiTheme';
 
@@ -17,13 +17,16 @@ LicenseInfo.setLicenseKey(process.env.LICENSE_KEY || '');
 
 interface AppWithEmotionCacheProps extends AppProps {
   emotionCache?: EmotionCache;
+  pageProps: {
+    layout: string;
+  };
 }
 
 const clientSideEmotionCache = createEmotionCache();
 
 const App: React.FC<AppWithEmotionCacheProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps, router } = props;
-  const { route } = useSelector(selectAppContext());
+  const { route } = useSelector(selectAppReducer());
   const dispatch = useDispatch();
 
   const switchLayout = (layout: string) => {
@@ -42,7 +45,7 @@ const App: React.FC<AppWithEmotionCacheProps> = (props) => {
   };
 
   React.useEffect(() => {
-    dispatch(appContext.actions.setRoute(router.pathname));
+    dispatch(appReducer.actions.setRoute(router.pathname));
   }, [dispatch, router.pathname]);
 
   return (
@@ -50,7 +53,7 @@ const App: React.FC<AppWithEmotionCacheProps> = (props) => {
       <Head>
         <title>相場観測予想システム｜SKYS</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-        <meta name="description" content={pageProps.description} />
+        <meta name="description" content="相場観測予想システム｜SKYS" />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />

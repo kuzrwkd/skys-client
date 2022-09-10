@@ -2,16 +2,16 @@ import { configureStore, type ThunkAction } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
 import { type Action } from 'redux';
 
-import { newsFeedApi } from '@/api/newsFeedApi';
-import { appContext } from '@/context/appContext';
+import { appReducer } from '@/redux/appReducer';
+import { queryNewsfeedReducer } from '@/redux/queryNewsfeedReducer';
 
 const makeStore = () =>
   configureStore({
     reducer: {
-      [appContext.name]: appContext.reducer,
-      [newsFeedApi.reducerPath]: newsFeedApi.reducer,
+      [appReducer.name]: appReducer.reducer,
+      [queryNewsfeedReducer.reducerPath]: queryNewsfeedReducer.reducer,
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(newsFeedApi.middleware),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(queryNewsfeedReducer.middleware),
     devTools: true,
   });
 

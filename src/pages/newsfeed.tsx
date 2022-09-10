@@ -3,9 +3,9 @@ import { NextPage } from 'next';
 import React from 'react';
 import { useWindowSize } from 'usehooks-ts';
 
-import { getNewsFeed, getRunningOperationPromises, useGetNewsFeedQuery } from '@/api/newsFeedApi';
 import Card from '@/components/card';
-import { wrapper } from '@/context';
+import { wrapper } from '@/redux';
+import { getNewsFeed, getRunningOperationPromises, useGetNewsFeedQuery } from '@/redux/queryNewsfeedReducer';
 
 const columns: GridColDef[] = [
   { field: 'media', headerName: 'メディア', width: 150, minWidth: 100, maxWidth: 300 },
