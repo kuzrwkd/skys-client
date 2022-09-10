@@ -7,7 +7,7 @@ import Head from 'next/head';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import DefaultLayout from '@/layout/default';
+import DefaultLayout from '@/components/defaultLayout';
 import { wrapper } from '@/redux';
 import { appReducer, selectAppReducer } from '@/redux/appReducer';
 import createEmotionCache from '@/util/createEmotionCache';

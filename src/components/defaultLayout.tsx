@@ -28,8 +28,8 @@ import LogoIcon from '../static/icon/logo.svg';
 import MenuLeftIcon from '../static/icon/menuLeft.svg';
 import MenuRightIcon from '../static/icon/menuRight.svg';
 
-import LeftSideMenu from './leftSideMenu';
-import UserMenu from './userMenu';
+import LeftSideMenu from '@/components/leftSideMenu';
+import UserMenu from '@/components/userMenu';
 
 type DefaultLayoutProps = {
   children: React.ReactNode;
