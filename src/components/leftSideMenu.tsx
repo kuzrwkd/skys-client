@@ -3,10 +3,10 @@ import ChatIcon from '@mui/icons-material/Chat';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import { Box, IconButton, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import NuxtLink from 'next/link';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+import { NextLinkComposed } from '@/components/link';
 import { selectAppReducer } from '@/redux/appReducer';
 
 export const MAIN_MENU = [
@@ -86,32 +86,29 @@ const LeftSideMenu: React.FC<LeftSideMenuProps> = (props) => {
           <li key={i}>
             {!open ? (
               <Box sx={classes.closeMenuIconWrap}>
-                <NuxtLink href={href}>
-                  <IconButton color="primary">
-                    <Icon />
-                  </IconButton>
-                </NuxtLink>
+                <IconButton color="primary" component={NextLinkComposed} to={href}>
+                  <Icon />
+                </IconButton>
               </Box>
             ) : (
               <Box sx={classes.openMenuListItemWrap}>
-                <NuxtLink href={href}>
-                  <ListItemButton
-                    sx={classes.openMenuListItem(href === useRoute)}
-                    component="a"
-                    selected={href === useRoute}
-                  >
-                    <ListItemIcon sx={classes.openIconWrap}>
-                      <Icon sx={classes.icon} />
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={name}
-                      primaryTypographyProps={{
-                        fontWeight: 'bold',
-                        variant: 'body2',
-                      }}
-                    />
-                  </ListItemButton>
-                </NuxtLink>
+                <ListItemButton
+                  sx={classes.openMenuListItem(href === useRoute)}
+                  component={NextLinkComposed}
+                  to={href}
+                  selected={href === useRoute}
+                >
+                  <ListItemIcon sx={classes.openIconWrap}>
+                    <Icon sx={classes.icon} />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={name}
+                    primaryTypographyProps={{
+                      fontWeight: 'bold',
+                      variant: 'body2',
+                    }}
+                  />
+                </ListItemButton>
               </Box>
             )}
           </li>

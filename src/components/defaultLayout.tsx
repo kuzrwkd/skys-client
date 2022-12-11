@@ -114,13 +114,11 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
     <div className={classes.root}>
       <aside className={classes.leftAside(isLeftMenuOpen)}>
         <div className={classes.linkWrap}>
-          <NuxtLink href="/">
-            <a className={classes.link}>
-              <div className={classes.logoWrap}>
-                <LogoIcon width={64} height={58} />
-              </div>
-              <h1 className={classes.logoTitle}>SKYS</h1>
-            </a>
+          <NuxtLink href="/" className={classes.link}>
+            <div className={classes.logoWrap}>
+              <LogoIcon width={64} height={58} />
+            </div>
+            <h1 className={classes.logoTitle}>SKYS</h1>
           </NuxtLink>
         </div>
         <LeftSideMenu open={isLeftMenuOpen} />
