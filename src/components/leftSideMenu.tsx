@@ -4,10 +4,8 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import { Box, IconButton, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import React from 'react';
-import { useSelector } from 'react-redux';
 
 import { NextLinkComposed } from '@/components/link';
-import { selectAppReducer } from '@/redux/appReducer';
 
 export const MAIN_MENU = [
   {
@@ -70,13 +68,6 @@ type LeftSideMenuProps = {
 
 const LeftSideMenu: React.FC<LeftSideMenuProps> = (props) => {
   const { open } = props;
-  const { route } = useSelector(selectAppReducer());
-  const [useRoute, setRoute] = React.useState(route);
-
-  React.useEffect(() => {
-    setRoute(route);
-  }, [route]);
-
   return (
     <List>
       {MAIN_MENU.map((item, i) => {
@@ -93,10 +84,10 @@ const LeftSideMenu: React.FC<LeftSideMenuProps> = (props) => {
             ) : (
               <Box sx={classes.openMenuListItemWrap}>
                 <ListItemButton
-                  sx={classes.openMenuListItem(href === useRoute)}
+                  sx={classes.openMenuListItem(true)}
                   component={NextLinkComposed}
                   to={href}
-                  selected={href === useRoute}
+                  selected={true}
                 >
                   <ListItemIcon sx={classes.openIconWrap}>
                     <Icon sx={classes.icon} />

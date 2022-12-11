@@ -38,10 +38,9 @@ export const queryNewsfeedReducer = createApi({
   }),
 });
 
-export const {
-  util: { getRunningOperationPromises, resetApiState },
-  useGetNewsFeedQuery,
-} = queryNewsfeedReducer;
+export const { useGetNewsFeedQuery } = queryNewsfeedReducer;
 
 // export endpoints for use in SSR
-export const { getNewsFeed } = queryNewsfeedReducer.endpoints;
+export const {
+  endpoints: { getNewsFeed },
+} = queryNewsfeedReducer;

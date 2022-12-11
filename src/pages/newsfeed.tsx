@@ -5,7 +5,7 @@ import { useWindowSize } from 'usehooks-ts';
 
 import Card from '@/components/card';
 import { wrapper } from '@/redux';
-import { getNewsFeed, getRunningOperationPromises, useGetNewsFeedQuery } from '@/redux/queryNewsfeedReducer';
+import { useGetNewsFeedQuery, getNewsFeed, queryNewsfeedReducer } from '@/redux/queryNewsfeedReducer';
 
 const columns: GridColDef[] = [
   { field: 'media', headerName: 'メディア', width: 150, minWidth: 100, maxWidth: 300 },
@@ -63,7 +63,7 @@ const NewsFeed: NextPage = () => {
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async () => {
   store.dispatch(getNewsFeed.initiate());
-  await Promise.all(getRunningOperationPromises());
+  await Promise.all(store.dispatch(queryNewsfeedReducer.util.getRunningQueriesThunk()));
 
   return {
     props: {},

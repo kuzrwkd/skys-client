@@ -42,6 +42,12 @@ module.exports = {
         'newlines-between': 'always',
       },
     ],
+    '@typescript-eslint/no-empty-interface': [
+      'error',
+      {
+        'allowSingleExtends': true
+      }
+    ]
   },
   settings: {
     react: {

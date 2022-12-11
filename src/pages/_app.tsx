@@ -5,11 +5,10 @@ import { LicenseInfo } from '@mui/x-license-pro';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { Provider as ReactReduxProvider } from 'react-redux';
 
 import DefaultLayout from '@/components/defaultLayout';
 import { wrapper } from '@/redux';
-import { appReducer, selectAppReducer } from '@/redux/appReducer';
 import createEmotionCache from '@/util/createEmotionCache';
 import { theme } from '@/util/muiTheme';
 
@@ -25,9 +24,8 @@ interface AppWithEmotionCacheProps extends AppProps {
 const clientSideEmotionCache = createEmotionCache();
 
 const App: React.FC<AppWithEmotionCacheProps> = (props) => {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps, router } = props;
-  const { route } = useSelector(selectAppReducer());
-  const dispatch = useDispatch();
+  const { Component, emotionCache = clientSideEmotionCache, pageProps, ...rest } = props;
+  const { store } = wrapper.useWrappedStore(rest);
 
   const switchLayout = (layout: string) => {
     switch (layout) {
@@ -44,23 +42,21 @@ const App: React.FC<AppWithEmotionCacheProps> = (props) => {
     }
   };
 
-  React.useEffect(() => {
-    dispatch(appReducer.actions.setRoute(router.pathname));
-  }, [dispatch, router.pathname]);
-
   return (
-    <CacheProvider value={emotionCache}>
-      <Head>
-        <title>相場観測予想システム｜SKYS</title>
-        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-        <meta name="description" content="相場観測予想システム｜SKYS" />
-      </Head>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        {route ? switchLayout(pageProps.layout) : null}
-      </ThemeProvider>
-    </CacheProvider>
+    <ReactReduxProvider store={store}>
+      <CacheProvider value={emotionCache}>
+        <Head>
+          <title>相場観測予想システム｜SKYS</title>
+          <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+          <meta name="description" content="相場観測予想システム｜SKYS" />
+        </Head>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          {switchLayout(pageProps.layout)}
+        </ThemeProvider>
+      </CacheProvider>
+    </ReactReduxProvider>
   );
 };
 
-export default wrapper.withRedux(App);
+export default App;
