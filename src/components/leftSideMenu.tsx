@@ -74,7 +74,7 @@ const LeftSideMenu: React.FC<LeftSideMenuProps> = (props) => {
         const { name, href, icon: Icon } = item;
 
         return (
-          <li key={i}>
+          <li key={`list-item-${href}`}>
             {!open ? (
               <Box sx={classes.closeMenuIconWrap}>
                 <IconButton color="primary" component={NextLinkComposed} to={href}>
