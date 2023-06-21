@@ -70,7 +70,7 @@ const LeftSideMenu: React.FC<LeftSideMenuProps> = (props) => {
   const { open } = props;
   return (
     <List>
-      {MAIN_MENU.map((item, i) => {
+      {MAIN_MENU.map((item) => {
         const { name, href, icon: Icon } = item;
 
         return (
