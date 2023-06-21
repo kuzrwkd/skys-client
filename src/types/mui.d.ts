@@ -1,6 +1,6 @@
 export const colors = ['pureWhite'] as const;
 
-type Keys = typeof colors[number];
+type Keys = (typeof colors)[number];
 
 export type AppPaletteOptions = { [K in Keys]: SimplePaletteColorOptions };
 export type AppPalette = { [K in Keys]: PaletteColor };

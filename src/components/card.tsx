@@ -19,15 +19,13 @@ const classes = {
 
 const Card: React.FC<CardProps> = (props) => {
   const { children, title = undefined, fullWidth = false, ...rest } = props;
+  const heading = title || '';
+
   return (
     <Paper {...rest} sx={classes.paper(fullWidth)}>
-      {!title ? (
-        ''
-      ) : (
-        <Typography sx={classes.title} variant="h5">
-          <b>{title}</b>
-        </Typography>
-      )}
+      <Typography sx={classes.title} variant="h5">
+        <b>{heading}</b>
+      </Typography>
       {children}
     </Paper>
   );

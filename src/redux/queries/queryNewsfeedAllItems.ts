@@ -21,8 +21,8 @@ const getNewsFeedDocument = gql`
   }
 `;
 
-export const queryNewsfeedReducer = createApi({
-  reducerPath: 'queryNewsfeedReducer',
+export const queryNewsfeedAllItems = createApi({
+  reducerPath: 'queryNewsfeedAllItems',
   baseQuery: graphqlBaseQuery(),
   extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {
@@ -30,7 +30,7 @@ export const queryNewsfeedReducer = createApi({
     }
   },
   endpoints: (builder) => ({
-    getNewsFeed: builder.query<any, void>({
+    getNewsfeed: builder.query<any, void>({
       query: () => ({
         body: getNewsFeedDocument,
       }),
@@ -38,9 +38,9 @@ export const queryNewsfeedReducer = createApi({
   }),
 });
 
-export const { useGetNewsFeedQuery } = queryNewsfeedReducer;
+export const { useGetNewsfeedQuery } = queryNewsfeedAllItems;
 
 // export endpoints for use in SSR
 export const {
-  endpoints: { getNewsFeed },
-} = queryNewsfeedReducer;
+  endpoints: { getNewsfeed },
+} = queryNewsfeedAllItems;
