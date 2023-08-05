@@ -4,14 +4,10 @@
 
 kubernetesを使わない場合はルートに`.env`ファイルを作成し、下記をコピーペーストする
 
-```
+```env
 # nodejs env
 NODE_ENV=development
 
 # nextjs public env
 NEXT_PUBLIC_LOCAL_API_BASE_URL=http://localhost:3000
 ```
-
-## コーディング規約
-
-`Adapter` → `Core/UseCase` → `Core/Entity` の依存関係を厳守する

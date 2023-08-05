@@ -1,5 +1,6 @@
 import { request, ClientError } from 'graphql-request';
-const baseUrl = `${process.env.NEXT_PUBLIC_LOCAL_API_BASE_URL}/graphql`;
+
+const baseUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/graphql`;
 
 export const graphqlBaseQuery =
   () =>

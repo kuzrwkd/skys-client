@@ -9,7 +9,7 @@ const initialState: AppReducerProps = {
   route: null,
 };
 
-export const appReducer = createSlice({
+export const app = createSlice({
   name: 'appReducer',
   initialState,
   reducers: {
@@ -33,4 +33,4 @@ export const appReducer = createSlice({
 export const selectAppReducer =
   () =>
   (state: Store.AppState): AppReducerProps =>
-    state?.[appReducer.name];
+    state?.[app.name];

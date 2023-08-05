@@ -7,7 +7,7 @@ import Head from 'next/head';
 import React from 'react';
 import { Provider as ReactReduxProvider } from 'react-redux';
 
-import DefaultLayout from '@/components/defaultLayout';
+import DefaultLayout from '@/layouts/defaultLayout';
 import { wrapper } from '@/redux';
 import createEmotionCache from '@/util/createEmotionCache';
 import { theme } from '@/util/muiTheme';
