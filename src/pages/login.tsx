@@ -1,7 +1,7 @@
-import { Typography } from '@mui/material';
-import { NextPage } from 'next';
+import {Typography} from '@mui/material';
+import {NextPage} from 'next';
 
-import { wrapper } from '@/redux';
+import {wrapper} from '@/redux';
 
 const Login: NextPage = () => {
   return <Typography variant="body1">Login</Typography>;

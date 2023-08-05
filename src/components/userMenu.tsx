@@ -1,5 +1,5 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { IconButton } from '@mui/material/';
+import {IconButton} from '@mui/material/';
 import React from 'react';
 
 const classes = {

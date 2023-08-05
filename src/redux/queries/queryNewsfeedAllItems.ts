@@ -1,8 +1,8 @@
-import { createApi } from '@reduxjs/toolkit/query/react';
-import { gql } from 'graphql-request';
-import { HYDRATE } from 'next-redux-wrapper';
+import {createApi} from '@reduxjs/toolkit/query/react';
+import {gql} from 'graphql-request';
+import {HYDRATE} from 'next-redux-wrapper';
 
-import { graphqlBaseQuery } from '@/util/baseQuery';
+import {graphqlBaseQuery} from '@/util/baseQuery';
 
 const getNewsFeedDocument = gql`
   query {
@@ -24,7 +24,7 @@ const getNewsFeedDocument = gql`
 export const queryNewsfeedAllItems = createApi({
   reducerPath: 'queryNewsfeedAllItems',
   baseQuery: graphqlBaseQuery(),
-  extractRehydrationInfo(action, { reducerPath }) {
+  extractRehydrationInfo(action, {reducerPath}) {
     if (action.type === HYDRATE) {
       return action.payload[reducerPath];
     }
@@ -38,9 +38,9 @@ export const queryNewsfeedAllItems = createApi({
   }),
 });
 
-export const { useGetNewsfeedQuery } = queryNewsfeedAllItems;
+export const {useGetNewsfeedQuery} = queryNewsfeedAllItems;
 
 // export endpoints for use in SSR
 export const {
-  endpoints: { getNewsfeed },
+  endpoints: {getNewsfeed},
 } = queryNewsfeedAllItems;

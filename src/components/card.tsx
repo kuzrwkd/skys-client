@@ -1,4 +1,4 @@
-import { Paper, Typography, type PaperProps } from '@mui/material';
+import {Paper, Typography, type PaperProps} from '@mui/material';
 import React from 'react';
 
 type CardProps = {
@@ -18,7 +18,7 @@ const classes = {
 };
 
 const Card: React.FC<CardProps> = (props) => {
-  const { children, title = undefined, fullWidth = false, ...rest } = props;
+  const {children, title = undefined, fullWidth = false, ...rest} = props;
   const heading = title || '';
 
   return (

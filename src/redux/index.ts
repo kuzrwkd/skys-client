@@ -1,9 +1,9 @@
-import { configureStore, type ThunkAction } from '@reduxjs/toolkit';
-import { createWrapper } from 'next-redux-wrapper';
-import { type Action } from 'redux';
+import {configureStore, type ThunkAction} from '@reduxjs/toolkit';
+import {createWrapper} from 'next-redux-wrapper';
+import {type Action} from 'redux';
 
-import { queryNewsfeedAllItems } from '@/redux/queries/queryNewsfeedAllItems';
-import { app } from '@/redux/reducer/app';
+import {queryNewsfeedAllItems} from '@/redux/queries/queryNewsfeedAllItems';
+import {app} from '@/redux/reducer/app';
 
 const makeStore = () =>
   configureStore({

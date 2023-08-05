@@ -1,16 +1,16 @@
 import 'tailwindcss/tailwind.css';
-import { CacheProvider, type EmotionCache } from '@emotion/react';
-import { ThemeProvider, CssBaseline } from '@mui/material';
-import { LicenseInfo } from '@mui/x-license-pro';
-import { AppProps } from 'next/app';
+import {CacheProvider, type EmotionCache} from '@emotion/react';
+import {ThemeProvider, CssBaseline} from '@mui/material';
+import {LicenseInfo} from '@mui/x-license-pro';
+import {AppProps} from 'next/app';
 import Head from 'next/head';
 import React from 'react';
-import { Provider as ReactReduxProvider } from 'react-redux';
+import {Provider as ReactReduxProvider} from 'react-redux';
 
 import DefaultLayout from '@/layouts/defaultLayout';
-import { wrapper } from '@/redux';
+import {wrapper} from '@/redux';
 import createEmotionCache from '@/util/createEmotionCache';
-import { theme } from '@/util/muiTheme';
+import {theme} from '@/util/muiTheme';
 
 LicenseInfo.setLicenseKey(process.env.LICENSE_KEY || '');
 
@@ -24,8 +24,8 @@ interface AppWithEmotionCacheProps extends AppProps {
 const clientSideEmotionCache = createEmotionCache();
 
 const App: React.FC<AppWithEmotionCacheProps> = (props) => {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps, ...rest } = props;
-  const { store } = wrapper.useWrappedStore(rest);
+  const {Component, emotionCache = clientSideEmotionCache, pageProps, ...rest} = props;
+  const {store} = wrapper.useWrappedStore(rest);
 
   const switchLayout = (layout: string) => {
     switch (layout) {

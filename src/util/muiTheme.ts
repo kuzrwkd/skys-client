@@ -1,6 +1,6 @@
-import { type SimplePaletteColorOptions, createTheme } from '@mui/material/styles';
+import {type SimplePaletteColorOptions, createTheme} from '@mui/material/styles';
 
-import { AppPaletteOptions } from '@/types/mui';
+import {AppPaletteOptions} from '@/types/mui';
 
 const defaultPaletteColorOptions: SimplePaletteColorOptions = {
   light: undefined,
@@ -10,7 +10,7 @@ const defaultPaletteColorOptions: SimplePaletteColorOptions = {
 };
 
 let appPaletteOptions: AppPaletteOptions = {
-  pureWhite: { main: '#FFF' },
+  pureWhite: {main: '#FFF'},
 };
 
 appPaletteOptions = Object.keys(appPaletteOptions).reduce((acc: any, key: any) => {

@@ -2,10 +2,10 @@ import CandlestickChartIcon from '@mui/icons-material/CandlestickChart';
 import ChatIcon from '@mui/icons-material/Chat';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
-import { Box, IconButton, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import {Box, IconButton, List, ListItemButton, ListItemIcon, ListItemText} from '@mui/material';
 import React from 'react';
 
-import { NextLinkComposed } from '@/components/link';
+import {NextLinkComposed} from '@/components/link';
 
 export const MAIN_MENU = [
   {
@@ -67,11 +67,11 @@ type LeftSideMenuProps = {
 };
 
 const LeftSideMenu: React.FC<LeftSideMenuProps> = (props) => {
-  const { open } = props;
+  const {open} = props;
   return (
     <List>
       {MAIN_MENU.map((item) => {
-        const { name, href, icon: Icon } = item;
+        const {name, href, icon: Icon} = item;
 
         return (
           <li key={`list-item-${href}`}>

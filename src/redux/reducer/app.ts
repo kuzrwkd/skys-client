@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { HYDRATE } from 'next-redux-wrapper';
+import {createSlice} from '@reduxjs/toolkit';
+import {HYDRATE} from 'next-redux-wrapper';
 
 type AppReducerProps = {
   route: string | null;

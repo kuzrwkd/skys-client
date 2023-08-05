@@ -1,4 +1,4 @@
-import { IconButton } from '@mui/material';
+import {IconButton} from '@mui/material';
 import NuxtLink from 'next/link';
 import React from 'react';
 import {
@@ -42,7 +42,7 @@ const classes = {
       display('flex'),
       flexDirection('flex-col'),
       height('h-screen'),
-      width('w-16', { ['w-52']: isMenuOpen }),
+      width('w-16', {['w-52']: isMenuOpen}),
       borderWidth('border-r'),
       borderColor('border-gray-300'),
       overflow('overflow-hidden'),
@@ -103,7 +103,7 @@ const classes = {
 };
 
 const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
-  const { children } = props;
+  const {children} = props;
   const [isLeftMenuOpen, setLeftMenuOpen] = React.useState(true);
 
   const mainMenuIconHandler = () => {
@@ -126,7 +126,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = (props) => {
       <div className={classes.contentsRoot}>
         <header className={classes.header}>
           <div className={classes.headerLeftContentsWrap}>
-            <IconButton sx={{ ml: 2 }} onClick={mainMenuIconHandler}>
+            <IconButton sx={{ml: 2}} onClick={mainMenuIconHandler}>
               <MenuLeftIcon />
             </IconButton>
           </div>
