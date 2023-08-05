@@ -7,9 +7,8 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['@typescript-eslint/eslint-plugin', 'import', 'unused-imports'],
+  plugins: ['@typescript-eslint/eslint-plugin', 'import'],
   extends: [
-    'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'plugin:@next/next/recommended',
     'plugin:import/recommended',
@@ -31,7 +30,6 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-namespace': 'off',
     '@typescript-eslint/ban-types': 'off',
-    'unused-imports/no-unused-imports': 'warn',
     'import/order': [
       'error',
       {
