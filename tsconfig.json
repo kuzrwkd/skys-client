@@ -32,14 +32,20 @@
       "./node_modules/@types",
       "./src/types"
     ],
-    "incremental": true
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "skipLibCheck": true,
   "include": [
     "next-env.d.ts",
     "src/Tools/@types/images.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
