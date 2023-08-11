@@ -1,25 +1,36 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import {createApi} from '@reduxjs/toolkit/query/react';
+import {gql} from 'graphql-request';
+import {graphqlBaseQuery} from '@/redux/graphqlBaseQuery';
+import {GetNewsFeedQueryResponse} from '@/types/api';
 
-type User = {
-  id: number;
-  name: string;
-  email: number;
-};
+const baseUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/graphql`;
 
 export const userApi = createApi({
   reducerPath: 'userApi',
   refetchOnFocus: true,
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'https://jsonplaceholder.typicode.com/',
-  }),
+  baseQuery: graphqlBaseQuery({baseUrl}),
   endpoints: builder => ({
-    getUsers: builder.query<User[], null>({
-      query: () => 'users',
-    }),
-    getUserById: builder.query<User, {id: string}>({
-      query: ({id}) => `users/${id}`,
+    getNewsfeed: builder.query<GetNewsFeedQueryResponse[], null>({
+      query: () => ({
+        body: gql`
+          query {
+            newsfeed {
+              id
+              title
+              url
+              category
+              media {
+                id
+                name
+              }
+              article_created_at
+              article_updated_at
+            }
+          }
+        `,
+      }),
     }),
   }),
 });
 
-export const {useGetUsersQuery, useGetUserByIdQuery} = userApi;
+export const {useGetNewsfeedQuery} = userApi;
