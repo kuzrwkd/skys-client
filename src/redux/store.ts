@@ -1,11 +1,15 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {setupListeners} from '@reduxjs/toolkit/dist/query';
-import counterReducer from './features/counterSlice';
-import {userApi} from './services/userApi';
+import counterReducer from '@/redux/features/counterSlice';
+import mainNavReducer from '@/redux/features/mainNavSlice';
+import subNavReducer from '@/redux/features/subNavSlice';
+import {userApi} from '@/redux/services/userApi';
 
 export const store = configureStore({
   reducer: {
     counterReducer,
+    mainNavReducer,
+    subNavReducer,
     [userApi.reducerPath]: userApi.reducer,
   },
   devTools: process.env.NODE_ENV !== 'production',

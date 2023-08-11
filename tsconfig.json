@@ -42,7 +42,6 @@
   "skipLibCheck": true,
   "include": [
     "next-env.d.ts",
-    "src/Tools/@types/images.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"

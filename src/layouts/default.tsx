@@ -22,11 +22,11 @@ const classes = {
   },
   main: {
     display: 'flex',
-    flexDirection: 'column',
     flex: 1,
     backgroundColor: 'grey.50',
   },
   contents: {
+    flex: 1,
     p: 1,
   },
 };
@@ -42,9 +42,9 @@ export default function DefaultLayout(props: DefaultLayoutProps) {
           <Header />
           <Box sx={classes.main} component="main">
             <Box sx={classes.contents}>{children}</Box>
+            <SubNav />
           </Box>
         </Box>
-        <SubNav />
       </Box>
       <Footer />
     </Box>

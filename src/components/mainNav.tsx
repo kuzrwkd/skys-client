@@ -1,8 +1,11 @@
 'use client';
 
-import {Box, Typography} from '@mui/material';
+import {Dashboard, Newspaper} from '@mui/icons-material';
+import {Box, Typography, IconButton, List, ListItemButton, ListItemIcon, ListItemText} from '@mui/material';
 import NuxtLink from 'next/link';
 import React from 'react';
+import Logo from '@/components/logo';
+import {useAppSelector} from '@/redux/hooks';
 import LogoIcon from '@/static/icons/logo.svg';
 
 const classes = {
@@ -12,49 +15,35 @@ const classes = {
     width: isOpen ? 200 : 74,
     borderRight: 'solid 1px',
     borderColor: 'grey.400',
+    transition: 'width .3s ease-out',
   }),
   logoWrapper: {
-    display: 'flex',
-    alignItems: 'center',
-    height: 64,
     borderBottom: '1px solid',
     borderColor: 'grey.400',
     overflow: 'hidden',
-
-    '& .logo': {
-      display: 'inline-flex',
-      alignItems: 'center',
-    },
-  },
-  logoIcon: {
-    display: 'flex',
-    alignItems: 'center',
-    px: 1,
-    flex: 'none',
-  },
-  logoTitle: {
-    flex: 'none',
   },
 };
 
-export default function MainNav() {
-  const [isMainNavOpen, setMainNavOpen] = React.useState(false);
+export const MAIN_MENU = [
+  {
+    name: 'ダッシュボード',
+    href: '/dashboard',
+    icon: Dashboard,
+  },
+  {
+    name: 'ニュース',
+    href: '/newsfeed',
+    icon: Newspaper,
+  },
+] as const;
 
-  const mainMenuIconHandler = () => {
-    setMainNavOpen(!isMainNavOpen);
-  };
+export default function MainNav() {
+  const isMainNavOpen = useAppSelector(state => state.mainNavReducer.open);
 
   return (
     <Box component="aside" sx={classes.root(isMainNavOpen)}>
       <Box sx={classes.logoWrapper}>
-        <NuxtLink className="logo" href="/">
-          <Box sx={classes.logoIcon}>
-            <LogoIcon width={58} height={58} />
-          </Box>
-          <Typography variant="h5" component="h1" sx={classes.logoTitle}>
-            SKYS
-          </Typography>
-        </NuxtLink>
+        <Logo />
       </Box>
     </Box>
   );
