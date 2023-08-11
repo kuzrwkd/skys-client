@@ -1,5 +1,6 @@
 import React from 'react';
 import ThemeRegistry from '@/app/ThemeRegistry';
+import DefaultLayout from '@/layouts/default';
 import ReduxProvider from '@/redux/provider';
 
 type RootLayoutProps = {
@@ -18,7 +19,9 @@ export default function RootLayout(props: RootLayoutProps) {
     <html lang="ja" suppressHydrationWarning>
       <body>
         <ThemeRegistry options={{key: 'mui'}}>
-          <ReduxProvider>{children}</ReduxProvider>
+          <ReduxProvider>
+            <DefaultLayout>{children}</DefaultLayout>
+          </ReduxProvider>
         </ThemeRegistry>
       </body>
     </html>

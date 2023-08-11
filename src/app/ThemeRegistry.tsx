@@ -1,6 +1,8 @@
 'use client';
+
 import createCache, {type Options} from '@emotion/cache';
 import {CacheProvider, ThemeProvider} from '@emotion/react';
+import {CssBaseline} from '@mui/material';
 import {useServerInsertedHTML} from 'next/navigation';
 import React from 'react';
 import {theme} from '@/util/muiTheme';
@@ -57,7 +59,10 @@ export default function ThemeRegistry(props: ThemeRegistryProps) {
 
   return (
     <CacheProvider value={cache}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
     </CacheProvider>
   );
 }
