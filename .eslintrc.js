@@ -8,13 +8,7 @@ module.exports = {
     },
   },
   plugins: ['@typescript-eslint', 'import'],
-  extends: [
-    'plugin:import/recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
-    'next/core-web-vitals',
-    'prettier',
-  ],
+  extends: ['plugin:import/recommended', 'next/core-web-vitals', 'prettier'],
   root: true,
   env: {
     node: true,
@@ -30,12 +24,6 @@ module.exports = {
           order: 'asc',
         },
         'newlines-between': 'never',
-      },
-    ],
-    '@typescript-eslint/no-empty-interface': [
-      'error',
-      {
-        allowSingleExtends: true,
       },
     ],
   },
