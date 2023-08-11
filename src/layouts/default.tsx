@@ -1,49 +1,52 @@
-'use client'
-
-import {Box} from '@mui/material'
-import React from 'react'
+import {Box} from '@mui/material';
+import React from 'react';
+import Footer from '@/components/footer';
+import Header from '@/components/header';
+import ManinNav from '@/components/mainNav';
+import SubNav from '@/components/subNav';
 
 type DefaultLayoutProps = {
-  children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
 const classes = {
   root: {
     display: 'flex',
-  },
-  contents: {},
-  leftAside: (isMenuOpen: boolean) => ({
-    display: 'flex',
-    flexDirection: 'flex-col',
+    flexDirection: 'column',
     height: '100vh',
-    width: isMenuOpen ? 250 : 500,
-  }),
-  rightAside: {},
-}
+  },
+  contentsWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    flex: 1,
+  },
+  main: {
+    display: 'flex',
+    flexDirection: 'column',
+    flex: 1,
+    backgroundColor: 'grey.50',
+  },
+  contents: {
+    p: 1,
+  },
+};
 
 export default function DefaultLayout(props: DefaultLayoutProps) {
-  const {children} = props
-  const [isLeftMenuOpen, setLeftMenuOpen] = React.useState(true)
-
-  const mainMenuIconHandler = () => {
-    setLeftMenuOpen(!isLeftMenuOpen)
-  }
+  const {children} = props;
 
   return (
     <Box sx={classes.root}>
-      <Box component="aside" sx={classes.leftAside(isLeftMenuOpen)}></Box>
-      <Box sx={classes.contents}>
-        <header></header>
-        <main>
-          <div>{children}</div>
-          <footer>
-            <div>
-              <small>&copy; Masudaya inc.</small>
-            </div>
-          </footer>
-        </main>
+      <Box sx={{display: 'flex', flex: 1}}>
+        <ManinNav />
+        <Box sx={classes.contentsWrapper}>
+          <Header />
+          <Box sx={classes.main} component="main">
+            <Box sx={classes.contents}>{children}</Box>
+          </Box>
+        </Box>
+        <SubNav />
       </Box>
-      <Box component="aside" sx={classes.rightAside}></Box>
+      <Footer />
     </Box>
-  )
+  );
 }

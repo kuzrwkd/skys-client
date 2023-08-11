@@ -14,7 +14,6 @@ export const metadata = {
 
 export default function RootLayout(props: RootLayoutProps) {
   const {children} = props;
-
   return (
     <html lang="ja" suppressHydrationWarning>
       <body>
