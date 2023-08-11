@@ -1,16 +1,15 @@
-'use client'
+'use client';
 
-import {Button, Typography} from '@mui/material'
-
-import {decrement, increment, reset} from '@/redux/features/counterSlice'
-import {useAppDispatch, useAppSelector} from '@/redux/hooks'
-import {useGetUsersQuery} from '@/redux/services/userApi'
+import {Button, Typography} from '@mui/material';
+import {decrement, increment, reset} from '@/redux/features/counterSlice';
+import {useAppDispatch, useAppSelector} from '@/redux/hooks';
+import {useGetUsersQuery} from '@/redux/services/userApi';
 
 export default function Counter() {
-  const count = useAppSelector(state => state.counterReducer.value)
-  const dispatch = useAppDispatch()
+  const count = useAppSelector(state => state.counterReducer.value);
+  const dispatch = useAppDispatch();
 
-  const {isLoading, isFetching, data, error} = useGetUsersQuery(null)
+  const {isLoading, isFetching, data, error} = useGetUsersQuery(null);
 
   return (
     <div style={{marginBottom: '4rem', textAlign: 'center'}}>
@@ -47,5 +46,5 @@ export default function Counter() {
         </div>
       ) : null}
     </div>
-  )
+  );
 }

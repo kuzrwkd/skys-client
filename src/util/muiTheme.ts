@@ -1,5 +1,4 @@
 import {type SimplePaletteColorOptions, createTheme} from '@mui/material/styles';
-
 import {AppPaletteOptions} from '@/types/mui';
 
 const defaultPaletteColorOptions: SimplePaletteColorOptions = {

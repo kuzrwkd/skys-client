@@ -3,7 +3,6 @@ import createCache, {type Options} from '@emotion/cache';
 import {CacheProvider, ThemeProvider} from '@emotion/react';
 import {useServerInsertedHTML} from 'next/navigation';
 import React from 'react';
-
 import {theme} from '@/util/muiTheme';
 
 type ThemeRegistryProps = {

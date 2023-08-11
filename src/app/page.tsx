@@ -1,6 +1,5 @@
-import {Typography} from '@mui/material'
-
-import Counter from '@/components/counter'
+import {Typography} from '@mui/material';
+import Counter from '@/components/counter';
 
 export default function Page() {
   return (
@@ -8,5 +7,5 @@ export default function Page() {
       <Typography variant="h1">Home</Typography>
       <Counter />
     </main>
-  )
+  );
 }

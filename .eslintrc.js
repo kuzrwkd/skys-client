@@ -29,7 +29,7 @@ module.exports = {
         alphabetize: {
           order: 'asc',
         },
-        'newlines-between': 'always',
+        'newlines-between': 'never',
       },
     ],
     '@typescript-eslint/no-empty-interface': [

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ThemeRegistry from '@/app/ThemeRegistry';
 import ReduxProvider from '@/redux/provider';
 
