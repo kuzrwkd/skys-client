@@ -1,5 +1,10 @@
 import {Typography} from '@mui/material';
+import Card from '@/components/card';
 
 export default function Page() {
-  return <Typography variant="h1">Dashboard</Typography>;
+  return (
+    <Card title="Dashboard">
+      <Typography>Dashboard</Typography>
+    </Card>
+  );
 }
