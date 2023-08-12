@@ -25,6 +25,11 @@ function styles(underline?: boolean) {
   };
 }
 
+/**
+ * There is a trick to customizing the Link component.
+ * https://nextjs.org/docs/pages/api-reference/components/link#if-the-child-is-a-functional-component
+ */
+
 const Link = React.forwardRef((props: LinkProps, ref) => {
   const {external, underline, href, children, ...inheritProps} = props;
 
