@@ -25,7 +25,7 @@ function styles(underline?: boolean) {
   };
 }
 
-export default function Link(props: LinkProps) {
+const Link = React.forwardRef((props: LinkProps, ref) => {
   const {external, underline, href, children, ...inheritProps} = props;
 
   const classes = styles(underline);
@@ -45,4 +45,8 @@ export default function Link(props: LinkProps) {
       {children}
     </MuiLink>
   );
-}
+});
+
+Link.displayName = 'Link';
+
+export default Link;
