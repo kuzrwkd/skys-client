@@ -3,8 +3,7 @@
 import {AccountCircle} from '@mui/icons-material';
 import {Box, IconButton} from '@mui/material';
 import React from 'react';
-import {toggle as mainNavToggle} from '@/redux/features/mainNavSlice';
-import {toggle as subNavToggle} from '@/redux/features/subNavSlice';
+import {toggleMainNav, toggleSubNav} from '@/redux/features/layoutSlice';
 import {useAppDispatch} from '@/redux/hooks';
 import MenuLeftIcon from '@/static/icons/menuLeft.svg';
 import MenuRightIcon from '@/static/icons/menuRight.svg';
@@ -50,24 +49,24 @@ const classes = {
 export default function Header() {
   const dispatch = useAppDispatch();
 
-  const mainNavToggleHandler = React.useCallback(() => {
-    dispatch(mainNavToggle());
+  const toggleMainNavHandler = React.useCallback(() => {
+    dispatch(toggleMainNav());
   }, [dispatch]);
 
-  const subNavToggleHandler = React.useCallback(() => {
-    dispatch(subNavToggle());
+  const toggleSubNavHandler = React.useCallback(() => {
+    dispatch(toggleSubNav());
   }, [dispatch]);
 
   return (
     <Box sx={classes.root} component="header">
       <Box sx={classes.mainNavButtonWrapper}>
-        <IconButton sx={classes.mainNavButton} onClick={mainNavToggleHandler}>
+        <IconButton sx={classes.mainNavButton} onClick={toggleMainNavHandler}>
           <MenuLeftIcon width={24} height={24} />
         </IconButton>
       </Box>
       <Box sx={classes.headerRightArea}>
         <Box sx={classes.subNavButtonWrapper}>
-          <IconButton sx={classes.subNavButton} onClick={subNavToggleHandler}>
+          <IconButton sx={classes.subNavButton} onClick={toggleSubNavHandler}>
             <MenuRightIcon width={24} height={24} />
           </IconButton>
         </Box>

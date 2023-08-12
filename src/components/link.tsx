@@ -7,20 +7,32 @@ import React, {ReactNode} from 'react';
 type LinkProps =
   | (NextLinkProps & {
       external?: false;
+      underline?: boolean;
       children: ReactNode;
     })
   | {
       external: true;
+      underline?: boolean;
       href: string;
       children: ReactNode;
     };
 
+function styles(underline?: boolean) {
+  return {
+    root: {
+      textDecoration: underline ? 'underline' : 'none',
+    },
+  };
+}
+
 export default function Link(props: LinkProps) {
-  const {external, children, href, ...inheritProps} = props;
+  const {external, underline, href, children, ...inheritProps} = props;
+
+  const classes = styles(underline);
 
   if (!external) {
     return (
-      <MuiLink component="div">
+      <MuiLink sx={classes.root} component="div">
         <NextLink href={href} {...inheritProps}>
           {children}
         </NextLink>
@@ -29,7 +41,7 @@ export default function Link(props: LinkProps) {
   }
 
   return (
-    <MuiLink href={href} target="_blank" rel="noopener noreferrer">
+    <MuiLink sx={classes.root} href={href} target="_blank" rel="noopener noreferrer">
       {children}
     </MuiLink>
   );

@@ -1,6 +1,6 @@
 import {Box, Typography} from '@mui/material';
-import NuxtLink from 'next/link';
 import React from 'react';
+import Link from '@/components/link';
 import LogoIcon from '@/static/icons/logo.svg';
 
 const classes = {
@@ -8,9 +8,10 @@ const classes = {
     display: 'flex',
     alignItems: 'center',
     height: 63,
-    '& .link': {
+    '& a': {
       display: 'inline-flex',
       alignItems: 'center',
+      textDecoration: 'none',
     },
   },
   logoIcon: {
@@ -27,14 +28,14 @@ const classes = {
 export default function Logo() {
   return (
     <Box sx={classes.logo}>
-      <NuxtLink className="link" href="/">
+      <Link href="/">
         <Box sx={classes.logoIcon}>
           <LogoIcon width={58} height={58} />
         </Box>
         <Typography variant="h5" component="h1" sx={classes.logoTitle}>
           SKYS
         </Typography>
-      </NuxtLink>
+      </Link>
     </Box>
   );
 }

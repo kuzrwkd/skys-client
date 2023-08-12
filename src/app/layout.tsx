@@ -1,5 +1,5 @@
 import React from 'react';
-import ThemeRegistry from '@/app/ThemeRegistry';
+import ThemeRegistry from '@/app/ThemeRegistry/ThemeRegistry';
 import DefaultLayout from '@/layouts/default';
 import ReduxProvider from '@/redux/provider';
 
