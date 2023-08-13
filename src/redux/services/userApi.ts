@@ -7,10 +7,10 @@ const baseUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/graphql`;
 
 export const userApi = createApi({
   reducerPath: 'userApi',
-  refetchOnFocus: true,
+  // refetchOnFocus: true,
   baseQuery: graphqlBaseQuery({baseUrl}),
   endpoints: builder => ({
-    getNewsfeed: builder.query<GetNewsFeedQueryResponse[], null>({
+    getNewsfeed: builder.query<GetNewsFeedQueryResponse, undefined>({
       query: () => ({
         body: gql`
           query {

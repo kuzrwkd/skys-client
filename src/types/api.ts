@@ -1,5 +1,10 @@
 import {NewsfeedSchema, MediaSchema} from '@kuzrwkd/skys-core/entities';
 
-export type GetNewsFeedQueryResponse = Omit<NewsfeedSchema, 'media_id'> & {
-  media: Omit<MediaSchema, 'media_id'>;
+export type GetNewsFeedQueryResponse = {
+  newsfeed: Omit<
+    NewsfeedSchema & {
+      media: Omit<MediaSchema, 'media_id'>;
+    },
+    'media_id'
+  >[];
 };

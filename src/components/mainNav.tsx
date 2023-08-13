@@ -1,7 +1,7 @@
 'use client';
 
-import {Dashboard, Newspaper} from '@mui/icons-material';
-import {Box, IconButton, List, ListItemIcon, ListItemText} from '@mui/material';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
+import {Box, IconButton, List} from '@mui/material';
 import React from 'react';
 import Link from '@/components/link';
 import Logo from '@/components/logo';
@@ -35,14 +35,9 @@ function styles(isOpen: boolean) {
 
 export const MAIN_MENU = [
   {
-    label: 'ダッシュボード',
-    href: '/dashboard',
-    icon: Dashboard,
-  },
-  {
     label: 'ニュース',
     href: '/newsfeed',
-    icon: Newspaper,
+    icon: NewspaperIcon,
   },
 ] as const;
 

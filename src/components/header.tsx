@@ -1,6 +1,6 @@
 'use client';
 
-import {AccountCircle} from '@mui/icons-material';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {Box, IconButton} from '@mui/material';
 import React from 'react';
 import {toggleMainNav, toggleSubNav} from '@/redux/features/layoutSlice';
@@ -72,7 +72,7 @@ export default function Header() {
         </Box>
         <Box sx={classes.accountButtonWrapper}>
           <IconButton size="large">
-            <AccountCircle fontSize="inherit" />
+            <AccountCircleIcon fontSize="inherit" />
           </IconButton>
         </Box>
       </Box>
