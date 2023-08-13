@@ -5,7 +5,7 @@ import {CacheProvider, ThemeProvider} from '@emotion/react';
 import {CssBaseline} from '@mui/material';
 import {useServerInsertedHTML} from 'next/navigation';
 import React from 'react';
-import {theme} from '@/app/ThemeRegistry/theme';
+import {theme} from '@/theme';
 
 type ThemeRegistryProps = {
   children: React.ReactNode;

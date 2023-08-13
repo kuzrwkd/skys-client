@@ -5,7 +5,7 @@ import {Box, IconButton, List} from '@mui/material';
 import React from 'react';
 import Link from '@/components/link';
 import Logo from '@/components/logo';
-import MainNavListItem from '@/components/mainNavListItem';
+import MainNavListItem from '@/layouts/mainNav/mainNavListItem';
 import {useAppSelector} from '@/redux/hooks';
 
 function styles(isOpen: boolean) {

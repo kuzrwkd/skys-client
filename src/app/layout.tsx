@@ -1,7 +1,7 @@
 import React from 'react';
-import ThemeRegistry from '@/app/ThemeRegistry/ThemeRegistry';
-import DefaultLayout from '@/layouts/default';
+import DefaultLayout from '@/layouts/defaultLayout';
 import ReduxProvider from '@/redux/provider';
+import ThemeRegistry from '@/themeRegistry';
 
 type RootLayoutProps = {
   children: React.ReactNode;

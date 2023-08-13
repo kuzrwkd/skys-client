@@ -1,9 +1,9 @@
 import {Box} from '@mui/material';
 import React from 'react';
-import Footer from '@/components/footer';
-import Header from '@/components/header';
-import ManinNav from '@/components/mainNav';
-import SubNav from '@/components/subNav';
+import Footer from '@/layouts/footer';
+import Header from '@/layouts/header';
+import ManinNav from 'src/layouts/mainNav';
+import SubNav from 'src/layouts/subNav';
 
 type DefaultLayoutProps = {
   children: React.ReactNode;
