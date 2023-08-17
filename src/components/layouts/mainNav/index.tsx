@@ -3,9 +3,9 @@
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import {Box, IconButton, List} from '@mui/material';
 import React from 'react';
-import Link from '@/components/link';
-import Logo from '@/components/logo';
-import MainNavListItem from '@/layouts/mainNav/mainNavListItem';
+import Link from '@/components/features/link';
+import Logo from '@/components/features/logo';
+import MainNavListItem from '@/components/layouts/mainNav/mainNavListItem';
 import {useAppSelector} from '@/redux/hooks';
 
 function styles(isOpen: boolean) {
@@ -14,9 +14,10 @@ function styles(isOpen: boolean) {
       display: 'flex',
       flexDirection: 'column',
       width: isOpen ? 200 : 74,
+      minWidth: isOpen ? 200 : 74,
       borderRight: 'solid 1px',
       borderColor: 'grey.400',
-      transition: 'width .3s ease-out',
+      transition: 'all .3s ease-out',
     },
     logoWrapper: {
       borderBottom: '1px solid',

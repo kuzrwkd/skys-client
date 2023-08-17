@@ -25,4 +25,5 @@ export const layout = createSlice({
 });
 
 export const {reset, toggleMainNav, toggleSubNav} = layout.actions;
+
 export default layout.reducer;

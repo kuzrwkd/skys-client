@@ -1,6 +1,6 @@
 import {Box, Typography} from '@mui/material';
 import React from 'react';
-import Link from '@/components/link';
+import Link from '@/components/features/link';
 import LogoIcon from '@/static/icons/logo.svg';
 
 const classes = {

@@ -8,10 +8,11 @@ const classes = {
   root: (isOpen: boolean) => ({
     display: 'flex',
     flexDirection: 'column',
+    minWidth: isOpen ? 375 : 74,
     width: isOpen ? 375 : 74,
     borderLeft: 'solid 1px',
     borderColor: 'grey.400',
-    transition: 'width .3s ease-out',
+    transition: 'all .3s ease-out',
     backgroundColor: 'pureWhite.main',
   }),
 };

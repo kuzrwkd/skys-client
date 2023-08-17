@@ -2,7 +2,7 @@ import {UrlObject} from 'url';
 import {type SvgIconComponent} from '@mui/icons-material';
 import {Box, ListItemButton, type ListItemButtonProps, ListItemIcon, ListItemText} from '@mui/material';
 import React from 'react';
-import Link from '@/components/link';
+import Link from '@/components/features/link';
 
 type MainNavListItemProps = {
   Icon: SvgIconComponent;

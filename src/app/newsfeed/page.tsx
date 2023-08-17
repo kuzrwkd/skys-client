@@ -1,5 +1,5 @@
 import DataTable from '@/app/newsfeed/dataTable';
-import Card from '@/components/card';
+import Card from '@/components/features/card';
 
 export default function Page() {
   return (

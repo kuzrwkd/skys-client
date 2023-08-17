@@ -4,7 +4,7 @@ import {NewsfeedSchema} from '@kuzrwkd/skys-core/entities';
 import {Typography} from '@mui/material';
 import {DataGridPro, GridToolbar, type GridColDef} from '@mui/x-data-grid-pro';
 import React from 'react';
-import Link from '@/components/link';
+import Link from '@/components/features/link';
 import {useGetNewsfeedQuery} from '@/redux/services/userApi';
 
 type DisplayNewsFeedData = Omit<NewsfeedSchema, 'media_id'> & {
@@ -22,7 +22,7 @@ const columns: GridColDef[] = [
   {
     field: 'title',
     headerName: 'タイトル',
-    width: 500,
+    width: 600,
     minWidth: 200,
     maxWidth: 700,
     renderCell: cellValues => {
@@ -35,7 +35,7 @@ const columns: GridColDef[] = [
   },
   {
     field: 'article_created_at',
-    headerName: '投稿日',
+    headerName: '公開日',
     width: 200,
     minWidth: 200,
     maxWidth: 200,
