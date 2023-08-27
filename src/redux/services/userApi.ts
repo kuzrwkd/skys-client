@@ -18,7 +18,10 @@ export const userApi = createApi({
               id
               title
               url
-              category
+              category {
+                id
+                name
+              }
               media {
                 id
                 name
