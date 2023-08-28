@@ -51,7 +51,7 @@ const columns: GridColDef[] = [
 
 export default function DataTable() {
   const {isLoading, isFetching, data, error} = useGetNewsfeedQuery(undefined);
-  const [raws, setRaws] = React.useState<DisplayNewsFeedData[] | undefined>(undefined);
+  const [rows, setRows] = React.useState<DisplayNewsFeedData[] | undefined>(undefined);
 
   React.useEffect(() => {
     if (data) {
@@ -59,7 +59,7 @@ export default function DataTable() {
         ...item,
         media: item.media?.name,
       }));
-      setRaws(displayRowData);
+      setRows(displayRowData);
     }
   }, [data]);
 
@@ -69,13 +69,23 @@ export default function DataTable() {
         <Typography>Oh no, there was an error</Typography>
       ) : isLoading || isFetching ? (
         <Typography>Loading...</Typography>
-      ) : raws ? (
+      ) : rows ? (
         <DataGridPro
-          style={{maxWidth: '100%', height: '100%'}}
-          rows={raws}
+          style={{maxWidth: '100%'}}
+          rows={rows}
           columns={columns}
           slots={{toolbar: GridToolbar}}
+          initialState={{
+            pagination: {
+              paginationModel: {
+                pageSize: 25,
+              },
+            },
+          }}
+          pagination
+          pageSizeOptions={[25, 50, 100]}
           checkboxSelection
+          disableRowSelectionOnClick
         />
       ) : null}
     </>
