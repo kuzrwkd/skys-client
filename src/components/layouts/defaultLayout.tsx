@@ -24,10 +24,12 @@ const classes = {
     display: 'flex',
     flex: 1,
     backgroundColor: 'grey.50',
+    overflow: 'hidden',
   },
   contents: {
     flex: 1,
     p: 1,
+    overflow: 'auto',
   },
 };
 
@@ -36,7 +38,7 @@ export default function DefaultLayout(props: DefaultLayoutProps) {
 
   return (
     <Box sx={classes.root}>
-      <Box sx={{display: 'flex', flex: 1}}>
+      <Box sx={{display: 'flex', flex: 1, overflow: 'hidden'}}>
         <ManinNav />
         <Box sx={classes.contentsWrapper}>
           <Header />
