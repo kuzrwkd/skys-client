@@ -6,6 +6,6 @@ export type GetNewsFeedQueryResponse = {
       media: Omit<MediaSchema, 'media_id'>;
       category: Omit<CategorySchema, 'category_id'>;
     },
-    'media_id'
+    'media_id' | 'category_ids'
   >[];
 };

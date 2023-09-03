@@ -1,14 +1,31 @@
 'use client';
 
-import {NewsfeedSchema} from '@kuzrwkd/skys-core/entities';
-import {Typography} from '@mui/material';
+import {NewsfeedSchema, CategorySchema, MediaSchema} from '@kuzrwkd/skys-core/entities';
+import {Typography, Chip} from '@mui/material';
 import {DataGridPro, GridToolbar, type GridColDef} from '@mui/x-data-grid-pro';
 import React from 'react';
 import Link from '@/components/features/link';
 import {useGetNewsfeedQuery} from '@/redux/services/userApi';
 
-type DisplayNewsFeedData = Omit<NewsfeedSchema, 'media_id'> & {
-  media?: string;
+type Category = Omit<CategorySchema, 'category_id'>;
+
+type DisplayNewsFeedData = Omit<
+  NewsfeedSchema & {
+    media: Omit<MediaSchema, 'media_id'>;
+    category: Omit<CategorySchema, 'category_id'>;
+  },
+  'media_id' | 'category_ids'
+>;
+
+const classes = {
+  root: {
+    maxWidth: '100%',
+  },
+  categoryChip: {
+    '&:not(:last-of-type)': {
+      mr: 1,
+    },
+  },
 };
 
 const columns: GridColDef[] = [
@@ -18,6 +35,9 @@ const columns: GridColDef[] = [
     width: 150,
     minWidth: 100,
     maxWidth: 300,
+    renderCell: cellValues => {
+      return <Typography variant="body2">{cellValues.row.media.name}</Typography>;
+    },
   },
   {
     field: 'title',
@@ -30,6 +50,29 @@ const columns: GridColDef[] = [
         <Link href={cellValues.row.url} external>
           {cellValues.row.title}
         </Link>
+      );
+    },
+  },
+  {
+    field: 'category',
+    headerName: 'カテゴリー',
+    width: 200,
+    minWidth: 300,
+    maxWidth: 400,
+    renderCell: cellValues => {
+      return (
+        <>
+          {cellValues.row.category.map((item: Category) => (
+            <Chip
+              sx={classes.categoryChip}
+              label={item.name}
+              color="primary"
+              variant="outlined"
+              size="small"
+              key={item.id}
+            />
+          ))}
+        </>
       );
     },
   },
@@ -57,7 +100,6 @@ export default function DataTable() {
     if (data) {
       const displayRowData = data.newsfeed.map(item => ({
         ...item,
-        media: item.media?.name,
       }));
       setRows(displayRowData);
     }
@@ -71,7 +113,7 @@ export default function DataTable() {
         <Typography>Loading...</Typography>
       ) : rows ? (
         <DataGridPro
-          style={{maxWidth: '100%'}}
+          sx={classes.root}
           rows={rows}
           columns={columns}
           slots={{toolbar: GridToolbar}}
