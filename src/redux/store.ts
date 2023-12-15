@@ -1,5 +1,5 @@
 import {configureStore} from '@reduxjs/toolkit';
-import {setupListeners} from '@reduxjs/toolkit/dist/query';
+import {setupListeners} from '@reduxjs/toolkit/query/react';
 import layoutReducer from '@/redux/features/layoutSlice';
 import {userApi} from '@/redux/services/userApi';
 
