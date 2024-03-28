@@ -30,7 +30,7 @@ function styles(underline?: boolean) {
  * https://nextjs.org/docs/pages/api-reference/components/link#if-the-child-is-a-functional-component
  */
 
-const Link = React.forwardRef((props: LinkProps, ref) => {
+const Link = React.forwardRef((props: LinkProps, _ref) => {
   const {external, underline, href, children, ...inheritProps} = props;
 
   const classes = styles(underline);
