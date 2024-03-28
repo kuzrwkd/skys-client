@@ -16,6 +16,13 @@ module.exports = {
   },
   ignorePatterns: ['*.js'],
   rules: {
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        argsIgnorePattern: '^_',
+      },
+    ],
     'import/order': [
       'error',
       {
@@ -32,4 +39,4 @@ module.exports = {
       version: 'detect',
     },
   },
-}
+};
