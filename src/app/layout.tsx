@@ -1,7 +1,7 @@
+import {AppRouterCacheProvider} from '@mui/material-nextjs/v13-appRouter';
 import React from 'react';
 import DefaultLayout from '@/components/layouts/defaultLayout';
 import ReduxProvider from '@/redux/provider';
-import ThemeRegistry from '@/themeRegistry';
 
 type RootLayoutProps = {
   children: React.ReactNode;
@@ -17,11 +17,11 @@ export default function RootLayout(props: RootLayoutProps) {
   return (
     <html lang="ja" suppressHydrationWarning>
       <body>
-        <ThemeRegistry options={{key: 'mui'}}>
-          <ReduxProvider>
+        <ReduxProvider>
+          <AppRouterCacheProvider options={{key: 'css'}}>
             <DefaultLayout>{children}</DefaultLayout>
-          </ReduxProvider>
-        </ThemeRegistry>
+          </AppRouterCacheProvider>
+        </ReduxProvider>
       </body>
     </html>
   );
