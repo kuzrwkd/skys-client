@@ -46,3 +46,6 @@ logs
 
 # npm
 .npmrc
+
+# Sentry Config File
+.sentryclirc
