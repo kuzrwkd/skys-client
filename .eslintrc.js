@@ -8,7 +8,7 @@ module.exports = {
     },
   },
   plugins: ['@typescript-eslint', 'import'],
-  extends: ['next/core-web-vitals', 'plugin:@typescript-eslint/recommended', 'plugin:import/recommended', 'prettier'],
+  extends: ['next/core-web-vitals', 'airbnb', 'airbnb-typescript', 'prettier'],
   root: true,
   env: {
     node: true,
