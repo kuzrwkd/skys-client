@@ -17,7 +17,7 @@ export default function Footer() {
   return (
     <Box sx={classes.root} component="footer">
       <Box sx={classes.copy}>
-        <small>&copy; Masudaya inc.</small>
+        <small>&copy; Masu inc.</small>
       </Box>
     </Box>
   );
