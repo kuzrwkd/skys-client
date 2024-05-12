@@ -1,6 +1,6 @@
-import {AppRouterCacheProvider} from '@mui/material-nextjs/v13-appRouter';
+import '@mantine/core/styles.css';
+import {ColorSchemeScript, MantineProvider} from '@mantine/core';
 import React from 'react';
-import DefaultLayout from '@/components/layouts/defaultLayout';
 import ReduxProvider from '@/redux/provider';
 
 type RootLayoutProps = {
@@ -12,15 +12,15 @@ export const metadata = {
   description: '相場観測予想システム｜SKYS',
 };
 
-export default function RootLayout(props: RootLayoutProps) {
-  const {children} = props;
+export default function RootLayout({children}: RootLayoutProps) {
   return (
-    <html lang="ja" suppressHydrationWarning>
+    <html lang="en">
+      <head>
+        <ColorSchemeScript />
+      </head>
       <body>
         <ReduxProvider>
-          <AppRouterCacheProvider options={{key: 'css'}}>
-            <DefaultLayout>{children}</DefaultLayout>
-          </AppRouterCacheProvider>
+          <MantineProvider>{children}</MantineProvider>
         </ReduxProvider>
       </body>
     </html>
