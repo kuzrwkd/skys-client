@@ -1,4 +1,9 @@
-const nextConfig = {
+import {withSentryConfig} from '@sentry/nextjs';
+
+/**
+ * @type {import('next').NextConfig}
+ */
+const nextWithIntl = {
   reactStrictMode: true,
   webpack(config) {
     config.module.rules.push({
@@ -9,13 +14,8 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
-
-if (process.env.NODE_ENV === 'production') {
-  const {withSentryConfig} = require('@sentry/nextjs');
-
-  module.exports = withSentryConfig(
-    nextConfig,
+const nextWithSentry = withSentryConfig(
+    nextWithIntl,
     {
       // For all available options, see:
       // https://github.com/getsentry/sentry-webpack-plugin#options
@@ -53,5 +53,6 @@ if (process.env.NODE_ENV === 'production') {
       // https://vercel.com/docs/cron-jobs
       automaticVercelMonitors: true,
     },
-  );
-}
+);
+
+export default process.env.NODE_ENV === 'production' ? nextWithSentry: nextWithIntl;
