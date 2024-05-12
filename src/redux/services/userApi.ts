@@ -1,7 +1,7 @@
 import {createApi} from '@reduxjs/toolkit/query/react';
 import {gql} from 'graphql-request';
+import type {NewsfeedPresentation} from '@kuzrwkd/skys-core/entities';
 import {graphqlBaseQuery} from '@/redux/graphqlBaseQuery';
-import {GetNewsFeedQueryResponse} from '@/types/api';
 
 const baseUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/graphql`;
 
@@ -10,7 +10,7 @@ export const userApi = createApi({
   // refetchOnFocus: true,
   baseQuery: graphqlBaseQuery({baseUrl}),
   endpoints: builder => ({
-    getNewsfeed: builder.query<GetNewsFeedQueryResponse, undefined>({
+    getNewsfeed: builder.query<NewsfeedPresentation, undefined>({
       query: () => ({
         body: gql`
           query {
@@ -26,8 +26,7 @@ export const userApi = createApi({
                 id
                 name
               }
-              article_created_at
-              article_updated_at
+              last_publish_date
             }
           }
         `,
