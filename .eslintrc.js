@@ -17,6 +17,7 @@ module.exports = {
   ignorePatterns: ['*.js'],
   rules: {
     'no-unused-vars': 'off',
+    'react/require-default-props': 'off',
     '@typescript-eslint/no-unused-vars': [
       'warn',
       {

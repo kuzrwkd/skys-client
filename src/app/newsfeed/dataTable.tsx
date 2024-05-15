@@ -73,7 +73,7 @@ const columns: GridColDef[] = [
 
 export default function DataTable() {
   const {isLoading, isFetching, data, error} = useGetNewsfeedQuery(undefined);
-  const [rows, setRows] = React.useState<NewsfeedPresentation[number] | undefined>(undefined);
+  const [rows, setRows] = React.useState<NewsfeedPresentation[] | undefined>(undefined);
 
   React.useEffect(() => {
     if (data) {
@@ -84,31 +84,31 @@ export default function DataTable() {
     }
   }, [data]);
 
+  if (error) {
+    return <Typography>Oh no, there was an error</Typography>;
+  }
+
+  if (isLoading || isFetching) {
+    return <Typography>Loading...</Typography>;
+  }
+
   return (
-    <>
-      {error ? (
-        <Typography>Oh no, there was an error</Typography>
-      ) : isLoading || isFetching ? (
-        <Typography>Loading...</Typography>
-      ) : rows ? (
-        <DataGridPro
-          sx={classes.root}
-          rows={rows}
-          columns={columns}
-          slots={{toolbar: GridToolbar}}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 25,
-              },
-            },
-          }}
-          pagination
-          pageSizeOptions={[25, 50, 100]}
-          checkboxSelection
-          disableRowSelectionOnClick
-        />
-      ) : null}
-    </>
+    <DataGridPro
+      sx={classes.root}
+      rows={rows}
+      columns={columns}
+      slots={{toolbar: GridToolbar}}
+      initialState={{
+        pagination: {
+          paginationModel: {
+            pageSize: 25,
+          },
+        },
+      }}
+      pagination
+      pageSizeOptions={[25, 50, 100]}
+      checkboxSelection
+      disableRowSelectionOnClick
+    />
   );
 }

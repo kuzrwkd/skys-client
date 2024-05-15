@@ -22,7 +22,7 @@ appPaletteOptions = Object.keys(appPaletteOptions).reduce((acc: AppPaletteOption
   return acc;
 }, {} as AppPaletteOptions);
 
-export const theme = createTheme({
+const theme = createTheme({
   typography: {
     button: {
       textTransform: 'none',
@@ -40,3 +40,5 @@ export const theme = createTheme({
     },
   },
 });
+
+export default theme;

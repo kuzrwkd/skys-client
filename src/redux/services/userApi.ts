@@ -10,7 +10,7 @@ export const userApi = createApi({
   // refetchOnFocus: true,
   baseQuery: graphqlBaseQuery({baseUrl}),
   endpoints: builder => ({
-    getNewsfeed: builder.query<NewsfeedPresentation, undefined>({
+    getNewsfeed: builder.query<{newsfeed: NewsfeedPresentation[]}, undefined>({
       query: () => ({
         body: gql`
           query {

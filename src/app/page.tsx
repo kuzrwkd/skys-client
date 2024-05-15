@@ -1,6 +1,7 @@
 'use client';
 
 import {Typography} from '@mui/material';
+import React from 'react';
 import Card from '@/components/features/card';
 
 export default function Page() {

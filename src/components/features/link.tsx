@@ -31,16 +31,14 @@ function styles(underline?: boolean) {
  */
 
 const Link = React.forwardRef((props: LinkProps, _ref) => {
-  const {external, underline, href, children, ...inheritProps} = props;
+  const {external, underline, href, children} = props;
 
   const classes = styles(underline);
 
   if (!external) {
     return (
       <MuiLink sx={classes.root} component="div">
-        <NextLink href={href} {...inheritProps}>
-          {children}
-        </NextLink>
+        <NextLink href={href}>{children}</NextLink>
       </MuiLink>
     );
   }

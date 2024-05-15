@@ -20,5 +20,5 @@ const classes = {
 export default function SubNav() {
   const isSubNavOpen = useAppSelector(state => state.layoutReducer.isSubNavOpen);
 
-  return <Box component="aside" sx={classes.root(isSubNavOpen)}></Box>;
+  return <Box component="aside" sx={classes.root(isSubNavOpen)} />;
 }

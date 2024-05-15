@@ -18,13 +18,13 @@ const styles = (fullWidth?: boolean) => ({
 });
 
 export default function Card(props: CardProps) {
-  const {children, title = undefined, fullWidth, ...inheritProps} = props;
+  const {children, title, fullWidth} = props;
   const heading = title ?? '';
 
   const classes = styles(fullWidth);
 
   return (
-    <Paper {...inheritProps} sx={classes.paper}>
+    <Paper sx={classes.paper}>
       <Typography sx={classes.title} variant="h5">
         <b>{heading}</b>
       </Typography>
