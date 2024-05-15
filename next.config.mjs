@@ -6,7 +6,7 @@ import {withSentryConfig} from '@sentry/nextjs';
 const nextWithIntl = {
   reactStrictMode: true,
   sassOptions: {
-    prependData: `@import "./static/scss/_mantine.scss";`,
+    prependData: `@import "./_mantine.scss";`,
   },
   webpack(config) {
     config.module.rules.push({
