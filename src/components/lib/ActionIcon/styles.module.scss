@@ -1,0 +1,7 @@
+.ActionIcon {
+  &--NoHover {
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}

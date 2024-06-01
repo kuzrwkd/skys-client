@@ -18,6 +18,13 @@ module.exports = {
   rules: {
     'no-unused-vars': 'off',
     'react/require-default-props': 'off',
+    'no-param-reassign': [
+      'error',
+      {
+        props: true,
+        ignorePropertyModificationsFor: ['state'],
+      },
+    ],
     '@typescript-eslint/no-unused-vars': [
       'warn',
       {

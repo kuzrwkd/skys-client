@@ -1,0 +1,7 @@
+.Button {
+  &--NoHover {
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}

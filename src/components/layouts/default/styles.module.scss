@@ -1,0 +1,30 @@
+.AppRoot {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  &__Inner {
+    display: flex;
+    flex: 1;
+    overflow: hidden
+  }
+
+  &__ContentsWrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &__Contents {
+    flex: 1;
+    padding: 8px;
+    overflow: auto;
+  }
+
+  &__Main {
+    display: flex;
+    flex: 1;
+    background-color: #fafafa;
+    overflow: hidden;
+  }
+}

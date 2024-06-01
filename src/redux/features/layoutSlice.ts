@@ -14,11 +14,11 @@ export const layout = createSlice({
   name: 'mainNav',
   initialState,
   reducers: {
-    toggleMainNav: state => {
-      state.isMainNavOpen = !state.isMainNavOpen;
+    toggleMainNav: (state, action) => {
+      state.isMainNavOpen = action.payload;
     },
-    toggleSubNav: state => {
-      state.isSubNavOpen = !state.isSubNavOpen;
+    toggleSubNav: (state, action) => {
+      state.isSubNavOpen = action.payload;
     },
     reset: () => initialState,
   },

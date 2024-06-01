@@ -1,13 +1,11 @@
-'use client';
-
+import {Text} from '@mantine/core';
 import React from 'react';
-import DataTable from '@/app/newsfeed/dataTable';
-import Card from '@/components/features/card';
+import Card from '@/components/lib/card/card';
 
 export default function Page() {
   return (
     <Card title="ニュース一覧">
-      <DataTable />
+      <Text>Newsfeed</Text>
     </Card>
   );
 }

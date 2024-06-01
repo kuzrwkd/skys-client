@@ -1,0 +1,41 @@
+.Header {
+  height: 64px;
+  border-bottom: 1px solid;
+  border-color: #bdbdbd;
+  display: flex;
+  justify-content: space-between;
+
+  &__LeftArea {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    &-MainNavButton {
+      margin-left: 8px;
+    }
+  }
+
+  &__RightArea {
+    display: flex;
+
+    &-SubNavButtonWrapper {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    &-SubNavButton {
+      margin-right: 8px;
+    }
+
+    &-AccountButtonWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 64px;
+      width: 74px;
+      border-left: 1px solid;
+      border-color: #bdbdbd;
+    }
+  }
+}

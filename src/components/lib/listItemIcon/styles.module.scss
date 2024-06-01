@@ -1,0 +1,22 @@
+.ListItemWithIcon {
+  white-space: nowrap;
+  border-radius: 16px;
+  color: #4338ca;
+  margin-top : 2px;
+  padding: 0 12px;
+  text-decoration: none;
+
+  &:not(:last-child) {
+    margin-bottom: 4px;
+  }
+
+  &__Link {
+    padding: 0 8px;
+  }
+
+  &__IconWrapper {
+    min-width: 24px;
+    margin-right: 8px;
+    margin-left: 4px;
+  }
+}

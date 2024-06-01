@@ -1,0 +1,28 @@
+.MainNav {
+  display: flex;
+  flex-direction: column;
+  width: 74px;
+  min-width: 74px;
+  border-right: solid 1px;
+  border-color: #bdbdbd;
+  transition: all .3s ease-out;
+
+  &--Open {
+    width: 200px;
+    min-width: 200px;
+  }
+
+  &__LogoWrapper {
+    border-bottom: 1px solid;
+    border-color: #bdbdbd;
+    overflow: hidden;
+  }
+
+  &__CloseMenuIconWrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 48px;
+    margin-left: 16px;
+  }
+}

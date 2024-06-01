@@ -1,0 +1,15 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  min-width: 74px;
+  width: 74px;
+  border-left: solid 1px;
+  border-color: #bdbdbd;
+  transition: all .3s ease-out;
+  background-color: #fff;
+
+  &__open {
+    min-width: 375px;
+    width: 375px;
+  }
+}

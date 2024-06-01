@@ -11,17 +11,13 @@
     "format": "prettier --write ./src && eslint --fix ./src"
   },
   "dependencies": {
-    "@emotion/cache": "^11.11.0",
     "@kuzrwkd/skys-core": "^1.1.81",
     "@mantine/core": "^7.9.1",
     "@mantine/hooks": "^7.9.1",
-    "@mui/icons-material": "^5.15.17",
-    "@mui/material": "^5.15.17",
-    "@mui/material-nextjs": "^5.15.11",
-    "@mui/x-data-grid-pro": "^7.4.0",
     "@reduxjs/toolkit": "^2.2.4",
     "@sentry/nextjs": "^7.114.0",
     "@svgr/webpack": "^8.1.0",
+    "@tabler/icons-react": "^3.4.0",
     "classnames": "^2.5.1",
     "graphql-request": "^7.0.1",
     "next": "^14.2.3",

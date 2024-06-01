@@ -1,6 +1,7 @@
 import '@mantine/core/styles.css';
 import {ColorSchemeScript, MantineProvider} from '@mantine/core';
 import React from 'react';
+import DefaultLayout from '@/components/layouts/default';
 import ReduxProvider from '@/redux/provider';
 
 type RootLayoutProps = {
@@ -20,7 +21,9 @@ export default function RootLayout({children}: RootLayoutProps) {
       </head>
       <body>
         <ReduxProvider>
-          <MantineProvider>{children}</MantineProvider>
+          <MantineProvider>
+            <DefaultLayout>{children}</DefaultLayout>
+          </MantineProvider>
         </ReduxProvider>
       </body>
     </html>

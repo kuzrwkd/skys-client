@@ -1,0 +1,22 @@
+.Logo {
+  display: flex;
+  align-items: center;
+  height: 63px;
+
+  &__Link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__Icon {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    flex: none
+  }
+
+  &__Title {
+    flex: none;
+  }
+}
