@@ -13,13 +13,13 @@ export default function Card(props: CardProps) {
   const {children, title, fullWidth} = props;
   const heading = title ?? '';
   const paperClassName = classnames({
-    [styles.paper]: true,
-    [styles['paper-full-width']]: fullWidth,
+    [styles.Card]: true,
+    [styles['Card--FullWidth']]: fullWidth,
   });
 
   return (
     <Paper className={paperClassName} shadow="xs" p="xl">
-      <Text className={styles.title}>
+      <Text className={styles.Card__Title}>
         <b>{heading}</b>
       </Text>
       {children}
