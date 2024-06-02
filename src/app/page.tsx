@@ -1,6 +1,6 @@
 import {Text} from '@mantine/core';
 import React from 'react';
-import Card from '@/components/lib/card/card';
+import Card from 'src/components/features/card';
 
 export default function Page() {
   return (

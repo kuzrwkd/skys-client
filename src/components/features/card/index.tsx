@@ -1,7 +1,8 @@
-import {Paper, Text} from '@mantine/core';
 import classnames from 'classnames';
 import React from 'react';
 import styles from './styles.module.scss';
+import Paper from '@/components/lib/paper';
+import Text from '@/components/lib/text';
 
 type CardProps = {
   title?: string;

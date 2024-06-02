@@ -6,10 +6,10 @@ import React from 'react';
 import styles from './styles.module.scss';
 import List from '@/components/lib/list';
 import {useAppSelector} from '@/redux/hooks';
+import ListItemIcon from 'src/components/features/listItemIcon';
+import Logo from 'src/components/features/logo';
 import ActionIcon from 'src/components/lib/actionIcon';
 import Link from 'src/components/lib/link';
-import ListItemIcon from 'src/components/lib/listItemIcon';
-import Logo from 'src/components/lib/logo';
 
 export const mainMenu = [
   {

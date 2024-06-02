@@ -1,7 +1,8 @@
-import {List, ThemeIcon} from '@mantine/core';
-import Link from 'next/link';
 import React from 'react';
 import styles from './styles.module.scss';
+import Link from '@/components/lib/link';
+import List from '@/components/lib/list';
+import ThemeIcon from '@/components/lib/themeIcon';
 
 type ListItemWithIconProps = {
   icon: any;
