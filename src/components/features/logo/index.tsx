@@ -7,7 +7,7 @@ import LogoIcon from '@/static/icons/logo.svg';
 export default function Logo() {
   return (
     <div className={styles.Logo}>
-      <Link href="/src/static" className={styles.Logo__Link}>
+      <Link href="/" className={styles.Logo__Link}>
         <div className={styles.Logo__Icon}>
           <LogoIcon width={58} height={58} />
         </div>

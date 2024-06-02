@@ -1,8 +1,8 @@
 import {IconUserCircle} from '@tabler/icons-react';
 import React from 'react';
-import MainNavToggleButton from './mainNavToggleButton';
+import MainNavToggleButton from './client/mainNavToggleButton';
+import SubNavToggleButton from './client/subNavToggleButton';
 import styles from './styles.module.scss';
-import SubNavToggleButton from './subNavToggleButton';
 import Button from '@/components/lib/button';
 
 export default function Header() {
