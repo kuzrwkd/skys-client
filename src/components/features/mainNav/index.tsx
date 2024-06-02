@@ -4,12 +4,12 @@ import {IconNews} from '@tabler/icons-react';
 import classnames from 'classnames';
 import React from 'react';
 import styles from './styles.module.scss';
+import ListItemIcon from '@/components/features/listItemIcon';
+import Logo from '@/components/features/logo';
+import ActionIcon from '@/components/lib/actionIcon';
+import Link from '@/components/lib/link';
 import List from '@/components/lib/list';
 import {useAppSelector} from '@/redux/hooks';
-import ListItemIcon from 'src/components/features/listItemIcon';
-import Logo from 'src/components/features/logo';
-import ActionIcon from 'src/components/lib/actionIcon';
-import Link from 'src/components/lib/link';
 
 export const mainMenu = [
   {

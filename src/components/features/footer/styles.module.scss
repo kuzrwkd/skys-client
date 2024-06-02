@@ -1,9 +1,9 @@
-.root {
+.Footer {
   border-top: 1px solid;
   border-color: #bdbdbd;
   padding: 4px 8px;
-}
 
-.copy {
-  text-align: right;
+  &__Copy {
+    text-align: right;
+  }
 }

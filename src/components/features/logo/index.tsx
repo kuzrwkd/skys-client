@@ -4,7 +4,7 @@ import Link from '@/components/lib/link';
 import Text from '@/components/lib/text';
 import LogoIcon from '@/static/icons/logo.svg';
 
-export default function Index() {
+export default function Logo() {
   return (
     <div className={styles.Logo}>
       <Link href="/src/static" className={styles.Logo__Link}>
