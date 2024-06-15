@@ -4,7 +4,7 @@ type GraphqlBaseQueryParams = {
   baseUrl: string;
 };
 
-export const graphqlBaseQuery =
+const graphqlBaseQuery =
   ({baseUrl}: GraphqlBaseQueryParams) =>
   async ({body}: {body: string}) => {
     try {
@@ -17,3 +17,5 @@ export const graphqlBaseQuery =
       return {error: {status: 500, data: error}};
     }
   };
+
+export default graphqlBaseQuery;
