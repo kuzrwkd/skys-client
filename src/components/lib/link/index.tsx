@@ -7,7 +7,7 @@ import type {LinkProps as NextLinkProps} from 'next/link';
 type Props = AnchorProps & NextLinkProps;
 
 const Link = createPolymorphicComponent<'a', Props>(
-  React.forwardRef<HTMLAnchorElement, Props>((props, ref) => {
+  React.forwardRef<HTMLAnchorElement, Props>((props, _ref) => {
     const {href, ...inheritProps} = props;
     return (
       // eslint-disable-next-line react/jsx-props-no-spreading
