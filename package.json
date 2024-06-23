@@ -17,7 +17,6 @@
     "@mantine/hooks": "^7.10.2",
     "@reduxjs/toolkit": "^2.2.5",
     "@rtk-query/graphql-request-base-query": "^2.3.1",
-    "@sentry/nextjs": "^8.9.2",
     "@svgr/webpack": "^8.1.0",
     "@tabler/icons-react": "^3.6.0",
     "classnames": "^2.5.1",
