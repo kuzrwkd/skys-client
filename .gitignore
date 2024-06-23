@@ -49,3 +49,7 @@ logs
 
 # Sentry Config File
 .sentryclirc
+
+#grapheql codegen
+src/graphql/codegen
+graphql.schema.json

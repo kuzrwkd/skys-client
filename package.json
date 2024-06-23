@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --verbose",
-    "format": "prettier --write ./src && eslint --fix ./src"
+    "format": "prettier --write ./src && eslint --fix ./src",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
     "@kuzrwkd/skys-core": "^1.1.81",
@@ -19,7 +20,7 @@
     "@svgr/webpack": "^8.1.0",
     "@tabler/icons-react": "^3.6.0",
     "classnames": "^2.5.1",
-    "graphql-request": "^7.0.1",
+    "graphql": "^16.8.2",
     "next": "^14.2.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -27,6 +28,14 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "5.0.2",
+    "@graphql-codegen/client-preset": "4.3.0",
+    "@graphql-codegen/introspection": "4.0.3",
+    "@graphql-codegen/typescript-operations": "^4.2.1",
+    "@graphql-codegen/typescript-resolvers": "^4.1.0",
+    "@graphql-codegen/typescript-rtk-query": "^3.1.1",
+    "@parcel/watcher": "^2.4.1",
+    "@rtk-query/graphql-request-base-query": "^2.3.1",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.14.2",
     "@types/react": "^18.3.3",
