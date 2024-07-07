@@ -40,7 +40,9 @@ function renderListItem(isMainNavOpen: boolean, items: MainMenuItems) {
 }
 
 export default function MainNav() {
-  const isMainNavOpen = useAppSelector(state => state.layoutReducer.isMainNavOpen);
+  const isMainNavOpen = useAppSelector(
+    state => state.layoutReducer.isMainNavOpen,
+  );
 
   const mainNavClassName = classnames({
     [styles.MainNav]: true,
@@ -52,7 +54,9 @@ export default function MainNav() {
       <div className={styles.MainNav__LogoWrapper}>
         <Logo />
       </div>
-      <List listStyleType="none">{mainMenu.map(item => renderListItem(isMainNavOpen, {...item}))}</List>
+      <List listStyleType="none">
+        {mainMenu.map(item => renderListItem(isMainNavOpen, {...item}))}
+      </List>
     </aside>
   );
 }

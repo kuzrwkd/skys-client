@@ -15,7 +15,10 @@ export default function ListItemIcon(props: ListItemIconProps) {
   return (
     <List.Item className={styles.ListItemIcon}>
       <Link className={styles.ListItemIcon__Link} href={href}>
-        <ThemeIcon className={styles.ListItemIcon__IconWrapper} variant="transparent">
+        <ThemeIcon
+          className={styles.ListItemIcon__IconWrapper}
+          variant="transparent"
+        >
           <Icon />
         </ThemeIcon>
         {label}

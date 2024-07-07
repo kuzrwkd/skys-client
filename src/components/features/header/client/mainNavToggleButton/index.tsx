@@ -7,7 +7,9 @@ import {useAppDispatch, useAppSelector} from '@/redux/hooks';
 import MenuLeftIcon from '@/static/icons/menuLeft.svg';
 
 export default function MainNavToggleButton() {
-  const isMainNavOpen = useAppSelector(state => state.layoutReducer.isMainNavOpen);
+  const isMainNavOpen = useAppSelector(
+    state => state.layoutReducer.isMainNavOpen,
+  );
   const dispatch = useAppDispatch();
 
   const toggleMainNavHandler = () => {
@@ -15,6 +17,10 @@ export default function MainNavToggleButton() {
   };
 
   return (
-    <Button leftSection={<MenuLeftIcon width={24} height={24} />} variant="default" onClick={toggleMainNavHandler} />
+    <Button
+      leftSection={<MenuLeftIcon width={24} height={24} />}
+      variant="default"
+      onClick={toggleMainNavHandler}
+    />
   );
 }
