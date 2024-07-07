@@ -9,4 +9,4 @@ export const skysApi = generatedApi.enhanceEndpoints({
   },
 });
 
-export const {useGetNewsfeedQuery} = skysApi;
+export const {useGetNewsfeedQuery, useLazyGetNewsfeedQuery} = skysApi;
