@@ -1,4 +1,4 @@
-.MainNav {
+.mainNav {
   display: flex;
   flex-direction: column;
   width: 74px;
@@ -7,18 +7,18 @@
   border-color: #bdbdbd;
   transition: all 0.3s ease-out;
 
-  &--Open {
+  &.open {
     width: 200px;
     min-width: 200px;
   }
 
-  &__LogoWrapper {
+  .logoWrapper {
     border-bottom: 1px solid;
     border-color: #bdbdbd;
     overflow: hidden;
   }
 
-  &__CloseMenuIconWrapper {
+  .closeMenuIconWrapper {
     display: flex;
     justify-content: flex-start;
     align-items: center;

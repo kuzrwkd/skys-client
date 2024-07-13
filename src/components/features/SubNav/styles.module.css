@@ -1,4 +1,4 @@
-.root {
+.subNav {
   display: flex;
   flex-direction: column;
   min-width: 74px;
@@ -8,7 +8,7 @@
   transition: all 0.3s ease-out;
   background-color: #fff;
 
-  &__open {
+  &.open {
     min-width: 375px;
     width: 375px;
   }

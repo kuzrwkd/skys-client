@@ -3,9 +3,6 @@
  */
 const nextConfig = {
   reactStrictMode: true,
-  sassOptions: {
-    prependData: `@import "./_mantine.scss";`,
-  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,

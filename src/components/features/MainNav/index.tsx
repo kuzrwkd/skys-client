@@ -3,7 +3,7 @@
 import {IconNews} from '@tabler/icons-react';
 import classnames from 'classnames';
 import React from 'react';
-import styles from './styles.module.scss';
+import styles from './styles.module.css';
 import {useAppSelector} from '@/redux/hooks';
 import ListItemIcon from 'src/components/features/ListItemIcon';
 import Logo from 'src/components/features/Logo';
@@ -26,7 +26,7 @@ function renderListItem(isMainNavOpen: boolean, items: MainMenuItems) {
   if (!isMainNavOpen) {
     return (
       <List.Item key={href}>
-        <div className={styles.MainNav__CloseMenuIconWrapper}>
+        <div className={styles.closeMenuIconWrapper}>
           <Link href={href}>
             <ActionIcon color="primary" variant="transparent">
               <Icon />
@@ -45,13 +45,13 @@ export default function MainNav() {
   );
 
   const mainNavClassName = classnames({
-    [styles.MainNav]: true,
-    [styles['MainNav--Open']]: isMainNavOpen,
+    [styles.mainNav]: true,
+    [styles.open]: isMainNavOpen,
   });
 
   return (
     <aside className={mainNavClassName}>
-      <div className={styles.MainNav__LogoWrapper}>
+      <div className={styles.logoWrapper}>
         <Logo />
       </div>
       <List listStyleType="none">

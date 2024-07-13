@@ -1,4 +1,4 @@
-.ListItemIcon {
+.listItemIcon {
   white-space: nowrap;
   border-radius: 16px;
   color: #4338ca;
@@ -11,11 +11,11 @@
     margin-bottom: 4px;
   }
 
-  &__Link {
+  .link {
     padding: 0 8px;
   }
 
-  &__IconWrapper {
+  .iconWrapper {
     min-width: 24px;
     margin-right: 8px;
     margin-left: 4px;

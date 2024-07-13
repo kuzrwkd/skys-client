@@ -1,11 +1,11 @@
 import classnames from 'classnames';
 import React from 'react';
-import styles from './styles.module.scss';
+import styles from './styles.module.css';
 
 export default function SubNav() {
   const subNavClassName = classnames({
-    [styles.root]: true,
-    [styles['root--open']]: false,
+    [styles.subNav]: true,
+    [styles.open]: false,
   });
 
   return <aside className={subNavClassName} />;

@@ -1,27 +1,27 @@
-.AppRoot {
+.appRoot {
   display: flex;
   flex-direction: column;
   height: 100vh;
 
-  &__Inner {
+  .inner {
     display: flex;
     flex: 1;
     overflow: hidden;
   }
 
-  &__ContentsWrapper {
+  .contentsWrapper {
     display: flex;
     flex-direction: column;
     flex: 1;
   }
 
-  &__Contents {
+  .contents {
     flex: 1;
     padding: 8px;
     overflow: auto;
   }
 
-  &__Main {
+  .main {
     display: flex;
     flex: 1;
     background-color: #fafafa;

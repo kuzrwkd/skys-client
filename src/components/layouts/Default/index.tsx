@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles.module.scss';
+import styles from './styles.module.css';
 import Footer from 'src/components/features/Footer';
 import Header from 'src/components/features/Header';
 import ManinNav from 'src/components/features/MainNav';
@@ -13,13 +13,13 @@ export default function DefaultLayout(props: DefaultLayoutProps) {
   const {children} = props;
 
   return (
-    <div className={styles.AppRoot}>
-      <div className={styles.AppRoot__Inner}>
+    <div className={styles.appRoot}>
+      <div className={styles.inner}>
         <ManinNav />
-        <div className={styles.AppRoot__ContentsWrapper}>
+        <div className={styles.contentsWrapper}>
           <Header />
-          <main className={styles.AppRoot__Main}>
-            <div className={styles.AppRoot__Contents}>{children}</div>
+          <main className={styles.main}>
+            <div className={styles.contents}>{children}</div>
             <SubNav />
           </main>
         </div>

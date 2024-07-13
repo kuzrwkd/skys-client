@@ -1,31 +1,31 @@
-.Header {
+.header {
   height: 64px;
   border-bottom: 1px solid;
   border-color: #bdbdbd;
   display: flex;
   justify-content: space-between;
 
-  &__LeftArea {
+  .leftArea {
     display: flex;
     align-items: center;
     height: 100%;
 
-    &-MainNavButtonWrapper {
+    .mainNavButtonWrapper {
       margin-left: 8px;
     }
   }
 
-  &__RightArea {
+  .rightArea {
     display: flex;
 
-    &-SubNavButtonWrapper {
+    .subNavButtonWrapper {
       display: flex;
       align-items: center;
       height: 100%;
       padding-right: 8px;
     }
 
-    &-AccountButtonWrapper {
+    .accountButtonWrapper {
       display: flex;
       align-items: center;
       justify-content: center;

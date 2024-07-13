@@ -1,12 +1,12 @@
-.Card {
+.card {
   padding: 24px;
   width: auto;
 
-  &__Title {
+  .title {
     margin-bottom: 24px;
   }
 
-  &--FullWidth {
+  .fullWidth {
     width: 100%;
   }
 }

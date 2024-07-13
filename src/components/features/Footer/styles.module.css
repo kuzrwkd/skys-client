@@ -1,9 +1,9 @@
-.Footer {
+.footer {
   border-top: 1px solid;
   border-color: #bdbdbd;
   padding: 4px 8px;
 
-  &__Copy {
+  .copy {
     text-align: right;
   }
 }

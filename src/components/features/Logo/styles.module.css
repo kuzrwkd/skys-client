@@ -1,22 +1,22 @@
-.Logo {
+.logo {
   display: flex;
   align-items: center;
   height: 63px;
 
-  &__Link {
+  .link {
     display: inline-flex;
     align-items: center;
     text-decoration: none;
   }
 
-  &__Icon {
+  .icon {
     display: flex;
     align-items: center;
     padding: 0 8px;
     flex: none;
   }
 
-  &__Title {
+  .title {
     flex: none;
   }
 }
