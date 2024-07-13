@@ -3,7 +3,7 @@ import React from 'react';
 import MainNavToggleButton from './client/mainNavToggleButton';
 import SubNavToggleButton from './client/subNavToggleButton';
 import styles from './styles.module.css';
-import Button from 'src/components/lib/Button';
+import LibButton from '@/components/lib/Button';
 
 export default function Header() {
   return (
@@ -18,9 +18,9 @@ export default function Header() {
           <SubNavToggleButton />
         </div>
         <div className={styles.accountButtonWrapper}>
-          <Button size="large">
+          <LibButton size="large">
             <IconUserCircle fontSize="inherit" />
-          </Button>
+          </LibButton>
         </div>
       </div>
     </header>

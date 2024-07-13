@@ -4,12 +4,12 @@ import {IconNews} from '@tabler/icons-react';
 import classnames from 'classnames';
 import React from 'react';
 import styles from './styles.module.css';
+import ListItemIcon from '@/components/features/ListItemIcon';
+import Logo from '@/components/features/Logo';
+import LibActionIcon from '@/components/lib/ActionIcon';
+import LibLink from '@/components/lib/Link';
+import LibList from '@/components/lib/List';
 import {useAppSelector} from '@/redux/hooks';
-import ListItemIcon from 'src/components/features/ListItemIcon';
-import Logo from 'src/components/features/Logo';
-import ActionIcon from 'src/components/lib/ActionIcon';
-import Link from 'src/components/lib/Link';
-import List from 'src/components/lib/List';
 
 export const mainMenu = [
   {
@@ -25,15 +25,15 @@ function renderListItem(isMainNavOpen: boolean, items: MainMenuItems) {
   const {href, label, icon: Icon} = items;
   if (!isMainNavOpen) {
     return (
-      <List.Item key={href}>
+      <LibList.Item key={href}>
         <div className={styles.closeMenuIconWrapper}>
-          <Link href={href}>
-            <ActionIcon color="primary" variant="transparent">
+          <LibLink href={href}>
+            <LibActionIcon color="primary" variant="transparent">
               <Icon />
-            </ActionIcon>
-          </Link>
+            </LibActionIcon>
+          </LibLink>
         </div>
-      </List.Item>
+      </LibList.Item>
     );
   }
   return <ListItemIcon label={label} href={href} icon={Icon} key={href} />;
@@ -54,9 +54,9 @@ export default function MainNav() {
       <div className={styles.logoWrapper}>
         <Logo />
       </div>
-      <List listStyleType="none">
+      <LibList listStyleType="none">
         {mainMenu.map(item => renderListItem(isMainNavOpen, {...item}))}
-      </List>
+      </LibList>
     </aside>
   );
 }

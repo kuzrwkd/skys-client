@@ -1,8 +1,8 @@
 import classnames from 'classnames';
 import React from 'react';
 import styles from './styles.module.css';
-import Paper from 'src/components/lib/Paper';
-import Text from 'src/components/lib/Text';
+import LibPaper from '@/components/lib/Paper';
+import LibText from '@/components/lib/Text';
 
 type CardProps = {
   title?: string;
@@ -19,11 +19,11 @@ export default function Card(props: CardProps) {
   });
 
   return (
-    <Paper className={paperClassName} shadow="xs" p="xl">
-      <Text className={styles.title}>
+    <LibPaper className={paperClassName} shadow="xs" p="xl">
+      <LibText className={styles.title}>
         <b>{heading}</b>
-      </Text>
+      </LibText>
       {children}
-    </Paper>
+    </LibPaper>
   );
 }

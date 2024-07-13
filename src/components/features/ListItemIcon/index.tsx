@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './styles.module.css';
-import Link from 'src/components/lib/Link';
-import List from 'src/components/lib/List';
-import ThemeIcon from 'src/components/lib/ThemeIcon';
+import LibLink from '@/components/lib/Link';
+import LibList from '@/components/lib/List';
+import LibThemeIcon from '@/components/lib/ThemeIcon';
 
 type ListItemIconProps = {
   icon: any;
@@ -13,13 +13,13 @@ type ListItemIconProps = {
 export default function ListItemIcon(props: ListItemIconProps) {
   const {icon: Icon, href, label} = props;
   return (
-    <List.Item className={styles.listItemIcon}>
-      <Link className={styles.link} href={href}>
-        <ThemeIcon className={styles.iconWrapper} variant="transparent">
+    <LibList.Item className={styles.listItemIcon}>
+      <LibLink className={styles.link} href={href}>
+        <LibThemeIcon className={styles.iconWrapper} variant="transparent">
           <Icon />
-        </ThemeIcon>
+        </LibThemeIcon>
         {label}
-      </Link>
-    </List.Item>
+      </LibLink>
+    </LibList.Item>
   );
 }

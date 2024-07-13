@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
+import LibButton from '@/components/lib/Button';
 import {toggleSubNav} from '@/redux/features/layoutSlice';
 import {useAppDispatch, useAppSelector} from '@/redux/hooks';
 import MenuRightIcon from '@/static/icons/menuRight.svg';
-import Button from 'src/components/lib/Button';
 
 export default function MainNavToggleButton() {
   const isSubNavOpen = useAppSelector(
@@ -17,7 +17,7 @@ export default function MainNavToggleButton() {
   };
 
   return (
-    <Button
+    <LibButton
       leftSection={<MenuRightIcon width={24} height={24} />}
       variant="default"
       onClick={toggleSubNavHandler}
