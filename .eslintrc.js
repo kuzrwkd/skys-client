@@ -8,7 +8,13 @@ module.exports = {
     },
   },
   plugins: ['@typescript-eslint', 'import'],
-  extends: ['next/core-web-vitals', 'airbnb', 'airbnb-typescript', 'prettier'],
+  extends: [
+    'next/core-web-vitals',
+    'airbnb',
+    'airbnb/hooks',
+    'airbnb-typescript',
+    'prettier',
+  ],
   root: true,
   env: {
     node: true,
@@ -34,7 +40,15 @@ module.exports = {
     'import/order': [
       'error',
       {
-        groups: ['builtin', 'external', 'parent', 'sibling', 'index', 'object', 'type'],
+        groups: [
+          'builtin',
+          'external',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+          'type',
+        ],
         alphabetize: {
           order: 'asc',
         },
