@@ -3,7 +3,7 @@ import React from 'react';
 import MainNavToggleButton from './client/mainNavToggleButton';
 import SubNavToggleButton from './client/subNavToggleButton';
 import styles from './styles.module.scss';
-import Button from '@/components/lib/button';
+import Button from 'src/components/lib/Button';
 
 export default function Header() {
   return (

@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './styles.module.scss';
-import Footer from '@/components/features/footer';
-import Header from '@/components/features/header';
-import ManinNav from '@/components/features/mainNav';
-import SubNav from '@/components/features/subNav';
+import Footer from 'src/components/features/Footer';
+import Header from 'src/components/features/Header';
+import ManinNav from 'src/components/features/MainNav';
+import SubNav from 'src/components/features/SubNav';
 
 type DefaultLayoutProps = {
   children: React.ReactNode;

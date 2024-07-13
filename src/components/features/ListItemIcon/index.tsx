@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './styles.module.scss';
-import Link from '@/components/lib/link';
-import List from '@/components/lib/list';
-import ThemeIcon from '@/components/lib/themeIcon';
+import Link from 'src/components/lib/Link';
+import List from 'src/components/lib/List';
+import ThemeIcon from 'src/components/lib/ThemeIcon';
 
 type ListItemIconProps = {
   icon: any;

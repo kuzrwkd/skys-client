@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './styles.module.scss';
-import Link from '@/components/lib/link';
-import Text from '@/components/lib/text';
 import LogoIcon from '@/static/icons/logo.svg';
+import Link from 'src/components/lib/Link';
+import Text from 'src/components/lib/Text';
 
 export default function Logo() {
   return (

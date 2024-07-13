@@ -3,8 +3,8 @@ import 'mantine-datatable/styles.layer.css';
 import './layout.css';
 import {ColorSchemeScript, MantineProvider} from '@mantine/core';
 import React from 'react';
-import DefaultLayout from '@/components/layouts/default';
 import ReduxProvider from '@/redux/provider';
+import DefaultLayout from 'src/components/layouts/Default';
 
 type RootLayoutProps = {
   children: React.ReactNode;

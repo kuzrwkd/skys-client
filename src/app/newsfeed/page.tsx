@@ -3,7 +3,7 @@
 import {Text} from '@mantine/core';
 import React from 'react';
 import {useGetNewsfeedQuery} from '@/redux/services/skysApi';
-import Card from 'src/components/features/card';
+import Card from 'src/components/features/Card';
 
 export default function Page() {
   const {data, isLoading} = useGetNewsfeedQuery();

@@ -1,8 +1,8 @@
 import classnames from 'classnames';
 import React from 'react';
 import styles from './styles.module.scss';
-import Paper from '@/components/lib/paper';
-import Text from '@/components/lib/text';
+import Paper from 'src/components/lib/Paper';
+import Text from 'src/components/lib/Text';
 
 type CardProps = {
   title?: string;

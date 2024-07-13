@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import Button from '@/components/lib/button';
 import {toggleMainNav} from '@/redux/features/layoutSlice';
 import {useAppDispatch, useAppSelector} from '@/redux/hooks';
 import MenuLeftIcon from '@/static/icons/menuLeft.svg';
+import Button from 'src/components/lib/Button';
 
 export default function MainNavToggleButton() {
   const isMainNavOpen = useAppSelector(

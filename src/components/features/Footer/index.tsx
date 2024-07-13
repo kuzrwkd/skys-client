@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles.module.scss';
-import Text from '@/components/lib/text';
+import Text from 'src/components/lib/Text';
 
 export default function Footer() {
   return (
