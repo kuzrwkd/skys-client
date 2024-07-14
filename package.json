@@ -1,60 +1,31 @@
 {
-  "name": "skys-client",
-  "version": "0.1.0",
+  "name": "@skys-client/skys-client",
+  "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "test": "jest --verbose",
-    "format": "prettier --write ./src && eslint --fix ./src",
-    "codegen": "graphql-codegen --config codegen.ts"
-  },
-  "dependencies": {
-    "@mantine/core": "^7.11.1",
-    "@mantine/hooks": "^7.11.1",
-    "@reduxjs/toolkit": "^2.2.6",
-    "@rtk-query/graphql-request-base-query": "^2.3.1",
-    "@svgr/webpack": "^8.1.0",
-    "@tabler/icons-react": "^3.9.0",
-    "classnames": "^2.5.1",
-    "graphql": "^16.9.0",
-    "graphql-request": "^6.0.0",
-    "mantine-datatable": "^7.11.1",
-    "next": "^14.2.4",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-redux": "^9.1.2",
-    "typescript": "^5.5.3"
-  },
+  "workspaces": [
+    "apps/browser",
+    "packages/skys-base-ui",
+    "packages/querys"
+  ],
   "devDependencies": {
-    "@graphql-codegen/cli": "5.0.2",
-    "@graphql-codegen/introspection": "4.0.3",
-    "@graphql-codegen/typescript-operations": "^4.2.3",
-    "@graphql-codegen/typescript-resolvers": "^4.2.1",
-    "@graphql-codegen/typescript-rtk-query": "^3.1.1",
-    "@parcel/watcher": "^2.4.1",
-    "@types/jest": "^29.5.12",
     "@types/node": "^20.14.2",
     "@types/react": "^18.3.3",
-    "@typescript-eslint/eslint-plugin": "^7.15.0",
-    "@typescript-eslint/parser": "^7.15.0",
+    "@typescript-eslint/eslint-plugin": "^7.16.0",
+    "@typescript-eslint/parser": "^7.16.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^18.0.0",
-    "eslint-config-next": "^14.2.4",
+    "eslint-config-next": "^14.2.5",
     "eslint-config-prettier": "^9.1.0",
     "jest": "^29.7.0",
-    "msw": "^2.3.1",
-    "postcss": "^8.4.39",
-    "postcss-preset-mantine": "^1.15.0",
-    "postcss-simple-vars": "^7.0.1",
-    "prettier": "^3.3.2",
-    "ts-jest": "^29.1.5",
-    "ts-node": "^10.9.2"
+    "prettier": "^3.3.3",
+    "ts-jest": "^29.2.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
   },
-  "msw": {
-    "workerDirectory": "public"
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.2.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }

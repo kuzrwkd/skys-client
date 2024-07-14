@@ -1,0 +1,28 @@
+{
+  "name": "@skys-client/browser",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "jest --verbose",
+    "lint": "next lint",
+    "format": "prettier --write ./src && eslint --fix ./src"
+  },
+  "devDependencies": {
+    "msw": "^2.3.1",
+    "postcss": "^8.4.39",
+    "postcss-preset-mantine": "^1.15.0",
+    "postcss-simple-vars": "^7.0.1"
+  },
+  "dependencies": {
+    "@skys-client/querys": "^1.0.0",
+    "@skys-client/skys-base-ui": "^1.0.0",
+    "@svgr/webpack": "^8.1.0",
+    "@tabler/icons-react": "^3.10.0",
+    "classnames": "^2.5.1",
+    "next": "^14.2.5",
+    "react-redux": "^9.1.2"
+  }
+}
