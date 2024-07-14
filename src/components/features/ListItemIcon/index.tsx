@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './styles.module.css';
-import LibLink from '@/components/lib/Link';
-import LibList from '@/components/lib/List';
-import LibThemeIcon from '@/components/lib/ThemeIcon';
+import Link from '@/components/features/Link';
+import SBUList from '@/packages/skys-base-ui/SBUList';
+import SBUThemeIcon from '@/packages/skys-base-ui/SBUThemeIcon';
 
 type ListItemIconProps = {
   icon: any;
@@ -13,13 +13,13 @@ type ListItemIconProps = {
 export default function ListItemIcon(props: ListItemIconProps) {
   const {icon: Icon, href, label} = props;
   return (
-    <LibList.Item className={styles.listItemIcon}>
-      <LibLink className={styles.link} href={href}>
-        <LibThemeIcon className={styles.iconWrapper} variant="transparent">
+    <SBUList.Item className={styles.listItemIcon}>
+      <Link className={styles.link} href={href}>
+        <SBUThemeIcon className={styles.iconWrapper} variant="transparent">
           <Icon />
-        </LibThemeIcon>
+        </SBUThemeIcon>
         {label}
-      </LibLink>
-    </LibList.Item>
+      </Link>
+    </SBUList.Item>
   );
 }

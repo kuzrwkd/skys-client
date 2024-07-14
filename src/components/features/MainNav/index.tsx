@@ -4,11 +4,11 @@ import {IconNews} from '@tabler/icons-react';
 import classnames from 'classnames';
 import React from 'react';
 import styles from './styles.module.css';
+import Link from '@/components/features/Link';
 import ListItemIcon from '@/components/features/ListItemIcon';
 import Logo from '@/components/features/Logo';
-import LibActionIcon from '@/components/lib/ActionIcon';
-import LibLink from '@/components/lib/Link';
-import LibList from '@/components/lib/List';
+import SBUActionIcon from '@/packages/skys-base-ui/SBUActionIcon';
+import SBUList from '@/packages/skys-base-ui/SBUList';
 import {useAppSelector} from '@/redux/hooks';
 
 export const mainMenu = [
@@ -25,15 +25,15 @@ function renderListItem(isMainNavOpen: boolean, items: MainMenuItems) {
   const {href, label, icon: Icon} = items;
   if (!isMainNavOpen) {
     return (
-      <LibList.Item key={href}>
+      <SBUList.Item key={href}>
         <div className={styles.closeMenuIconWrapper}>
-          <LibLink href={href}>
-            <LibActionIcon color="primary" variant="transparent">
+          <Link href={href}>
+            <SBUActionIcon color="primary" variant="transparent">
               <Icon />
-            </LibActionIcon>
-          </LibLink>
+            </SBUActionIcon>
+          </Link>
         </div>
-      </LibList.Item>
+      </SBUList.Item>
     );
   }
   return <ListItemIcon label={label} href={href} icon={Icon} key={href} />;
@@ -54,9 +54,9 @@ export default function MainNav() {
       <div className={styles.logoWrapper}>
         <Logo />
       </div>
-      <LibList listStyleType="none">
-        {mainMenu.map(item => renderListItem(isMainNavOpen, {...item}))}
-      </LibList>
+      <SBUList listStyleType="none">
+        {mainMenu.map(item => renderListItem(isMainNavOpen, item))}
+      </SBUList>
     </aside>
   );
 }

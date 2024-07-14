@@ -1,20 +1,20 @@
 import React from 'react';
 import styles from './styles.module.css';
-import LibLink from '@/components/lib/Link';
-import LibText from '@/components/lib/Text';
+import Link from '@/components/features/Link';
+import Typography from '@/components/features/Typography';
 import LogoIcon from '@/static/icons/logo.svg';
 
 export default function Logo() {
   return (
     <div className={styles.logo}>
-      <LibLink href="/" className={styles.link}>
+      <Link href="/" className={styles.link}>
         <div className={styles.icon}>
           <LogoIcon width={58} height={58} />
         </div>
-        <LibText className={styles.title} variant="h5" component="h1">
+        <Typography className={styles.title} variant="h5" component="h1">
           SKYS
-        </LibText>
-      </LibLink>
+        </Typography>
+      </Link>
     </div>
   );
 }

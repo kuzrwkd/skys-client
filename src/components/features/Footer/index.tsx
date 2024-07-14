@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from './styles.module.css';
-import LibText from 'src/components/lib/Text';
+import Typography from '@/components/features/Typography';
 
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <LibText className={styles.copy} size="xs">
+      <Typography className={styles.copy} size="xs">
         &copy; Masu inc.
-      </LibText>
+      </Typography>
     </footer>
   );
 }

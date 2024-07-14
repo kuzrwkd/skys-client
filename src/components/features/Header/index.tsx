@@ -1,26 +1,26 @@
 import {IconUserCircle} from '@tabler/icons-react';
 import React from 'react';
-import MainNavToggleButton from './client/mainNavToggleButton';
-import SubNavToggleButton from './client/subNavToggleButton';
+import ClientMainNavToggleButton from './client/ClientMainNavToggleButton';
+import ClientSubNavToggleButton from './client/ClientSubNavToggleButton';
 import styles from './styles.module.css';
-import LibButton from '@/components/lib/Button';
+import SBUButton from '@/packages/skys-base-ui/SBUButton';
 
 export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.leftArea}>
         <div className={styles.mainNavButtonWrapper}>
-          <MainNavToggleButton />
+          <ClientMainNavToggleButton />
         </div>
       </div>
       <div className={styles.rightArea}>
         <div className={styles.subNavButtonWrapper}>
-          <SubNavToggleButton />
+          <ClientSubNavToggleButton />
         </div>
         <div className={styles.accountButtonWrapper}>
-          <LibButton size="large">
+          <SBUButton size="large">
             <IconUserCircle fontSize="inherit" />
-          </LibButton>
+          </SBUButton>
         </div>
       </div>
     </header>

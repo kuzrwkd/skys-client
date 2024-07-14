@@ -23,7 +23,6 @@ module.exports = {
   ignorePatterns: ['*.js'],
   rules: {
     'no-unused-vars': 'off',
-    'react/require-default-props': 'off',
     'no-param-reassign': [
       'error',
       {
@@ -31,6 +30,8 @@ module.exports = {
         ignorePropertyModificationsFor: ['state'],
       },
     ],
+    'react/require-default-props': 'off',
+    'react/jsx-props-no-spreading': 'off',
     '@typescript-eslint/no-unused-vars': [
       'warn',
       {
