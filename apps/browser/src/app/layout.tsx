@@ -1,6 +1,3 @@
-import '@mantine/core/styles.layer.css';
-import 'mantine-datatable/styles.layer.css';
-import './layout.css';
 import {SBUColorSchemeScript, SBUProvider} from '@skys-client/skys-base-ui';
 import React from 'react';
 import DefaultLayout from '@/components/layouts/Default';

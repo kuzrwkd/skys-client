@@ -1,3 +1,7 @@
+import '@mantine/core/styles.layer.css';
+import 'mantine-datatable/styles.layer.css';
+import './index.css';
+
 export {SBUProvider, SBUColorSchemeScript} from './provider/SBUProvider';
 export {SBUActionIcon} from './components/SBUActionIcon';
 export type {SBUActionIconProps} from './components/SBUActionIcon';
