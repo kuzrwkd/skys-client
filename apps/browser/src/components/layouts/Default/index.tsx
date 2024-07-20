@@ -9,9 +9,7 @@ type DefaultLayoutProps = {
   children: React.ReactNode;
 };
 
-export default function DefaultLayout(props: DefaultLayoutProps) {
-  const {children} = props;
-
+export default function DefaultLayout({children}: DefaultLayoutProps) {
   return (
     <div className={styles.appRoot}>
       <div className={styles.inner}>
