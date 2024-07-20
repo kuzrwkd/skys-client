@@ -4,7 +4,6 @@ import type {AnchorProps} from '@mantine/core';
 
 const SBUAnchor = createPolymorphicComponent<'a', AnchorProps>(
   React.forwardRef<HTMLAnchorElement, AnchorProps>((props, _ref) => (
-    // eslint-disable-next-line react/jsx-props-no-spreading
     <Anchor {...props} />
   )),
 );
