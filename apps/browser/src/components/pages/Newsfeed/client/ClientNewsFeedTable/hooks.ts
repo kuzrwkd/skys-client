@@ -47,11 +47,12 @@ const isNewsfeedRecord = (record: unknown): record is NewsfeedRecord => {
 };
 
 export default function useClientNewsFeedTable() {
-  const {data, isLoading} = useGetNewsfeedQuery();
+  const {data, isLoading, error} = useGetNewsfeedQuery();
 
   return {
     isLoading,
     data,
+    error,
     isTitleProperty,
     isUrlProperty,
     isMediaProperty,

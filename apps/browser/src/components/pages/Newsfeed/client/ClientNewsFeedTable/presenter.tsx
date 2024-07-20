@@ -7,6 +7,7 @@ import Typography from '@/components/features/Typography';
 type Props = {
   isLoading: boolean;
   data?: Newsfeed;
+  error: unknown;
   isTitleProperty: (value: unknown) => value is string;
   isUrlProperty: (value: unknown) => value is string;
   isMediaProperty: (value: unknown) => value is NewsfeedRecord['media'];
@@ -17,13 +18,14 @@ type Props = {
 export default function ClientNewsFeedTablePresenter({
   isLoading,
   data,
+  error,
   isTitleProperty,
   isUrlProperty,
   isMediaProperty,
   isCategoryProperty,
   isNewsfeedRecord,
 }: Props) {
-  if (isLoading || !data) {
+  if (isLoading || !data || error) {
     return null;
   }
 
