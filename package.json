@@ -5,7 +5,7 @@
   "workspaces": [
     "apps/browser",
     "packages/skys-base-ui",
-    "packages/querys"
+    "packages/queries"
   ],
   "devDependencies": {
     "@types/jest": "^29.5.12",

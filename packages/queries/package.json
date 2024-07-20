@@ -1,9 +1,9 @@
 {
-  "name": "@skys-client/querys",
+  "name": "@skys-client/queries",
   "version": "1.0.0",
   "private": true,
-  "exports": {
-    "./graphql": "./src/graphql/codegen/index.ts"
+  "scripts": {
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^5.0.2",
@@ -12,9 +12,6 @@
     "@graphql-codegen/typescript-resolvers": "^4.2.1",
     "@graphql-codegen/typescript-rtk-query": "^3.1.1",
     "@parcel/watcher": "^2.4.1"
-  },
-  "scripts": {
-    "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
     "@rtk-query/graphql-request-base-query": "^2.3.1",
