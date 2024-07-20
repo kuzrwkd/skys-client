@@ -62,7 +62,7 @@ module.exports = {
         packageDir: [
           '.',
           '../..',
-          '../../packages/querys',
+          '../../packages/queries',
           '../../packages/skys-base-ui',
         ],
       },
