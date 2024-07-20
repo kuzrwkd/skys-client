@@ -6,7 +6,7 @@ import Typography from '@/components/features/Typography';
 
 type Props = {
   isLoading: boolean;
-  data?: Newsfeed;
+  data: Newsfeed;
   error: unknown;
   isTitleProperty: (value: unknown) => value is string;
   isUrlProperty: (value: unknown) => value is string;
