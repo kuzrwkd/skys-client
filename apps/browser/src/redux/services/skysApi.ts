@@ -1,4 +1,4 @@
-import {api as generatedApi} from '@skys-client/querys/graphql';
+import {api as generatedApi} from '@skys-client/queries/graphql';
 
 export const skysApi = generatedApi.enhanceEndpoints({
   addTagTypes: ['Newsfeed'],

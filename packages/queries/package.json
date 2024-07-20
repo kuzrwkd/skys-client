@@ -2,6 +2,9 @@
   "name": "@skys-client/queries",
   "version": "1.0.0",
   "private": true,
+  "exports": {
+    "./graphql": "./src/graphql/codegen/index.ts"
+  },
   "scripts": {
     "codegen": "graphql-codegen --config codegen.ts"
   },

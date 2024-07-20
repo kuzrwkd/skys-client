@@ -1,6 +1,9 @@
 import type {NewsfeedRecord} from '@/components/pages/Newsfeed/model';
 import {useGetNewsfeedQuery} from '@/redux/services/skysApi';
 
+const isObject = (value: unknown): value is object =>
+  value !== null && typeof value === 'object';
+
 const isTitleProperty = (title: unknown): title is string =>
   typeof title === 'string';
 
@@ -8,7 +11,7 @@ const isUrlProperty = (url: unknown): url is string => typeof url === 'string';
 
 const isMediaProperty = (media: unknown): media is NewsfeedRecord['media'] => {
   const mediaKeys = ['id', 'name'];
-  if (!Array.isArray(media)) {
+  if (!isObject(media)) {
     return false;
   }
   const argsKeys = Object.keys(media);
@@ -36,7 +39,7 @@ const isNewsfeedRecord = (record: unknown): record is NewsfeedRecord => {
     'media',
     'category',
   ];
-  if (!Array.isArray(record)) {
+  if (!isObject(record)) {
     return false;
   }
   const argsKeys = Object.keys(record);

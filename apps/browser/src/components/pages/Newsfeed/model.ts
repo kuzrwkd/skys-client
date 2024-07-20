@@ -1,4 +1,4 @@
-import type {GetNewsfeedQuery} from '@skys-client/querys/graphql';
+import type {GetNewsfeedQuery} from '@skys-client/queries/graphql';
 
 export type Newsfeed = GetNewsfeedQuery;
 
