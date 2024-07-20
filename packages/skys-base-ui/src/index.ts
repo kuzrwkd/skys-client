@@ -17,6 +17,8 @@ export {SBUList} from './components/SBUList';
 export type {SBUListProps} from './components/SBUList';
 export {SBUPaper} from './components/SBUPaper';
 export type {SBUPaperProps} from './components/SBUPaper';
+export {SBUPill} from './components/SBUPill';
+export type {SBUPillProps} from './components/SBUPill';
 export {SBUText} from './components/SBUText';
 export type {SBUTextProps} from './components/SBUText';
 export {SBUThemeIcon} from './components/SBUThemeIcon';

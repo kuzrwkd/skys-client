@@ -1,7 +1,6 @@
 .footer {
-  border-top: 1px solid;
-  border-color: #bdbdbd;
   padding: 4px 8px;
+  border-top: 1px solid #bdbdbd;
 
   .copy {
     text-align: right;

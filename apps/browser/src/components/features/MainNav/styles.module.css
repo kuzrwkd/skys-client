@@ -1,10 +1,9 @@
-.mainNav {
+.main-nav {
   display: flex;
   flex-direction: column;
   width: 74px;
   min-width: 74px;
-  border-right: solid 1px;
-  border-color: #bdbdbd;
+  border-right: solid 1px #bdbdbd;
   transition: all 0.3s ease-out;
 
   &.open {
@@ -12,16 +11,15 @@
     min-width: 200px;
   }
 
-  .logoWrapper {
-    border-bottom: 1px solid;
-    border-color: #bdbdbd;
+  .logo-wrapper {
     overflow: hidden;
+    border-bottom: 1px solid #bdbdbd;
   }
 
-  .closeMenuIconWrapper {
+  .close-menu-icon-wrapper {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
+    justify-content: flex-start;
     min-height: 48px;
     margin-left: 16px;
   }

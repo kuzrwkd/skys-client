@@ -12,9 +12,9 @@ type ListItemIconProps = {
 export default function ListItemIcon(props: ListItemIconProps) {
   const {icon: Icon, href, label} = props;
   return (
-    <SBUList.Item className={styles.listItemIcon}>
+    <SBUList.Item className={styles['list-item-icon']}>
       <Link className={styles.link} href={href}>
-        <SBUThemeIcon className={styles.iconWrapper} variant="transparent">
+        <SBUThemeIcon className={styles['icon-wrapper']} variant="transparent">
           <Icon />
         </SBUThemeIcon>
         {label}

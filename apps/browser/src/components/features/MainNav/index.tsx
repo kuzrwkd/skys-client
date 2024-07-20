@@ -25,7 +25,7 @@ function renderListItem(isMainNavOpen: boolean, items: MainMenuItems) {
   if (!isMainNavOpen) {
     return (
       <SBUList.Item key={href}>
-        <div className={styles.closeMenuIconWrapper}>
+        <div className={styles['close-menu-icon-wrapper']}>
           <Link href={href}>
             <SBUActionIcon color="primary" variant="transparent">
               <Icon />
@@ -44,13 +44,13 @@ export default function MainNav() {
   );
 
   const mainNavClassName = classnames({
-    [styles.mainNav]: true,
+    [styles['main-nav']]: true,
     [styles.open]: isMainNavOpen,
   });
 
   return (
     <aside className={mainNavClassName}>
-      <div className={styles.logoWrapper}>
+      <div className={styles['logo-wrapper']}>
         <Logo />
       </div>
       <SBUList listStyleType="none">

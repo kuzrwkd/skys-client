@@ -11,10 +11,10 @@ type DefaultLayoutProps = {
 
 export default function DefaultLayout({children}: DefaultLayoutProps) {
   return (
-    <div className={styles.appRoot}>
+    <div className={styles['app-root']}>
       <div className={styles.inner}>
         <ManinNav />
-        <div className={styles.contentsWrapper}>
+        <div className={styles['contents-wrapper']}>
           <Header />
           <main className={styles.main}>
             <div className={styles.contents}>{children}</div>

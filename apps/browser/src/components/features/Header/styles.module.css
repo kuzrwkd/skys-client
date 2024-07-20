@@ -1,38 +1,37 @@
 .header {
-  height: 64px;
-  border-bottom: 1px solid;
-  border-color: #bdbdbd;
   display: flex;
   justify-content: space-between;
+  height: 64px;
+  border-bottom: 1px solid #bdbdbd;
 
-  .leftArea {
+  .left-area {
     display: flex;
     align-items: center;
     height: 100%;
 
-    .mainNavButtonWrapper {
+    .main-nav-button-wrapper {
       margin-left: 8px;
     }
   }
 
-  .rightArea {
+  .right-area {
     display: flex;
 
-    .subNavButtonWrapper {
+    .sub-nav-button-wrapper {
       display: flex;
       align-items: center;
       height: 100%;
       padding-right: 8px;
     }
 
-    .accountButtonWrapper {
+    .account-button-wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 64px;
       width: 74px;
-      border-left: 1px solid;
+      height: 64px;
       border-color: #bdbdbd;
+      border-left: 1px solid;
     }
   }
 }

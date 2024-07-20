@@ -1,15 +1,14 @@
-.subNav {
+.sub-nav {
   display: flex;
   flex-direction: column;
-  min-width: 74px;
   width: 74px;
-  border-left: solid 1px;
-  border-color: #bdbdbd;
-  transition: all 0.3s ease-out;
+  min-width: 74px;
   background-color: #fff;
+  border-left: solid 1px #bdbdbd;
+  transition: all 0.3s ease-out;
 
   &.open {
-    min-width: 375px;
     width: 375px;
+    min-width: 375px;
   }
 }

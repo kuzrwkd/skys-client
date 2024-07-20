@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 
 export default function SubNav() {
   const subNavClassName = classnames({
-    [styles.subNav]: true,
+    [styles['sub-nav']]: true,
     [styles.open]: false,
   });
 

@@ -1,11 +1,11 @@
-.listItemIcon {
+.list-item-icon {
+  width: 200px;
+  padding: 0 12px;
+  margin-top: 2px;
+  color: #4338ca;
+  text-decoration: none;
   white-space: nowrap;
   border-radius: 16px;
-  color: #4338ca;
-  margin-top: 2px;
-  padding: 0 12px;
-  text-decoration: none;
-  width: 200px;
 
   &:not(:last-child) {
     margin-bottom: 4px;
@@ -15,7 +15,7 @@
     padding: 0 8px;
   }
 
-  .iconWrapper {
+  .icon-wrapper {
     min-width: 24px;
     margin-right: 8px;
     margin-left: 4px;

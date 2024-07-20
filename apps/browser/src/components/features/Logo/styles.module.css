@@ -11,9 +11,9 @@
 
   .icon {
     display: flex;
+    flex: none;
     align-items: center;
     padding: 0 8px;
-    flex: none;
   }
 
   .title {

@@ -1,12 +1,14 @@
 import React from 'react';
+import styles from './styles.module.css';
 import type {Newsfeed, NewsfeedRecord} from '@/components/pages/Newsfeed/model';
 import DataTable from '@/components/features/DataTable';
 import Link from '@/components/features/Link';
+import Pill from '@/components/features/Pill';
 import Typography from '@/components/features/Typography';
 
 type Props = {
   isLoading: boolean;
-  data: Newsfeed;
+  data: Newsfeed | undefined;
   error: unknown;
   isTitleProperty: (value: unknown) => value is string;
   isUrlProperty: (value: unknown) => value is string;
@@ -66,13 +68,19 @@ export default function ClientNewsFeedTablePresenter({
               throw new Error('Invalid category type');
             }
             return (
-              <>
+              <div className={styles['pill-wrapper']}>
                 {category.map(item => (
-                  <Typography size="sm" key={item.id}>
+                  <Pill
+                    fill
+                    color="primary"
+                    size="md"
+                    variant="light"
+                    key={item.id}
+                  >
                     {item.name}
-                  </Typography>
+                  </Pill>
                 ))}
-              </>
+              </div>
             );
           },
         },

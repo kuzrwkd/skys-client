@@ -1,4 +1,4 @@
-.appRoot {
+.app-root {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -9,10 +9,10 @@
     overflow: hidden;
   }
 
-  .contentsWrapper {
+  .contents-wrapper {
     display: flex;
-    flex-direction: column;
     flex: 1;
+    flex-direction: column;
   }
 
   .contents {
@@ -24,7 +24,7 @@
   .main {
     display: flex;
     flex: 1;
-    background-color: #fafafa;
     overflow: hidden;
+    background-color: #fafafa;
   }
 }

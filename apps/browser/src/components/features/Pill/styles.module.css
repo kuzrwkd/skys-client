@@ -1,0 +1,4 @@
+.fill-primary {
+  color: var(--mantine-color-white);
+  background-color: var(--mantine-primary-color-5);
+}

@@ -8,16 +8,16 @@ import styles from './styles.module.css';
 export default function Header() {
   return (
     <header className={styles.header}>
-      <div className={styles.leftArea}>
-        <div className={styles.mainNavButtonWrapper}>
+      <div className={styles['left-area']}>
+        <div className={styles['main-nav-button-wrapper']}>
           <ClientMainNavToggleButton />
         </div>
       </div>
-      <div className={styles.rightArea}>
-        <div className={styles.subNavButtonWrapper}>
+      <div className={styles['right-area']}>
+        <div className={styles['sub-nav-button-wrapper']}>
           <ClientSubNavToggleButton />
         </div>
-        <div className={styles.accountButtonWrapper}>
+        <div className={styles['account-button-wrapper']}>
           <SBUButton size="large">
             <IconUserCircle fontSize="inherit" />
           </SBUButton>
