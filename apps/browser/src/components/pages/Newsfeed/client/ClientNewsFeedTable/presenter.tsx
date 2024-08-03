@@ -1,7 +1,9 @@
 import React from 'react';
+import styles from './styles.module.css';
 import type {Newsfeed, NewsfeedRecord} from '@/components/pages/Newsfeed/model';
 import DataTable from '@/components/features/DataTable';
 import Link from '@/components/features/Link';
+import Pill from '@/components/features/Pill';
 import Typography from '@/components/features/Typography';
 
 type Props = {
@@ -11,6 +13,7 @@ type Props = {
   isTitleProperty: (value: unknown) => value is string;
   isUrlProperty: (value: unknown) => value is string;
   isMediaProperty: (value: unknown) => value is NewsfeedRecord['media'];
+  isCategoryProperty: (value: unknown) => value is NewsfeedRecord['category'];
   isNewsfeedRecord: (value: unknown) => value is NewsfeedRecord;
 };
 
@@ -21,6 +24,7 @@ export default function ClientNewsFeedTablePresenter({
   isTitleProperty,
   isUrlProperty,
   isMediaProperty,
+  isCategoryProperty,
   isNewsfeedRecord,
 }: Props) {
   if (isLoading || !data || error) {
@@ -47,6 +51,40 @@ export default function ClientNewsFeedTablePresenter({
           },
         },
         {
+          accessor: 'media',
+          title: 'メディア',
+          render: ({media}) => {
+            if (!isMediaProperty(media)) {
+              throw new Error('Invalid media type');
+            }
+            return <Typography size="sm">{media.name}</Typography>;
+          },
+        },
+        {
+          accessor: 'category',
+          title: 'カテゴリー',
+          render: ({category}) => {
+            if (!isCategoryProperty(category)) {
+              throw new Error('Invalid category type');
+            }
+            return (
+              <div className={styles['pill-wrapper']}>
+                {category.map(item => (
+                  <Pill
+                    fill
+                    color="primary"
+                    size="md"
+                    variant="light"
+                    key={item.id}
+                  >
+                    {item.name}
+                  </Pill>
+                ))}
+              </div>
+            );
+          },
+        },
+        {
           accessor: 'title',
           title: 'タイトル',
           render: ({title, url}) => {
@@ -64,16 +102,6 @@ export default function ClientNewsFeedTablePresenter({
         {
           accessor: 'last_publish_date',
           title: '更新日時',
-        },
-        {
-          accessor: 'media',
-          title: 'メディア',
-          render: ({media}) => {
-            if (!isMediaProperty(media)) {
-              throw new Error('Invalid media type');
-            }
-            return <Typography size="sm">{media.name}</Typography>;
-          },
         },
       ]}
     />
