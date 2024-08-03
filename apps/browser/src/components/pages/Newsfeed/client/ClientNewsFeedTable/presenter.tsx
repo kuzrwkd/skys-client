@@ -1,10 +1,9 @@
+import {SBUText, SBUDataTable} from '@skys-client/skys-base-ui';
 import React from 'react';
 import styles from './styles.module.css';
 import type {Newsfeed, NewsfeedRecord} from '@/components/pages/Newsfeed/model';
-import DataTable from '@/components/features/DataTable';
 import Link from '@/components/features/Link';
 import Pill from '@/components/features/Pill';
-import Typography from '@/components/features/Typography';
 
 type Props = {
   isLoading: boolean;
@@ -32,7 +31,7 @@ export default function ClientNewsFeedTablePresenter({
   }
 
   return (
-    <DataTable
+    <SBUDataTable
       withTableBorder
       borderRadius="sm"
       withColumnBorders
@@ -57,7 +56,7 @@ export default function ClientNewsFeedTablePresenter({
             if (!isMediaProperty(media)) {
               throw new Error('Invalid media type');
             }
-            return <Typography size="sm">{media.name}</Typography>;
+            return <SBUText size="sm">{media.name}</SBUText>;
           },
         },
         {
@@ -93,9 +92,9 @@ export default function ClientNewsFeedTablePresenter({
               throw new Error('Invalid title or url type');
             }
             return (
-              <Typography size="sm">
+              <SBUText size="sm">
                 <Link href={url}>{title}</Link>
-              </Typography>
+              </SBUText>
             );
           },
         },

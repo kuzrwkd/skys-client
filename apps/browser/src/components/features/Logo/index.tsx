@@ -1,7 +1,7 @@
+import {SBUText} from '@skys-client/skys-base-ui';
 import React from 'react';
 import styles from './styles.module.css';
 import Link from '@/components/features/Link';
-import Typography from '@/components/features/Typography';
 import LogoIcon from '@/static/icons/logo.svg';
 
 export default function Logo() {
@@ -11,9 +11,9 @@ export default function Logo() {
         <div className={styles.icon}>
           <LogoIcon width={58} height={58} />
         </div>
-        <Typography className={styles.title} variant="h5" component="h1">
+        <SBUText className={styles.title} variant="h5" component="h1">
           SKYS
-        </Typography>
+        </SBUText>
       </Link>
     </div>
   );
