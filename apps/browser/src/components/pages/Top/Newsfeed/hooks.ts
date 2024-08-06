@@ -1,4 +1,4 @@
-import type {NewsfeedRecord} from '@/components/pages/Newsfeed/model';
+import type {NewsfeedRecord} from '@/components/pages/Top/model';
 import {useGetNewsfeedQuery} from '@/redux/services/skysApi';
 
 const isObject = (value: unknown): value is object =>
@@ -46,7 +46,7 @@ const isNewsfeedRecord = (record: unknown): record is NewsfeedRecord => {
   return newsfeedKeys.every(key => argsKeys.includes(key));
 };
 
-export default function useClientNewsFeedTable() {
+export default function useNewsFeed() {
   const {data, isLoading, error} = useGetNewsfeedQuery();
 
   return {

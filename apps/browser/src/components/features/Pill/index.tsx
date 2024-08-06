@@ -4,17 +4,9 @@ import React from 'react';
 import styles from './styles.module.css';
 import type {SBUPillProps} from '@skys-client/skys-base-ui';
 
-type Props = (
-  | {
-      fill: true;
-      color: 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
-    }
-  | {
-      fill?: false;
-      color: never;
-    }
-) &
-  SBUPillProps;
+type Props = {
+  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+} & SBUPillProps;
 
 export default function Pill(props: Props) {
   const {color, ...rest} = props;

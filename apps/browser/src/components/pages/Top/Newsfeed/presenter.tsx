@@ -1,7 +1,7 @@
 import {SBUText, SBUDataTable} from '@skys-client/skys-base-ui';
 import React from 'react';
 import styles from './styles.module.css';
-import type {Newsfeed, NewsfeedRecord} from '@/components/pages/Newsfeed/model';
+import type {Newsfeed, NewsfeedRecord} from '@/components/pages/Top/model';
 import Link from '@/components/features/Link';
 import Pill from '@/components/features/Pill';
 
@@ -16,7 +16,7 @@ type Props = {
   isNewsfeedRecord: (value: unknown) => value is NewsfeedRecord;
 };
 
-export default function ClientNewsFeedTablePresenter({
+export default function NewsfeedPresenter({
   isLoading,
   data,
   error,
@@ -69,13 +69,7 @@ export default function ClientNewsFeedTablePresenter({
             return (
               <div className={styles['pill-wrapper']}>
                 {category.map(item => (
-                  <Pill
-                    fill
-                    color="primary"
-                    size="md"
-                    variant="light"
-                    key={item.id}
-                  >
+                  <Pill color="primary" size="md" variant="light" key={item.id}>
                     {item.name}
                   </Pill>
                 ))}

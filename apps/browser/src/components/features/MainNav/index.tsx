@@ -20,8 +20,13 @@ export const mainMenu = [
 
 type MainMenuItems = (typeof mainMenu)[number];
 
-function renderListItem(isMainNavOpen: boolean, items: MainMenuItems) {
-  const {href, label, icon: Icon} = items;
+type MenuItemProps = {
+  isMainNavOpen: boolean;
+  item: MainMenuItems;
+};
+
+function MenuItem({isMainNavOpen, item}: MenuItemProps) {
+  const {href, label, icon: Icon} = item;
   if (!isMainNavOpen) {
     return (
       <SBUList.Item key={href}>
@@ -54,7 +59,9 @@ export default function MainNav() {
         <Logo />
       </div>
       <SBUList listStyleType="none">
-        {mainMenu.map(item => renderListItem(isMainNavOpen, item))}
+        {mainMenu.map(item => (
+          <MenuItem isMainNavOpen={isMainNavOpen} item={item} />
+        ))}
       </SBUList>
     </aside>
   );
