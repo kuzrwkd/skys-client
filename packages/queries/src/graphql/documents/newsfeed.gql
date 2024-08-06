@@ -1,28 +1,3 @@
-type Category {
-  id: ID!
-  name: String!
-}
-
-type Media {
-  id: ID!
-  name: String!
-}
-
-type Newsfeed {
-  category: [Category!]!
-  created_at: Float!
-  id: ID!
-  last_publish_date: Float!
-  media: Media!
-  title: String!
-  updated_at: Float!
-  url: String!
-}
-
-type Query {
-  newsfeed: [Newsfeed!]!
-}
-
 query getNewsfeed {
   newsfeed {
     id
